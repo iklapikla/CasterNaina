@@ -3,6 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
   <title>Naina | Free Fire Caster</title>
 
   <style>
@@ -11,22 +12,20 @@
       --stats-banner: url("https://raw.githubusercontent.com/iklapikla/CasterNaina/refs/heads/main/Stats%20Banner%20Background%20Image.png");
       --social-banner: url("https://raw.githubusercontent.com/iklapikla/CasterNaina/refs/heads/main/Social%20Banner%20Background%20Image.png");
 
-      --bg: #fff1d5;
-      --cream: #fff0d2;
       --ink: #17242b;
-      --muted: #5d686e;
+      --muted: #5f6b72;
       --orange: #f47a21;
-      --purple: #6c42c7;
+      --purple: #6d45c8;
       --green: #25d366;
-      --line: rgba(23, 36, 43, 0.14);
-      --glass: rgba(255, 244, 222, 0.66);
-      --shadow: 0 16px 40px rgba(55, 35, 12, 0.16);
+      --cream: #fff1d5;
+      --shadow: 0 18px 42px rgba(55, 35, 12, 0.16);
     }
 
     * {
       margin: 0;
       padding: 0;
       box-sizing: border-box;
+      -webkit-tap-highlight-color: transparent;
     }
 
     html {
@@ -40,317 +39,320 @@
       overflow-x: hidden;
     }
 
-    button,
-    a {
-      font-family: inherit;
-    }
-
     a {
       color: inherit;
       text-decoration: none;
     }
 
-    .mobile-page {
+    button {
+      font-family: inherit;
+    }
+
+    .phone-page {
       width: min(100%, 430px);
       margin: 0 auto;
       min-height: 100vh;
-      background:
-        linear-gradient(180deg, rgba(255, 242, 214, 0.96), rgba(248, 219, 176, 0.96)),
-        #fff0d2;
+      background: linear-gradient(180deg, #fff1d5 0%, #f9deb6 100%);
       overflow: hidden;
       position: relative;
     }
 
     .hero {
-      height: 520px;
+      width: 100%;
+      aspect-ratio: 16 / 9;
       position: relative;
-      background-image:
-        linear-gradient(90deg, rgba(255, 240, 210, 0.22) 0%, rgba(255, 240, 210, 0.08) 42%, rgba(0,0,0,0.06) 100%),
-        var(--top-banner);
-      background-size: cover;
-      background-position: center;
       overflow: hidden;
+      background-image: var(--top-banner);
+      background-size: 100% 100%;
+      background-position: center;
+      background-repeat: no-repeat;
+    }
+
+    .hero::before {
+      content: "";
+      position: absolute;
+      left: 0;
+      top: 0;
+      bottom: 0;
+      width: 58%;
+      background: linear-gradient(
+        90deg,
+        rgba(255, 242, 216, 0.72) 0%,
+        rgba(255, 242, 216, 0.38) 50%,
+        rgba(255, 242, 216, 0) 100%
+      );
+      z-index: 1;
+      pointer-events: none;
     }
 
     .hero::after {
       content: "";
       position: absolute;
       inset: auto 0 0 0;
-      height: 160px;
-      background: linear-gradient(180deg, transparent, rgba(255, 240, 210, 0.96));
+      height: 40px;
+      background: linear-gradient(180deg, transparent, rgba(255, 241, 213, 0.98));
+      z-index: 2;
       pointer-events: none;
     }
 
-    .hero-content {
-      position: relative;
-      z-index: 3;
-      padding: 34px 22px;
-      height: 100%;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      max-width: 55%;
-    }
-
-    .mini-logo {
+    .hero-copy {
       position: absolute;
-      top: 18px;
-      left: 20px;
-      z-index: 5;
-      display: flex;
-      align-items: center;
-      gap: 8px;
-      color: var(--ink);
+      left: 18px;
+      top: 34px;
+      z-index: 4;
+      width: 48%;
     }
 
-    .mini-logo-mark {
-      width: 28px;
-      height: 28px;
-      border-radius: 9px;
-      display: grid;
-      place-items: center;
-      background: rgba(23, 36, 43, 0.9);
-      color: #fff0d2;
-      font-size: 16px;
-      font-weight: 900;
-      box-shadow: 0 8px 18px rgba(0,0,0,0.18);
-    }
-
-    .mini-logo span {
-      font-size: 10px;
-      text-transform: uppercase;
-      letter-spacing: 2px;
-      font-weight: 900;
-    }
-
-    .hamburger {
-      position: absolute;
-      top: 18px;
-      right: 18px;
-      z-index: 5;
-      width: 38px;
-      height: 38px;
-      border: 1px solid rgba(23,36,43,0.18);
-      background: rgba(255, 244, 222, 0.52);
-      backdrop-filter: blur(14px);
-      border-radius: 14px;
-      display: grid;
-      place-items: center;
-    }
-
-    .hamburger div {
-      width: 16px;
-      display: flex;
-      flex-direction: column;
-      gap: 4px;
-    }
-
-    .hamburger span {
-      height: 2px;
-      border-radius: 999px;
-      background: var(--ink);
-    }
-
-    .hero h1 {
+    .hero-copy h1 {
       font-family: Georgia, "Times New Roman", serif;
-      font-size: 58px;
+      font-size: clamp(40px, 13vw, 56px);
       line-height: 0.88;
-      letter-spacing: -2.5px;
-      color: var(--ink);
-      text-shadow: 0 1px 0 rgba(255,255,255,0.5);
+      letter-spacing: -1.8px;
+      font-weight: 700;
+      color: #13242c;
+      text-shadow:
+        0 1px 0 rgba(255, 255, 255, 0.7),
+        0 8px 20px rgba(255, 239, 209, 0.45);
     }
 
     .hero-role {
       margin-top: 8px;
-      font-size: 12px;
+      font-size: 8.5px;
+      letter-spacing: 3.2px;
+      line-height: 1.3;
       text-transform: uppercase;
-      letter-spacing: 5px;
       font-weight: 950;
-      color: var(--purple);
+      color: #5f39bd;
+      text-shadow: 0 1px 0 rgba(255,255,255,0.6);
     }
 
     .hero-line {
-      width: 38px;
+      width: 30px;
       height: 2px;
       background: var(--orange);
-      margin: 18px 0;
+      margin: 10px 0;
+      border-radius: 20px;
     }
 
     .hero-desc {
-      font-size: 14px;
-      line-height: 1.55;
-      color: #2c3a40;
-      font-weight: 600;
+      font-size: 10.5px;
+      line-height: 1.38;
+      font-weight: 800;
+      color: #1f3038;
+      max-width: 155px;
+      text-shadow: 0 1px 0 rgba(255,255,255,0.45);
     }
 
     .hero-actions {
-      margin-top: 22px;
-      display: flex;
-      flex-direction: column;
-      gap: 11px;
-      width: 190px;
+      margin-top: 12px;
+      width: 138px;
     }
 
-    .btn {
-      height: 46px;
-      border-radius: 13px;
-      border: 1px solid rgba(23,36,43,0.20);
+    .hero-btn {
+      width: 100%;
+      height: 34px;
+      border-radius: 10px;
+      border: 1px solid rgba(23, 36, 43, 0.18);
       display: inline-flex;
       align-items: center;
       justify-content: center;
-      gap: 8px;
-      font-size: 11px;
-      letter-spacing: 1.3px;
+      gap: 6px;
+      font-size: 7px;
+      letter-spacing: 1.1px;
       text-transform: uppercase;
       font-weight: 950;
       cursor: pointer;
-      transition: 0.22s ease;
-    }
-
-    .btn-dark {
       background: var(--ink);
-      color: #fff0d2;
-      box-shadow: 0 12px 28px rgba(23,36,43,0.22);
+      color: #fff4dd;
+      box-shadow: 0 10px 24px rgba(23, 36, 43, 0.22);
     }
 
-    .btn-light {
-      background: rgba(255, 244, 222, 0.58);
-      color: var(--ink);
-      backdrop-filter: blur(10px);
-    }
-
-    .btn:active {
+    .hero-btn:active {
       transform: scale(0.98);
     }
 
-    .stats-banner {
-      margin: -26px 12px 12px;
-      min-height: 104px;
-      position: relative;
-      z-index: 5;
-      border-radius: 20px;
+    .whatsapp-svg {
+      width: 14px;
+      height: 14px;
+      display: block;
+    }
+
+    .banner-wrap {
+      margin: 10px 10px 0;
+      border-radius: 22px;
       overflow: hidden;
+      box-shadow: 0 14px 34px rgba(55, 35, 12, 0.12);
+      background: transparent;
+    }
+
+    .image-banner {
+      position: relative;
+      border-radius: 22px;
+      overflow: hidden;
+      border: 1px solid rgba(255, 255, 255, 0.72);
+      isolation: isolate;
+    }
+
+    .banner-bg {
+      position: absolute;
+      inset: 0;
+      z-index: 0;
+      background-repeat: no-repeat;
+      background-position: center center;
+      pointer-events: none;
+    }
+
+    .stats-banner .banner-bg {
       background-image: var(--stats-banner);
-      background-size: cover;
-      background-position: center;
-      box-shadow: var(--shadow);
-      border: 1px solid rgba(255,255,255,0.55);
+      background-size: 100% 235%;
+    }
+
+    .social-banner .banner-bg {
+      background-image: var(--social-banner);
+      background-size: 100% 260%;
+    }
+
+    .stats-banner {
+      height: 96px;
       display: grid;
       grid-template-columns: repeat(3, 1fr);
       align-items: center;
     }
 
     .stat {
+      height: 100%;
+      display: grid;
+      place-items: center;
       text-align: center;
-      padding: 16px 8px;
       position: relative;
+      z-index: 2;
+      padding: 8px 6px 10px;
     }
 
     .stat:not(:last-child)::after {
       content: "";
       position: absolute;
       right: 0;
-      top: 22%;
+      top: 24%;
       width: 1px;
-      height: 56%;
-      background: rgba(23,36,43,0.14);
+      height: 52%;
+      background: rgba(23, 36, 43, 0.13);
     }
 
     .stat-icon {
-      font-size: 18px;
-      color: #b27725;
-      margin-bottom: 7px;
+      font-size: 15px;
+      color: #ae7427;
+      margin-bottom: 4px;
     }
 
     .stat strong {
       display: block;
       font-family: Georgia, "Times New Roman", serif;
-      font-size: 24px;
+      font-size: 21px;
       line-height: 1;
       color: var(--ink);
     }
 
     .stat span {
       display: block;
-      margin-top: 5px;
-      font-size: 8px;
-      line-height: 1.25;
-      letter-spacing: 1px;
+      margin-top: 4px;
+      font-size: 6.7px;
+      line-height: 1.15;
+      letter-spacing: 0.9px;
       text-transform: uppercase;
       font-weight: 950;
-      color: #354249;
+      color: #334047;
     }
 
     .social-banner {
-      margin: 0 12px 18px;
-      min-height: 88px;
-      border-radius: 18px;
-      overflow: hidden;
-      background-image: var(--social-banner);
-      background-size: cover;
-      background-position: center;
-      border: 1px solid rgba(255,255,255,0.55);
-      box-shadow: 0 12px 30px rgba(55, 35, 12, 0.12);
+      height: 78px;
       display: grid;
       grid-template-columns: repeat(4, 1fr);
       align-items: center;
-      padding: 10px 8px;
+      padding: 0 7px;
+      gap: 5px;
     }
 
-    .social {
-      text-align: center;
-      min-height: 64px;
-      display: grid;
-      place-items: center;
-      gap: 4px;
+    .social-link {
+      position: relative;
+      z-index: 2;
+      height: 62px;
       border-radius: 14px;
-      transition: 0.22s ease;
-    }
-
-    .social:active {
-      background: rgba(255,255,255,0.5);
-      transform: scale(0.97);
-    }
-
-    .social b {
-      width: 34px;
-      height: 34px;
-      border-radius: 12px;
       display: grid;
       place-items: center;
-      margin: 0 auto;
-      font-size: 17px;
-      background: rgba(255, 250, 238, 0.72);
+      text-align: center;
       color: var(--ink);
-      border: 1px solid rgba(23,36,43,0.11);
-      box-shadow: 0 6px 15px rgba(55, 35, 12, 0.08);
+      transition: 0.2s ease;
     }
 
-    .social span {
-      font-size: 8px;
+    .social-link:active {
+      transform: scale(0.96);
+      background: rgba(255, 255, 255, 0.44);
+    }
+
+    .social-icon {
+      width: 31px;
+      height: 31px;
+      margin: 0 auto 4px;
+      border-radius: 11px;
+      display: grid;
+      place-items: center;
+      background: rgba(255, 250, 240, 0.82);
+      border: 1px solid rgba(23, 36, 43, 0.08);
+      box-shadow: 0 6px 14px rgba(55, 35, 12, 0.08);
+      font-size: 15px;
+      font-weight: 900;
+    }
+
+    .social-label {
+      font-size: 6.8px;
       letter-spacing: 0.8px;
       text-transform: uppercase;
       font-weight: 950;
-      color: #28353b;
+      color: #29363c;
+      white-space: nowrap;
     }
 
-    .section {
-      padding: 18px 0 22px;
+    .section-card {
+      margin: 16px 10px 0;
+      border-radius: 24px;
+      padding: 14px 0 16px;
+      overflow: hidden;
+      background:
+        linear-gradient(180deg, rgba(255, 249, 237, 0.86), rgba(255, 229, 190, 0.72)),
+        radial-gradient(circle at 80% 10%, rgba(244,122,33,0.22), transparent 36%);
+      border: 1px solid rgba(255,255,255,0.72);
+      box-shadow: var(--shadow);
+      position: relative;
+    }
+
+    .section-card::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background:
+        linear-gradient(90deg, rgba(23,36,43,0.04) 1px, transparent 1px),
+        linear-gradient(180deg, rgba(23,36,43,0.035) 1px, transparent 1px);
+      background-size: 42px 42px;
+      opacity: 0.55;
+      pointer-events: none;
     }
 
     .section-head {
-      padding: 0 18px 12px;
+      position: relative;
+      z-index: 2;
+      padding: 0 14px 12px;
       display: flex;
-      align-items: end;
       justify-content: space-between;
-      gap: 10px;
+      align-items: end;
+      gap: 12px;
     }
 
     .section-head h2 {
-      font-size: 24px;
+      font-size: 23px;
       line-height: 1;
+      letter-spacing: -0.6px;
       text-transform: uppercase;
-      letter-spacing: -0.5px;
       color: var(--ink);
     }
 
@@ -359,154 +361,94 @@
     }
 
     .section-head p {
-      margin-top: 6px;
-      font-size: 11px;
+      margin-top: 5px;
+      font-size: 10px;
+      font-weight: 750;
       color: var(--muted);
-      font-weight: 600;
     }
 
     .view-all {
-      font-size: 9px;
-      letter-spacing: 1px;
+      font-size: 8.5px;
+      letter-spacing: 1.1px;
       text-transform: uppercase;
       font-weight: 950;
       color: var(--purple);
       white-space: nowrap;
     }
 
-    .video-carousel {
-      display: flex;
-      gap: 14px;
+    .video-scroll-wrap,
+    .reels-scroll-wrap {
+      width: 100%;
       overflow-x: auto;
-      padding: 4px 34px 14px;
-      scroll-snap-type: x mandatory;
+      overflow-y: hidden;
+      padding: 4px 0 4px;
+      position: relative;
+      z-index: 2;
+      scroll-behavior: smooth;
+      -webkit-overflow-scrolling: touch;
       scrollbar-width: none;
+      scroll-snap-type: x mandatory;
     }
 
-    .video-carousel::-webkit-scrollbar {
+    .video-scroll-wrap::-webkit-scrollbar,
+    .reels-scroll-wrap::-webkit-scrollbar {
       display: none;
     }
 
-    .video-card {
-      flex: 0 0 88%;
-      scroll-snap-align: center;
-      border-radius: 22px;
-      overflow: hidden;
-      background: rgba(255, 248, 236, 0.76);
-      border: 1px solid rgba(23,36,43,0.11);
-      box-shadow: 0 16px 38px rgba(55, 35, 12, 0.14);
-      position: relative;
-    }
-
-    .video-frame {
-      aspect-ratio: 16 / 9;
-      position: relative;
-      background: #191919;
-      overflow: hidden;
-    }
-
-    .video-frame img,
-    .video-frame iframe {
-      width: 100%;
-      height: 100%;
-      border: 0;
-      object-fit: cover;
-      display: block;
-    }
-
-    .video-frame::after {
-      content: "";
-      position: absolute;
-      inset: 0;
-      background: linear-gradient(180deg, transparent 35%, rgba(0,0,0,0.76));
-      pointer-events: none;
-    }
-
-    .play-icon {
-      position: absolute;
-      inset: 0;
-      margin: auto;
-      width: 58px;
-      height: 58px;
-      z-index: 3;
-      border-radius: 50%;
-      display: grid;
-      place-items: center;
-      background: rgba(255,255,255,0.86);
-      color: var(--orange);
-      font-size: 20px;
-      box-shadow: 0 12px 28px rgba(0,0,0,0.22);
-    }
-
-    .duration {
-      position: absolute;
-      right: 12px;
-      bottom: 10px;
-      z-index: 4;
-      padding: 5px 8px;
-      border-radius: 8px;
-      background: rgba(0,0,0,0.72);
-      color: white;
-      font-size: 10px;
-      font-weight: 950;
-    }
-
-    .video-info {
-      padding: 12px 14px 14px;
-    }
-
-    .video-info h3 {
-      font-size: 14px;
-      line-height: 1.25;
-      color: var(--ink);
-      margin-bottom: 5px;
-    }
-
-    .video-info p {
-      font-size: 11px;
-      color: var(--muted);
-      line-height: 1.35;
-      font-weight: 600;
-    }
-
-    .reels-wrap {
-      overflow: hidden;
-      padding: 4px 0 10px;
-      position: relative;
-    }
-
+    .video-track,
     .reels-track {
       display: flex;
       gap: 14px;
       width: max-content;
-      animation: reelLoop 28s linear infinite;
-      padding-left: 18px;
+      padding-left: 14px;
+      padding-right: 14px;
     }
 
-    .reels-wrap:hover .reels-track {
-      animation-play-state: paused;
+    .video-card {
+      width: 330px;
+      flex: 0 0 auto;
+      scroll-snap-align: center;
+      border-radius: 22px;
+      overflow: hidden;
+      background: rgba(255, 248, 236, 0.78);
+      border: 1px solid rgba(23, 36, 43, 0.10);
+      box-shadow: 0 16px 38px rgba(55, 35, 12, 0.14);
     }
 
-    @keyframes reelLoop {
-      from { transform: translateX(0); }
-      to { transform: translateX(-50%); }
+    .video-player {
+      width: 100%;
+      aspect-ratio: 16 / 9;
+      background: #111;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .video-player iframe {
+      width: 100%;
+      height: 100%;
+      border: 0;
+      display: block;
     }
 
     .reel-card {
       width: 148px;
       aspect-ratio: 9 / 16;
+      scroll-snap-align: center;
       border-radius: 22px;
       overflow: hidden;
       position: relative;
-      background: #222;
+      background: #111;
       flex: 0 0 auto;
+      border: 1px solid rgba(255, 255, 255, 0.58);
       box-shadow: 0 16px 36px rgba(55, 35, 12, 0.16);
-      border: 1px solid rgba(255,255,255,0.52);
     }
 
-    .reel-card img {
+    .reel-card img,
+    .reel-card iframe,
+    .reel-card video {
       width: 100%;
       height: 100%;
+      border: 0;
       object-fit: cover;
       display: block;
     }
@@ -515,108 +457,94 @@
       content: "";
       position: absolute;
       inset: 0;
-      background: linear-gradient(180deg, transparent 35%, rgba(0,0,0,0.72));
+      background:
+        linear-gradient(180deg, rgba(0, 0, 0, 0.02), rgba(0, 0, 0, 0.22)),
+        radial-gradient(circle at center, transparent 0%, transparent 48%, rgba(0,0,0,0.22) 100%);
+      pointer-events: none;
     }
 
-    .reel-icon {
+    .reel-play {
       position: absolute;
-      top: 10px;
-      right: 10px;
-      z-index: 3;
-      width: 32px;
-      height: 32px;
+      inset: 0;
+      margin: auto;
+      z-index: 4;
+      width: 44px;
+      height: 44px;
       border-radius: 50%;
-      background: rgba(255,255,255,0.86);
-      color: var(--orange);
       display: grid;
       place-items: center;
-      font-size: 13px;
-      font-weight: 950;
-    }
-
-    .reel-text {
-      position: absolute;
-      left: 11px;
-      right: 11px;
-      bottom: 12px;
-      z-index: 3;
-      color: white;
-    }
-
-    .reel-text h3 {
-      font-size: 13px;
-      line-height: 1.1;
-      margin-bottom: 5px;
-      text-transform: uppercase;
-    }
-
-    .reel-text span {
-      font-size: 10px;
-      opacity: 0.82;
-      font-weight: 700;
+      background: rgba(255, 255, 255, 0.86);
+      color: var(--orange);
+      font-size: 15px;
+      box-shadow: 0 10px 24px rgba(0, 0, 0, 0.24);
+      pointer-events: none;
     }
 
     .connect-banner {
-      margin: 10px 12px 18px;
-      min-height: 168px;
+      margin: 16px 10px 18px;
+      min-height: 166px;
       border-radius: 24px;
       overflow: hidden;
       position: relative;
       background:
-        linear-gradient(90deg, rgba(255,240,210,0.94), rgba(255,235,195,0.76)),
-        var(--top-banner);
+        linear-gradient(90deg, rgba(255, 241, 213, 0.96), rgba(255, 226, 184, 0.72)),
+        url("https://raw.githubusercontent.com/iklapikla/CasterNaina/refs/heads/main/Top%20Banner.png");
       background-size: cover;
       background-position: center;
-      border: 1px solid rgba(255,255,255,0.58);
+      border: 1px solid rgba(255, 255, 255, 0.72);
       box-shadow: var(--shadow);
-      padding: 22px;
+      padding: 20px;
       display: grid;
-      grid-template-columns: 1fr 110px;
+      grid-template-columns: 1fr 86px;
       gap: 12px;
       align-items: center;
     }
 
-    .connect-banner h2 {
+    .connect-title h2 {
       font-size: 30px;
-      line-height: 0.95;
+      line-height: 0.96;
       letter-spacing: -1px;
       text-transform: uppercase;
       color: var(--ink);
     }
 
-    .connect-banner h2 span {
+    .connect-title h2 span {
       color: var(--orange);
     }
 
-    .connect-banner p {
+    .connect-title p {
       margin-top: 8px;
-      font-size: 12px;
-      line-height: 1.4;
-      color: #344149;
-      font-weight: 700;
+      font-size: 11.5px;
+      line-height: 1.45;
+      font-weight: 750;
+      color: #354148;
     }
 
-    .wa-big {
-      width: 86px;
-      height: 86px;
-      border-radius: 28px;
+    .wa-logo-box {
+      width: 76px;
+      height: 76px;
+      border-radius: 26px;
       display: grid;
       place-items: center;
       justify-self: end;
       background: linear-gradient(135deg, #25d366, #128c7e);
-      color: white;
-      font-size: 38px;
-      box-shadow: 0 18px 34px rgba(37,211,102,0.30);
+      box-shadow: 0 16px 34px rgba(37, 211, 102, 0.30);
+    }
+
+    .wa-logo-box svg {
+      width: 43px;
+      height: 43px;
+      fill: white;
     }
 
     .connect-btn {
       grid-column: 1 / -1;
-      height: 46px;
-      border-radius: 14px;
+      height: 45px;
       border: 0;
+      border-radius: 14px;
       background: var(--ink);
       color: #fff2dc;
-      font-size: 11px;
+      font-size: 10.5px;
       letter-spacing: 1.4px;
       text-transform: uppercase;
       font-weight: 950;
@@ -624,71 +552,65 @@
     }
 
     .footer {
-      height: 44px;
+      height: 42px;
       background: var(--ink);
-      color: #fff0d2;
+      color: #fff1d5;
       display: flex;
       align-items: center;
       justify-content: center;
-      font-size: 8px;
+      font-size: 7.5px;
       letter-spacing: 5px;
       text-transform: uppercase;
       font-weight: 900;
     }
 
-    .floating-wa {
-      position: fixed;
-      right: 16px;
-      bottom: 16px;
-      z-index: 99;
-      width: 56px;
-      height: 56px;
-      border: 0;
-      border-radius: 50%;
-      display: grid;
-      place-items: center;
-      background: var(--green);
-      color: white;
-      font-size: 26px;
-      box-shadow: 0 16px 36px rgba(37,211,102,0.34);
-      cursor: pointer;
-      animation: pulse 2s infinite;
-    }
-
-    @keyframes pulse {
-      0%, 100% { transform: scale(1); }
-      50% { transform: scale(1.08); }
-    }
-
     @media (max-width: 380px) {
-      .hero {
-        height: 500px;
+      .hero-copy {
+        top: 30px;
+        left: 16px;
+        width: 50%;
       }
 
-      .hero-content {
-        max-width: 58%;
-        padding-left: 18px;
-        padding-right: 14px;
+      .hero-copy h1 {
+        font-size: 38px;
       }
 
-      .hero h1 {
-        font-size: 50px;
-      }
-
-      .hero-role {
-        letter-spacing: 4px;
+      .hero-desc {
+        font-size: 9px;
+        max-width: 132px;
       }
 
       .hero-actions {
-        width: 170px;
+        width: 126px;
+      }
+
+      .hero-btn {
+        height: 31px;
+        font-size: 6.6px;
       }
 
       .stats-banner {
-        grid-template-columns: repeat(3, 1fr);
+        height: 88px;
+      }
+
+      .stats-banner .banner-bg {
+        background-size: 100% 245%;
+      }
+
+      .social-banner {
+        height: 74px;
+      }
+
+      .social-banner .banner-bg {
+        background-size: 100% 270%;
       }
 
       .stat strong {
-        font-size: 20px;
+        font-size: 19px;
+      }
+
+      .video-card {
+        width: 310px;
       }
 
       .reel-card {
@@ -699,26 +621,11 @@
 </head>
 
 <body>
-  <button class="floating-wa" onclick="openWhatsApp()">☘</button>
-
-  <main class="mobile-page">
+  <main class="phone-page">
     <section class="hero">
-      <div class="mini-logo">
-        <div class="mini-logo-mark">N</div>
-        <span>Naina</span>
-      </div>
-
-      <button class="hamburger" onclick="document.getElementById('connect').scrollIntoView({ behavior: 'smooth' })">
-        <div>
-          <span></span>
-          <span></span>
-          <span></span>
-        </div>
-      </button>
-
-      <div class="hero-content">
+      <div class="hero-copy">
         <h1>Naina</h1>
-        <div class="hero-role">Free Fire Caster</div>
+        <div class="hero-role">Free Fire<br>Caster</div>
         <div class="hero-line"></div>
 
         <p class="hero-desc">
@@ -726,231 +633,183 @@
         </p>
 
         <div class="hero-actions">
-          <button class="btn btn-dark" onclick="openWhatsApp()">☘ Contact Me</button>
-          <button class="btn btn-light" onclick="document.getElementById('videos').scrollIntoView({ behavior: 'smooth' })">▶ Showreel</button>
+          <button class="hero-btn" onclick="openWhatsApp()">
+            <svg class="whatsapp-svg" viewBox="0 0 32 32" aria-hidden="true">
+              <path fill="currentColor" d="M16.02 3.2C9.06 3.2 3.4 8.72 3.4 15.52c0 2.38.7 4.6 1.92 6.48L3.2 28.8l7-2.02a12.92 12.92 0 0 0 5.82 1.38c6.96 0 12.62-5.52 12.62-12.32S22.98 3.2 16.02 3.2Zm0 22.7c-1.86 0-3.6-.5-5.1-1.38l-.36-.22-4.16 1.2 1.24-4.02-.24-.38a10.02 10.02 0 0 1-1.64-5.58c0-5.56 4.6-10.08 10.26-10.08s10.26 4.52 10.26 10.08S21.68 25.9 16.02 25.9Z"/>
+            </svg>
+            Contact Me
+          </button>
         </div>
       </div>
     </section>
 
-    <section class="stats-banner">
-      <div class="stat">
-        <div class="stat-icon">🏆</div>
-        <strong>120+</strong>
-        <span>Tournaments<br>Casted</span>
-      </div>
+    <div class="banner-wrap">
+      <section class="image-banner stats-banner">
+        <div class="banner-bg"></div>
 
-      <div class="stat">
-        <div class="stat-icon">📣</div>
-        <strong>250K+</strong>
-        <span>Total<br>Reach</span>
-      </div>
+        <div class="stat">
+          <div>
+            <div class="stat-icon">🏆</div>
+            <strong>120+</strong>
+            <span>Tournaments<br>Casted</span>
+          </div>
+        </div>
 
-      <div class="stat">
-        <div class="stat-icon">◉</div>
-        <strong>5M+</strong>
-        <span>Total<br>Views</span>
-      </div>
-    </section>
+        <div class="stat">
+          <div>
+            <div class="stat-icon">📣</div>
+            <strong>250K+</strong>
+            <span>Total<br>Reach</span>
+          </div>
+        </div>
 
-    <section class="social-banner">
-      <a class="social" href="#" target="_blank">
-        <b>▶</b>
-        <span>YouTube</span>
-      </a>
+        <div class="stat">
+          <div>
+            <div class="stat-icon">◉</div>
+            <strong>5M+</strong>
+            <span>Total<br>Views</span>
+          </div>
+        </div>
+      </section>
+    </div>
 
-      <a class="social" href="#" target="_blank">
-        <b>◎</b>
-        <span>Instagram</span>
-      </a>
+    <div class="banner-wrap">
+      <section class="image-banner social-banner">
+        <div class="banner-bg"></div>
 
-      <a class="social" href="#" target="_blank">
-        <b>☁</b>
-        <span>Discord</span>
-      </a>
+        <a class="social-link" href="https://www.youtube.com/@CasterNaina/streams" target="_blank">
+          <div>
+            <div class="social-icon">▶</div>
+            <div class="social-label">YouTube</div>
+          </div>
+        </a>
 
-      <button class="social" onclick="openWhatsApp()" style="border:0;background:transparent;cursor:pointer;">
-        <b>☘</b>
-        <span>WhatsApp</span>
-      </button>
-    </section>
+        <a class="social-link" href="https://www.instagram.com/caster_naina/" target="_blank">
+          <div>
+            <div class="social-icon">◎</div>
+            <div class="social-label">Instagram</div>
+          </div>
+        </a>
 
-    <section class="section" id="videos">
+        <a class="social-link" href="https://discord.gg/tZacnxFnqu" target="_blank">
+          <div>
+            <div class="social-icon">☁</div>
+            <div class="social-label">Discord</div>
+          </div>
+        </a>
+
+        <button class="social-link" onclick="openWhatsApp()" style="border:0;background:transparent;cursor:pointer;">
+          <div>
+            <div class="social-icon">
+              <svg viewBox="0 0 32 32" style="width:18px;height:18px;fill:#17242b;" aria-hidden="true">
+                <path d="M16.02 3.2C9.06 3.2 3.4 8.72 3.4 15.52c0 2.38.7 4.6 1.92 6.48L3.2 28.8l7-2.02a12.92 12.92 0 0 0 5.82 1.38c6.96 0 12.62-5.52 12.62-12.32S22.98 3.2 16.02 3.2Zm0 22.7c-1.86 0-3.6-.5-5.1-1.38l-.36-.22-4.16 1.2 1.24-4.02-.24-.38a10.02 10.02 0 0 1-1.64-5.58c0-5.56 4.6-10.08 10.26-10.08s10.26 4.52 10.26 10.08S21.68 25.9 16.02 25.9Z"/>
+              </svg>
+            </div>
+            <div class="social-label">WhatsApp</div>
+          </div>
+        </button>
+      </section>
+    </div>
+
+    <section class="section-card" id="videos">
       <div class="section-head">
         <div>
           <h2>Casting <span>Video</span></h2>
-          <p>Swipe left / right to watch more</p>
+          <p>Auto-scroll video highlights</p>
         </div>
-        <a class="view-all" href="#">View All</a>
+        <a class="view-all" href="https://www.youtube.com/@CasterNaina/streams" target="_blank">View All</a>
       </div>
 
-      <div class="video-carousel">
-        <article class="video-card" onclick="playDummy('Grand Finals Highlights')">
-          <div class="video-frame">
-            <img src="https://images.unsplash.com/photo-1511512578047-dfb367046420?auto=format&fit=crop&w=900&q=80" alt="Casting Video">
-            <div class="play-icon">▶</div>
-            <div class="duration">18:42</div>
+      <div class="video-scroll-wrap" id="videoScroll">
+        <div class="video-track">
+          <div class="video-card">
+            <div class="video-player">
+              <iframe src="https://www.youtube.com/embed/iyDRl0o2vFA?start=3824&rel=0&modestbranding=1" title="Casting Video 1" allowfullscreen></iframe>
+            </div>
           </div>
-          <div class="video-info">
-            <h3>Grand Finals Highlights</h3>
-            <p>High-energy casting from the final zone.</p>
-          </div>
-        </article>
 
-        <article class="video-card" onclick="playDummy('Comeback Kings')">
-          <div class="video-frame">
-            <img src="https://images.unsplash.com/photo-1542751371-adc38448a05e?auto=format&fit=crop&w=900&q=80" alt="Casting Video">
-            <div class="play-icon">▶</div>
-            <div class="duration">14:26</div>
+          <div class="video-card">
+            <div class="video-player">
+              <iframe src="https://www.youtube.com/embed/MgH7FuGGHyE?start=7484&rel=0&modestbranding=1" title="Casting Video 2" allowfullscreen></iframe>
+            </div>
           </div>
-          <div class="video-info">
-            <h3>Comeback Kings</h3>
-            <p>Insane clutch moments with sharp commentary.</p>
-          </div>
-        </article>
 
-        <article class="video-card" onclick="playDummy('Booyah Moments')">
-          <div class="video-frame">
-            <img src="https://images.unsplash.com/photo-1560253023-3ec5d502959f?auto=format&fit=crop&w=900&q=80" alt="Casting Video">
-            <div class="play-icon">▶</div>
-            <div class="duration">10:18</div>
+          <div class="video-card">
+            <div class="video-player">
+              <iframe src="https://www.youtube.com/embed/MgH7FuGGHyE?start=8981&rel=0&modestbranding=1" title="Casting Video 3" allowfullscreen></iframe>
+            </div>
           </div>
-          <div class="video-info">
-            <h3>Booyah Moments</h3>
-            <p>Best plays of the week with crowd hype.</p>
-          </div>
-        </article>
 
-        <article class="video-card" onclick="playDummy('Arena Showdown')">
-          <div class="video-frame">
-            <img src="https://images.unsplash.com/photo-1550745165-9bc0b252726f?auto=format&fit=crop&w=900&q=80" alt="Casting Video">
-            <div class="play-icon">▶</div>
-            <div class="duration">12:12</div>
+          <div class="video-card">
+            <div class="video-player">
+              <iframe src="https://www.youtube.com/embed/I0rnWKlwdT8?start=1580&rel=0&modestbranding=1" title="Casting Video 4" allowfullscreen></iframe>
+            </div>
           </div>
-          <div class="video-info">
-            <h3>Arena Showdown</h3>
-            <p>Custom room action and live analysis.</p>
-          </div>
-        </article>
 
-        <article class="video-card" onclick="playDummy('Last Zone Pressure')">
-          <div class="video-frame">
-            <img src="https://images.unsplash.com/photo-1598550476439-6847785fcea6?auto=format&fit=crop&w=900&q=80" alt="Casting Video">
-            <div class="play-icon">▶</div>
-            <div class="duration">11:08</div>
+          <div class="video-card">
+            <div class="video-player">
+              <iframe src="https://www.youtube.com/embed/I0rnWKlwdT8?start=2004&rel=0&modestbranding=1" title="Casting Video 5" allowfullscreen></iframe>
+            </div>
           </div>
-          <div class="video-info">
-            <h3>Last Zone Pressure</h3>
-            <p>Clean calls, rotations and final fights.</p>
-          </div>
-        </article>
-
-        <article class="video-card" onclick="playDummy('Caster Reaction')">
-          <div class="video-frame">
-            <img src="https://images.unsplash.com/photo-1556438064-2d7646166914?auto=format&fit=crop&w=900&q=80" alt="Casting Video">
-            <div class="play-icon">▶</div>
-            <div class="duration">09:32</div>
-          </div>
-          <div class="video-info">
-            <h3>Caster Reaction</h3>
-            <p>Funny, intense and memorable live moments.</p>
-          </div>
-        </article>
+        </div>
       </div>
     </section>
 
-    <section class="section" id="reels">
+    <section class="section-card" id="reels">
       <div class="section-head">
         <div>
           <h2>Casting <span>Reels</span></h2>
-          <p>Auto-loop highlights</p>
+          <p>Auto-loop reel highlights</p>
         </div>
-        <a class="view-all" href="#">View All</a>
+        <a class="view-all" href="https://www.instagram.com/caster_naina/" target="_blank">View All</a>
       </div>
 
-      <div class="reels-wrap">
+      <div class="reels-scroll-wrap" id="reelScroll">
         <div class="reels-track">
-          <article class="reel-card" onclick="playDummy('Reel 1')">
+          <a class="reel-card" href="https://www.instagram.com/caster_naina/" target="_blank">
             <img src="https://images.unsplash.com/photo-1593305841991-05c297ba4575?auto=format&fit=crop&w=700&q=80" alt="Casting Reel">
-            <div class="reel-icon">▶</div>
-            <div class="reel-text">
-              <h3>Clutch Commentary</h3>
-              <span>128K views</span>
-            </div>
-          </article>
+            <div class="reel-play">▶</div>
+          </a>
 
-          <article class="reel-card" onclick="playDummy('Reel 2')">
+          <a class="reel-card" href="https://www.instagram.com/caster_naina/" target="_blank">
             <img src="https://images.unsplash.com/photo-1511882150382-421056c89033?auto=format&fit=crop&w=700&q=80" alt="Casting Reel">
-            <div class="reel-icon">▶</div>
-            <div class="reel-text">
-              <h3>Grand Final Vibes</h3>
-              <span>96K views</span>
-            </div>
-          </article>
+            <div class="reel-play">▶</div>
+          </a>
 
-          <article class="reel-card" onclick="playDummy('Reel 3')">
+          <a class="reel-card" href="https://www.instagram.com/caster_naina/" target="_blank">
             <img src="https://images.unsplash.com/photo-1556438064-2d7646166914?auto=format&fit=crop&w=700&q=80" alt="Casting Reel">
-            <div class="reel-icon">▶</div>
-            <div class="reel-text">
-              <h3>Booyah Energy</h3>
-              <span>112K views</span>
-            </div>
-          </article>
+            <div class="reel-play">▶</div>
+          </a>
 
-          <article class="reel-card" onclick="playDummy('Reel 4')">
+          <a class="reel-card" href="https://www.instagram.com/caster_naina/" target="_blank">
             <img src="https://images.unsplash.com/photo-1535223289827-42f1e9919769?auto=format&fit=crop&w=700&q=80" alt="Casting Reel">
-            <div class="reel-icon">▶</div>
-            <div class="reel-text">
-              <h3>Crowd Moment</h3>
-              <span>142K views</span>
-            </div>
-          </article>
+            <div class="reel-play">▶</div>
+          </a>
 
-          <article class="reel-card" onclick="playDummy('Reel 1')">
-            <img src="https://images.unsplash.com/photo-1593305841991-05c297ba4575?auto=format&fit=crop&w=700&q=80" alt="Casting Reel">
-            <div class="reel-icon">▶</div>
-            <div class="reel-text">
-              <h3>Clutch Commentary</h3>
-              <span>128K views</span>
-            </div>
-          </article>
+          <a class="reel-card" href="https://www.instagram.com/caster_naina/" target="_blank">
+            <img src="https://images.unsplash.com/photo-1598550476439-6847785fcea6?auto=format&fit=crop&w=700&q=80" alt="Casting Reel">
+            <div class="reel-play">▶</div>
+          </a>
 
-          <article class="reel-card" onclick="playDummy('Reel 2')">
-            <img src="https://images.unsplash.com/photo-1511882150382-421056c89033?auto=format&fit=crop&w=700&q=80" alt="Casting Reel">
-            <div class="reel-icon">▶</div>
-            <div class="reel-text">
-              <h3>Grand Final Vibes</h3>
-              <span>96K views</span>
-            </div>
-          </article>
-
-          <article class="reel-card" onclick="playDummy('Reel 3')">
-            <img src="https://images.unsplash.com/photo-1556438064-2d7646166914?auto=format&fit=crop&w=700&q=80" alt="Casting Reel">
-            <div class="reel-icon">▶</div>
-            <div class="reel-text">
-              <h3>Booyah Energy</h3>
-              <span>112K views</span>
-            </div>
-          </article>
-
-          <article class="reel-card" onclick="playDummy('Reel 4')">
-            <img src="https://images.unsplash.com/photo-1535223289827-42f1e9919769?auto=format&fit=crop&w=700&q=80" alt="Casting Reel">
-            <div class="reel-icon">▶</div>
-            <div class="reel-text">
-              <h3>Crowd Moment</h3>
-              <span>142K views</span>
-            </div>
-          </article>
+          <a class="reel-card" href="https://www.instagram.com/caster_naina/" target="_blank">
+            <img src="https://images.unsplash.com/photo-1511512578047-dfb367046420?auto=format&fit=crop&w=700&q=80" alt="Casting Reel">
+            <div class="reel-play">▶</div>
+          </a>
         </div>
       </div>
     </section>
 
     <section class="connect-banner" id="connect">
-      <div>
+      <div class="connect-title">
         <h2>Let’s <span>Connect</span></h2>
-        <p>Available for tournaments, collabs and live casting.</p>
+        <p>Available for tournaments, collaborations and live casting.</p>
       </div>
 
-      <div class="wa-big">☘</div>
+      <div class="wa-logo-box">
+        <svg viewBox="0 0 32 32" aria-hidden="true">
+          <path d="M16.02 3.2C9.06 3.2 3.4 8.72 3.4 15.52c0 2.38.7 4.6 1.92 6.48L3.2 28.8l7-2.02a12.92 12.92 0 0 0 5.82 1.38c6.96 0 12.62-5.52 12.62-12.32S22.98 3.2 16.02 3.2Zm0 22.7c-1.86 0-3.6-.5-5.1-1.38l-.36-.22-4.16 1.2 1.24-4.02-.24-.38a10.02 10.02 0 0 1-1.64-5.58c0-5.56 4.6-10.08 10.26-10.08s10.26 4.52 10.26 10.08S21.68 25.9 16.02 25.9Zm5.86-7.52c-.32-.16-1.9-.92-2.2-1.02-.3-.12-.52-.16-.74.16-.22.32-.84 1.02-1.04 1.24-.2.22-.38.24-.7.08-.32-.16-1.36-.5-2.6-1.6-.96-.84-1.6-1.88-1.78-2.2-.18-.32-.02-.5.14-.66.14-.14.32-.38.48-.56.16-.18.22-.32.32-.54.1-.22.06-.4-.02-.56-.08-.16-.74-1.76-1.02-2.42-.26-.64-.54-.56-.74-.56h-.64c-.22 0-.56.08-.86.4-.3.32-1.14 1.1-1.14 2.68s1.16 3.1 1.32 3.32c.16.22 2.28 3.42 5.52 4.8.78.34 1.38.54 1.86.68.78.24 1.48.2 2.04.12.62.10 1.9-.76 2.16-1.5.26-.74.26-1.38.18-1.5-.08-.14-.28-.22-.6-.38Z"/>
+        </svg>
+      </div>
 
       <button class="connect-btn" onclick="openWhatsApp()">Chat on WhatsApp</button>
     </section>
@@ -961,16 +820,57 @@
   </main>
 
   <script>
-    const whatsappNumber = "91XXXXXXXXXX";
+    const whatsappNumber = "917478989646";
 
     function openWhatsApp() {
       const msg = encodeURIComponent("Hi Naina, I want to connect with you for Free Fire casting / collaboration.");
       window.open(`https://wa.me/${whatsappNumber}?text=${msg}`, "_blank");
     }
 
-    function playDummy(title) {
-      alert(title + "\\n\\nYahan later actual video/reel link attach kar denge.");
+    function autoScroll(containerId, speed = 0.35) {
+      const el = document.getElementById(containerId);
+      let paused = false;
+      let resumeTimer = null;
+
+      function pauseTemporarily() {
+        paused = true;
+        clearTimeout(resumeTimer);
+        resumeTimer = setTimeout(() => {
+          paused = false;
+        }, 4500);
+      }
+
+      el.addEventListener("touchstart", pauseTemporarily, { passive: true });
+      el.addEventListener("mousedown", pauseTemporarily);
+      el.addEventListener("wheel", pauseTemporarily, { passive: true });
+      el.addEventListener("scroll", () => {
+        clearTimeout(resumeTimer);
+        resumeTimer = setTimeout(() => {
+          paused = false;
+        }, 4500);
+      }, { passive: true });
+
+      function step() {
+        if (!paused) {
+          el.scrollLeft += speed;
+
+          const maxScroll = el.scrollWidth - el.clientWidth;
+
+          if (el.scrollLeft >= maxScroll - 2) {
+            el.scrollTo({ left: 0, behavior: "auto" });
+          }
+        }
+
+        requestAnimationFrame(step);
+      }
+
+      requestAnimationFrame(step);
     }
+
+    window.addEventListener("load", () => {
+      autoScroll("videoScroll", 0.32);
+      autoScroll("reelScroll", 0.45);
+    });
   </script>
 </body>
 </html>
