@@ -1,0 +1,976 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Naina | Free Fire Caster</title>
+
+  <style>
+    :root {
+      --top-banner: url("https://raw.githubusercontent.com/iklapikla/CasterNaina/refs/heads/main/Top%20Banner.png");
+      --stats-banner: url("https://raw.githubusercontent.com/iklapikla/CasterNaina/refs/heads/main/Stats%20Banner%20Background%20Image.png");
+      --social-banner: url("https://raw.githubusercontent.com/iklapikla/CasterNaina/refs/heads/main/Social%20Banner%20Background%20Image.png");
+
+      --bg: #fff1d5;
+      --cream: #fff0d2;
+      --ink: #17242b;
+      --muted: #5d686e;
+      --orange: #f47a21;
+      --purple: #6c42c7;
+      --green: #25d366;
+      --line: rgba(23, 36, 43, 0.14);
+      --glass: rgba(255, 244, 222, 0.66);
+      --shadow: 0 16px 40px rgba(55, 35, 12, 0.16);
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", "Inter", "Segoe UI", sans-serif;
+      background: #111;
+      color: var(--ink);
+      overflow-x: hidden;
+    }
+
+    button,
+    a {
+      font-family: inherit;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    .mobile-page {
+      width: min(100%, 430px);
+      margin: 0 auto;
+      min-height: 100vh;
+      background:
+        linear-gradient(180deg, rgba(255, 242, 214, 0.96), rgba(248, 219, 176, 0.96)),
+        #fff0d2;
+      overflow: hidden;
+      position: relative;
+    }
+
+    .hero {
+      height: 520px;
+      position: relative;
+      background-image:
+        linear-gradient(90deg, rgba(255, 240, 210, 0.22) 0%, rgba(255, 240, 210, 0.08) 42%, rgba(0,0,0,0.06) 100%),
+        var(--top-banner);
+      background-size: cover;
+      background-position: center;
+      overflow: hidden;
+    }
+
+    .hero::after {
+      content: "";
+      position: absolute;
+      inset: auto 0 0 0;
+      height: 160px;
+      background: linear-gradient(180deg, transparent, rgba(255, 240, 210, 0.96));
+      pointer-events: none;
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 3;
+      padding: 34px 22px;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      max-width: 55%;
+    }
+
+    .mini-logo {
+      position: absolute;
+      top: 18px;
+      left: 20px;
+      z-index: 5;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      color: var(--ink);
+    }
+
+    .mini-logo-mark {
+      width: 28px;
+      height: 28px;
+      border-radius: 9px;
+      display: grid;
+      place-items: center;
+      background: rgba(23, 36, 43, 0.9);
+      color: #fff0d2;
+      font-size: 16px;
+      font-weight: 900;
+      box-shadow: 0 8px 18px rgba(0,0,0,0.18);
+    }
+
+    .mini-logo span {
+      font-size: 10px;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      font-weight: 900;
+    }
+
+    .hamburger {
+      position: absolute;
+      top: 18px;
+      right: 18px;
+      z-index: 5;
+      width: 38px;
+      height: 38px;
+      border: 1px solid rgba(23,36,43,0.18);
+      background: rgba(255, 244, 222, 0.52);
+      backdrop-filter: blur(14px);
+      border-radius: 14px;
+      display: grid;
+      place-items: center;
+    }
+
+    .hamburger div {
+      width: 16px;
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+    }
+
+    .hamburger span {
+      height: 2px;
+      border-radius: 999px;
+      background: var(--ink);
+    }
+
+    .hero h1 {
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: 58px;
+      line-height: 0.88;
+      letter-spacing: -2.5px;
+      color: var(--ink);
+      text-shadow: 0 1px 0 rgba(255,255,255,0.5);
+    }
+
+    .hero-role {
+      margin-top: 8px;
+      font-size: 12px;
+      text-transform: uppercase;
+      letter-spacing: 5px;
+      font-weight: 950;
+      color: var(--purple);
+    }
+
+    .hero-line {
+      width: 38px;
+      height: 2px;
+      background: var(--orange);
+      margin: 18px 0;
+    }
+
+    .hero-desc {
+      font-size: 14px;
+      line-height: 1.55;
+      color: #2c3a40;
+      font-weight: 600;
+    }
+
+    .hero-actions {
+      margin-top: 22px;
+      display: flex;
+      flex-direction: column;
+      gap: 11px;
+      width: 190px;
+    }
+
+    .btn {
+      height: 46px;
+      border-radius: 13px;
+      border: 1px solid rgba(23,36,43,0.20);
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      font-size: 11px;
+      letter-spacing: 1.3px;
+      text-transform: uppercase;
+      font-weight: 950;
+      cursor: pointer;
+      transition: 0.22s ease;
+    }
+
+    .btn-dark {
+      background: var(--ink);
+      color: #fff0d2;
+      box-shadow: 0 12px 28px rgba(23,36,43,0.22);
+    }
+
+    .btn-light {
+      background: rgba(255, 244, 222, 0.58);
+      color: var(--ink);
+      backdrop-filter: blur(10px);
+    }
+
+    .btn:active {
+      transform: scale(0.98);
+    }
+
+    .stats-banner {
+      margin: -26px 12px 12px;
+      min-height: 104px;
+      position: relative;
+      z-index: 5;
+      border-radius: 20px;
+      overflow: hidden;
+      background-image: var(--stats-banner);
+      background-size: cover;
+      background-position: center;
+      box-shadow: var(--shadow);
+      border: 1px solid rgba(255,255,255,0.55);
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      align-items: center;
+    }
+
+    .stat {
+      text-align: center;
+      padding: 16px 8px;
+      position: relative;
+    }
+
+    .stat:not(:last-child)::after {
+      content: "";
+      position: absolute;
+      right: 0;
+      top: 22%;
+      width: 1px;
+      height: 56%;
+      background: rgba(23,36,43,0.14);
+    }
+
+    .stat-icon {
+      font-size: 18px;
+      color: #b27725;
+      margin-bottom: 7px;
+    }
+
+    .stat strong {
+      display: block;
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: 24px;
+      line-height: 1;
+      color: var(--ink);
+    }
+
+    .stat span {
+      display: block;
+      margin-top: 5px;
+      font-size: 8px;
+      line-height: 1.25;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      font-weight: 950;
+      color: #354249;
+    }
+
+    .social-banner {
+      margin: 0 12px 18px;
+      min-height: 88px;
+      border-radius: 18px;
+      overflow: hidden;
+      background-image: var(--social-banner);
+      background-size: cover;
+      background-position: center;
+      border: 1px solid rgba(255,255,255,0.55);
+      box-shadow: 0 12px 30px rgba(55, 35, 12, 0.12);
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      align-items: center;
+      padding: 10px 8px;
+    }
+
+    .social {
+      text-align: center;
+      min-height: 64px;
+      display: grid;
+      place-items: center;
+      gap: 4px;
+      border-radius: 14px;
+      transition: 0.22s ease;
+    }
+
+    .social:active {
+      background: rgba(255,255,255,0.5);
+      transform: scale(0.97);
+    }
+
+    .social b {
+      width: 34px;
+      height: 34px;
+      border-radius: 12px;
+      display: grid;
+      place-items: center;
+      margin: 0 auto;
+      font-size: 17px;
+      background: rgba(255, 250, 238, 0.72);
+      color: var(--ink);
+      border: 1px solid rgba(23,36,43,0.11);
+      box-shadow: 0 6px 15px rgba(55, 35, 12, 0.08);
+    }
+
+    .social span {
+      font-size: 8px;
+      letter-spacing: 0.8px;
+      text-transform: uppercase;
+      font-weight: 950;
+      color: #28353b;
+    }
+
+    .section {
+      padding: 18px 0 22px;
+    }
+
+    .section-head {
+      padding: 0 18px 12px;
+      display: flex;
+      align-items: end;
+      justify-content: space-between;
+      gap: 10px;
+    }
+
+    .section-head h2 {
+      font-size: 24px;
+      line-height: 1;
+      text-transform: uppercase;
+      letter-spacing: -0.5px;
+      color: var(--ink);
+    }
+
+    .section-head h2 span {
+      color: var(--orange);
+    }
+
+    .section-head p {
+      margin-top: 6px;
+      font-size: 11px;
+      color: var(--muted);
+      font-weight: 600;
+    }
+
+    .view-all {
+      font-size: 9px;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      font-weight: 950;
+      color: var(--purple);
+      white-space: nowrap;
+    }
+
+    .video-carousel {
+      display: flex;
+      gap: 14px;
+      overflow-x: auto;
+      padding: 4px 34px 14px;
+      scroll-snap-type: x mandatory;
+      scrollbar-width: none;
+    }
+
+    .video-carousel::-webkit-scrollbar {
+      display: none;
+    }
+
+    .video-card {
+      flex: 0 0 88%;
+      scroll-snap-align: center;
+      border-radius: 22px;
+      overflow: hidden;
+      background: rgba(255, 248, 236, 0.76);
+      border: 1px solid rgba(23,36,43,0.11);
+      box-shadow: 0 16px 38px rgba(55, 35, 12, 0.14);
+      position: relative;
+    }
+
+    .video-frame {
+      aspect-ratio: 16 / 9;
+      position: relative;
+      background: #191919;
+      overflow: hidden;
+    }
+
+    .video-frame img,
+    .video-frame iframe {
+      width: 100%;
+      height: 100%;
+      border: 0;
+      object-fit: cover;
+      display: block;
+    }
+
+    .video-frame::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(180deg, transparent 35%, rgba(0,0,0,0.76));
+      pointer-events: none;
+    }
+
+    .play-icon {
+      position: absolute;
+      inset: 0;
+      margin: auto;
+      width: 58px;
+      height: 58px;
+      z-index: 3;
+      border-radius: 50%;
+      display: grid;
+      place-items: center;
+      background: rgba(255,255,255,0.86);
+      color: var(--orange);
+      font-size: 20px;
+      box-shadow: 0 12px 28px rgba(0,0,0,0.22);
+    }
+
+    .duration {
+      position: absolute;
+      right: 12px;
+      bottom: 10px;
+      z-index: 4;
+      padding: 5px 8px;
+      border-radius: 8px;
+      background: rgba(0,0,0,0.72);
+      color: white;
+      font-size: 10px;
+      font-weight: 950;
+    }
+
+    .video-info {
+      padding: 12px 14px 14px;
+    }
+
+    .video-info h3 {
+      font-size: 14px;
+      line-height: 1.25;
+      color: var(--ink);
+      margin-bottom: 5px;
+    }
+
+    .video-info p {
+      font-size: 11px;
+      color: var(--muted);
+      line-height: 1.35;
+      font-weight: 600;
+    }
+
+    .reels-wrap {
+      overflow: hidden;
+      padding: 4px 0 10px;
+      position: relative;
+    }
+
+    .reels-track {
+      display: flex;
+      gap: 14px;
+      width: max-content;
+      animation: reelLoop 28s linear infinite;
+      padding-left: 18px;
+    }
+
+    .reels-wrap:hover .reels-track {
+      animation-play-state: paused;
+    }
+
+    @keyframes reelLoop {
+      from { transform: translateX(0); }
+      to { transform: translateX(-50%); }
+    }
+
+    .reel-card {
+      width: 148px;
+      aspect-ratio: 9 / 16;
+      border-radius: 22px;
+      overflow: hidden;
+      position: relative;
+      background: #222;
+      flex: 0 0 auto;
+      box-shadow: 0 16px 36px rgba(55, 35, 12, 0.16);
+      border: 1px solid rgba(255,255,255,0.52);
+    }
+
+    .reel-card img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    .reel-card::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(180deg, transparent 35%, rgba(0,0,0,0.72));
+    }
+
+    .reel-icon {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      z-index: 3;
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      background: rgba(255,255,255,0.86);
+      color: var(--orange);
+      display: grid;
+      place-items: center;
+      font-size: 13px;
+      font-weight: 950;
+    }
+
+    .reel-text {
+      position: absolute;
+      left: 11px;
+      right: 11px;
+      bottom: 12px;
+      z-index: 3;
+      color: white;
+    }
+
+    .reel-text h3 {
+      font-size: 13px;
+      line-height: 1.1;
+      margin-bottom: 5px;
+      text-transform: uppercase;
+    }
+
+    .reel-text span {
+      font-size: 10px;
+      opacity: 0.82;
+      font-weight: 700;
+    }
+
+    .connect-banner {
+      margin: 10px 12px 18px;
+      min-height: 168px;
+      border-radius: 24px;
+      overflow: hidden;
+      position: relative;
+      background:
+        linear-gradient(90deg, rgba(255,240,210,0.94), rgba(255,235,195,0.76)),
+        var(--top-banner);
+      background-size: cover;
+      background-position: center;
+      border: 1px solid rgba(255,255,255,0.58);
+      box-shadow: var(--shadow);
+      padding: 22px;
+      display: grid;
+      grid-template-columns: 1fr 110px;
+      gap: 12px;
+      align-items: center;
+    }
+
+    .connect-banner h2 {
+      font-size: 30px;
+      line-height: 0.95;
+      letter-spacing: -1px;
+      text-transform: uppercase;
+      color: var(--ink);
+    }
+
+    .connect-banner h2 span {
+      color: var(--orange);
+    }
+
+    .connect-banner p {
+      margin-top: 8px;
+      font-size: 12px;
+      line-height: 1.4;
+      color: #344149;
+      font-weight: 700;
+    }
+
+    .wa-big {
+      width: 86px;
+      height: 86px;
+      border-radius: 28px;
+      display: grid;
+      place-items: center;
+      justify-self: end;
+      background: linear-gradient(135deg, #25d366, #128c7e);
+      color: white;
+      font-size: 38px;
+      box-shadow: 0 18px 34px rgba(37,211,102,0.30);
+    }
+
+    .connect-btn {
+      grid-column: 1 / -1;
+      height: 46px;
+      border-radius: 14px;
+      border: 0;
+      background: var(--ink);
+      color: #fff2dc;
+      font-size: 11px;
+      letter-spacing: 1.4px;
+      text-transform: uppercase;
+      font-weight: 950;
+      cursor: pointer;
+    }
+
+    .footer {
+      height: 44px;
+      background: var(--ink);
+      color: #fff0d2;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 8px;
+      letter-spacing: 5px;
+      text-transform: uppercase;
+      font-weight: 900;
+    }
+
+    .floating-wa {
+      position: fixed;
+      right: 16px;
+      bottom: 16px;
+      z-index: 99;
+      width: 56px;
+      height: 56px;
+      border: 0;
+      border-radius: 50%;
+      display: grid;
+      place-items: center;
+      background: var(--green);
+      color: white;
+      font-size: 26px;
+      box-shadow: 0 16px 36px rgba(37,211,102,0.34);
+      cursor: pointer;
+      animation: pulse 2s infinite;
+    }
+
+    @keyframes pulse {
+      0%, 100% { transform: scale(1); }
+      50% { transform: scale(1.08); }
+    }
+
+    @media (max-width: 380px) {
+      .hero {
+        height: 500px;
+      }
+
+      .hero-content {
+        max-width: 58%;
+        padding-left: 18px;
+        padding-right: 14px;
+      }
+
+      .hero h1 {
+        font-size: 50px;
+      }
+
+      .hero-role {
+        letter-spacing: 4px;
+      }
+
+      .hero-actions {
+        width: 170px;
+      }
+
+      .stats-banner {
+        grid-template-columns: repeat(3, 1fr);
+      }
+
+      .stat strong {
+        font-size: 20px;
+      }
+
+      .reel-card {
+        width: 138px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <button class="floating-wa" onclick="openWhatsApp()">☘</button>
+
+  <main class="mobile-page">
+    <section class="hero">
+      <div class="mini-logo">
+        <div class="mini-logo-mark">N</div>
+        <span>Naina</span>
+      </div>
+
+      <button class="hamburger" onclick="document.getElementById('connect').scrollIntoView({ behavior: 'smooth' })">
+        <div>
+          <span></span>
+          <span></span>
+          <span></span>
+        </div>
+      </button>
+
+      <div class="hero-content">
+        <h1>Naina</h1>
+        <div class="hero-role">Free Fire Caster</div>
+        <div class="hero-line"></div>
+
+        <p class="hero-desc">
+          Bringing hype, clarity & energy to every match.
+        </p>
+
+        <div class="hero-actions">
+          <button class="btn btn-dark" onclick="openWhatsApp()">☘ Contact Me</button>
+          <button class="btn btn-light" onclick="document.getElementById('videos').scrollIntoView({ behavior: 'smooth' })">▶ Showreel</button>
+        </div>
+      </div>
+    </section>
+
+    <section class="stats-banner">
+      <div class="stat">
+        <div class="stat-icon">🏆</div>
+        <strong>120+</strong>
+        <span>Tournaments<br>Casted</span>
+      </div>
+
+      <div class="stat">
+        <div class="stat-icon">📣</div>
+        <strong>250K+</strong>
+        <span>Total<br>Reach</span>
+      </div>
+
+      <div class="stat">
+        <div class="stat-icon">◉</div>
+        <strong>5M+</strong>
+        <span>Total<br>Views</span>
+      </div>
+    </section>
+
+    <section class="social-banner">
+      <a class="social" href="#" target="_blank">
+        <b>▶</b>
+        <span>YouTube</span>
+      </a>
+
+      <a class="social" href="#" target="_blank">
+        <b>◎</b>
+        <span>Instagram</span>
+      </a>
+
+      <a class="social" href="#" target="_blank">
+        <b>☁</b>
+        <span>Discord</span>
+      </a>
+
+      <button class="social" onclick="openWhatsApp()" style="border:0;background:transparent;cursor:pointer;">
+        <b>☘</b>
+        <span>WhatsApp</span>
+      </button>
+    </section>
+
+    <section class="section" id="videos">
+      <div class="section-head">
+        <div>
+          <h2>Casting <span>Video</span></h2>
+          <p>Swipe left / right to watch more</p>
+        </div>
+        <a class="view-all" href="#">View All</a>
+      </div>
+
+      <div class="video-carousel">
+        <article class="video-card" onclick="playDummy('Grand Finals Highlights')">
+          <div class="video-frame">
+            <img src="https://images.unsplash.com/photo-1511512578047-dfb367046420?auto=format&fit=crop&w=900&q=80" alt="Casting Video">
+            <div class="play-icon">▶</div>
+            <div class="duration">18:42</div>
+          </div>
+          <div class="video-info">
+            <h3>Grand Finals Highlights</h3>
+            <p>High-energy casting from the final zone.</p>
+          </div>
+        </article>
+
+        <article class="video-card" onclick="playDummy('Comeback Kings')">
+          <div class="video-frame">
+            <img src="https://images.unsplash.com/photo-1542751371-adc38448a05e?auto=format&fit=crop&w=900&q=80" alt="Casting Video">
+            <div class="play-icon">▶</div>
+            <div class="duration">14:26</div>
+          </div>
+          <div class="video-info">
+            <h3>Comeback Kings</h3>
+            <p>Insane clutch moments with sharp commentary.</p>
+          </div>
+        </article>
+
+        <article class="video-card" onclick="playDummy('Booyah Moments')">
+          <div class="video-frame">
+            <img src="https://images.unsplash.com/photo-1560253023-3ec5d502959f?auto=format&fit=crop&w=900&q=80" alt="Casting Video">
+            <div class="play-icon">▶</div>
+            <div class="duration">10:18</div>
+          </div>
+          <div class="video-info">
+            <h3>Booyah Moments</h3>
+            <p>Best plays of the week with crowd hype.</p>
+          </div>
+        </article>
+
+        <article class="video-card" onclick="playDummy('Arena Showdown')">
+          <div class="video-frame">
+            <img src="https://images.unsplash.com/photo-1550745165-9bc0b252726f?auto=format&fit=crop&w=900&q=80" alt="Casting Video">
+            <div class="play-icon">▶</div>
+            <div class="duration">12:12</div>
+          </div>
+          <div class="video-info">
+            <h3>Arena Showdown</h3>
+            <p>Custom room action and live analysis.</p>
+          </div>
+        </article>
+
+        <article class="video-card" onclick="playDummy('Last Zone Pressure')">
+          <div class="video-frame">
+            <img src="https://images.unsplash.com/photo-1598550476439-6847785fcea6?auto=format&fit=crop&w=900&q=80" alt="Casting Video">
+            <div class="play-icon">▶</div>
+            <div class="duration">11:08</div>
+          </div>
+          <div class="video-info">
+            <h3>Last Zone Pressure</h3>
+            <p>Clean calls, rotations and final fights.</p>
+          </div>
+        </article>
+
+        <article class="video-card" onclick="playDummy('Caster Reaction')">
+          <div class="video-frame">
+            <img src="https://images.unsplash.com/photo-1556438064-2d7646166914?auto=format&fit=crop&w=900&q=80" alt="Casting Video">
+            <div class="play-icon">▶</div>
+            <div class="duration">09:32</div>
+          </div>
+          <div class="video-info">
+            <h3>Caster Reaction</h3>
+            <p>Funny, intense and memorable live moments.</p>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section class="section" id="reels">
+      <div class="section-head">
+        <div>
+          <h2>Casting <span>Reels</span></h2>
+          <p>Auto-loop highlights</p>
+        </div>
+        <a class="view-all" href="#">View All</a>
+      </div>
+
+      <div class="reels-wrap">
+        <div class="reels-track">
+          <article class="reel-card" onclick="playDummy('Reel 1')">
+            <img src="https://images.unsplash.com/photo-1593305841991-05c297ba4575?auto=format&fit=crop&w=700&q=80" alt="Casting Reel">
+            <div class="reel-icon">▶</div>
+            <div class="reel-text">
+              <h3>Clutch Commentary</h3>
+              <span>128K views</span>
+            </div>
+          </article>
+
+          <article class="reel-card" onclick="playDummy('Reel 2')">
+            <img src="https://images.unsplash.com/photo-1511882150382-421056c89033?auto=format&fit=crop&w=700&q=80" alt="Casting Reel">
+            <div class="reel-icon">▶</div>
+            <div class="reel-text">
+              <h3>Grand Final Vibes</h3>
+              <span>96K views</span>
+            </div>
+          </article>
+
+          <article class="reel-card" onclick="playDummy('Reel 3')">
+            <img src="https://images.unsplash.com/photo-1556438064-2d7646166914?auto=format&fit=crop&w=700&q=80" alt="Casting Reel">
+            <div class="reel-icon">▶</div>
+            <div class="reel-text">
+              <h3>Booyah Energy</h3>
+              <span>112K views</span>
+            </div>
+          </article>
+
+          <article class="reel-card" onclick="playDummy('Reel 4')">
+            <img src="https://images.unsplash.com/photo-1535223289827-42f1e9919769?auto=format&fit=crop&w=700&q=80" alt="Casting Reel">
+            <div class="reel-icon">▶</div>
+            <div class="reel-text">
+              <h3>Crowd Moment</h3>
+              <span>142K views</span>
+            </div>
+          </article>
+
+          <article class="reel-card" onclick="playDummy('Reel 1')">
+            <img src="https://images.unsplash.com/photo-1593305841991-05c297ba4575?auto=format&fit=crop&w=700&q=80" alt="Casting Reel">
+            <div class="reel-icon">▶</div>
+            <div class="reel-text">
+              <h3>Clutch Commentary</h3>
+              <span>128K views</span>
+            </div>
+          </article>
+
+          <article class="reel-card" onclick="playDummy('Reel 2')">
+            <img src="https://images.unsplash.com/photo-1511882150382-421056c89033?auto=format&fit=crop&w=700&q=80" alt="Casting Reel">
+            <div class="reel-icon">▶</div>
+            <div class="reel-text">
+              <h3>Grand Final Vibes</h3>
+              <span>96K views</span>
+            </div>
+          </article>
+
+          <article class="reel-card" onclick="playDummy('Reel 3')">
+            <img src="https://images.unsplash.com/photo-1556438064-2d7646166914?auto=format&fit=crop&w=700&q=80" alt="Casting Reel">
+            <div class="reel-icon">▶</div>
+            <div class="reel-text">
+              <h3>Booyah Energy</h3>
+              <span>112K views</span>
+            </div>
+          </article>
+
+          <article class="reel-card" onclick="playDummy('Reel 4')">
+            <img src="https://images.unsplash.com/photo-1535223289827-42f1e9919769?auto=format&fit=crop&w=700&q=80" alt="Casting Reel">
+            <div class="reel-icon">▶</div>
+            <div class="reel-text">
+              <h3>Crowd Moment</h3>
+              <span>142K views</span>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="connect-banner" id="connect">
+      <div>
+        <h2>Let’s <span>Connect</span></h2>
+        <p>Available for tournaments, collabs and live casting.</p>
+      </div>
+
+      <div class="wa-big">☘</div>
+
+      <button class="connect-btn" onclick="openWhatsApp()">Chat on WhatsApp</button>
+    </section>
+
+    <footer class="footer">
+      Cast • Connect • Conquer
+    </footer>
+  </main>
+
+  <script>
+    const whatsappNumber = "91XXXXXXXXXX";
+
+    function openWhatsApp() {
+      const msg = encodeURIComponent("Hi Naina, I want to connect with you for Free Fire casting / collaboration.");
+      window.open(`https://wa.me/${whatsappNumber}?text=${msg}`, "_blank");
+    }
+
+    function playDummy(title) {
+      alert(title + "\\n\\nYahan later actual video/reel link attach kar denge.");
+    }
+  </script>
+</body>
+</html>
