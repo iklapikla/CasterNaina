@@ -257,10 +257,11 @@
     .section-title {
       font-family: "Playfair Display", serif;
       color: white;
-      font-size: 26px;
+      font-size: 25px;
       line-height: 1;
       letter-spacing: -0.3px;
       text-transform: uppercase;
+      white-space: nowrap;
     }
 
     .section-pill {
@@ -274,6 +275,7 @@
       box-shadow: 0 8px 18px rgba(0,0,0,0.10);
       text-decoration: none;
       cursor: pointer;
+      flex-shrink: 0;
     }
 
     .scroll-row {
@@ -339,42 +341,92 @@
     }
 
     .reel-card {
-      min-width: 195px;
+      min-width: 170px;
       scroll-snap-align: start;
       background: rgba(238, 250, 245, 0.96);
       border-radius: 18px;
-      padding: 10px;
+      padding: 9px;
       box-shadow: 0 14px 28px rgba(0,0,0,0.16);
       border: 1px solid rgba(255,255,255,0.24);
+      text-decoration: none;
+      color: inherit;
+      transition: 0.25s ease;
     }
 
-    .reel-frame {
+    .reel-card:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 18px 34px rgba(0,0,0,0.20);
+    }
+
+    .reel-thumb {
       width: 100%;
       aspect-ratio: 9 / 16;
       border-radius: 14px;
       overflow: hidden;
-      background: #f4f4f4;
+      background: #000;
       position: relative;
     }
 
-    .reel-frame iframe {
+    .reel-thumb img {
       width: 100%;
       height: 100%;
-      border: 0;
       display: block;
-      background: #fff;
+      object-fit: cover;
     }
 
-    .reel-open {
-      display: inline-block;
-      margin-top: 10px;
-      text-decoration: none;
+    .reel-thumb::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background:
+        linear-gradient(180deg, rgba(0,0,0,0.06), transparent 38%, rgba(0,0,0,0.16)),
+        radial-gradient(circle at center, rgba(255,255,255,0.12), transparent 42%);
+      pointer-events: none;
+    }
+
+    .reel-play {
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      z-index: 3;
+      transform: translate(-50%, -50%);
+      width: 48px;
+      height: 48px;
+      border-radius: 50%;
+      background: rgba(255,255,255,0.88);
+      box-shadow: 0 10px 24px rgba(0,0,0,0.25);
+      display: grid;
+      place-items: center;
+    }
+
+    .reel-play::before {
+      content: "";
+      margin-left: 4px;
+      width: 0;
+      height: 0;
+      border-top: 11px solid transparent;
+      border-bottom: 11px solid transparent;
+      border-left: 17px solid var(--dark-green);
+    }
+
+    .reel-caption {
+      padding: 9px 3px 2px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .reel-caption h3 {
+      font-size: 12px;
       color: var(--dark-green);
-      font-size: 11px;
       font-weight: 800;
-      background: rgba(6,63,57,0.08);
-      padding: 7px 10px;
-      border-radius: 999px;
+      text-transform: uppercase;
+    }
+
+    .reel-caption span {
+      font-size: 10px;
+      color: rgba(6,63,57,0.72);
+      font-weight: 700;
     }
 
     .hint {
@@ -443,17 +495,38 @@
       }
 
       .reel-card {
-        min-width: 175px;
+        min-width: 155px;
       }
 
       .section-title {
-        font-size: 22px;
+        font-size: 19px;
+        letter-spacing: -0.2px;
+      }
+
+      .section-pill {
+        font-size: 10px;
+        padding: 8px 12px;
       }
 
       .share-btn {
         width: 150px;
         height: 44px;
         font-size: 12px;
+      }
+    }
+
+    @media (max-width: 360px) {
+      .section-title {
+        font-size: 17px;
+      }
+
+      .section-pill {
+        font-size: 9px;
+        padding: 7px 10px;
+      }
+
+      .reel-card {
+        min-width: 148px;
       }
     }
   </style>
@@ -606,47 +679,71 @@
       </div>
 
       <div class="scroll-row">
-        <article class="reel-card">
-          <div class="reel-frame">
-            <iframe src="https://www.instagram.com/p/DXy66GXBxzF/embed" title="Reel 1"></iframe>
+        <a class="reel-card" href="https://www.instagram.com/p/DXy66GXBxzF/" target="_blank">
+          <div class="reel-thumb">
+            <img src="https://raw.githubusercontent.com/iklapikla/CasterNaina/refs/heads/main/Reel%201.png" alt="Reel Highlight 01">
+            <div class="reel-play"></div>
           </div>
-          <a class="reel-open" href="https://www.instagram.com/p/DXy66GXBxzF/" target="_blank">Open Reel</a>
-        </article>
+          <div class="reel-caption">
+            <h3>Reel 01</h3>
+            <span>Instagram</span>
+          </div>
+        </a>
 
-        <article class="reel-card">
-          <div class="reel-frame">
-            <iframe src="https://www.instagram.com/p/DX1gCdqBcuA/embed" title="Reel 2"></iframe>
+        <a class="reel-card" href="https://www.instagram.com/p/DX1gCdqBcuA/" target="_blank">
+          <div class="reel-thumb">
+            <img src="https://raw.githubusercontent.com/iklapikla/CasterNaina/refs/heads/main/Reel%202.png" alt="Reel Highlight 02">
+            <div class="reel-play"></div>
           </div>
-          <a class="reel-open" href="https://www.instagram.com/p/DX1gCdqBcuA/" target="_blank">Open Reel</a>
-        </article>
+          <div class="reel-caption">
+            <h3>Reel 02</h3>
+            <span>Instagram</span>
+          </div>
+        </a>
 
-        <article class="reel-card">
-          <div class="reel-frame">
-            <iframe src="https://www.instagram.com/p/DYR0SFGyEnr/embed" title="Reel 3"></iframe>
+        <a class="reel-card" href="https://www.instagram.com/p/DYR0SFGyEnr/" target="_blank">
+          <div class="reel-thumb">
+            <img src="https://raw.githubusercontent.com/iklapikla/CasterNaina/refs/heads/main/reel%203.png" alt="Reel Highlight 03">
+            <div class="reel-play"></div>
           </div>
-          <a class="reel-open" href="https://www.instagram.com/p/DYR0SFGyEnr/" target="_blank">Open Reel</a>
-        </article>
+          <div class="reel-caption">
+            <h3>Reel 03</h3>
+            <span>Instagram</span>
+          </div>
+        </a>
 
-        <article class="reel-card">
-          <div class="reel-frame">
-            <iframe src="https://www.instagram.com/p/DYPRExAShAz/embed" title="Reel 4"></iframe>
+        <a class="reel-card" href="https://www.instagram.com/p/DYPRExAShAz/" target="_blank">
+          <div class="reel-thumb">
+            <img src="https://raw.githubusercontent.com/iklapikla/CasterNaina/refs/heads/main/reel%204.png" alt="Reel Highlight 04">
+            <div class="reel-play"></div>
           </div>
-          <a class="reel-open" href="https://www.instagram.com/p/DYPRExAShAz/" target="_blank">Open Reel</a>
-        </article>
+          <div class="reel-caption">
+            <h3>Reel 04</h3>
+            <span>Instagram</span>
+          </div>
+        </a>
 
-        <article class="reel-card">
-          <div class="reel-frame">
-            <iframe src="https://www.instagram.com/p/DYMsUxYSONB/embed" title="Reel 5"></iframe>
+        <a class="reel-card" href="https://www.instagram.com/p/DYMsUxYSONB/" target="_blank">
+          <div class="reel-thumb">
+            <img src="https://raw.githubusercontent.com/iklapikla/CasterNaina/refs/heads/main/reel%205.png" alt="Reel Highlight 05">
+            <div class="reel-play"></div>
           </div>
-          <a class="reel-open" href="https://www.instagram.com/p/DYMsUxYSONB/" target="_blank">Open Reel</a>
-        </article>
+          <div class="reel-caption">
+            <h3>Reel 05</h3>
+            <span>Instagram</span>
+          </div>
+        </a>
 
-        <article class="reel-card">
-          <div class="reel-frame">
-            <iframe src="https://www.instagram.com/p/DYE-1mTy_bM/embed" title="Reel 6"></iframe>
+        <a class="reel-card" href="https://www.instagram.com/p/DYE-1mTy_bM/" target="_blank">
+          <div class="reel-thumb">
+            <img src="https://raw.githubusercontent.com/iklapikla/CasterNaina/refs/heads/main/reel%206.png" alt="Reel Highlight 06">
+            <div class="reel-play"></div>
           </div>
-          <a class="reel-open" href="https://www.instagram.com/p/DYE-1mTy_bM/" target="_blank">Open Reel</a>
-        </article>
+          <div class="reel-caption">
+            <h3>Reel 06</h3>
+            <span>Instagram</span>
+          </div>
+        </a>
       </div>
 
       <p class="hint">Swipe / scroll sidewise to view all reel highlights</p>
