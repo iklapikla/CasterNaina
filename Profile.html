@@ -23,6 +23,9 @@
       --mint-light: #effaf5;
       --text-dark: #063f39;
       --white: #ffffff;
+      --gold: #f5c84b;
+      --gold-deep: #b88916;
+      --gold-light: #fff2a8;
       --shadow: 0 18px 45px rgba(0, 45, 38, 0.22);
     }
 
@@ -170,10 +173,17 @@
       font-weight: 800;
     }
 
+    .action-row {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin: 12px 0 16px;
+      width: 100%;
+    }
+
     .share-btn {
       width: 160px;
       height: 46px;
-      margin: 12px 0 16px;
       border: 0;
       border-radius: 14px;
       background: linear-gradient(145deg, var(--soft-green), var(--dark-green));
@@ -184,10 +194,74 @@
       box-shadow: 0 12px 25px rgba(0, 55, 47, 0.24);
       cursor: pointer;
       text-transform: uppercase;
+      flex-shrink: 0;
     }
 
     .share-btn:active {
       transform: scale(0.98);
+    }
+
+    .promo-btn {
+      height: 46px;
+      flex: 1;
+      min-width: 0;
+      border: 0;
+      border-radius: 14px;
+      background:
+        linear-gradient(135deg, rgba(255,255,255,0.35), transparent 28%),
+        linear-gradient(145deg, var(--gold-light), var(--gold), var(--gold-deep));
+      color: #3b2600;
+      font-size: 12px;
+      font-weight: 900;
+      letter-spacing: 0.2px;
+      text-decoration: none;
+      box-shadow:
+        0 12px 25px rgba(152, 105, 10, 0.26),
+        inset 0 1px 0 rgba(255,255,255,0.45);
+      display: none;
+      align-items: center;
+      overflow: hidden;
+      position: relative;
+      padding: 0 14px;
+      text-transform: uppercase;
+    }
+
+    .promo-btn.show {
+      display: flex;
+    }
+
+    .promo-btn::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background-image:
+        linear-gradient(rgba(255,255,255,0.20) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,0.14) 1px, transparent 1px);
+      background-size: 5px 5px;
+      opacity: 0.35;
+      pointer-events: none;
+    }
+
+    .promo-track {
+      position: relative;
+      z-index: 2;
+      white-space: nowrap;
+      display: inline-block;
+      min-width: 100%;
+    }
+
+    .promo-btn.marquee .promo-track {
+      animation: promoMarquee 11s linear infinite;
+      padding-left: 100%;
+    }
+
+    @keyframes promoMarquee {
+      0% {
+        transform: translateX(0);
+      }
+      100% {
+        transform: translateX(-100%);
+      }
     }
 
     .social-wrap {
@@ -495,6 +569,18 @@
         line-height: 1.45;
       }
 
+      .share-btn {
+        width: 150px;
+        height: 44px;
+        font-size: 12px;
+      }
+
+      .promo-btn {
+        height: 44px;
+        font-size: 11px;
+        border-radius: 14px;
+      }
+
       .video-card {
         min-width: 255px;
       }
@@ -512,15 +598,23 @@
         font-size: 10px;
         padding: 8px 12px;
       }
-
-      .share-btn {
-        width: 150px;
-        height: 44px;
-        font-size: 12px;
-      }
     }
 
     @media (max-width: 360px) {
+      .action-row {
+        gap: 8px;
+      }
+
+      .share-btn {
+        width: 138px;
+        font-size: 11px;
+      }
+
+      .promo-btn {
+        font-size: 10px;
+        padding: 0 10px;
+      }
+
       .section-title {
         font-size: 17px;
       }
@@ -559,7 +653,12 @@
       </div>
     </section>
 
-    <button class="share-btn" id="shareButton" onclick="shareProfile()">Share Profile</button>
+    <div class="action-row">
+      <button class="share-btn" id="shareButton" onclick="shareProfile()">Share Profile</button>
+      <a class="promo-btn" id="promoButton" href="#" target="_blank" rel="noopener">
+        <span class="promo-track" id="promoButtonText">Promotion</span>
+      </a>
+    </div>
 
     <section class="social-wrap">
       <a class="social-btn" id="youtubeSocial" href="https://www.youtube.com/@CasterNaina/streams" target="_blank" aria-label="YouTube">
@@ -633,6 +732,9 @@
       top_banner_image: ["https://raw.githubusercontent.com/iklapikla/CasterNaina/refs/heads/main/Top%20Banner.png"],
       about_text: ["Casted 200+ tournaments across custom rooms, scrims, live matches and creator events — known for energetic hosting, confident commentary and engaging audience presence."],
       share_button_text: ["Share Profile"],
+      promo_button_status: ["disable"],
+      promo_button_text: ["Promotion"],
+      promo_button_link: [""],
       youtube_social_link: ["https://www.youtube.com/@CasterNaina/streams"],
       instagram_social_link: ["https://www.instagram.com/caster_naina/"],
       discord_social_link: ["https://discord.gg/tZacnxFnqu"],
@@ -824,6 +926,43 @@
       return seconds;
     }
 
+    function renderPromoButton(data) {
+      const status = getOne(data, "promo_button_status", "disable").toLowerCase();
+      const text = getOne(data, "promo_button_text", "");
+      const link = getOne(data, "promo_button_link", "");
+
+      const button = document.getElementById("promoButton");
+      const buttonText = document.getElementById("promoButtonText");
+
+      if (!button || !buttonText) return;
+
+      if (status === "enable" && text) {
+        button.classList.add("show");
+        buttonText.textContent = text;
+
+        if (text.length > 18) {
+          button.classList.add("marquee");
+        } else {
+          button.classList.remove("marquee");
+        }
+
+        if (link) {
+          button.href = link;
+          button.target = "_blank";
+          button.style.pointerEvents = "auto";
+          button.setAttribute("aria-label", text);
+        } else {
+          button.href = "#";
+          button.target = "";
+          button.style.pointerEvents = "none";
+          button.setAttribute("aria-label", text);
+        }
+      } else {
+        button.classList.remove("show");
+        button.classList.remove("marquee");
+      }
+    }
+
     function renderYouTubeVideos(data) {
       const row = document.getElementById("youtubeVideoRow");
       const links = getMany(data, "youtube_video_links");
@@ -926,6 +1065,8 @@
       setHTML("heroTitle", formatHeroTitle(getOne(data, "hero_title", "Caster Naina")));
       setHTML("aboutText", formatAboutText(getOne(data, "about_text")));
       setText("shareButton", getOne(data, "share_button_text", "Share Profile"));
+
+      renderPromoButton(data);
 
       setHref("youtubeSocial", getOne(data, "youtube_social_link"));
       setHref("instagramSocial", getOne(data, "instagram_social_link"));
