@@ -7,32 +7,29 @@
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;800&family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;800&family=Poppins:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
 
   <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
 
     :root {
-      --dark-green: #063f39;
-      --deep-green: #032f2b;
-      --soft-green: #0c5950;
-      --text-dark: #063f39;
-      --white: #ffffff;
+      --green: #063f39;
+      --green-2: #0c5950;
+      --green-3: #032f2b;
+      --mint: #e8f6ef;
       --gold: #f6c545;
-      --gold-deep: #b87a05;
-      --gold-dark: #6d4300;
-      --gold-light: #fff0a3;
+      --gold-2: #b87a05;
+      --white: #fff;
+      --dark: #031916;
       --shadow: 0 18px 45px rgba(0, 45, 38, 0.22);
     }
+
+    html { scroll-behavior: smooth; }
 
     body {
       min-height: 100vh;
       font-family: "Poppins", sans-serif;
-      color: var(--text-dark);
+      color: var(--green);
       background:
         radial-gradient(circle at 18% 10%, rgba(255,255,255,0.65), transparent 28%),
         radial-gradient(circle at 80% 25%, rgba(255,255,255,0.34), transparent 26%),
@@ -45,7 +42,7 @@
       position: fixed;
       inset: 0;
       pointer-events: none;
-      opacity: 0.28;
+      opacity: 0.25;
       background-image:
         linear-gradient(rgba(5, 55, 48, 0.12) 1px, transparent 1px),
         linear-gradient(90deg, rgba(5, 55, 48, 0.12) 1px, transparent 1px);
@@ -54,25 +51,33 @@
       z-index: 0;
     }
 
-    .page {
+    .mobile-layout,
+    .desktop-layout {
       position: relative;
       z-index: 1;
+    }
+
+    .desktop-layout { display: none; }
+
+    /* ================= MOBILE LAYOUT ================= */
+
+    .mobile-layout {
       width: min(100%, 520px);
       margin: 0 auto;
       padding: 18px 14px 38px;
     }
 
-    .section {
+    .m-section {
       background:
         radial-gradient(circle at 80% 15%, rgba(255,255,255,0.10), transparent 25%),
-        linear-gradient(145deg, var(--soft-green), var(--dark-green) 48%, var(--deep-green));
+        linear-gradient(145deg, var(--green-2), var(--green) 48%, var(--green-3));
       border-radius: 26px;
       box-shadow: var(--shadow);
       position: relative;
       overflow: hidden;
     }
 
-    .section::after {
+    .m-section::after {
       content: "";
       position: absolute;
       inset: 0;
@@ -84,7 +89,7 @@
       opacity: 0.7;
     }
 
-    .hero {
+    .m-hero {
       aspect-ratio: 16 / 9;
       padding: 22px;
       display: flex;
@@ -98,19 +103,7 @@
       border: 1px solid rgba(255,255,255,0.14);
     }
 
-    .hero::after {
-      content: "";
-      position: absolute;
-      inset: 0;
-      background-image:
-        linear-gradient(rgba(255,255,255,0.03) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(255,255,255,0.025) 1px, transparent 1px);
-      background-size: 5px 5px;
-      opacity: 0.35;
-      pointer-events: none;
-    }
-
-    .hero-top {
+    .m-hero-top {
       position: relative;
       z-index: 2;
       display: flex;
@@ -119,7 +112,7 @@
       gap: 18px;
     }
 
-    .eyebrow {
+    .m-eyebrow {
       color: rgba(255,255,255,0.72);
       font-size: 10px;
       letter-spacing: 6px;
@@ -128,7 +121,7 @@
       margin-bottom: 4px;
     }
 
-    .hero h1 {
+    .m-hero h1 {
       font-family: "Playfair Display", serif;
       color: var(--white);
       font-size: clamp(34px, 8vw, 52px);
@@ -138,7 +131,7 @@
       text-shadow: 0 8px 22px rgba(0,0,0,0.32);
     }
 
-    .menu-icon {
+    .m-menu {
       width: 25px;
       display: grid;
       gap: 5px;
@@ -148,32 +141,26 @@
       z-index: 2;
     }
 
-    .menu-icon span {
+    .m-menu span {
       height: 2px;
       border-radius: 20px;
       background: rgba(255,255,255,0.72);
       display: block;
     }
 
-    .hero-about {
+    .m-about {
       position: relative;
       z-index: 2;
       color: rgba(255,255,255,0.94);
       font-size: 12px;
       line-height: 1.5;
       max-width: 310px;
-      background: transparent;
-      border: none;
-      padding: 0;
       text-shadow: 0 3px 12px rgba(0,0,0,0.55);
     }
 
-    .hero-about strong {
-      color: #ffffff;
-      font-weight: 800;
-    }
+    .m-about strong { color: #ffffff; font-weight: 800; }
 
-    .action-row {
+    .m-action-row {
       display: flex;
       align-items: center;
       gap: 10px;
@@ -181,12 +168,12 @@
       width: 100%;
     }
 
-    .share-btn {
+    .m-share {
       width: 160px;
       height: 46px;
       border: 0;
       border-radius: 14px;
-      background: linear-gradient(145deg, var(--soft-green), var(--dark-green));
+      background: linear-gradient(145deg, var(--green-2), var(--green));
       color: white;
       font-size: 13px;
       font-weight: 800;
@@ -197,202 +184,119 @@
       flex-shrink: 0;
     }
 
-    .share-btn:active {
-      transform: scale(0.98);
-    }
-
-    .promo-btn {
+    .m-promo {
       height: 46px;
       flex: 1;
       min-width: 0;
-      border: 0;
       border-radius: 14px;
       background:
         linear-gradient(135deg, rgba(255,255,255,0.75) 0%, rgba(255,255,255,0.12) 23%, transparent 38%),
         linear-gradient(145deg, #fff4aa 0%, #f9cf4d 34%, #e7a916 62%, #a66b00 100%);
       color: #3a2400;
-      font-size: 12px;
+      font-size: 11px;
       font-weight: 900;
-      letter-spacing: 0.3px;
       text-decoration: none;
-      box-shadow:
-        0 12px 26px rgba(156, 103, 0, 0.30),
-        inset 0 1px 0 rgba(255,255,255,0.75),
-        inset 0 -2px 0 rgba(88,50,0,0.18);
+      box-shadow: 0 12px 26px rgba(156, 103, 0, 0.30);
       display: none;
       align-items: center;
       justify-content: center;
       overflow: hidden;
       position: relative;
-      padding: 0 14px;
+      padding: 0 12px;
       text-transform: uppercase;
-    }
-
-    .promo-btn.show {
-      display: flex;
       animation: promoPulse 2.2s ease-in-out infinite;
     }
 
-    .promo-btn::before {
-      content: "";
-      position: absolute;
-      inset: 0;
-      background-image:
-        linear-gradient(rgba(255,255,255,0.22) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(255,255,255,0.16) 1px, transparent 1px);
-      background-size: 5px 5px;
-      opacity: 0.32;
-      pointer-events: none;
-      z-index: 1;
-    }
+    .m-promo.show,
+    .d-promo.show { display: inline-flex; }
 
-    .promo-btn::after {
+    .m-promo::after,
+    .d-promo::after {
       content: "";
       position: absolute;
       top: -40%;
       left: -60%;
       width: 42%;
       height: 180%;
-      background: linear-gradient(
-        90deg,
-        transparent,
-        rgba(255,255,255,0.22),
-        rgba(255,255,255,0.82),
-        rgba(255,255,255,0.22),
-        transparent
-      );
+      background: linear-gradient(90deg, transparent, rgba(255,255,255,0.82), transparent);
       transform: rotate(22deg);
       animation: promoShine 2.6s ease-in-out infinite;
-      z-index: 2;
       pointer-events: none;
     }
 
-    .promo-track {
+    .m-promo-track,
+    .d-promo-track {
       position: relative;
-      z-index: 3;
+      z-index: 2;
       white-space: nowrap;
       display: inline-flex;
-      align-items: center;
-      gap: 26px;
-      max-width: 100%;
-      text-shadow: 0 1px 0 rgba(255,255,255,0.55);
+      gap: 24px;
     }
 
-    .promo-track.center {
-      justify-content: center;
+    .m-promo-track.center,
+    .d-promo-track.center {
       width: 100%;
+      justify-content: center;
       overflow: hidden;
       text-overflow: ellipsis;
     }
 
-    .promo-track.marquee {
-      max-width: none;
+    .m-promo-track.marquee,
+    .d-promo-track.marquee {
       width: max-content;
       animation: promoMarquee 9s linear infinite;
-      will-change: transform;
-    }
-
-    .promo-track span {
-      display: inline-block;
-      white-space: nowrap;
     }
 
     @keyframes promoShine {
-      0% {
-        left: -65%;
-        opacity: 0;
-      }
-      18% {
-        opacity: 1;
-      }
-      55% {
-        left: 125%;
-        opacity: 1;
-      }
-      100% {
-        left: 125%;
-        opacity: 0;
-      }
+      0% { left: -65%; opacity: 0; }
+      18% { opacity: 1; }
+      55% { left: 125%; opacity: 1; }
+      100% { left: 125%; opacity: 0; }
     }
 
     @keyframes promoPulse {
-      0%, 100% {
-        filter: brightness(1);
-        box-shadow:
-          0 12px 26px rgba(156, 103, 0, 0.30),
-          inset 0 1px 0 rgba(255,255,255,0.75),
-          inset 0 -2px 0 rgba(88,50,0,0.18);
-      }
-      50% {
-        filter: brightness(1.13);
-        box-shadow:
-          0 15px 34px rgba(218, 158, 24, 0.46),
-          inset 0 1px 0 rgba(255,255,255,0.88),
-          inset 0 -2px 0 rgba(88,50,0,0.18);
-      }
+      0%, 100% { filter: brightness(1); }
+      50% { filter: brightness(1.14); }
     }
 
     @keyframes promoMarquee {
-      0% {
-        transform: translateX(0);
-      }
-      100% {
-        transform: translateX(-33.333%);
-      }
+      0% { transform: translateX(0); }
+      100% { transform: translateX(-33.333%); }
     }
 
-    .social-wrap {
+    .m-socials {
       display: grid;
       grid-template-columns: repeat(4, 1fr);
       gap: 10px;
       margin-bottom: 18px;
     }
 
-    .social-btn {
+    .m-socials a {
       height: 48px;
       border-radius: 15px;
-      background: linear-gradient(145deg, var(--soft-green), var(--dark-green));
-      color: white;
+      background: linear-gradient(145deg, var(--green-2), var(--green));
       display: grid;
       place-items: center;
-      text-decoration: none;
       box-shadow: 0 10px 24px rgba(0, 55, 47, 0.18);
-      border: 1px solid rgba(255,255,255,0.10);
-      transition: 0.25s ease;
       position: relative;
       overflow: hidden;
+      text-decoration: none;
     }
 
-    .social-btn::after {
-      content: "";
-      position: absolute;
-      inset: 0;
-      background-image:
-        linear-gradient(rgba(255,255,255,0.055) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(255,255,255,0.04) 1px, transparent 1px);
-      background-size: 5px 5px;
-      opacity: 0.8;
-    }
-
-    .social-btn svg {
-      position: relative;
-      z-index: 2;
+    .m-socials svg {
       width: 23px;
       height: 23px;
       fill: white;
+      position: relative;
+      z-index: 2;
     }
 
-    .social-btn:hover {
-      transform: translateY(-3px);
-      box-shadow: 0 16px 32px rgba(0, 55, 47, 0.24);
-    }
-
-    .banner-section {
+    .m-banner {
       padding: 22px 18px 24px;
       margin-bottom: 22px;
     }
 
-    .section-header {
+    .m-head {
       position: relative;
       z-index: 2;
       display: flex;
@@ -402,31 +306,29 @@
       gap: 10px;
     }
 
-    .section-title {
+    .m-head h2 {
       font-family: "Playfair Display", serif;
       color: white;
-      font-size: 25px;
+      font-size: 19px;
       line-height: 1;
-      letter-spacing: -0.3px;
+      letter-spacing: -0.2px;
       text-transform: uppercase;
       white-space: nowrap;
     }
 
-    .section-pill {
-      color: var(--dark-green);
+    .m-pill {
+      color: var(--green);
       background: rgba(239,250,245,0.94);
-      padding: 8px 13px;
+      padding: 8px 12px;
       border-radius: 999px;
       font-size: 10px;
       font-weight: 800;
       white-space: nowrap;
-      box-shadow: 0 8px 18px rgba(0,0,0,0.10);
       text-decoration: none;
-      cursor: pointer;
       flex-shrink: 0;
     }
 
-    .scroll-row {
+    .m-scroll {
       position: relative;
       z-index: 2;
       display: flex;
@@ -437,21 +339,18 @@
       scrollbar-width: none;
     }
 
-    .scroll-row::-webkit-scrollbar {
-      display: none;
-    }
+    .m-scroll::-webkit-scrollbar { display: none; }
 
-    .video-card {
-      min-width: 285px;
+    .m-video-card {
+      min-width: 255px;
       scroll-snap-align: start;
       background: rgba(238, 250, 245, 0.96);
       border-radius: 18px;
       padding: 10px;
       box-shadow: 0 14px 28px rgba(0,0,0,0.16);
-      border: 1px solid rgba(255,255,255,0.24);
     }
 
-    .video-frame {
+    .m-video-frame {
       width: 100%;
       aspect-ratio: 16 / 9;
       border-radius: 14px;
@@ -459,14 +358,14 @@
       background: #000;
     }
 
-    .video-frame iframe {
+    .m-video-frame iframe {
       width: 100%;
       height: 100%;
       border: 0;
       display: block;
     }
 
-    .card-caption {
+    .m-caption {
       padding: 9px 3px 2px;
       display: flex;
       justify-content: space-between;
@@ -474,39 +373,31 @@
       gap: 8px;
     }
 
-    .card-caption h3 {
+    .m-caption h3 {
       font-size: 13px;
-      color: var(--dark-green);
+      color: var(--green);
       font-weight: 800;
       text-transform: uppercase;
-      letter-spacing: 0.3px;
     }
 
-    .card-caption span {
+    .m-caption span {
       font-size: 10px;
       color: rgba(6,63,57,0.72);
       font-weight: 700;
     }
 
-    .reel-card {
-      min-width: 170px;
+    .m-reel-card {
+      min-width: 155px;
       scroll-snap-align: start;
       background: rgba(238, 250, 245, 0.96);
       border-radius: 18px;
       padding: 9px;
       box-shadow: 0 14px 28px rgba(0,0,0,0.16);
-      border: 1px solid rgba(255,255,255,0.24);
       text-decoration: none;
       color: inherit;
-      transition: 0.25s ease;
     }
 
-    .reel-card:hover {
-      transform: translateY(-3px);
-      box-shadow: 0 18px 34px rgba(0,0,0,0.20);
-    }
-
-    .reel-thumb {
+    .m-reel-thumb {
       width: 100%;
       aspect-ratio: 9 / 16;
       border-radius: 14px;
@@ -515,24 +406,14 @@
       position: relative;
     }
 
-    .reel-thumb img {
+    .m-reel-thumb img {
       width: 100%;
       height: 100%;
-      display: block;
       object-fit: cover;
+      display: block;
     }
 
-    .reel-thumb::after {
-      content: "";
-      position: absolute;
-      inset: 0;
-      background:
-        linear-gradient(180deg, rgba(0,0,0,0.06), transparent 38%, rgba(0,0,0,0.16)),
-        radial-gradient(circle at center, rgba(255,255,255,0.12), transparent 42%);
-      pointer-events: none;
-    }
-
-    .reel-play {
+    .m-play {
       position: absolute;
       left: 50%;
       top: 50%;
@@ -543,57 +424,37 @@
       border-radius: 50%;
       background: rgba(255,255,255,0.88);
       box-shadow: 0 10px 24px rgba(0,0,0,0.25);
-      display: grid;
-      place-items: center;
     }
 
-    .reel-play::before {
+    .m-play::before {
       content: "";
-      margin-left: 4px;
+      position: absolute;
+      top: 50%;
+      left: 53%;
+      transform: translate(-50%, -50%);
       width: 0;
       height: 0;
       border-top: 11px solid transparent;
       border-bottom: 11px solid transparent;
-      border-left: 17px solid var(--dark-green);
+      border-left: 17px solid var(--green);
     }
 
-    .reel-caption {
-      padding: 9px 3px 2px;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-    }
-
-    .reel-caption h3 {
-      font-size: 12px;
-      color: var(--dark-green);
-      font-weight: 800;
-      text-transform: uppercase;
-    }
-
-    .reel-caption span {
-      font-size: 10px;
-      color: rgba(6,63,57,0.72);
-      font-weight: 700;
-    }
-
-    .hint {
+    .m-hint {
       position: relative;
       z-index: 2;
       color: rgba(255,255,255,0.72);
       font-size: 10px;
       font-weight: 600;
       margin-top: 4px;
-      letter-spacing: 0.3px;
     }
 
-    .thank-you {
+    .m-thank {
       padding: 34px 22px;
       text-align: center;
       margin-top: 6px;
     }
 
-    .thank-you h2 {
+    .m-thank h2 {
       position: relative;
       z-index: 2;
       font-family: "Playfair Display", serif;
@@ -604,7 +465,7 @@
       margin-bottom: 10px;
     }
 
-    .thank-you p {
+    .m-thank p {
       position: relative;
       z-index: 2;
       color: rgba(255,255,255,0.78);
@@ -614,186 +475,567 @@
       margin: 0 auto;
     }
 
-    .loading-text {
-      position: relative;
-      z-index: 2;
-      color: rgba(255,255,255,0.75);
-      font-size: 12px;
-      padding: 8px 2px;
-    }
+    /* ================= DESKTOP LAYOUT ================= */
 
-    @media (max-width: 420px) {
-      .page {
-        padding: 14px 10px 30px;
+    @media (min-width: 900px) {
+      body {
+        background:
+          radial-gradient(circle at 20% 20%, rgba(35, 145, 127, 0.24), transparent 28%),
+          radial-gradient(circle at 85% 12%, rgba(255, 198, 62, 0.16), transparent 24%),
+          radial-gradient(circle at 50% 95%, rgba(15, 94, 83, 0.34), transparent 34%),
+          linear-gradient(135deg, #021b18 0%, #073c35 50%, #021b18 100%);
+        color: #fff;
       }
 
-      .hero {
+      body::before {
+        opacity: 0.13;
+        background-image:
+          linear-gradient(rgba(255,255,255,0.16) 1px, transparent 1px),
+          linear-gradient(90deg, rgba(255,255,255,0.12) 1px, transparent 1px);
+        background-size: 12px 12px;
+      }
+
+      .mobile-layout { display: none; }
+      .desktop-layout { display: block; }
+
+      .d-shell {
+        width: min(1440px, calc(100% - 64px));
+        margin: 0 auto;
+        padding: 34px 0 70px;
+      }
+
+      .d-nav {
+        height: 76px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 30px;
+        padding: 0 24px;
+        border: 1px solid rgba(255,255,255,0.12);
+        background: rgba(255,255,255,0.055);
+        backdrop-filter: blur(18px);
+        border-radius: 28px;
+        box-shadow: 0 20px 55px rgba(0,0,0,0.25);
+      }
+
+      .d-brand {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        font-weight: 900;
+        letter-spacing: 0.4px;
+      }
+
+      .d-brand-mark {
+        width: 42px;
+        height: 42px;
+        border-radius: 15px;
+        display: grid;
+        place-items: center;
+        background: linear-gradient(145deg, #fff4aa, #f1b922 65%, #a66b00);
+        color: #062b27;
+        box-shadow: 0 14px 28px rgba(231,169,22,0.22);
+      }
+
+      .d-nav-links {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        flex-wrap: wrap;
+      }
+
+      .d-nav-links a,
+      .d-nav-links button {
+        height: 44px;
+        padding: 0 20px;
+        border-radius: 999px;
+        border: 1px solid rgba(255,255,255,0.12);
+        background: rgba(255,255,255,0.08);
+        color: #fff;
+        text-decoration: none;
+        font-weight: 800;
+        font-size: 14px;
+        cursor: pointer;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+      }
+
+      .d-nav-links a:hover,
+      .d-nav-links button:hover {
+        background: rgba(255,255,255,0.12);
+      }
+
+      .d-hero-banner {
+        position: relative;
+        overflow: hidden;
+        min-height: 0;
+        aspect-ratio: 16 / 9;
+        border-radius: 42px;
+        background:
+          linear-gradient(90deg, rgba(3, 48, 44, 0.94) 0%, rgba(3, 48, 44, 0.82) 35%, rgba(3, 48, 44, 0.36) 62%, rgba(3, 48, 44, 0.06) 100%),
+          url("https://raw.githubusercontent.com/iklapikla/CasterNaina/refs/heads/main/Top%20Banner.png");
+        background-size: cover;
+        background-position: center;
+        border: 1px solid rgba(255,255,255,0.14);
+        box-shadow: 0 30px 85px rgba(0,0,0,0.34);
+        display: block;
+        margin-bottom: 34px;
+      }
+
+      .d-hero-banner::after,
+      .d-section::after {
+        content: "";
+        position: absolute;
+        inset: 0;
+        pointer-events: none;
+        background-image:
+          linear-gradient(rgba(255,255,255,0.055) 1px, transparent 1px),
+          linear-gradient(90deg, rgba(255,255,255,0.045) 1px, transparent 1px);
+        background-size: 8px 8px;
+        opacity: 0.55;
+      }
+
+      .d-copy {
+        position: relative;
+        z-index: 2;
+        width: 52%;
+        height: 100%;
+        padding: 46px 42px 38px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+      }
+
+      .d-kicker {
+        font-size: 13px;
+        letter-spacing: 9px;
+        text-transform: uppercase;
+        color: rgba(255,255,255,0.68);
+        margin-bottom: 16px;
+      }
+
+      .d-title {
+        font-family: "Playfair Display", serif;
+        font-size: clamp(70px, 7vw, 114px);
+        line-height: 0.82;
+        letter-spacing: -4px;
+        text-transform: uppercase;
+        margin-bottom: 24px;
+      }
+
+      .d-title span {
+        color: var(--gold);
+        text-shadow: 0 20px 60px rgba(246,197,69,0.22);
+      }
+
+      .d-about {
+        max-width: 650px;
+        color: rgba(255,255,255,0.80);
+        font-size: 18px;
+        line-height: 1.62;
+        margin-bottom: 30px;
+      }
+
+      .d-about strong { color: #fff; }
+
+      .d-ctas {
+        display: flex;
+        align-items: center;
+        flex-wrap: wrap;
+        gap: 14px;
+        margin-bottom: 28px;
+      }
+
+      .d-btn {
+        height: 54px;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        padding: 0 24px;
+        border-radius: 18px;
+        text-decoration: none;
+        border: 0;
+        cursor: pointer;
+        font-weight: 900;
+        font-size: 14px;
+      }
+
+      .d-btn.primary {
+        color: #352300;
+        background: linear-gradient(145deg, #fff4aa, #f2bd27, #a66b00);
+        box-shadow: 0 16px 36px rgba(236,178,35,0.28);
+      }
+
+      .d-btn.secondary {
+        color: #fff;
+        background: rgba(255,255,255,0.09);
+        border: 1px solid rgba(255,255,255,0.14);
+      }
+
+      .d-promo {
+        height: 54px;
+        padding: 0 22px;
+        border-radius: 18px;
+        display: none;
+        align-items: center;
+        justify-content: center;
+        text-decoration: none;
+        color: #3a2400;
+        font-size: 13px;
+        font-weight: 900;
+        overflow: hidden;
+        position: relative;
+        max-width: 320px;
+        min-width: 220px;
+        background:
+          linear-gradient(135deg, rgba(255,255,255,0.75) 0%, rgba(255,255,255,0.12) 23%, transparent 38%),
+          linear-gradient(145deg, #fff4aa 0%, #f9cf4d 34%, #e7a916 62%, #a66b00 100%);
+        box-shadow: 0 16px 36px rgba(236,178,35,0.28);
+        animation: promoPulse 2.2s ease-in-out infinite;
+        text-transform: uppercase;
+      }
+
+      .d-stats {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 14px;
+      }
+
+      .d-stat {
+        border-radius: 24px;
+        background: rgba(255,255,255,0.075);
+        border: 1px solid rgba(255,255,255,0.10);
         padding: 18px;
-        border-radius: 22px;
       }
 
-      .hero h1 {
-        font-size: 35px;
+      .d-stat b {
+        display: block;
+        font-size: 28px;
+        color: var(--gold);
+        margin-bottom: 4px;
       }
 
-      .eyebrow {
-        letter-spacing: 5px;
-      }
-
-      .hero-about {
-        font-size: 11px;
-        max-width: 250px;
-        line-height: 1.45;
-      }
-
-      .share-btn {
-        width: 150px;
-        height: 44px;
+      .d-stat span {
+        color: rgba(255,255,255,0.68);
         font-size: 12px;
+        font-weight: 700;
       }
 
-      .promo-btn {
-        height: 44px;
-        font-size: 11px;
-        border-radius: 14px;
+      .d-visual {
+        display: none;
       }
 
-      .video-card {
-        min-width: 255px;
+      .d-section {
+        margin-top: 0;
+        position: relative;
+        overflow: hidden;
+        border-radius: 42px;
+        padding: 34px;
+        background:
+          radial-gradient(circle at 10% 10%, rgba(255,255,255,0.12), transparent 22%),
+          linear-gradient(145deg, rgba(255,255,255,0.10), rgba(255,255,255,0.035));
+        border: 1px solid rgba(255,255,255,0.14);
+        box-shadow: 0 28px 80px rgba(0,0,0,0.26);
       }
 
-      .reel-card {
-        min-width: 155px;
+      .d-section + .d-section { margin-top: 34px; }
+
+      .d-section-head {
+        position: relative;
+        z-index: 2;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 24px;
       }
 
-      .section-title {
-        font-size: 19px;
-        letter-spacing: -0.2px;
+      .d-section h2 {
+        font-family: "Playfair Display", serif;
+        font-size: 44px;
+        text-transform: uppercase;
+        line-height: 1;
       }
 
-      .section-pill {
-        font-size: 10px;
-        padding: 8px 12px;
+      .d-see {
+        color: #342100;
+        background: #f3cb45;
+        text-decoration: none;
+        padding: 12px 18px;
+        border-radius: 999px;
+        font-size: 13px;
+        font-weight: 900;
       }
-    }
 
-    @media (max-width: 360px) {
-      .action-row {
+      .d-video-grid {
+        position: relative;
+        z-index: 2;
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 18px;
+      }
+
+      .d-video-card,
+      .d-reel-card {
+        background: rgba(232,246,239,0.95);
+        border-radius: 26px;
+        padding: 12px;
+        color: var(--green);
+        text-decoration: none;
+        box-shadow: 0 20px 48px rgba(0,0,0,0.24);
+      }
+
+      .d-video-frame {
+        aspect-ratio: 16 / 9;
+        border-radius: 20px;
+        overflow: hidden;
+        background: #000;
+      }
+
+      .d-video-frame iframe {
+        width: 100%;
+        height: 100%;
+        border: 0;
+        display: block;
+      }
+
+      .d-card-cap {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 12px 4px 2px;
         gap: 8px;
       }
 
-      .share-btn {
-        width: 138px;
+      .d-card-cap h3 {
+        font-size: 14px;
+        text-transform: uppercase;
+      }
+
+      .d-card-cap span {
         font-size: 11px;
+        font-weight: 900;
+        opacity: 0.7;
       }
 
-      .promo-btn {
-        font-size: 10px;
-        padding: 0 10px;
+      .d-reel-grid {
+        position: relative;
+        z-index: 2;
+        display: grid;
+        grid-template-columns: repeat(6, minmax(0, 1fr));
+        gap: 16px;
       }
 
-      .section-title {
-        font-size: 17px;
+      .d-reel-thumb {
+        position: relative;
+        aspect-ratio: 9 / 16;
+        border-radius: 20px;
+        overflow: hidden;
+        background: #000;
       }
 
-      .section-pill {
-        font-size: 9px;
-        padding: 7px 10px;
+      .d-reel-thumb img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        display: block;
       }
 
-      .reel-card {
-        min-width: 148px;
+      .d-play {
+        position: absolute;
+        inset: 0;
+        margin: auto;
+        width: 54px;
+        height: 54px;
+        border-radius: 50%;
+        background: rgba(255,255,255,0.86);
+        box-shadow: 0 10px 28px rgba(0,0,0,0.26);
       }
+
+      .d-play::before {
+        content: "";
+        position: absolute;
+        top: 50%;
+        left: 54%;
+        transform: translate(-50%, -50%);
+        border-top: 12px solid transparent;
+        border-bottom: 12px solid transparent;
+        border-left: 18px solid var(--green);
+      }
+
+      .d-thank {
+        text-align: center;
+        padding: 72px 34px;
+      }
+
+      .d-thank h2 {
+        position: relative;
+        z-index: 2;
+        font-family: "Playfair Display", serif;
+        font-size: 74px;
+        line-height: 1;
+        text-transform: uppercase;
+        margin-bottom: 12px;
+      }
+
+      .d-thank p {
+        position: relative;
+        z-index: 2;
+        color: rgba(255,255,255,0.76);
+        max-width: 780px;
+        margin: 0 auto;
+        font-size: 18px;
+        line-height: 1.7;
+      }
+    }
+
+    @media (min-width: 900px) and (max-width: 1240px) {
+      .d-shell { width: min(100%, calc(100% - 40px)); }
+      .d-hero-banner { aspect-ratio: 16 / 9; }
+      .d-copy { width: 58%; padding: 34px; }
+      .d-title { font-size: 68px; }
+      .d-video-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+      .d-reel-grid { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+    }
+
+    @media (max-width: 420px) {
+      .mobile-layout { padding: 14px 10px 30px; }
+      .m-hero { padding: 18px; border-radius: 22px; }
+      .m-hero h1 { font-size: 35px; }
+      .m-about { font-size: 11px; max-width: 250px; line-height: 1.45; }
+      .m-share { width: 150px; height: 44px; font-size: 12px; }
+      .m-promo { height: 44px; font-size: 11px; }
+      .m-head h2 { font-size: 17px; }
+      .m-video-card { min-width: 255px; }
+      .m-reel-card { min-width: 148px; }
     }
   </style>
 </head>
-
 <body>
-  <main class="page">
 
-    <section class="section hero" id="heroSection">
-      <div class="hero-top">
+  <!-- MOBILE -->
+  <main class="mobile-layout">
+    <section class="m-section m-hero" id="mHeroSection">
+      <div class="m-hero-top">
         <div>
-          <div class="eyebrow" id="portfolioLabel">Portfolio</div>
-          <h1 id="heroTitle">Caster<br>Naina</h1>
+          <div class="m-eyebrow" id="mPortfolioLabel">Portfolio</div>
+          <h1 id="mHeroTitle">Caster<br>Naina</h1>
         </div>
-
-        <div class="menu-icon" aria-label="menu">
-          <span></span>
-          <span></span>
-          <span></span>
-        </div>
+        <div class="m-menu"><span></span><span></span><span></span></div>
       </div>
-
-      <div class="hero-about" id="aboutText">
+      <div class="m-about" id="mAboutText">
         Casted <strong>200+ tournaments</strong> across custom rooms, scrims, live matches and creator events — known for energetic hosting, confident commentary and engaging audience presence.
       </div>
     </section>
 
-    <div class="action-row">
-      <button class="share-btn" id="shareButton" onclick="shareProfile()">Share Profile</button>
-      <a class="promo-btn" id="promoButton" href="#" target="_blank" rel="noopener">
-        <span class="promo-track center" id="promoButtonText">Promotion</span>
+    <div class="m-action-row">
+      <button class="m-share" id="mShareButton" onclick="shareProfile()">Share Profile</button>
+      <a class="m-promo" id="mPromoButton" href="#" target="_blank" rel="noopener">
+        <span class="m-promo-track center" id="mPromoButtonText">Promotion</span>
       </a>
     </div>
 
-    <section class="social-wrap">
-      <a class="social-btn" id="youtubeSocial" href="https://www.youtube.com/@CasterNaina/streams" target="_blank" aria-label="YouTube">
-        <svg viewBox="0 0 24 24">
-          <path d="M23.5 6.2s-.2-1.7-.9-2.4c-.9-.9-1.9-.9-2.4-1C16.9 2.5 12 2.5 12 2.5h0s-4.9 0-8.2.3c-.5.1-1.5.1-2.4 1C.7 4.5.5 6.2.5 6.2S.2 8.2.2 10.3v1.9c0 2.1.3 4.1.3 4.1s.2 1.7.9 2.4c.9.9 2.1.9 2.6 1 1.9.2 8 .3 8 .3s4.9 0 8.2-.3c.5-.1 1.5-.1 2.4-1 .7-.7.9-2.4.9-2.4s.3-2.1.3-4.1v-1.9c0-2.1-.3-4.1-.3-4.1zM9.7 14.6V7.5l6.3 3.6-6.3 3.5z"/>
-        </svg>
+    <section class="m-socials">
+      <a id="mYoutubeSocial" href="https://www.youtube.com/@CasterNaina/streams" target="_blank" aria-label="YouTube">
+        <svg viewBox="0 0 24 24"><path d="M23.5 6.2s-.2-1.7-.9-2.4c-.9-.9-1.9-.9-2.4-1C16.9 2.5 12 2.5 12 2.5h0s-4.9 0-8.2.3c-.5.1-1.5.1-2.4 1C.7 4.5.5 6.2.5 6.2S.2 8.2.2 10.3v1.9c0 2.1.3 4.1.3 4.1s.2 1.7.9 2.4c.9.9 2.1.9 2.6 1 1.9.2 8 .3 8 .3s4.9 0 8.2-.3c.5-.1 1.5-.1 2.4-1 .7-.7.9-2.4.9-2.4s.3-2.1.3-4.1v-1.9c0-2.1-.3-4.1-.3-4.1zM9.7 14.6V7.5l6.3 3.6-6.3 3.5z"/></svg>
       </a>
-
-      <a class="social-btn" id="instagramSocial" href="https://www.instagram.com/caster_naina/" target="_blank" aria-label="Instagram">
-        <svg viewBox="0 0 24 24">
-          <path d="M7.2 2h9.6C19.7 2 22 4.3 22 7.2v9.6c0 2.9-2.3 5.2-5.2 5.2H7.2C4.3 22 2 19.7 2 16.8V7.2C2 4.3 4.3 2 7.2 2zm0 2C5.4 4 4 5.4 4 7.2v9.6C4 18.6 5.4 20 7.2 20h9.6c1.8 0 3.2-1.4 3.2-3.2V7.2C20 5.4 18.6 4 16.8 4H7.2zm4.8 3.3A4.7 4.7 0 1 1 12 16.7 4.7 4.7 0 0 1 12 7.3zm0 2A2.7 2.7 0 1 0 12 14.7 2.7 2.7 0 0 0 12 9.3zm5-2.6a1.1 1.1 0 1 1-1.1 1.1A1.1 1.1 0 0 1 17 6.7z"/>
-        </svg>
+      <a id="mInstagramSocial" href="https://www.instagram.com/caster_naina/" target="_blank" aria-label="Instagram">
+        <svg viewBox="0 0 24 24"><path d="M7.2 2h9.6C19.7 2 22 4.3 22 7.2v9.6c0 2.9-2.3 5.2-5.2 5.2H7.2C4.3 22 2 19.7 2 16.8V7.2C2 4.3 4.3 2 7.2 2zm0 2C5.4 4 4 5.4 4 7.2v9.6C4 18.6 5.4 20 7.2 20h9.6c1.8 0 3.2-1.4 3.2-3.2V7.2C20 5.4 18.6 4 16.8 4H7.2zm4.8 3.3A4.7 4.7 0 1 1 12 16.7 4.7 4.7 0 0 1 12 7.3zm0 2A2.7 2.7 0 1 0 12 14.7 2.7 2.7 0 0 0 12 9.3zm5-2.6a1.1 1.1 0 1 1-1.1 1.1A1.1 1.1 0 0 1 17 6.7z"/></svg>
       </a>
-
-      <a class="social-btn" id="discordSocial" href="https://discord.gg/tZacnxFnqu" target="_blank" aria-label="Discord">
-        <svg viewBox="0 0 24 24">
-          <path d="M20.3 4.4A17.4 17.4 0 0 0 16 3.1l-.2.4c1.5.4 2.2 1 2.2 1a14.8 14.8 0 0 0-6-1.2 14.8 14.8 0 0 0-6 1.2s.7-.6 2.3-1l-.2-.4a17.4 17.4 0 0 0-4.4 1.3C1 8.3.3 12.1.6 15.9A17.8 17.8 0 0 0 6 18.7l.7-.9a9.7 9.7 0 0 1-1.2-.6l.3-.2a12.2 12.2 0 0 0 12.4 0l.3.2a9.7 9.7 0 0 1-1.2.6l.7.9a17.8 17.8 0 0 0 5.4-2.8c.4-4.4-.7-8.1-3.1-11.5zM8.3 14.1c-1 0-1.8-.9-1.8-2s.8-2 1.8-2 1.8.9 1.8 2-.8 2-1.8 2zm7.4 0c-1 0-1.8-.9-1.8-2s.8-2 1.8-2 1.8.9 1.8 2-.8 2-1.8 2z"/>
-        </svg>
+      <a id="mDiscordSocial" href="https://discord.gg/tZacnxFnqu" target="_blank" aria-label="Discord">
+        <svg viewBox="0 0 24 24"><path d="M20.3 4.4A17.4 17.4 0 0 0 16 3.1l-.2.4c1.5.4 2.2 1 2.2 1a14.8 14.8 0 0 0-6-1.2 14.8 14.8 0 0 0-6 1.2s.7-.6 2.3-1l-.2-.4a17.4 17.4 0 0 0-4.4 1.3C1 8.3.3 12.1.6 15.9A17.8 17.8 0 0 0 6 18.7l.7-.9a9.7 9.7 0 0 1-1.2-.6l.3-.2a12.2 12.2 0 0 0 12.4 0l.3.2a9.7 9.7 0 0 1-1.2.6l.7.9a17.8 17.8 0 0 0 5.4-2.8c.4-4.4-.7-8.1-3.1-11.5zM8.3 14.1c-1 0-1.8-.9-1.8-2s.8-2 1.8-2 1.8.9 1.8 2-.8 2-1.8 2zm7.4 0c-1 0-1.8-.9-1.8-2s.8-2 1.8-2 1.8.9 1.8 2-.8 2-1.8 2z"/></svg>
       </a>
-
-      <a class="social-btn" id="whatsappSocial" href="https://wa.me/917478989646" target="_blank" aria-label="WhatsApp">
-        <svg viewBox="0 0 24 24">
-          <path d="M20.5 3.5A11.9 11.9 0 0 0 12.1 0C5.5 0 .2 5.3.2 11.8c0 2.1.6 4.1 1.6 5.9L0 24l6.5-1.7a12 12 0 0 0 5.6 1.4h0c6.5 0 11.8-5.3 11.8-11.8a11.7 11.7 0 0 0-3.4-8.4zM12.1 21.7h0a9.8 9.8 0 0 1-5-1.4l-.4-.2-3.9 1 1-3.8-.2-.4a9.8 9.8 0 1 1 8.5 4.8zm5.4-7.4c-.3-.1-1.8-.9-2.1-1s-.5-.1-.7.2-.8 1-1 1.2-.4.2-.7.1a8 8 0 0 1-2.3-1.4A8.6 8.6 0 0 1 9.1 11c-.2-.3 0-.5.1-.6l.5-.6c.1-.2.2-.3.3-.5.1-.2.1-.4 0-.6s-.7-1.7-.9-2.3c-.2-.6-.5-.5-.7-.5h-.6c-.2 0-.6.1-.9.4s-1.2 1.2-1.2 2.9 1.3 3.4 1.4 3.6c.2.2 2.5 3.8 6 5.3.8.4 1.5.6 2 .7.8.3 1.6.2 2.2.1.7-.1 1.8-.7 2-1.4.3-.7.3-1.3.2-1.4-.1-.2-.3-.3-.6-.4z"/>
-        </svg>
+      <a id="mWhatsappSocial" href="https://wa.me/917478989646" target="_blank" aria-label="WhatsApp">
+        <svg viewBox="0 0 24 24"><path d="M20.5 3.5A11.9 11.9 0 0 0 12.1 0C5.5 0 .2 5.3.2 11.8c0 2.1.6 4.1 1.6 5.9L0 24l6.5-1.7a12 12 0 0 0 5.6 1.4h0c6.5 0 11.8-5.3 11.8-11.8a11.7 11.7 0 0 0-3.4-8.4zM12.1 21.7h0a9.8 9.8 0 0 1-5-1.4l-.4-.2-3.9 1 1-3.8-.2-.4a9.8 9.8 0 1 1 8.5 4.8zm5.4-7.4c-.3-.1-1.8-.9-2.1-1s-.5-.1-.7.2-.8 1-1 1.2-.4.2-.7.1a8 8 0 0 1-2.3-1.4A8.6 8.6 0 0 1 9.1 11c-.2-.3 0-.5.1-.6l.5-.6c.1-.2.2-.3.3-.5.1-.2.1-.4 0-.6s-.7-1.7-.9-2.3c-.2-.6-.5-.5-.7-.5h-.6c-.2 0-.6.1-.9.4s-1.2 1.2-1.2 2.9 1.3 3.4 1.4 3.6c.2.2 2.5 3.8 6 5.3.8.4 1.5.6 2 .7.8.3 1.6.2 2.2.1.7-.1 1.8-.7 2-1.4.3-.7.3-1.3.2-1.4-.1-.2-.3-.3-.6-.4z"/></svg>
       </a>
     </section>
 
-    <section class="section banner-section">
-      <div class="section-header">
-        <h2 class="section-title" id="castingHeading">Casting Highlights</h2>
-        <a class="section-pill" id="castingSeeMore" href="https://www.youtube.com/@CasterNaina/streams" target="_blank">See More</a>
+    <section class="m-section m-banner">
+      <div class="m-head">
+        <h2 id="mCastingHeading">Casting Highlights</h2>
+        <a class="m-pill" id="mCastingSeeMore" href="https://www.youtube.com/@CasterNaina/streams" target="_blank">See More</a>
       </div>
-
-      <div class="scroll-row" id="youtubeVideoRow">
-        <p class="loading-text">Loading videos...</p>
-      </div>
-
-      <p class="hint" id="castingHint">Swipe / scroll sidewise to view all casting highlights</p>
+      <div class="m-scroll" id="mYoutubeRow"></div>
+      <p class="m-hint" id="mCastingHint">Swipe / scroll sidewise to view all casting highlights</p>
     </section>
 
-    <section class="section banner-section">
-      <div class="section-header">
-        <h2 class="section-title" id="reelHeading">Reel Highlights</h2>
-        <a class="section-pill" id="reelSeeMore" href="https://www.instagram.com/caster_naina/" target="_blank">See More</a>
+    <section class="m-section m-banner">
+      <div class="m-head">
+        <h2 id="mReelHeading">Reel Highlights</h2>
+        <a class="m-pill" id="mReelSeeMore" href="https://www.instagram.com/caster_naina/" target="_blank">See More</a>
       </div>
-
-      <div class="scroll-row" id="reelRow">
-        <p class="loading-text">Loading reels...</p>
-      </div>
-
-      <p class="hint" id="reelHint">Swipe / scroll sidewise to view all reel highlights</p>
+      <div class="m-scroll" id="mReelRow"></div>
+      <p class="m-hint" id="mReelHint">Swipe / scroll sidewise to view all reel highlights</p>
     </section>
 
-    <section class="section thank-you">
-      <h2 id="thankYouHeading">Thank You</h2>
-      <p id="thankYouText">Thank you for exploring Caster Naina’s portfolio. For more live casting, commentary clips and reels, use the links above.</p>
+    <section class="m-section m-thank">
+      <h2 id="mThankHeading">Thank You</h2>
+      <p id="mThankText">Thank you for exploring Caster Naina’s portfolio.</p>
     </section>
+  </main>
 
+  <!-- DESKTOP -->
+  <main class="desktop-layout">
+    <div class="d-shell">
+      <nav class="d-nav">
+        <div class="d-brand">
+          <div class="d-brand-mark">CN</div>
+          <span id="dBrandName">Caster Naina</span>
+        </div>
+
+        <div class="d-nav-links">
+          <a id="dNavYoutube" href="https://www.youtube.com/@CasterNaina/streams" target="_blank">YouTube</a>
+          <a id="dNavInstagram" href="https://www.instagram.com/caster_naina/" target="_blank">Instagram</a>
+          <a id="dNavDiscord" href="https://discord.gg/tZacnxFnqu" target="_blank">Discord</a>
+          <a id="dNavWhatsapp" href="https://wa.me/917478989646" target="_blank">WhatsApp</a>
+        </div>
+      </nav>
+
+      <section class="d-hero-banner">
+        <div class="d-copy">
+          <div class="d-kicker" id="dPortfolioLabel">Portfolio</div>
+          <h1 class="d-title" id="dHeroTitle">Caster<br><span>Naina</span></h1>
+          <p class="d-about" id="dAboutText">
+            Casted <strong>200+ tournaments</strong> across custom rooms, scrims, live matches and creator events — known for energetic hosting, confident commentary and engaging audience presence.
+          </p>
+
+          <div class="d-ctas">
+            <a class="d-btn primary" id="dWatchBtn" href="#desktop-videos">Watch Highlights</a>
+            <a class="d-btn secondary" id="dInstaBtn" href="#desktop-reels">View Reels</a>
+            <a class="d-promo" id="dPromoButton" href="#" target="_blank" rel="noopener">
+              <span class="d-promo-track center" id="dPromoButtonText">Promotion</span>
+            </a>
+          </div>
+
+          <div class="d-stats">
+            <div class="d-stat"><b>200+</b><span>Tournaments Casted</span></div>
+            <div class="d-stat"><b>Live</b><span>Commentary Specialist</span></div>
+            <div class="d-stat"><b>Free Fire</b><span>Gaming Portfolio</span></div>
+          </div>
+        </div>
+      </section>
+
+      <section class="d-section" id="desktop-videos">
+        <div class="d-section-head">
+          <h2 id="dCastingHeading">Casting Highlights</h2>
+          <a class="d-see" id="dCastingSeeMore" href="https://www.youtube.com/@CasterNaina/streams" target="_blank">See More</a>
+        </div>
+        <div class="d-video-grid" id="dYoutubeRow"></div>
+      </section>
+
+      <section class="d-section" id="desktop-reels">
+        <div class="d-section-head">
+          <h2 id="dReelHeading">Reel Highlights</h2>
+          <a class="d-see" id="dReelSeeMore" href="https://www.instagram.com/caster_naina/" target="_blank">See More</a>
+        </div>
+        <div class="d-reel-grid" id="dReelRow"></div>
+      </section>
+
+      <section class="d-section d-thank">
+        <h2 id="dThankHeading">Thank You</h2>
+        <p id="dThankText">Thank you for exploring Caster Naina’s portfolio. For more live casting, commentary clips and reels, use the links above.</p>
+      </section>
+    </div>
   </main>
 
   <script>
@@ -888,7 +1130,6 @@
 
       row.push(cell.trim());
       if (row.some(value => value !== "")) rows.push(row);
-
       return rows;
     }
 
@@ -899,15 +1140,9 @@
       for (let i = startIndex; i < rows.length; i++) {
         const key = (rows[i][0] || "").trim();
         if (!key) continue;
-
-        const values = rows[i]
-          .slice(1)
-          .map(value => value.trim())
-          .filter(value => value !== "");
-
+        const values = rows[i].slice(1).map(value => value.trim()).filter(value => value !== "");
         data[key] = values;
       }
-
       return data;
     }
 
@@ -922,21 +1157,6 @@
       return fallbackData[key] || [];
     }
 
-    function setText(id, text) {
-      const element = document.getElementById(id);
-      if (element) element.textContent = text;
-    }
-
-    function setHTML(id, html) {
-      const element = document.getElementById(id);
-      if (element) element.innerHTML = html;
-    }
-
-    function setHref(id, href) {
-      const element = document.getElementById(id);
-      if (element && href) element.href = href;
-    }
-
     function escapeHTML(value) {
       return String(value || "")
         .replaceAll("&", "&amp;")
@@ -946,10 +1166,26 @@
         .replaceAll("'", "&#039;");
     }
 
-    function formatHeroTitle(title) {
+    function setText(id, text) {
+      const el = document.getElementById(id);
+      if (el) el.textContent = text;
+    }
+
+    function setHTML(id, html) {
+      const el = document.getElementById(id);
+      if (el) el.innerHTML = html;
+    }
+
+    function setHref(id, href) {
+      const el = document.getElementById(id);
+      if (el && href) el.href = href;
+    }
+
+    function formatHeroTitle(title, desktop = false) {
       const clean = title.trim();
       const parts = clean.split(" ");
       if (parts.length >= 2) {
+        if (desktop) return escapeHTML(parts.slice(0, -1).join(" ")) + "<br><span>" + escapeHTML(parts[parts.length - 1]) + "</span>";
         return escapeHTML(parts.slice(0, -1).join(" ")) + "<br>" + escapeHTML(parts[parts.length - 1]);
       }
       return escapeHTML(clean);
@@ -957,6 +1193,22 @@
 
     function formatAboutText(text) {
       return escapeHTML(text).replace(/(200\+ tournaments|[0-9]+\+ tournaments)/i, "<strong>$1</strong>");
+    }
+
+    function getStartSeconds(parsedUrl) {
+      const t = parsedUrl.searchParams.get("t") || parsedUrl.searchParams.get("start") || "0";
+      if (/^\d+$/.test(t)) return Number(t);
+
+      let seconds = 0;
+      const h = t.match(/(\d+)h/);
+      const m = t.match(/(\d+)m/);
+      const s = t.match(/(\d+)s/);
+
+      if (h) seconds += Number(h[1]) * 3600;
+      if (m) seconds += Number(m[1]) * 60;
+      if (s) seconds += Number(s[1]);
+
+      return seconds;
     }
 
     function convertYouTubeToEmbed(url) {
@@ -980,215 +1232,214 @@
         }
 
         if (!videoId) return "";
-
         return `https://www.youtube.com/embed/${videoId}?start=${start}&rel=0&enablejsapi=1&playsinline=1`;
-      } catch (error) {
+      } catch (e) {
         return "";
       }
     }
 
-    function getStartSeconds(parsedUrl) {
-      const t = parsedUrl.searchParams.get("t") || parsedUrl.searchParams.get("start") || "0";
-      if (/^\d+$/.test(t)) return Number(t);
+    function applyPromoState(btn, track, text, link, status) {
+      if (!btn || !track) return;
 
-      let seconds = 0;
-      const hours = t.match(/(\d+)h/);
-      const minutes = t.match(/(\d+)m/);
-      const secs = t.match(/(\d+)s/);
+      btn.classList.remove("show");
+      track.className = track.className.includes("m-promo-track") ? "m-promo-track center" : "d-promo-track center";
+      track.innerHTML = "";
 
-      if (hours) seconds += Number(hours[1]) * 3600;
-      if (minutes) seconds += Number(minutes[1]) * 60;
-      if (secs) seconds += Number(secs[1]);
+      if (status === "enable" && text) {
+        btn.classList.add("show");
+        const isLong = text.length > 18;
+        if (isLong) {
+          track.className = track.className.includes("m-promo-track") ? "m-promo-track marquee" : "d-promo-track marquee";
+          track.innerHTML = `<span>${escapeHTML(text)}</span><span>${escapeHTML(text)}</span><span>${escapeHTML(text)}</span><span>${escapeHTML(text)}</span>`;
+        } else {
+          track.textContent = text;
+        }
 
-      return seconds;
+        if (link) {
+          btn.href = link;
+          btn.target = "_blank";
+          btn.style.pointerEvents = "auto";
+        } else {
+          btn.href = "#";
+          btn.removeAttribute("target");
+          btn.style.pointerEvents = "none";
+        }
+      }
     }
 
-    function renderPromoButton(data) {
+    function renderPromo(data) {
       const status = getOne(data, "promo_button_status", "disable").toLowerCase();
       const text = getOne(data, "promo_button_text", "");
       const link = getOne(data, "promo_button_link", "");
 
-      const button = document.getElementById("promoButton");
-      const buttonText = document.getElementById("promoButtonText");
+      applyPromoState(
+        document.getElementById("mPromoButton"),
+        document.getElementById("mPromoButtonText"),
+        text,
+        link,
+        status
+      );
 
-      if (!button || !buttonText) return;
-
-      button.classList.remove("show");
-      buttonText.className = "promo-track center";
-      buttonText.innerHTML = "";
-
-      if (status === "enable" && text) {
-        button.classList.add("show");
-
-        const isLongText = text.length > 18;
-
-        if (isLongText) {
-          buttonText.className = "promo-track marquee";
-          buttonText.innerHTML = `
-            <span>${escapeHTML(text)}</span>
-            <span>${escapeHTML(text)}</span>
-            <span>${escapeHTML(text)}</span>
-            <span>${escapeHTML(text)}</span>
-          `;
-        } else {
-          buttonText.className = "promo-track center";
-          buttonText.textContent = text;
-        }
-
-        if (link) {
-          button.href = link;
-          button.target = "_blank";
-          button.style.pointerEvents = "auto";
-          button.setAttribute("aria-label", text);
-        } else {
-          button.href = "#";
-          button.removeAttribute("target");
-          button.style.pointerEvents = "none";
-          button.setAttribute("aria-label", text);
-        }
-      }
+      applyPromoState(
+        document.getElementById("dPromoButton"),
+        document.getElementById("dPromoButtonText"),
+        text,
+        link,
+        status
+      );
     }
 
-    function renderYouTubeVideos(data) {
-      const row = document.getElementById("youtubeVideoRow");
+    function renderVideos(data) {
       const links = getMany(data, "youtube_video_links");
       const titles = getMany(data, "youtube_video_titles");
       const label = getOne(data, "youtube_video_label", "YouTube");
+      const mRow = document.getElementById("mYoutubeRow");
+      const dRow = document.getElementById("dYoutubeRow");
 
-      row.innerHTML = "";
+      mRow.innerHTML = "";
+      dRow.innerHTML = "";
       youtubePlayers = [];
 
       links.forEach((link, index) => {
-        const embedUrl = convertYouTubeToEmbed(link);
-        if (!embedUrl) return;
+        const embed = convertYouTubeToEmbed(link);
+        if (!embed) return;
 
         const title = titles[index] || `Highlight ${String(index + 1).padStart(2, "0")}`;
-        const iframeId = `yt-player-${index + 1}`;
+        const mid = `m-yt-${index + 1}`;
+        const did = `d-yt-${index + 1}`;
 
-        const card = document.createElement("article");
-        card.className = "video-card";
-        card.innerHTML = `
-          <div class="video-frame">
-            <iframe
-              id="${iframeId}"
-              src="${escapeHTML(embedUrl)}"
-              title="${escapeHTML(title)}"
-              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-              allowfullscreen>
-            </iframe>
-          </div>
-          <div class="card-caption">
-            <h3>${escapeHTML(title)}</h3>
-            <span>${escapeHTML(label)}</span>
-          </div>
-        `;
+        mRow.insertAdjacentHTML("beforeend", `
+          <article class="m-video-card">
+            <div class="m-video-frame">
+              <iframe id="${mid}" src="${escapeHTML(embed)}" title="${escapeHTML(title)}" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+            </div>
+            <div class="m-caption"><h3>${escapeHTML(title)}</h3><span>${escapeHTML(label)}</span></div>
+          </article>
+        `);
 
-        row.appendChild(card);
+        dRow.insertAdjacentHTML("beforeend", `
+          <article class="d-video-card">
+            <div class="d-video-frame">
+              <iframe id="${did}" src="${escapeHTML(embed)}" title="${escapeHTML(title)}" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+            </div>
+            <div class="d-card-cap"><h3>${escapeHTML(title)}</h3><span>${escapeHTML(label)}</span></div>
+          </article>
+        `);
       });
-
-      if (!row.children.length) {
-        row.innerHTML = `<p class="loading-text">No videos added yet.</p>`;
-      }
 
       loadYouTubeAPI();
     }
 
     function renderReels(data) {
-      const row = document.getElementById("reelRow");
       const links = getMany(data, "reel_links");
-      const thumbnails = getMany(data, "reel_thumbnails");
+      const thumbs = getMany(data, "reel_thumbnails");
       const titles = getMany(data, "reel_titles");
       const label = getOne(data, "reel_label", "Instagram");
+      const mRow = document.getElementById("mReelRow");
+      const dRow = document.getElementById("dReelRow");
 
-      row.innerHTML = "";
+      mRow.innerHTML = "";
+      dRow.innerHTML = "";
 
       links.forEach((link, index) => {
-        const thumbnail = thumbnails[index];
-        if (!link || !thumbnail) return;
+        const thumb = thumbs[index];
+        if (!link || !thumb) return;
 
         const title = titles[index] || `Reel ${String(index + 1).padStart(2, "0")}`;
 
-        const card = document.createElement("a");
-        card.className = "reel-card";
-        card.href = link;
-        card.target = "_blank";
-        card.rel = "noopener";
-        card.onclick = pauseAllVideos;
+        mRow.insertAdjacentHTML("beforeend", `
+          <a class="m-reel-card" href="${escapeHTML(link)}" target="_blank" rel="noopener" onclick="pauseAllVideos()">
+            <div class="m-reel-thumb"><img src="${escapeHTML(thumb)}" alt="${escapeHTML(title)}"><div class="m-play"></div></div>
+            <div class="m-caption"><h3>${escapeHTML(title)}</h3><span>${escapeHTML(label)}</span></div>
+          </a>
+        `);
 
-        card.innerHTML = `
-          <div class="reel-thumb">
-            <img src="${escapeHTML(thumbnail)}" alt="${escapeHTML(title)}">
-            <div class="reel-play"></div>
-          </div>
-          <div class="reel-caption">
-            <h3>${escapeHTML(title)}</h3>
-            <span>${escapeHTML(label)}</span>
-          </div>
-        `;
-
-        row.appendChild(card);
+        dRow.insertAdjacentHTML("beforeend", `
+          <a class="d-reel-card" href="${escapeHTML(link)}" target="_blank" rel="noopener" onclick="pauseAllVideos()">
+            <div class="d-reel-thumb"><img src="${escapeHTML(thumb)}" alt="${escapeHTML(title)}"><div class="d-play"></div></div>
+            <div class="d-card-cap"><h3>${escapeHTML(title)}</h3><span>${escapeHTML(label)}</span></div>
+          </a>
+        `);
       });
-
-      if (!row.children.length) {
-        row.innerHTML = `<p class="loading-text">No reels added yet.</p>`;
-      }
     }
 
     function applyData(data) {
-      const topBannerImage = getOne(data, "top_banner_image");
-      const heroSection = document.getElementById("heroSection");
-
-      if (topBannerImage) {
-        heroSection.style.backgroundImage = `
-          linear-gradient(90deg, rgba(3, 48, 44, 0.88) 0%, rgba(3, 48, 44, 0.48) 42%, rgba(3, 48, 44, 0.10) 100%),
-          url("${topBannerImage}")
-        `;
-      }
+      const banner = getOne(data, "top_banner_image");
+      const title = getOne(data, "hero_title", "Caster Naina");
+      const about = getOne(data, "about_text", "");
+      const portfolio = getOne(data, "portfolio_label", "Portfolio");
 
       document.title = getOne(data, "share_title", "Caster Naina Portfolio");
-
-      setText("portfolioLabel", getOne(data, "portfolio_label", "Portfolio"));
-      setHTML("heroTitle", formatHeroTitle(getOne(data, "hero_title", "Caster Naina")));
-      setHTML("aboutText", formatAboutText(getOne(data, "about_text")));
-      setText("shareButton", getOne(data, "share_button_text", "Share Profile"));
-
-      renderPromoButton(data);
-
-      setHref("youtubeSocial", getOne(data, "youtube_social_link"));
-      setHref("instagramSocial", getOne(data, "instagram_social_link"));
-      setHref("discordSocial", getOne(data, "discord_social_link"));
-      setHref("whatsappSocial", getOne(data, "whatsapp_social_link"));
-
-      setText("castingHeading", getOne(data, "casting_heading", "Casting Highlights"));
-      setText("castingSeeMore", getOne(data, "casting_see_more_text", "See More"));
-      setHref("castingSeeMore", getOne(data, "casting_see_more_link"));
-      setText("castingHint", getOne(data, "casting_hint"));
-
-      setText("reelHeading", getOne(data, "reel_heading", "Reel Highlights"));
-      setText("reelSeeMore", getOne(data, "reel_see_more_text", "See More"));
-      setHref("reelSeeMore", getOne(data, "reel_see_more_link"));
-      setText("reelHint", getOne(data, "reel_hint"));
-
-      setText("thankYouHeading", getOne(data, "thank_you_heading", "Thank You"));
-      setText("thankYouText", getOne(data, "thank_you_text"));
-
       shareTitle = getOne(data, "share_title", "Caster Naina Portfolio");
       shareText = getOne(data, "share_text", "Check out Caster Naina's casting portfolio.");
 
-      renderYouTubeVideos(data);
+      if (banner) {
+        document.getElementById("mHeroSection").style.backgroundImage =
+          `linear-gradient(90deg, rgba(3, 48, 44, 0.88) 0%, rgba(3, 48, 44, 0.48) 42%, rgba(3, 48, 44, 0.10) 100%), url("${banner}")`;
+
+        document.querySelector(".d-hero-banner").style.backgroundImage =
+          `linear-gradient(90deg, rgba(3, 48, 44, 0.94) 0%, rgba(3, 48, 44, 0.82) 35%, rgba(3, 48, 44, 0.36) 62%, rgba(3, 48, 44, 0.06) 100%), url("${banner}")`;
+      }
+
+      setText("mPortfolioLabel", portfolio);
+      setText("dPortfolioLabel", portfolio);
+
+      setHTML("mHeroTitle", formatHeroTitle(title, false));
+      setHTML("dHeroTitle", formatHeroTitle(title, true));
+
+      setText("dBrandName", title);
+
+      setHTML("mAboutText", formatAboutText(about));
+      setHTML("dAboutText", formatAboutText(about));
+
+      setText("mShareButton", getOne(data, "share_button_text", "Share Profile"));
+
+      renderPromo(data);
+
+      const ytSocial = getOne(data, "youtube_social_link");
+      const igSocial = getOne(data, "instagram_social_link");
+      const dcSocial = getOne(data, "discord_social_link");
+      const waSocial = getOne(data, "whatsapp_social_link");
+
+      setHref("mYoutubeSocial", ytSocial);
+      setHref("mInstagramSocial", igSocial);
+      setHref("mDiscordSocial", dcSocial);
+      setHref("mWhatsappSocial", waSocial);
+
+      setHref("dNavYoutube", ytSocial);
+      setHref("dNavInstagram", igSocial);
+      setHref("dNavDiscord", dcSocial);
+      setHref("dNavWhatsapp", waSocial);
+
+      ["mCastingHeading", "dCastingHeading"].forEach(id => setText(id, getOne(data, "casting_heading", "Casting Highlights")));
+      ["mCastingSeeMore", "dCastingSeeMore"].forEach(id => {
+        setText(id, getOne(data, "casting_see_more_text", "See More"));
+        setHref(id, getOne(data, "casting_see_more_link"));
+      });
+      setText("mCastingHint", getOne(data, "casting_hint", ""));
+
+      ["mReelHeading", "dReelHeading"].forEach(id => setText(id, getOne(data, "reel_heading", "Reel Highlights")));
+      ["mReelSeeMore", "dReelSeeMore"].forEach(id => {
+        setText(id, getOne(data, "reel_see_more_text", "See More"));
+        setHref(id, getOne(data, "reel_see_more_link"));
+      });
+      setText("mReelHint", getOne(data, "reel_hint", ""));
+
+      ["mThankHeading", "dThankHeading"].forEach(id => setText(id, getOne(data, "thank_you_heading", "Thank You")));
+      ["mThankText", "dThankText"].forEach(id => setText(id, getOne(data, "thank_you_text")));
+
+      renderVideos(data);
       renderReels(data);
     }
 
     async function loadSheetData() {
       try {
-        const response = await fetch(SHEET_CSV_URL + "&cacheBust=" + Date.now());
-        if (!response.ok) throw new Error("Could not load sheet");
-        const csvText = await response.text();
-        const rows = parseCSV(csvText);
-        const data = rowsToData(rows);
-        applyData(data);
-      } catch (error) {
-        console.log("Sheet load failed, using fallback data:", error);
+        const res = await fetch(SHEET_CSV_URL + "&cacheBust=" + Date.now());
+        if (!res.ok) throw new Error("Sheet failed");
+        const csv = await res.text();
+        applyData(rowsToData(parseCSV(csv)));
+      } catch (err) {
+        console.log("Using fallback data:", err);
         applyData(fallbackData);
       }
     }
@@ -1213,50 +1464,42 @@
 
     function initialiseYouTubePlayers() {
       youtubePlayers = [];
-      const iframes = document.querySelectorAll("#youtubeVideoRow iframe");
-
-      iframes.forEach((iframe) => {
+      document.querySelectorAll("iframe[id^='m-yt-'], iframe[id^='d-yt-']").forEach((iframe) => {
         try {
           const player = new YT.Player(iframe.id, {
             events: {
               "onStateChange": function(event) {
                 if (event.data === YT.PlayerState.PLAYING) {
-                  youtubePlayers.forEach(function(otherPlayer) {
-                    if (
-                      otherPlayer &&
-                      otherPlayer !== event.target &&
-                      typeof otherPlayer.pauseVideo === "function"
-                    ) {
-                      otherPlayer.pauseVideo();
+                  youtubePlayers.forEach(other => {
+                    if (other && other !== event.target && typeof other.pauseVideo === "function") {
+                      other.pauseVideo();
                     }
                   });
                 }
               }
             }
           });
-
           youtubePlayers.push(player);
-        } catch (error) {
-          console.log("Player init issue:", error);
+        } catch (e) {
+          console.log("YT init issue:", e);
         }
       });
     }
 
     function pauseAllVideos() {
-      youtubePlayers.forEach(function(player) {
+      youtubePlayers.forEach(player => {
         if (player && typeof player.pauseVideo === "function") {
           player.pauseVideo();
         }
       });
     }
 
-    document.addEventListener("visibilitychange", function() {
+    document.addEventListener("visibilitychange", () => {
       if (document.hidden) pauseAllVideos();
     });
 
     function shareProfile() {
       pauseAllVideos();
-
       const shareData = {
         title: shareTitle,
         text: shareText,
@@ -1264,15 +1507,9 @@
       };
 
       if (navigator.share) {
-        navigator.share(shareData).catch(function(error) {
-          console.log("Share cancelled or failed:", error);
-        });
+        navigator.share(shareData).catch(() => {});
       } else if (navigator.clipboard) {
-        navigator.clipboard.writeText(window.location.href).then(function() {
-          alert("Profile link copied!");
-        }).catch(function() {
-          alert("Share option is not supported on this browser.");
-        });
+        navigator.clipboard.writeText(window.location.href).then(() => alert("Profile link copied!"));
       } else {
         alert("Share option is not supported on this browser.");
       }
