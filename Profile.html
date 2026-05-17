@@ -475,6 +475,23 @@
       margin: 0 auto;
     }
 
+
+    .title-shine {
+      display: inline-block;
+      color: transparent !important;
+      background: linear-gradient(90deg, #ffffff 0%, #ffffff 28%, #fff0a3 44%, #f6c545 54%, #ffffff 72%, #ffffff 100%);
+      background-size: 240% auto;
+      -webkit-background-clip: text;
+      background-clip: text;
+      animation: titleShine 2.8s linear infinite;
+      filter: drop-shadow(0 0 18px rgba(246,197,69,0.24));
+    }
+
+    @keyframes titleShine {
+      0% { background-position: 160% center; }
+      100% { background-position: -160% center; }
+    }
+
     /* ================= DESKTOP LAYOUT ================= */
 
     @media (min-width: 900px) {
@@ -627,6 +644,97 @@
       .d-title span {
         color: var(--gold);
         text-shadow: 0 20px 60px rgba(246,197,69,0.22);
+      }
+
+      .d-title span.title-shine {
+        color: transparent !important;
+      }
+
+      .title-shine {
+        display: inline-block;
+        color: transparent !important;
+        background: linear-gradient(90deg, #ffffff 0%, #ffffff 28%, #fff0a3 44%, #f6c545 54%, #ffffff 72%, #ffffff 100%);
+        background-size: 240% auto;
+        -webkit-background-clip: text;
+        background-clip: text;
+        animation: titleShine 2.8s linear infinite;
+        filter: drop-shadow(0 0 18px rgba(246,197,69,0.24));
+      }
+
+      @keyframes titleShine {
+        0% { background-position: 160% center; }
+        100% { background-position: -160% center; }
+      }
+
+      .d-nav-links a,
+      .d-nav-links button,
+      .d-btn,
+      .d-see,
+      .d-video-card,
+      .d-reel-card,
+      .d-stat {
+        transition: transform 0.25s ease, box-shadow 0.25s ease, filter 0.25s ease, background 0.25s ease;
+      }
+
+      .d-nav-links a:hover,
+      .d-nav-links button:hover,
+      .d-btn:hover,
+      .d-see:hover {
+        transform: scale(1.06);
+      }
+
+      .d-video-card:hover,
+      .d-reel-card:hover {
+        transform: translateY(-8px) scale(1.025);
+        box-shadow: 0 28px 70px rgba(0,0,0,0.34);
+      }
+
+      .d-stat:hover {
+        transform: translateY(-5px) scale(1.03);
+        box-shadow: 0 18px 45px rgba(0,0,0,0.22);
+      }
+
+      .d-promo {
+        transition: transform 0.25s ease, box-shadow 0.25s ease, filter 0.25s ease;
+      }
+
+      .d-promo:hover {
+        transform: scale(1.07);
+        filter: brightness(1.12);
+        box-shadow:
+          0 20px 46px rgba(246,197,69,0.45),
+          0 0 45px rgba(246,197,69,0.26);
+      }
+
+      .d-promo::before {
+        content: "";
+        position: absolute;
+        inset: -18px;
+        border-radius: inherit;
+        background:
+          radial-gradient(circle at 18% 45%, rgba(255,255,190,0.75), transparent 24%),
+          radial-gradient(circle at 78% 50%, rgba(255,214,84,0.62), transparent 28%);
+        opacity: 0;
+        transform: scale(0.92);
+        filter: blur(14px);
+        transition: opacity 0.35s ease 0.65s, transform 0.35s ease 0.65s;
+        z-index: 0;
+        pointer-events: none;
+      }
+
+      .d-promo:hover::before {
+        opacity: 1;
+        transform: scale(1.18);
+      }
+
+      .d-promo::after {
+        animation: none;
+        left: -65%;
+        opacity: 0;
+      }
+
+      .d-promo:hover::after {
+        animation: promoShine 1.8s ease-in-out 0.45s infinite;
       }
 
       .d-about {
@@ -1181,18 +1289,65 @@
       if (el && href) el.href = href;
     }
 
+    function markdownBoldToHTML(text, strongClass = "") {
+      const safe = escapeHTML(text || "");
+      const classAttr = strongClass ? ` class="${strongClass}"` : "";
+      return safe.replace(/\*\*(.*?)\*\*/g, `<strong${classAttr}>$1</strong>`);
+    }
+
     function formatHeroTitle(title, desktop = false) {
-      const clean = title.trim();
-      const parts = clean.split(" ");
-      if (parts.length >= 2) {
-        if (desktop) return escapeHTML(parts.slice(0, -1).join(" ")) + "<br><span>" + escapeHTML(parts[parts.length - 1]) + "</span>";
-        return escapeHTML(parts.slice(0, -1).join(" ")) + "<br>" + escapeHTML(parts[parts.length - 1]);
+      const clean = String(title || "").trim();
+      const isFullyAnimated =
+        clean.startsWith("**") &&
+        clean.endsWith("**") &&
+        clean.indexOf("**") === 0 &&
+        clean.lastIndexOf("**") === clean.length - 2;
+
+      const plain = clean.replace(/\*\*/g, "").trim();
+
+      if (isFullyAnimated) {
+        const parts = plain.split(/\s+/);
+        if (parts.length >= 2) {
+          const first = escapeHTML(parts.slice(0, -1).join(" "));
+          const last = escapeHTML(parts[parts.length - 1]);
+          return `<span class="title-shine">${first}<br>${last}</span>`;
+        }
+        return `<span class="title-shine">${escapeHTML(plain)}</span>`;
       }
-      return escapeHTML(clean);
+
+      const tokens = clean.match(/\*\*.*?\*\*|\S+/g) || [];
+      const parts = tokens.map(token => {
+        const bold = token.startsWith("**") && token.endsWith("**");
+        const text = bold ? token.slice(2, -2) : token;
+        return { text, bold };
+      });
+
+      if (parts.length >= 2) {
+        const firstParts = parts.slice(0, -1).map(part => {
+          const value = escapeHTML(part.text);
+          return part.bold ? `<span class="title-shine">${value}</span>` : value;
+        }).join(" ");
+
+        const lastPart = parts[parts.length - 1];
+        const lastValue = escapeHTML(lastPart.text);
+
+        if (desktop) {
+          return `${firstParts}<br><span class="${lastPart.bold ? "title-shine" : ""}">${lastValue}</span>`;
+        }
+
+        return `${firstParts}<br>${lastPart.bold ? `<span class="title-shine">${lastValue}</span>` : lastValue}`;
+      }
+
+      if (parts.length === 1) {
+        const value = escapeHTML(parts[0].text);
+        return parts[0].bold ? `<span class="title-shine">${value}</span>` : value;
+      }
+
+      return "";
     }
 
     function formatAboutText(text) {
-      return escapeHTML(text).replace(/(200\+ tournaments|[0-9]+\+ tournaments)/i, "<strong>$1</strong>");
+      return markdownBoldToHTML(text);
     }
 
     function getStartSeconds(parsedUrl) {
