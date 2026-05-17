@@ -1088,6 +1088,75 @@
       .m-video-card { min-width: 255px; }
       .m-reel-card { min-width: 148px; }
     }
+  
+
+
+
+    /* FINAL TITLE ANIMATION FIX
+       PC: NAINA is NOT static. It stays yellow and a moving shine passes continuously.
+       Mobile: marked word gets white text with yellow light sweep. */
+
+    .mobile-title-shine {
+      display: inline-block;
+      color: transparent !important;
+      -webkit-text-fill-color: transparent !important;
+      background-image: linear-gradient(
+        100deg,
+        #ffffff 0%,
+        #ffffff 30%,
+        #fff0a3 42%,
+        #f6c545 50%,
+        #fff0a3 58%,
+        #ffffff 70%,
+        #ffffff 100%
+      ) !important;
+      background-size: 260% 100% !important;
+      -webkit-background-clip: text !important;
+      background-clip: text !important;
+      animation: mobileTitleSweep 3.2s linear infinite !important;
+    }
+
+    @keyframes mobileTitleSweep {
+      0% { background-position: 150% 50%; }
+      100% { background-position: -150% 50%; }
+    }
+
+    @media (min-width: 900px) {
+      .d-title .desktop-title-shine,
+      .d-title span.desktop-title-shine,
+      .d-title .title-shine,
+      .d-title span.title-shine {
+        display: inline-block !important;
+        color: transparent !important;
+        -webkit-text-fill-color: transparent !important;
+        background-image: linear-gradient(
+          105deg,
+          #f6c545 0%,
+          #f6c545 24%,
+          #ffcf35 34%,
+          #ffe98f 44%,
+          #ffffff 50%,
+          #ffe98f 56%,
+          #ffcf35 66%,
+          #f6c545 76%,
+          #f6c545 100%
+        ) !important;
+        background-size: 260% 100% !important;
+        -webkit-background-clip: text !important;
+        background-clip: text !important;
+        animation: desktopNainaShineMove 3.8s linear infinite !important;
+        filter: none !important;
+        text-shadow: none !important;
+        transform: none !important;
+        will-change: background-position;
+      }
+
+      @keyframes desktopNainaShineMove {
+        0% { background-position: 150% 50%; }
+        100% { background-position: -150% 50%; }
+      }
+    }
+
   </style>
 </head>
 <body>
@@ -1372,7 +1441,9 @@
 
     function formatHeroTitle(title, desktop = false) {
       const clean = String(title || "").trim();
-      const isFullyAnimated =
+
+      // Fully highlighted title: **Caster Naina**
+      const fullyMarked =
         clean.startsWith("**") &&
         clean.endsWith("**") &&
         clean.indexOf("**") === 0 &&
@@ -1380,42 +1451,62 @@
 
       const plain = clean.replace(/\*\*/g, "").trim();
 
-      if (isFullyAnimated) {
+      if (fullyMarked) {
         const parts = plain.split(/\s+/);
         if (parts.length >= 2) {
           const first = escapeHTML(parts.slice(0, -1).join(" "));
           const last = escapeHTML(parts[parts.length - 1]);
-          return `<span class="title-shine">${first}<br>${last}</span>`;
+
+          if (desktop) {
+            return `${first}<br><span class="desktop-title-shine">${last}</span>`;
+          }
+
+          return `${first}<br><span class="mobile-title-shine">${last}</span>`;
         }
-        return `<span class="title-shine">${escapeHTML(plain)}</span>`;
+
+        return desktop
+          ? `<span class="desktop-title-shine">${escapeHTML(plain)}</span>`
+          : `<span class="mobile-title-shine">${escapeHTML(plain)}</span>`;
       }
 
+      // Word-level highlighting: Caster **Naina**
       const tokens = clean.match(/\*\*.*?\*\*|\S+/g) || [];
       const parts = tokens.map(token => {
-        const bold = token.startsWith("**") && token.endsWith("**");
-        const text = bold ? token.slice(2, -2) : token;
-        return { text, bold };
+        const marked = token.startsWith("**") && token.endsWith("**");
+        return {
+          text: marked ? token.slice(2, -2) : token,
+          marked
+        };
       });
 
       if (parts.length >= 2) {
         const firstParts = parts.slice(0, -1).map(part => {
           const value = escapeHTML(part.text);
-          return part.bold ? `<span class="title-shine">${value}</span>` : value;
+          if (!part.marked) return value;
+          return desktop
+            ? `<span class="desktop-title-shine">${value}</span>`
+            : `<span class="mobile-title-shine">${value}</span>`;
         }).join(" ");
 
         const lastPart = parts[parts.length - 1];
         const lastValue = escapeHTML(lastPart.text);
 
+        // PC requirement: make Naina / last word animate in golden color even if sheet forgot **.
+        const desktopLastShouldAnimate = desktop && (lastPart.marked || parts.length >= 2);
+        const mobileLastShouldAnimate = !desktop && lastPart.marked;
+
         if (desktop) {
-          return `${firstParts}<br><span class="${lastPart.bold ? "title-shine" : ""}">${lastValue}</span>`;
+          return `${firstParts}<br>${desktopLastShouldAnimate ? `<span class="desktop-title-shine">${lastValue}</span>` : `<span>${lastValue}</span>`}`;
         }
 
-        return `${firstParts}<br>${lastPart.bold ? `<span class="title-shine">${lastValue}</span>` : lastValue}`;
+        return `${firstParts}<br>${mobileLastShouldAnimate ? `<span class="mobile-title-shine">${lastValue}</span>` : lastValue}`;
       }
 
       if (parts.length === 1) {
         const value = escapeHTML(parts[0].text);
-        return parts[0].bold ? `<span class="title-shine">${value}</span>` : value;
+        if (desktop && parts[0].marked) return `<span class="desktop-title-shine">${value}</span>`;
+        if (!desktop && parts[0].marked) return `<span class="mobile-title-shine">${value}</span>`;
+        return value;
       }
 
       return "";
