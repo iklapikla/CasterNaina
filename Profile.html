@@ -77,9 +77,6 @@
       display: none;
     }
 
-    .ff-custom-cursor {
-      display: none;
-    }
 
     /* ================= MOBILE LAYOUT ================= */
 
@@ -1005,7 +1002,7 @@
         z-index: 6;
         display: block;
         background: transparent;
-        cursor: none !important;
+        cursor: pointer;
       }
 
       .d-card-cap {
@@ -1099,47 +1096,6 @@
     }
 
 
-
-      /* ================= DESKTOP / TABLET CUSTOM CURSOR ================= */
-      @media (hover: hover) and (pointer: fine) {
-        html,
-        body,
-        a,
-        button,
-        iframe,
-        .d-video-card,
-        .d-reel-card,
-        .d-stat,
-        .d-btn,
-        .d-see {
-          cursor: none !important;
-        }
-
-        .ff-custom-cursor {
-          display: block;
-          position: fixed;
-          left: 0;
-          top: 0;
-          width: 200px;
-          height: 200px;
-          z-index: 999999;
-          pointer-events: none;
-          opacity: 0;
-          background-image: url("https://raw.githubusercontent.com/iklapikla/CasterNaina/refs/heads/main/FF%20knife%20PNG.png");
-          background-size: contain;
-          background-repeat: no-repeat;
-          background-position: center;
-          filter: drop-shadow(0 10px 20px rgba(0,0,0,0.42)) drop-shadow(0 0 14px rgba(246,197,69,0.28));
-          transform: translate3d(-120px, -120px, 0) scale(1);
-          transform-origin: 48% 48%;
-          will-change: transform, opacity;
-          transition: opacity 0.18s ease;
-        }
-
-        .ff-custom-cursor.is-visible {
-          opacity: 1;
-        }
-      }
 
       /* ================= DESKTOP / TABLET SKELETON LOADING ================= */
       body.is-loading .loading-skeleton {
@@ -1444,8 +1400,6 @@
   </style>
 </head>
 <body class="is-loading">
-  <div class="ff-custom-cursor" id="ffCustomCursor" aria-hidden="true"></div>
-
   <!-- DESKTOP / TABLET SKELETON LOADER -->
   <div class="loading-skeleton" aria-hidden="true">
     <div class="sk-shell">
@@ -2099,66 +2053,6 @@
       renderReels(data);
     }
 
-    function initCustomCursor() {
-      const cursor = document.getElementById("ffCustomCursor");
-      if (!cursor) return;
-
-      const canUseCursor = window.matchMedia("(hover: hover) and (pointer: fine) and (min-width: 768px)").matches;
-      if (!canUseCursor) return;
-
-      let mouseX = -120;
-      let mouseY = -120;
-      let currentX = -120;
-      let currentY = -120;
-      let lastX = -120;
-      let lastY = -120;
-      let lastTime = performance.now();
-      let scale = 1;
-      let targetScale = 1;
-
-      function onMove(event) {
-        mouseX = event.clientX;
-        mouseY = event.clientY;
-
-        const now = performance.now();
-        const dt = Math.max(now - lastTime, 16);
-        const dx = mouseX - lastX;
-        const dy = mouseY - lastY;
-        const distance = Math.sqrt(dx * dx + dy * dy);
-        const speed = distance / dt;
-
-        // MacBook-style enlarge only on strong shake / fast movement.
-        // Small normal movements will keep the knife at normal size.
-        if (speed > 3.4 && distance > 34) {
-          targetScale = Math.min(2.15, 1 + (speed - 3.4) * 0.18);
-        }
-
-        lastX = mouseX;
-        lastY = mouseY;
-        lastTime = now;
-        cursor.classList.add("is-visible");
-      }
-
-      function onLeave() {
-        cursor.classList.remove("is-visible");
-      }
-
-      function animateCursor() {
-        currentX += (mouseX - currentX) * 0.36;
-        currentY += (mouseY - currentY) * 0.36;
-        scale += (targetScale - scale) * 0.24;
-        targetScale += (1 - targetScale) * 0.12;
-
-        cursor.style.transform = `translate3d(${currentX}px, ${currentY}px, 0) translate(-18%, -10%) scale(${scale})`;
-        requestAnimationFrame(animateCursor);
-      }
-
-      window.addEventListener("mousemove", onMove, { passive: true });
-      document.addEventListener("mouseleave", onLeave);
-      document.addEventListener("mouseenter", () => cursor.classList.add("is-visible"));
-      animateCursor();
-    }
-
     async function loadSheetData() {
       try {
         const res = await fetch(SHEET_CSV_URL + "&cacheBust=" + Date.now(), {
@@ -2228,6 +2122,40 @@
       });
     }
 
+    function scrollToPortfolioSection(sectionId) {
+      const section = document.getElementById(sectionId);
+      if (!section) return;
+
+      pauseAllVideos();
+
+      const topOffset = 22;
+      const sectionTop = section.getBoundingClientRect().top + window.pageYOffset - topOffset;
+
+      window.scrollTo({
+        top: sectionTop,
+        behavior: "smooth"
+      });
+    }
+
+    function setupHeroScrollButtons() {
+      const watchBtn = document.getElementById("dWatchBtn");
+      const reelsBtn = document.getElementById("dInstaBtn");
+
+      if (watchBtn) {
+        watchBtn.addEventListener("click", function(event) {
+          event.preventDefault();
+          scrollToPortfolioSection("desktop-videos");
+        });
+      }
+
+      if (reelsBtn) {
+        reelsBtn.addEventListener("click", function(event) {
+          event.preventDefault();
+          scrollToPortfolioSection("desktop-reels");
+        });
+      }
+    }
+
     document.addEventListener("visibilitychange", () => {
       if (document.hidden) pauseAllVideos();
     });
@@ -2253,7 +2181,7 @@
       event.preventDefault();
     }, true);
 
-    initCustomCursor();
+    setupHeroScrollButtons();
     loadSheetData();
   </script>
 </body>
