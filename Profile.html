@@ -1110,8 +1110,8 @@
           position: fixed;
           left: 0;
           top: 0;
-          width: 58px;
-          height: 58px;
+          width: 98px;
+          height: 98px;
           z-index: 999999;
           pointer-events: none;
           opacity: 0;
@@ -2117,7 +2117,7 @@
         const speed = distance / dt;
 
         if (speed > 1.15) {
-          targetScale = Math.min(2.45, 1 + speed * 0.22);
+          targetScale = Math.min(3.2, 1 + speed * 0.32);
         }
 
         lastX = mouseX;
