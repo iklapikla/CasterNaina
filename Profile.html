@@ -1833,25 +1833,50 @@
 
     function convertYouTubeToEmbed(url) {
       try {
-        const cleanUrl = url.trim();
-        let videoId = "";
-        let start = 0;
+        let cleanUrl = String(url || "").trim();
+        if (!cleanUrl) return "";
 
-        if (cleanUrl.includes("youtu.be/")) {
-          const parsed = new URL(cleanUrl);
-          videoId = parsed.pathname.replace("/", "").split("?")[0];
-          start = getStartSeconds(parsed);
-        } else if (cleanUrl.includes("youtube.com/watch")) {
-          const parsed = new URL(cleanUrl);
-          videoId = parsed.searchParams.get("v") || "";
-          start = getStartSeconds(parsed);
-        } else if (cleanUrl.includes("youtube.com/embed/")) {
-          const parsed = new URL(cleanUrl);
-          videoId = parsed.pathname.split("/embed/")[1].split("?")[0];
-          start = getStartSeconds(parsed);
+        if (!/^https?:\/\//i.test(cleanUrl)) {
+          cleanUrl = "https://" + cleanUrl;
         }
 
+        const parsed = new URL(cleanUrl);
+        const host = parsed.hostname
+          .toLowerCase()
+          .replace(/^www\./, "")
+          .replace(/^m\./, "");
+
+        const pathParts = parsed.pathname.split("/").filter(Boolean);
+        let videoId = "";
+        const start = getStartSeconds(parsed);
+
+        if (host === "youtu.be") {
+          videoId = pathParts[0] || "";
+        } else if (
+          host === "youtube.com" ||
+          host === "music.youtube.com" ||
+          host === "youtube-nocookie.com"
+        ) {
+          if (parsed.searchParams.get("v")) {
+            videoId = parsed.searchParams.get("v") || "";
+          } else if (pathParts[0] === "embed" && pathParts[1]) {
+            videoId = pathParts[1];
+          } else if (pathParts[0] === "shorts" && pathParts[1]) {
+            videoId = pathParts[1];
+          } else if (pathParts[0] === "live" && pathParts[1]) {
+            videoId = pathParts[1];
+          } else if ((pathParts[0] === "v" || pathParts[0] === "e") && pathParts[1]) {
+            videoId = pathParts[1];
+          }
+        }
+
+        videoId = String(videoId || "")
+          .split("?")[0]
+          .split("&")[0]
+          .replace(/[^a-zA-Z0-9_-]/g, "");
+
         if (!videoId) return "";
+
         return `https://www.youtube.com/embed/${videoId}?start=${start}&rel=0&enablejsapi=1&playsinline=1`;
       } catch (e) {
         return "";
