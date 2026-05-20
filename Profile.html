@@ -1607,7 +1607,11 @@
       whatsapp_social_link: ["https://wa.me/917478989646"],
       casting_heading: ["Casting Highlights"],
       casting_see_more_text: ["See More"],
+      casting_see_more_text_PC: ["Watch YouTube Playlist"],
+      casting_see_more_text_mobile: ["See More"],
       casting_see_more_link: ["https://www.youtube.com/@CasterNaina/streams"],
+      casting_see_more_link_PC: ["https://www.youtube.com/@CasterNaina/streams"],
+      casting_see_more_link_mobile: ["casting-highlights.html"],
       youtube_video_links: [
         "https://youtu.be/iyDRl0o2vFA?t=3824",
         "https://youtu.be/MgH7FuGGHyE?t=7484",
@@ -2058,10 +2062,22 @@
       setHref("dNavWhatsapp", waSocial);
 
       ["mCastingHeading", "dCastingHeading"].forEach(id => setText(id, getOne(data, "casting_heading", "Casting Highlights")));
-      ["mCastingSeeMore", "dCastingSeeMore"].forEach(id => {
-        setText(id, getOne(data, "casting_see_more_text", "See More"));
-        setHref(id, getOne(data, "casting_see_more_link"));
-      });
+
+      const mobileCastingText = getOne(data, "casting_see_more_text_mobile", getOne(data, "casting_see_more_text", "See More"));
+      const mobileCastingLink = getOne(data, "casting_see_more_link_mobile", "casting-highlights.html");
+      const desktopCastingText = getOne(data, "casting_see_more_text_PC", getOne(data, "casting_see_more_text", "See More"));
+      const desktopCastingLink = getOne(data, "casting_see_more_link_PC", getOne(data, "casting_see_more_link"));
+
+      setText("mCastingSeeMore", mobileCastingText);
+      setHref("mCastingSeeMore", mobileCastingLink);
+      const mobileCastingBtn = document.getElementById("mCastingSeeMore");
+      if (mobileCastingBtn) mobileCastingBtn.removeAttribute("target");
+
+      setText("dCastingSeeMore", desktopCastingText);
+      setHref("dCastingSeeMore", desktopCastingLink);
+      const desktopCastingBtn = document.getElementById("dCastingSeeMore");
+      if (desktopCastingBtn) desktopCastingBtn.setAttribute("target", "_blank");
+
       setText("mCastingHint", getOne(data, "casting_hint", ""));
 
       ["mReelHeading", "dReelHeading"].forEach(id => setText(id, getOne(data, "reel_heading", "Reel Highlights")));
