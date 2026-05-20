@@ -1,0 +1,505 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Casting Highlights</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;800&family=Poppins:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    :root {
+      --green: #063f39;
+      --green-2: #0c5950;
+      --green-3: #032f2b;
+      --mint: #e8f6ef;
+      --gold: #f6c545;
+      --white: #fff;
+      --shadow: 0 18px 45px rgba(0, 45, 38, 0.22);
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      min-height: 100vh;
+      font-family: "Poppins", sans-serif;
+      color: var(--white);
+      background:
+        radial-gradient(circle at 20% 20%, rgba(35, 145, 127, 0.24), transparent 28%),
+        radial-gradient(circle at 85% 12%, rgba(255, 198, 62, 0.16), transparent 24%),
+        radial-gradient(circle at 50% 95%, rgba(15, 94, 83, 0.34), transparent 34%),
+        linear-gradient(135deg, #021b18 0%, #073c35 50%, #021b18 100%);
+      overflow-x: hidden;
+    }
+
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      opacity: 0.13;
+      background-image:
+        linear-gradient(rgba(255,255,255,0.16) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,0.12) 1px, transparent 1px);
+      background-size: 12px 12px;
+      z-index: 0;
+    }
+
+    .fixed-top {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 50;
+      padding: 18px 18px 12px;
+      background: linear-gradient(180deg, rgba(2,27,24,0.98), rgba(2,27,24,0.86));
+      backdrop-filter: blur(18px);
+      border-bottom: 1px solid rgba(255,255,255,0.12);
+      box-shadow: 0 18px 45px rgba(0,0,0,0.22);
+    }
+
+    .top-inner {
+      width: min(1180px, 100%);
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 14px;
+    }
+
+    .top-title-wrap { min-width: 0; }
+
+    .eyebrow {
+      color: rgba(255,255,255,0.62);
+      font-size: 10px;
+      letter-spacing: 4px;
+      text-transform: uppercase;
+      font-weight: 700;
+      margin-bottom: 5px;
+    }
+
+    h1 {
+      font-family: "Playfair Display", serif;
+      color: var(--white);
+      font-size: clamp(28px, 6vw, 52px);
+      line-height: 0.95;
+      letter-spacing: -1px;
+      text-transform: uppercase;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    .playlist-btn {
+      flex-shrink: 0;
+      min-height: 44px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 0 18px;
+      border-radius: 999px;
+      color: #342100;
+      background: linear-gradient(145deg, #fff4aa, #f2bd27, #a66b00);
+      text-decoration: none;
+      font-weight: 900;
+      font-size: 13px;
+      box-shadow: 0 16px 36px rgba(236,178,35,0.28);
+      transition: transform 0.25s ease, box-shadow 0.25s ease, filter 0.25s ease;
+      text-align: center;
+    }
+
+    .playlist-btn:hover {
+      transform: scale(1.04);
+      filter: brightness(1.08);
+      box-shadow: 0 18px 42px rgba(246,197,69,0.42), 0 0 58px rgba(246,197,69,0.28);
+    }
+
+    .page {
+      position: relative;
+      z-index: 1;
+      width: min(1180px, calc(100% - 32px));
+      margin: 0 auto;
+      padding: 132px 0 44px;
+    }
+
+    .intro-card {
+      position: relative;
+      overflow: hidden;
+      border-radius: 28px;
+      padding: 18px;
+      margin-bottom: 18px;
+      background:
+        radial-gradient(circle at 10% 10%, rgba(255,255,255,0.12), transparent 22%),
+        linear-gradient(145deg, rgba(255,255,255,0.10), rgba(255,255,255,0.035));
+      border: 1px solid rgba(255,255,255,0.14);
+      box-shadow: var(--shadow);
+    }
+
+    .intro-card::after,
+    .video-card::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+      background-image:
+        linear-gradient(rgba(255,255,255,0.055) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,0.045) 1px, transparent 1px);
+      background-size: 8px 8px;
+      opacity: 0.55;
+    }
+
+    .intro-card p {
+      position: relative;
+      z-index: 2;
+      color: rgba(255,255,255,0.78);
+      font-size: 13px;
+      line-height: 1.6;
+      font-weight: 600;
+    }
+
+    .video-list {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 18px;
+    }
+
+    .video-card {
+      position: relative;
+      overflow: hidden;
+      border-radius: 28px;
+      padding: 12px;
+      background: rgba(232,246,239,0.95);
+      color: var(--green);
+      box-shadow: 0 20px 48px rgba(0,0,0,0.24);
+      transition: transform 0.25s ease, box-shadow 0.25s ease;
+    }
+
+    .video-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 28px 70px rgba(0,0,0,0.34);
+    }
+
+    .video-frame {
+      position: relative;
+      z-index: 2;
+      width: 100%;
+      aspect-ratio: 16 / 9;
+      border-radius: 20px;
+      overflow: hidden;
+      background: #000;
+    }
+
+    .video-frame iframe {
+      width: 100%;
+      height: 100%;
+      border: 0;
+      display: block;
+    }
+
+    .card-cap {
+      position: relative;
+      z-index: 2;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 12px 4px 2px;
+      gap: 8px;
+    }
+
+    .card-cap h2 {
+      font-size: 14px;
+      text-transform: uppercase;
+      font-weight: 900;
+    }
+
+    .card-cap span {
+      font-size: 11px;
+      font-weight: 900;
+      opacity: 0.7;
+      white-space: nowrap;
+    }
+
+    .loading,
+    .empty {
+      position: relative;
+      z-index: 2;
+      border-radius: 24px;
+      padding: 30px 18px;
+      background: rgba(255,255,255,0.08);
+      border: 1px solid rgba(255,255,255,0.14);
+      color: rgba(255,255,255,0.74);
+      text-align: center;
+      font-weight: 700;
+    }
+
+    @media (min-width: 768px) {
+      .fixed-top { padding: 24px 24px 16px; }
+      .page { width: min(980px, calc(100% - 48px)); padding-top: 150px; }
+      .video-card { padding: 14px; }
+      .card-cap h2 { font-size: 16px; }
+      .playlist-btn { min-height: 50px; padding: 0 24px; font-size: 14px; }
+    }
+
+    @media (max-width: 420px) {
+      .fixed-top { padding: 14px 12px 10px; }
+      .top-inner { gap: 10px; }
+      .eyebrow { font-size: 9px; letter-spacing: 3px; }
+      h1 { font-size: 25px; }
+      .playlist-btn { min-height: 40px; padding: 0 12px; font-size: 11px; max-width: 145px; }
+      .page { width: min(100% - 20px, 520px); padding-top: 112px; }
+      .intro-card { border-radius: 22px; }
+      .video-card { border-radius: 22px; padding: 10px; }
+      .video-frame { border-radius: 16px; }
+      .card-cap h2 { font-size: 13px; }
+      .card-cap span { font-size: 10px; }
+    }
+  </style>
+</head>
+<body>
+  <header class="fixed-top">
+    <div class="top-inner">
+      <div class="top-title-wrap">
+        <div class="eyebrow" id="portfolioLabel">Caster Naina</div>
+        <h1 id="pageTitle">Casting Highlights</h1>
+      </div>
+      <a class="playlist-btn" id="playlistBtn" href="#" target="_blank" rel="noopener">Watch YouTube Playlist</a>
+    </div>
+  </header>
+
+  <main class="page">
+    <section class="intro-card">
+      <p id="hintText">All casting highlights are listed below. Scroll down to watch every video one by one.</p>
+    </section>
+
+    <section class="video-list" id="videoList">
+      <div class="loading">Loading highlights...</div>
+    </section>
+  </main>
+
+  <script>
+    const SHEET_CSV_URL = "https://docs.google.com/spreadsheets/d/e/2PACX-1vSwrmgI3RKWcXmn0xof-K3quisMC_TmnKtx9Os1wwTkjGLsbJkg79TE9jeeq7lwgnDosBkMPvrdlTIX/pub?gid=0&single=true&output=csv";
+
+    const fallbackData = {
+      portfolio_label: ["Caster Naina"],
+      casting_heading: ["Casting Highlights"],
+      casting_see_more_text_PC: ["Watch YouTube Playlist"],
+      casting_see_more_link_PC: ["https://www.youtube.com/@CasterNaina/streams"],
+      casting_see_more_link: ["https://www.youtube.com/@CasterNaina/streams"],
+      youtube_video_links: [
+        "https://youtu.be/iyDRl0o2vFA?t=3824",
+        "https://youtu.be/MgH7FuGGHyE?t=7484",
+        "https://youtu.be/MgH7FuGGHyE?t=8981",
+        "https://youtu.be/I0rnWKlwdT8?t=1580",
+        "https://youtu.be/I0rnWKlwdT8?t=2004"
+      ],
+      youtube_video_titles: ["Highlight 01", "Highlight 02", "Highlight 03", "Highlight 04", "Highlight 05"],
+      youtube_video_label: ["YouTube"],
+      casting_hint: ["All casting highlights are listed below. Scroll down to watch every video one by one."]
+    };
+
+    function parseCSV(text) {
+      const rows = [];
+      let row = [];
+      let cell = "";
+      let inQuotes = false;
+
+      for (let i = 0; i < text.length; i++) {
+        const char = text[i];
+        const nextChar = text[i + 1];
+
+        if (char === '"' && inQuotes && nextChar === '"') {
+          cell += '"';
+          i++;
+        } else if (char === '"') {
+          inQuotes = !inQuotes;
+        } else if (char === "," && !inQuotes) {
+          row.push(cell.trim());
+          cell = "";
+        } else if ((char === "\n" || char === "\r") && !inQuotes) {
+          if (char === "\r" && nextChar === "\n") i++;
+          row.push(cell.trim());
+          if (row.some(value => value !== "")) rows.push(row);
+          row = [];
+          cell = "";
+        } else {
+          cell += char;
+        }
+      }
+
+      row.push(cell.trim());
+      if (row.some(value => value !== "")) rows.push(row);
+      return rows;
+    }
+
+    function rowsToData(rows) {
+      const data = {};
+      const startIndex = rows[0] && rows[0][0].toLowerCase() === "key" ? 1 : 0;
+      for (let i = startIndex; i < rows.length; i++) {
+        const key = (rows[i][0] || "").trim();
+        if (!key) continue;
+        const values = rows[i].slice(1).map(value => value.trim()).filter(value => value !== "");
+        data[key] = values;
+      }
+      return data;
+    }
+
+    function getOne(data, key, fallback = "") {
+      if (data[key] && data[key][0]) return data[key][0];
+      if (fallbackData[key] && fallbackData[key][0]) return fallbackData[key][0];
+      return fallback;
+    }
+
+    function getMany(data, key) {
+      if (data[key] && data[key].length) return data[key];
+      return fallbackData[key] || [];
+    }
+
+    function escapeHTML(value) {
+      return String(value || "")
+        .replaceAll("&", "&amp;")
+        .replaceAll("<", "&lt;")
+        .replaceAll(">", "&gt;")
+        .replaceAll('"', "&quot;")
+        .replaceAll("'", "&#039;");
+    }
+
+    function setText(id, text) {
+      const el = document.getElementById(id);
+      if (el) el.textContent = text || "";
+    }
+
+    function setHref(id, href) {
+      const el = document.getElementById(id);
+      if (el && href) el.href = href;
+    }
+
+    function getStartSeconds(parsedUrl) {
+      const t = parsedUrl.searchParams.get("t") || parsedUrl.searchParams.get("start") || "0";
+      if (/^\d+$/.test(t)) return Number(t);
+
+      let seconds = 0;
+      const h = t.match(/(\d+)h/);
+      const m = t.match(/(\d+)m/);
+      const s = t.match(/(\d+)s/);
+
+      if (h) seconds += Number(h[1]) * 3600;
+      if (m) seconds += Number(m[1]) * 60;
+      if (s) seconds += Number(s[1]);
+
+      return seconds;
+    }
+
+    function convertYouTubeToEmbed(url) {
+      try {
+        let cleanUrl = String(url || "").trim();
+        if (!cleanUrl) return "";
+
+        if (!/^https?:\/\//i.test(cleanUrl)) {
+          cleanUrl = "https://" + cleanUrl;
+        }
+
+        const parsed = new URL(cleanUrl);
+        const host = parsed.hostname
+          .toLowerCase()
+          .replace(/^www\./, "")
+          .replace(/^m\./, "");
+
+        const pathParts = parsed.pathname.split("/").filter(Boolean);
+        let videoId = "";
+        const start = getStartSeconds(parsed);
+
+        if (host === "youtu.be") {
+          videoId = pathParts[0] || "";
+        } else if (
+          host === "youtube.com" ||
+          host === "music.youtube.com" ||
+          host === "youtube-nocookie.com"
+        ) {
+          if (parsed.searchParams.get("v")) {
+            videoId = parsed.searchParams.get("v") || "";
+          } else if (pathParts[0] === "embed" && pathParts[1]) {
+            videoId = pathParts[1];
+          } else if (pathParts[0] === "shorts" && pathParts[1]) {
+            videoId = pathParts[1];
+          } else if (pathParts[0] === "live" && pathParts[1]) {
+            videoId = pathParts[1];
+          } else if ((pathParts[0] === "v" || pathParts[0] === "e") && pathParts[1]) {
+            videoId = pathParts[1];
+          }
+        }
+
+        videoId = String(videoId || "")
+          .split("?")[0]
+          .split("&")[0]
+          .replace(/[^a-zA-Z0-9_-]/g, "");
+
+        if (!videoId) return "";
+
+        return `https://www.youtube.com/embed/${videoId}?start=${start}&rel=0&enablejsapi=1&playsinline=1`;
+      } catch (e) {
+        return "";
+      }
+    }
+
+    function renderPage(data) {
+      const title = getOne(data, "casting_heading", "Casting Highlights");
+      const portfolio = getOne(data, "portfolio_label", "Caster Naina");
+      const playlistText = getOne(data, "casting_see_more_text_PC", "Watch YouTube Playlist");
+      const playlistLink = getOne(data, "casting_see_more_link_PC", getOne(data, "casting_see_more_link", "https://www.youtube.com/@CasterNaina/streams"));
+      const hint = getOne(data, "casting_hint", "All casting highlights are listed below. Scroll down to watch every video one by one.");
+
+      document.title = title;
+      setText("portfolioLabel", portfolio);
+      setText("pageTitle", title);
+      setText("playlistBtn", playlistText || "Watch YouTube Playlist");
+      setHref("playlistBtn", playlistLink);
+      setText("hintText", hint);
+
+      const links = getMany(data, "youtube_video_links");
+      const titles = getMany(data, "youtube_video_titles");
+      const label = getOne(data, "youtube_video_label", "YouTube");
+      const list = document.getElementById("videoList");
+      list.innerHTML = "";
+
+      let count = 0;
+      links.forEach((link, index) => {
+        const embed = convertYouTubeToEmbed(link);
+        if (!embed) return;
+
+        count++;
+        const title = titles[index] || `Highlight ${String(index + 1).padStart(2, "0")}`;
+        list.insertAdjacentHTML("beforeend", `
+          <article class="video-card">
+            <div class="video-frame">
+              <iframe src="${escapeHTML(embed)}" title="${escapeHTML(title)}" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+            </div>
+            <div class="card-cap"><h2>${escapeHTML(title)}</h2><span>${escapeHTML(label)}</span></div>
+          </article>
+        `);
+      });
+
+      if (!count) {
+        list.innerHTML = '<div class="empty">No highlight videos found. Please add YouTube links in the sheet.</div>';
+      }
+    }
+
+    async function loadSheetData() {
+      try {
+        const res = await fetch(SHEET_CSV_URL + "&cacheBust=" + Date.now(), { cache: "no-store" });
+        if (!res.ok) throw new Error("Sheet failed");
+        const csv = await res.text();
+        renderPage(rowsToData(parseCSV(csv)));
+      } catch (err) {
+        console.log("Using fallback data:", err);
+        renderPage(fallbackData);
+      }
+    }
+
+    loadSheetData();
+  </script>
+</body>
+</html>
