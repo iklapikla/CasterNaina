@@ -85,13 +85,14 @@
     h1 {
       font-family: "Playfair Display", serif;
       color: var(--white);
-      font-size: clamp(28px, 6vw, 52px);
+      font-size: clamp(30px, 7vw, 56px);
       line-height: 0.95;
       letter-spacing: -1px;
       text-transform: uppercase;
-      white-space: nowrap;
-      overflow: hidden;
-      text-overflow: ellipsis;
+      white-space: normal;
+      overflow: visible;
+      text-overflow: clip;
+      word-break: normal;
     }
 
     .playlist-btn {
@@ -244,18 +245,38 @@
       .playlist-btn { min-height: 50px; padding: 0 24px; font-size: 14px; }
     }
 
-    @media (max-width: 420px) {
-      .fixed-top { padding: 14px 12px 10px; }
-      .top-inner { gap: 10px; }
-      .eyebrow { font-size: 9px; letter-spacing: 3px; }
-      h1 { font-size: 25px; }
-      .playlist-btn { min-height: 40px; padding: 0 12px; font-size: 11px; max-width: 145px; }
-      .page { width: min(100% - 20px, 520px); padding-top: 112px; }
-      .intro-card { border-radius: 22px; }
+    @media (max-width: 520px) {
+      .fixed-top { padding: 14px 14px 12px; }
+      .top-inner {
+        flex-direction: column;
+        align-items: stretch;
+        justify-content: flex-start;
+        gap: 12px;
+      }
+      .top-title-wrap { width: 100%; }
+      .eyebrow { font-size: 9px; letter-spacing: 3px; margin-bottom: 4px; }
+      h1 {
+        font-size: 34px;
+        line-height: 0.95;
+        letter-spacing: -0.8px;
+      }
+      .playlist-btn {
+        width: 100%;
+        min-height: 46px;
+        padding: 0 14px;
+        font-size: 13px;
+        max-width: none;
+      }
+      .page { width: min(100% - 20px, 520px); padding-top: 156px; }
       .video-card { border-radius: 22px; padding: 10px; }
       .video-frame { border-radius: 16px; }
       .card-cap h2 { font-size: 13px; }
       .card-cap span { font-size: 10px; }
+    }
+
+    @media (max-width: 360px) {
+      h1 { font-size: 30px; }
+      .page { padding-top: 150px; }
     }
   </style>
 </head>
@@ -271,10 +292,6 @@
   </header>
 
   <main class="page">
-    <section class="intro-card">
-      <p id="hintText">All casting highlights are listed below. Scroll down to watch every video one by one.</p>
-    </section>
-
     <section class="video-list" id="videoList">
       <div class="loading">Loading highlights...</div>
     </section>
@@ -450,15 +467,11 @@
       const portfolio = getOne(data, "portfolio_label", "Caster Naina");
       const playlistText = getOne(data, "casting_see_more_text_PC", "Watch YouTube Playlist");
       const playlistLink = getOne(data, "casting_see_more_link_PC", getOne(data, "casting_see_more_link", "https://www.youtube.com/@CasterNaina/streams"));
-      const hint = getOne(data, "casting_hint", "All casting highlights are listed below. Scroll down to watch every video one by one.");
-
       document.title = title;
       setText("portfolioLabel", portfolio);
       setText("pageTitle", title);
       setText("playlistBtn", playlistText || "Watch YouTube Playlist");
       setHref("playlistBtn", playlistLink);
-      setText("hintText", hint);
-
       const links = getMany(data, "youtube_video_links");
       const titles = getMany(data, "youtube_video_titles");
       const label = getOne(data, "youtube_video_label", "YouTube");
