@@ -4,14 +4,11 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Caster Naina Portfolio</title>
-
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;800&family=Poppins:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
-
   <style>
     * { margin: 0; padding: 0; box-sizing: border-box; }
-
     :root {
       --green: #063f39;
       --green-2: #0c5950;
@@ -23,9 +20,7 @@
       --dark: #031916;
       --shadow: 0 18px 45px rgba(0, 45, 38, 0.22);
     }
-
     html { scroll-behavior: smooth; }
-
     body {
       min-height: 100vh;
       font-family: "Poppins", sans-serif;
@@ -36,7 +31,6 @@
         linear-gradient(135deg, #c9e5dc 0%, #eef8f3 45%, #c7e5dc 100%);
       overflow-x: hidden;
     }
-
     body::before {
       content: "";
       position: fixed;
@@ -50,42 +44,33 @@
       mix-blend-mode: multiply;
       z-index: 0;
     }
-
     .mobile-layout,
     .desktop-layout {
       position: relative;
       z-index: 1;
     }
-
     .desktop-layout { display: none; }
-
     /* Prevent old/fallback content flash before Google Sheet data loads */
     body.is-loading .mobile-layout,
     body.is-loading .desktop-layout {
       opacity: 0;
       visibility: hidden;
     }
-
     body.is-ready .mobile-layout,
     body.is-ready .desktop-layout {
       opacity: 1;
       visibility: visible;
       transition: opacity 0.25s ease;
     }
-
     .loading-skeleton {
       display: none;
     }
-
-
     /* ================= MOBILE LAYOUT ================= */
-
     .mobile-layout {
       width: min(100%, 520px);
       margin: 0 auto;
       padding: 18px 14px 38px;
     }
-
     .m-section {
       background:
         radial-gradient(circle at 80% 15%, rgba(255,255,255,0.10), transparent 25%),
@@ -94,8 +79,14 @@
       box-shadow: var(--shadow);
       position: relative;
       overflow: hidden;
+      transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275), box-shadow 0.4s ease, border-color 0.4s ease;
+      border: 1px solid transparent;
     }
-
+    .m-section:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 25px 55px rgba(6, 63, 57, 0.4);
+      border-color: rgba(246, 197, 69, 0.3);
+    }
     .m-section::after {
       content: "";
       position: absolute;
@@ -107,7 +98,6 @@
       pointer-events: none;
       opacity: 0.7;
     }
-
     .m-hero {
       aspect-ratio: 16 / 9;
       padding: 22px;
@@ -120,7 +110,6 @@
       background-position: center;
       border: 1px solid rgba(255,255,255,0.14);
     }
-
     .m-hero-top {
       position: relative;
       z-index: 2;
@@ -129,7 +118,6 @@
       align-items: flex-start;
       gap: 18px;
     }
-
     .m-eyebrow {
       color: rgba(255,255,255,0.72);
       font-size: 10px;
@@ -137,8 +125,12 @@
       font-weight: 500;
       text-transform: uppercase;
       margin-bottom: 4px;
+      transition: letter-spacing 0.3s ease;
     }
-
+    .m-section:hover .m-eyebrow {
+      letter-spacing: 8px;
+      color: var(--gold);
+    }
     .m-hero h1 {
       font-family: "Playfair Display", serif;
       color: var(--white);
@@ -147,8 +139,12 @@
       letter-spacing: -1px;
       text-transform: uppercase;
       text-shadow: 0 8px 22px rgba(0,0,0,0.32);
+      transition: transform 0.4s ease, filter 0.4s ease;
     }
-
+    .m-section:hover h1 {
+      transform: scale(1.02);
+      filter: drop-shadow(0 0 10px rgba(255,255,255,0.3));
+    }
     .m-menu {
       width: 25px;
       display: grid;
@@ -157,15 +153,17 @@
       flex-shrink: 0;
       position: relative;
       z-index: 2;
+      cursor: pointer;
     }
-
     .m-menu span {
       height: 2px;
       border-radius: 20px;
       background: rgba(255,255,255,0.72);
       display: block;
+      transition: width 0.3s ease, background 0.3s ease;
     }
-
+    .m-menu:hover span:nth-child(2) { width: 15px; background: var(--gold); }
+    .m-menu:hover span:nth-child(3) { width: 10px; background: var(--gold); }
     .m-about {
       position: relative;
       z-index: 2;
@@ -174,10 +172,10 @@
       line-height: 1.5;
       max-width: 310px;
       text-shadow: 0 3px 12px rgba(0,0,0,0.55);
+      transition: color 0.3s ease;
     }
-
-    .m-about strong { color: #ffffff; font-weight: 800; }
-
+    .m-about strong { color: #ffffff; font-weight: 800; transition: color 0.3s ease; }
+    .m-section:hover .m-about strong { color: var(--gold); }
     .m-action-row {
       display: flex;
       align-items: center;
@@ -185,7 +183,6 @@
       margin: 12px 0 16px;
       width: 100%;
     }
-
     .m-share {
       width: 160px;
       height: 46px;
@@ -200,8 +197,15 @@
       cursor: pointer;
       text-transform: uppercase;
       flex-shrink: 0;
+      transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+      border: 1px solid rgba(255,255,255,0.1);
     }
-
+    .m-share:hover {
+      transform: scale(1.05) translateY(-2px);
+      background: linear-gradient(145deg, var(--green), var(--green-3));
+      box-shadow: 0 15px 30px rgba(6, 63, 57, 0.5), 0 0 15px rgba(255,255,255,0.2);
+      border-color: rgba(255,255,255,0.4);
+    }
     .m-promo {
       height: 46px;
       flex: 1;
@@ -223,11 +227,15 @@
       padding: 0 12px;
       text-transform: uppercase;
       animation: promoPulse 2.2s ease-in-out infinite;
+      transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
     }
-
+    .m-promo:hover {
+      transform: scale(1.05) translateY(-2px);
+      box-shadow: 0 18px 35px rgba(246, 197, 69, 0.5), 0 0 20px rgba(255, 244, 170, 0.6);
+      filter: brightness(1.15);
+    }
     .m-promo.show,
     .d-promo.show { display: inline-flex; }
-
     .m-promo::after,
     .d-promo::after {
       content: "";
@@ -241,7 +249,6 @@
       animation: promoShine 2.6s ease-in-out infinite;
       pointer-events: none;
     }
-
     .m-promo-track,
     .d-promo-track {
       position: relative;
@@ -250,7 +257,6 @@
       display: inline-flex;
       gap: 24px;
     }
-
     .m-promo-track.center,
     .d-promo-track.center {
       width: 100%;
@@ -258,37 +264,31 @@
       overflow: hidden;
       text-overflow: ellipsis;
     }
-
     .m-promo-track.marquee,
     .d-promo-track.marquee {
       width: max-content;
       animation: promoMarquee 9s linear infinite;
     }
-
     @keyframes promoShine {
       0% { left: -65%; opacity: 0; }
       18% { opacity: 1; }
       55% { left: 125%; opacity: 1; }
       100% { left: 125%; opacity: 0; }
     }
-
     @keyframes promoPulse {
       0%, 100% { filter: brightness(1); }
       50% { filter: brightness(1.14); }
     }
-
     @keyframes promoMarquee {
       0% { transform: translateX(0); }
       100% { transform: translateX(-33.333%); }
     }
-
     .m-socials {
       display: grid;
       grid-template-columns: repeat(4, 1fr);
       gap: 10px;
       margin-bottom: 18px;
     }
-
     .m-socials a {
       height: 48px;
       border-radius: 15px;
@@ -299,21 +299,40 @@
       position: relative;
       overflow: hidden;
       text-decoration: none;
+      transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+      border: 1px solid rgba(255,255,255,0.05);
     }
-
+    .m-socials a::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(45deg, transparent, rgba(255,255,255,0.2), transparent);
+      transform: translateX(-100%);
+      transition: transform 0.5s ease;
+    }
+    .m-socials a:hover::before { transform: translateX(100%); }
+    .m-socials a:hover {
+      transform: scale(1.12) translateY(-4px);
+      box-shadow: 0 15px 30px rgba(12, 89, 80, 0.4);
+      border-color: rgba(255,255,255,0.3);
+    }
+    .m-socials a[aria-label="YouTube"]:hover { background: #ff0000; box-shadow: 0 12px 25px rgba(255, 0, 0, 0.4); }
+    .m-socials a[aria-label="Instagram"]:hover { background: linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%); box-shadow: 0 12px 25px rgba(220, 39, 67, 0.4); }
+    .m-socials a[aria-label="Discord"]:hover { background: #5865F2; box-shadow: 0 12px 25px rgba(88, 101, 242, 0.4); }
+    .m-socials a[aria-label="WhatsApp"]:hover { background: #25D366; box-shadow: 0 12px 25px rgba(37, 211, 102, 0.4); }
     .m-socials svg {
       width: 23px;
       height: 23px;
       fill: white;
       position: relative;
       z-index: 2;
+      transition: transform 0.3s ease;
     }
-
+    .m-socials a:hover svg { transform: scale(1.15); }
     .m-banner {
       padding: 22px 18px 24px;
       margin-bottom: 22px;
     }
-
     .m-head {
       position: relative;
       z-index: 2;
@@ -323,7 +342,6 @@
       margin-bottom: 16px;
       gap: 10px;
     }
-
     .m-head h2 {
       font-family: "Playfair Display", serif;
       color: white;
@@ -332,8 +350,9 @@
       letter-spacing: -0.2px;
       text-transform: uppercase;
       white-space: nowrap;
+      transition: color 0.3s ease;
     }
-
+    .m-section:hover .m-head h2 { color: var(--gold); }
     .m-pill {
       color: var(--green);
       background: rgba(239,250,245,0.94);
@@ -344,8 +363,15 @@
       white-space: nowrap;
       text-decoration: none;
       flex-shrink: 0;
+      transition: all 0.3s ease;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
     }
-
+    .m-pill:hover {
+      background: var(--gold);
+      color: var(--green-3);
+      transform: scale(1.08);
+      box-shadow: 0 6px 15px rgba(246, 197, 69, 0.4);
+    }
     .m-scroll {
       position: relative;
       z-index: 2;
@@ -356,9 +382,7 @@
       padding: 4px 2px 12px;
       scrollbar-width: none;
     }
-
     .m-scroll::-webkit-scrollbar { display: none; }
-
     .m-video-card {
       min-width: 255px;
       scroll-snap-align: start;
@@ -366,8 +390,13 @@
       border-radius: 18px;
       padding: 10px;
       box-shadow: 0 14px 28px rgba(0,0,0,0.16);
+      transition: all 0.3s ease;
     }
-
+    .m-video-card:hover {
+      transform: translateY(-4px) scale(1.02);
+      background: #fff;
+      box-shadow: 0 20px 35px rgba(0,0,0,0.25);
+    }
     .m-video-frame {
       width: 100%;
       aspect-ratio: 16 / 9;
@@ -375,14 +404,12 @@
       overflow: hidden;
       background: #000;
     }
-
     .m-video-frame iframe {
       width: 100%;
       height: 100%;
       border: 0;
       display: block;
     }
-
     .m-caption {
       padding: 9px 3px 2px;
       display: flex;
@@ -390,20 +417,19 @@
       align-items: center;
       gap: 8px;
     }
-
     .m-caption h3 {
       font-size: 13px;
       color: var(--green);
       font-weight: 800;
       text-transform: uppercase;
+      transition: color 0.3s ease;
     }
-
+    .m-video-card:hover .m-caption h3, .m-reel-card:hover .m-caption h3 { color: var(--green-2); }
     .m-caption span {
       font-size: 10px;
       color: rgba(6,63,57,0.72);
       font-weight: 700;
     }
-
     .m-reel-card {
       min-width: 155px;
       scroll-snap-align: start;
@@ -413,8 +439,13 @@
       box-shadow: 0 14px 28px rgba(0,0,0,0.16);
       text-decoration: none;
       color: inherit;
+      transition: all 0.3s ease;
     }
-
+    .m-reel-card:hover {
+      transform: translateY(-4px) scale(1.03);
+      background: #fff;
+      box-shadow: 0 20px 35px rgba(0,0,0,0.25);
+    }
     .m-reel-thumb {
       width: 100%;
       aspect-ratio: 9 / 16;
@@ -423,14 +454,14 @@
       background: #000;
       position: relative;
     }
-
     .m-reel-thumb img {
       width: 100%;
       height: 100%;
       object-fit: cover;
       display: block;
+      transition: transform 0.5s ease;
     }
-
+    .m-reel-card:hover .m-reel-thumb img { transform: scale(1.08); }
     .m-play {
       position: absolute;
       left: 50%;
@@ -442,8 +473,13 @@
       border-radius: 50%;
       background: rgba(255,255,255,0.88);
       box-shadow: 0 10px 24px rgba(0,0,0,0.25);
+      transition: all 0.3s ease;
     }
-
+    .m-reel-card:hover .m-play {
+      background: var(--gold);
+      transform: translate(-50%, -50%) scale(1.1);
+      box-shadow: 0 0 20px rgba(246, 197, 69, 0.6);
+    }
     .m-play::before {
       content: "";
       position: absolute;
@@ -456,7 +492,6 @@
       border-bottom: 11px solid transparent;
       border-left: 17px solid var(--green);
     }
-
     .m-hint {
       position: relative;
       z-index: 2;
@@ -465,13 +500,11 @@
       font-weight: 600;
       margin-top: 4px;
     }
-
     .m-thank {
       padding: 34px 22px;
       text-align: center;
       margin-top: 6px;
     }
-
     .m-thank h2 {
       position: relative;
       z-index: 2;
@@ -482,7 +515,6 @@
       text-transform: uppercase;
       margin-bottom: 10px;
     }
-
     .m-thank p {
       position: relative;
       z-index: 2;
@@ -492,8 +524,6 @@
       max-width: 330px;
       margin: 0 auto;
     }
-
-
     .title-shine {
       display: inline-block;
       color: transparent !important;
@@ -504,14 +534,11 @@
       animation: titleShine 2.8s linear infinite;
       filter: drop-shadow(0 0 18px rgba(246,197,69,0.24));
     }
-
     @keyframes titleShine {
       0% { background-position: 160% center; }
       100% { background-position: -160% center; }
     }
-
     /* ================= DESKTOP LAYOUT ================= */
-
     @media (min-width: 768px) {
       body {
         background:
@@ -521,7 +548,6 @@
           linear-gradient(135deg, #021b18 0%, #073c35 50%, #021b18 100%);
         color: #fff;
       }
-
       body::before {
         opacity: 0.13;
         background-image:
@@ -529,16 +555,13 @@
           linear-gradient(90deg, rgba(255,255,255,0.12) 1px, transparent 1px);
         background-size: 12px 12px;
       }
-
       .mobile-layout { display: none; }
       .desktop-layout { display: block; }
-
       .d-shell {
         width: min(1440px, calc(100% - 64px));
         margin: 0 auto;
         padding: 34px 0 70px;
       }
-
       .d-nav {
         height: 76px;
         display: flex;
@@ -551,16 +574,21 @@
         backdrop-filter: blur(18px);
         border-radius: 28px;
         box-shadow: 0 20px 55px rgba(0,0,0,0.25);
+        transition: all 0.4s ease;
       }
-
+      .d-nav:hover {
+        border-color: rgba(246, 197, 69, 0.3);
+        box-shadow: 0 25px 60px rgba(6, 63, 57, 0.5), inset 0 0 15px rgba(255,255,255,0.05);
+        background: rgba(255,255,255,0.08);
+      }
       .d-brand {
         display: flex;
         align-items: center;
         gap: 12px;
         font-weight: 900;
         letter-spacing: 0.4px;
+        cursor: pointer;
       }
-
       .d-brand-mark {
         width: 42px;
         height: 42px;
@@ -570,15 +598,25 @@
         background: linear-gradient(145deg, #fff4aa, #f1b922 65%, #a66b00);
         color: #062b27;
         box-shadow: 0 14px 28px rgba(231,169,22,0.22);
+        transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
       }
-
+      .d-brand:hover .d-brand-mark {
+        transform: rotate(360deg) scale(1.1);
+        box-shadow: 0 0 25px rgba(246, 197, 69, 0.8);
+      }
+      .d-brand #dBrandName {
+        transition: color 0.3s ease, letter-spacing 0.3s ease;
+      }
+      .d-brand:hover #dBrandName {
+        color: var(--gold);
+        letter-spacing: 1px;
+      }
       .d-nav-links {
         display: flex;
         align-items: center;
         gap: 12px;
         flex-wrap: wrap;
       }
-
       .d-nav-links a,
       .d-nav-links button {
         height: 44px;
@@ -594,13 +632,30 @@
         display: inline-flex;
         align-items: center;
         justify-content: center;
+        position: relative;
+        overflow: hidden;
+        z-index: 1;
       }
-
+      .d-nav-links a::before,
+      .d-nav-links button::before {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background: linear-gradient(145deg, var(--gold), var(--gold-2));
+        transform: translateY(100%);
+        transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.1);
+        z-index: -1;
+      }
+      .d-nav-links a:hover::before,
+      .d-nav-links button:hover::before {
+        transform: translateY(0);
+      }
       .d-nav-links a:hover,
       .d-nav-links button:hover {
-        background: rgba(255,255,255,0.12);
+        color: var(--green-3) !important;
+        background: transparent;
+        border-color: var(--gold);
       }
-
       .d-hero-banner {
         position: relative;
         overflow: hidden;
@@ -615,8 +670,12 @@
         box-shadow: 0 30px 85px rgba(0,0,0,0.34);
         display: block;
         margin-bottom: 34px;
+        transition: all 0.5s ease;
       }
-
+      .d-hero-banner:hover {
+        border-color: rgba(246, 197, 69, 0.4);
+        box-shadow: 0 35px 95px rgba(6, 63, 57, 0.6);
+      }
       .d-hero-banner::after,
       .d-section::after {
         content: "";
@@ -629,7 +688,6 @@
         background-size: 8px 8px;
         opacity: 0.55;
       }
-
       .d-copy {
         position: relative;
         z-index: 2;
@@ -640,15 +698,18 @@
         flex-direction: column;
         justify-content: center;
       }
-
       .d-kicker {
         font-size: 13px;
         letter-spacing: 9px;
         text-transform: uppercase;
         color: rgba(255,255,255,0.68);
         margin-bottom: 24px;
+        transition: all 0.3s ease;
       }
-
+      .d-hero-banner:hover .d-kicker {
+        letter-spacing: 12px;
+        color: var(--gold);
+      }
       .d-title {
         font-family: "Playfair Display", serif;
         font-size: clamp(70px, 7vw, 114px);
@@ -656,13 +717,15 @@
         letter-spacing: -4px;
         text-transform: uppercase;
         margin-bottom: 34px;
+        transition: transform 0.4s ease;
       }
-
+      .d-hero-banner:hover .d-title {
+        transform: translateX(10px);
+      }
       .d-title span {
         color: var(--gold);
         text-shadow: 0 20px 60px rgba(246,197,69,0.22);
       }
-
       .d-title .title-shine,
       .d-title span.title-shine {
         color: transparent !important;
@@ -678,7 +741,6 @@
           drop-shadow(0 0 16px rgba(246,197,69,0.52))
           drop-shadow(0 0 38px rgba(246,197,69,0.28));
       }
-
       @keyframes titleGoldGlow {
         0%, 100% {
           filter:
@@ -692,7 +754,6 @@
             drop-shadow(0 0 110px rgba(246,197,69,0.30));
         }
       }
-
       .d-nav-links a,
       .d-nav-links button,
       .d-btn,
@@ -700,52 +761,101 @@
       .d-video-card,
       .d-reel-card,
       .d-stat {
-        transition: transform 0.25s ease, box-shadow 0.25s ease, filter 0.25s ease, background 0.25s ease;
+        transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275), box-shadow 0.4s ease, filter 0.4s ease, background 0.4s ease, border-color 0.4s ease;
       }
-
       .d-nav-links a:hover,
       .d-nav-links button:hover,
       .d-btn:hover,
       .d-see:hover {
-        transform: scale(1.06);
+        transform: scale(1.06) translateY(-4px);
         box-shadow:
-          0 14px 34px rgba(246,197,69,0.22),
-          0 0 34px rgba(246,197,69,0.16);
-        filter: brightness(1.08);
+          0 20px 40px rgba(246,197,69,0.35),
+          0 0 40px rgba(246,197,69,0.2);
+        filter: brightness(1.1);
       }
-
       .d-btn.primary:hover,
       .d-see:hover {
         box-shadow:
-          0 18px 42px rgba(246,197,69,0.42),
-          0 0 58px rgba(246,197,69,0.28);
+          0 22px 50px rgba(246,197,69,0.55),
+          0 0 70px rgba(246,197,69,0.4);
+        background: linear-gradient(145deg, #fff, var(--gold), #a66b00);
       }
-
+      .d-btn.secondary {
+        position: relative;
+        overflow: hidden;
+        z-index: 1;
+      }
+      .d-btn.secondary::before {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background: rgba(255,255,255,0.15);
+        transform: scaleX(0);
+        transform-origin: right;
+        transition: transform 0.3s ease;
+        z-index: -1;
+      }
+      .d-btn.secondary:hover::before {
+        transform: scaleX(1);
+        transform-origin: left;
+      }
       .d-btn.secondary:hover,
       .d-nav-links a:hover,
       .d-nav-links button:hover {
         box-shadow:
-          0 14px 34px rgba(255,255,255,0.10),
-          0 0 38px rgba(246,197,69,0.18);
+          0 14px 34px rgba(255,255,255,0.15),
+          0 0 38px rgba(246,197,69,0.25);
       }
-
       .d-video-card:hover,
       .d-reel-card:hover {
-        transform: translateY(-8px) scale(1.025);
-        box-shadow: 0 28px 70px rgba(0,0,0,0.34);
+        transform: translateY(-12px) scale(1.04);
+        box-shadow: 0 35px 80px rgba(0, 45, 38, 0.45), 0 0 25px rgba(246, 197, 69, 0.15);
+        background: #fff;
+        border-color: var(--gold);
       }
-
+      .d-video-card, .d-reel-card {
+        border: 1px solid transparent;
+      }
+      .d-reel-card .d-play {
+        transition: all 0.4s ease;
+      }
+      .d-reel-card:hover .d-play {
+        background: var(--gold);
+        transform: scale(1.15);
+        box-shadow: 0 0 25px rgba(246, 197, 69, 0.7);
+      }
+      .d-stat {
+        position: relative;
+        overflow: hidden;
+      }
+      .d-stat::before {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background: linear-gradient(135deg, rgba(246, 197, 69, 0.1), transparent);
+        transform: translateY(100%);
+        transition: transform 0.3s ease;
+      }
+      .d-stat:hover::before { transform: translateY(0); }
       .d-stat:hover {
-        transform: translateY(-5px) scale(1.03);
-        box-shadow: 0 18px 45px rgba(0,0,0,0.22);
+        transform: translateY(-8px) scale(1.04);
+        box-shadow: 0 25px 50px rgba(0,0,0,0.35);
+        border-color: rgba(246, 197, 69, 0.4);
       }
-
+      .d-stat b {
+        transition: transform 0.3s ease, color 0.3s ease;
+        display: inline-block;
+      }
+      .d-stat:hover b {
+        transform: scale(1.1);
+        color: #fff;
+        text-shadow: 0 0 15px rgba(256,256,256,0.6);
+      }
       .d-promo {
         transition: transform 0.25s ease, box-shadow 0.25s ease, filter 0.25s ease;
         isolation: isolate;
         overflow: visible;
       }
-
       .d-promo:hover {
         transform: scale(1.08);
         filter: brightness(1.16);
@@ -755,7 +865,6 @@
           0 0 88px rgba(255,223,96,0.18);
         animation: promoHoverShock 1.35s ease-in-out 5s infinite;
       }
-
       .d-promo::before {
         content: "";
         position: absolute;
@@ -776,23 +885,19 @@
         z-index: -2;
         pointer-events: none;
       }
-
       .d-promo:hover::before {
         opacity: 1;
         transform: scale(1.42);
         filter: blur(18px);
       }
-
       .d-promo::after {
         animation: none;
         left: -65%;
         opacity: 0;
       }
-
       .d-promo:hover::after {
         animation: promoShine 1.25s ease-in-out 5s infinite;
       }
-
       @keyframes promoHoverShock {
         0%, 100% {
           box-shadow:
@@ -814,7 +919,6 @@
             0 0 160px rgba(255,223,96,0.26);
         }
       }
-
       .d-about {
         max-width: 650px;
         color: rgba(255,255,255,0.80);
@@ -822,9 +926,8 @@
         line-height: 1.72;
         margin-bottom: 42px;
       }
-
-      .d-about strong { color: #fff; }
-
+      .d-about strong { color: #fff; transition: color 0.3s ease; }
+      .d-hero-banner:hover .d-about strong { color: var(--gold); }
       .d-ctas {
         display: flex;
         align-items: center;
@@ -832,7 +935,6 @@
         gap: 18px;
         margin-bottom: 46px;
       }
-
       .d-btn {
         height: 54px;
         display: inline-flex;
@@ -846,19 +948,16 @@
         font-weight: 900;
         font-size: 14px;
       }
-
       .d-btn.primary {
         color: #352300;
         background: linear-gradient(145deg, #fff4aa, #f2bd27, #a66b00);
         box-shadow: 0 16px 36px rgba(236,178,35,0.28);
       }
-
       .d-btn.secondary {
         color: #fff;
         background: rgba(255,255,255,0.09);
         border: 1px solid rgba(255,255,255,0.14);
       }
-
       .d-promo {
         height: 54px;
         padding: 0 22px;
@@ -881,47 +980,27 @@
         animation: promoPulse 2.2s ease-in-out infinite;
         text-transform: uppercase;
       }
-
-
       .d-promo-track {
         max-width: 100%;
         overflow: hidden;
       }
-
       .d-promo-track.marquee {
         overflow: visible;
       }
-
       .d-stats {
         display: grid;
         grid-template-columns: repeat(3, 1fr);
         gap: 20px;
       }
-
       .d-stat {
         border-radius: 24px;
         background: rgba(255,255,255,0.075);
         border: 1px solid rgba(255,255,255,0.10);
         padding: 22px;
       }
-
-      .d-stat b {
-        display: block;
-        font-size: 28px;
-        color: var(--gold);
-        margin-bottom: 8px;
-      }
-
-      .d-stat span {
-        color: rgba(255,255,255,0.68);
-        font-size: 12px;
-        font-weight: 700;
-      }
-
       .d-visual {
         display: none;
       }
-
       .d-section {
         margin-top: 0;
         position: relative;
@@ -933,10 +1012,13 @@
           linear-gradient(145deg, rgba(255,255,255,0.10), rgba(255,255,255,0.035));
         border: 1px solid rgba(255,255,255,0.14);
         box-shadow: 0 28px 80px rgba(0,0,0,0.26);
+        transition: border-color 0.4s ease, box-shadow 0.4s ease;
       }
-
+      .d-section:hover {
+        border-color: rgba(246, 197, 69, 0.25);
+        box-shadow: 0 35px 85px rgba(0, 45, 38, 0.35);
+      }
       .d-section + .d-section { margin-top: 34px; }
-
       .d-section-head {
         position: relative;
         z-index: 2;
@@ -945,14 +1027,17 @@
         align-items: center;
         margin-bottom: 24px;
       }
-
       .d-section h2 {
         font-family: "Playfair Display", serif;
         font-size: 44px;
         text-transform: uppercase;
         line-height: 1;
+        transition: color 0.3s ease, transform 0.3s ease;
       }
-
+      .d-section:hover h2 {
+        color: var(--gold);
+        transform: translateX(5px);
+      }
       .d-see {
         color: #342100;
         background: #f3cb45;
@@ -962,7 +1047,6 @@
         font-size: 13px;
         font-weight: 900;
       }
-
       .d-video-grid {
         position: relative;
         z-index: 2;
@@ -970,7 +1054,6 @@
         grid-template-columns: repeat(3, minmax(0, 1fr));
         gap: 18px;
       }
-
       .d-video-card,
       .d-reel-card {
         background: rgba(232,246,239,0.95);
@@ -980,7 +1063,6 @@
         text-decoration: none;
         box-shadow: 0 20px 48px rgba(0,0,0,0.24);
       }
-
       .d-video-frame {
         position: relative;
         aspect-ratio: 16 / 9;
@@ -988,14 +1070,12 @@
         overflow: hidden;
         background: #000;
       }
-
       .d-video-frame iframe {
         width: 100%;
         height: 100%;
         border: 0;
         display: block;
       }
-
       .d-video-click-layer {
         position: absolute;
         inset: 0;
@@ -1004,7 +1084,6 @@
         background: transparent;
         cursor: pointer;
       }
-
       .d-card-cap {
         display: flex;
         justify-content: space-between;
@@ -1012,18 +1091,17 @@
         padding: 12px 4px 2px;
         gap: 8px;
       }
-
       .d-card-cap h3 {
         font-size: 14px;
         text-transform: uppercase;
+        transition: color 0.3s ease;
       }
-
+      .d-video-card:hover .d-card-cap h3, .d-reel-card:hover .d-card-cap h3 { color: var(--green-2); }
       .d-card-cap span {
         font-size: 11px;
         font-weight: 900;
         opacity: 0.7;
       }
-
       .d-reel-grid {
         position: relative;
         z-index: 2;
@@ -1031,7 +1109,6 @@
         grid-template-columns: repeat(6, minmax(0, 1fr));
         gap: 16px;
       }
-
       .d-reel-thumb {
         position: relative;
         aspect-ratio: 9 / 16;
@@ -1039,14 +1116,14 @@
         overflow: hidden;
         background: #000;
       }
-
       .d-reel-thumb img {
         width: 100%;
         height: 100%;
         object-fit: cover;
         display: block;
+        transition: transform 0.5s ease;
       }
-
+      .d-reel-card:hover .d-reel-thumb img { transform: scale(1.06); }
       .d-play {
         position: absolute;
         inset: 0;
@@ -1057,7 +1134,6 @@
         background: rgba(255,255,255,0.86);
         box-shadow: 0 10px 28px rgba(0,0,0,0.26);
       }
-
       .d-play::before {
         content: "";
         position: absolute;
@@ -1068,12 +1144,10 @@
         border-bottom: 12px solid transparent;
         border-left: 18px solid var(--green);
       }
-
       .d-thank {
         text-align: center;
         padding: 72px 34px;
       }
-
       .d-thank h2 {
         position: relative;
         z-index: 2;
@@ -1082,8 +1156,13 @@
         line-height: 1;
         text-transform: uppercase;
         margin-bottom: 12px;
+        transition: transform 0.4s ease;
       }
-
+      .d-thank:hover h2 {
+        transform: scale(1.05);
+        color: var(--gold);
+        text-shadow: 0 0 30px rgba(246, 197, 69, 0.4);
+      }
       .d-thank p {
         position: relative;
         z-index: 2;
@@ -1094,18 +1173,13 @@
         line-height: 1.7;
       }
     }
-
-
-
       /* ================= DESKTOP / TABLET SKELETON LOADING ================= */
       body.is-loading .loading-skeleton {
         display: block;
       }
-
       body.is-ready .loading-skeleton {
         display: none;
       }
-
       .sk-shell {
         width: min(1440px, calc(100% - 64px));
         margin: 0 auto;
@@ -1113,7 +1187,6 @@
         position: relative;
         z-index: 3;
       }
-
       .sk-nav,
       .sk-hero,
       .sk-section {
@@ -1124,7 +1197,6 @@
         backdrop-filter: blur(18px);
         box-shadow: 0 28px 80px rgba(0,0,0,0.24);
       }
-
       .sk-nav {
         height: 76px;
         border-radius: 28px;
@@ -1134,7 +1206,6 @@
         justify-content: space-between;
         padding: 0 24px;
       }
-
       .sk-nav-left,
       .sk-nav-right,
       .sk-line,
@@ -1149,26 +1220,22 @@
         background-size: 220% 100%;
         animation: skeletonShimmer 1.25s linear infinite;
       }
-
       .sk-nav-left {
         width: 210px;
         height: 42px;
         border-radius: 16px;
       }
-
       .sk-nav-right {
         width: 470px;
         height: 44px;
         border-radius: 999px;
       }
-
       .sk-hero {
         aspect-ratio: 16 / 9;
         border-radius: 42px;
         margin-bottom: 34px;
         padding: 64px 58px 54px;
       }
-
       .sk-copy {
         width: 52%;
         height: 100%;
@@ -1176,128 +1243,107 @@
         flex-direction: column;
         justify-content: center;
       }
-
       .sk-line {
         height: 16px;
         border-radius: 999px;
         margin-bottom: 18px;
       }
-
       .sk-line.kicker { width: 240px; height: 13px; margin-bottom: 26px; }
       .sk-line.title-1 { width: 420px; height: 72px; border-radius: 22px; margin-bottom: 14px; }
       .sk-line.title-2 { width: 330px; height: 72px; border-radius: 22px; margin-bottom: 34px; }
       .sk-line.text-1 { width: 610px; max-width: 100%; height: 18px; }
       .sk-line.text-2 { width: 520px; max-width: 90%; height: 18px; }
-
       .sk-button-row {
         display: flex;
         gap: 18px;
         margin: 22px 0 34px;
       }
-
       .sk-pill {
         width: 170px;
         height: 54px;
         border-radius: 18px;
       }
-
       .sk-stats {
         display: grid;
         grid-template-columns: repeat(3, 1fr);
         gap: 20px;
       }
-
       .sk-stat {
         height: 94px;
         border-radius: 24px;
       }
-
       .sk-section {
         border-radius: 42px;
         padding: 34px;
         margin-bottom: 34px;
       }
-
       .sk-section-head {
         display: flex;
         align-items: center;
         justify-content: space-between;
         margin-bottom: 24px;
       }
-
       .sk-section-title {
         width: 360px;
         height: 46px;
         border-radius: 18px;
       }
-
       .sk-see {
         width: 110px;
         height: 42px;
         border-radius: 999px;
       }
-
       .sk-video-grid {
         display: grid;
         grid-template-columns: repeat(3, minmax(0, 1fr));
         gap: 18px;
       }
-
       .sk-card {
         border-radius: 26px;
         padding: 12px;
         background: rgba(232,246,239,0.12);
         animation: none;
       }
-
       .sk-thumb {
         aspect-ratio: 16 / 9;
         border-radius: 20px;
         margin-bottom: 12px;
       }
-
       .sk-card-lines {
         display: flex;
         justify-content: space-between;
         gap: 16px;
         padding: 0 4px 2px;
       }
-
       .sk-card-lines .small-a {
         width: 48%;
         height: 14px;
         border-radius: 999px;
       }
-
       .sk-card-lines .small-b {
         width: 24%;
         height: 14px;
         border-radius: 999px;
       }
-
       .sk-reel-grid {
         display: grid;
         grid-template-columns: repeat(6, minmax(0, 1fr));
         gap: 16px;
       }
-
       .sk-reel-card {
         border-radius: 26px;
         padding: 12px;
         background: rgba(232,246,239,0.12);
       }
-
       .sk-reel-thumb {
         aspect-ratio: 9 / 16;
         border-radius: 20px;
         margin-bottom: 12px;
       }
-
       @keyframes skeletonShimmer {
         0% { background-position: 180% 0; }
         100% { background-position: -180% 0; }
       }
-
       @media (min-width: 768px) and (max-width: 1240px) {
         .sk-shell { width: min(100%, calc(100% - 40px)); }
         .sk-copy { width: 58%; }
@@ -1307,7 +1353,6 @@
         .sk-video-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
         .sk-reel-grid { grid-template-columns: repeat(4, minmax(0, 1fr)); }
       }
-
     @media (min-width: 768px) and (max-width: 1240px) {
       .d-shell { width: min(100%, calc(100% - 40px)); }
       .d-hero-banner { aspect-ratio: 16 / 9; }
@@ -1316,7 +1361,6 @@
       .d-video-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
       .d-reel-grid { grid-template-columns: repeat(4, minmax(0, 1fr)); }
     }
-
     @media (max-width: 420px) {
       .mobile-layout { padding: 14px 10px 30px; }
       .m-hero { padding: 18px; border-radius: 22px; }
@@ -1329,13 +1373,9 @@
       .m-reel-card { min-width: 148px; }
     }
   
-
-
-
     /* FINAL TITLE ANIMATION FIX
        PC: NAINA is NOT static. It stays yellow and a moving shine passes continuously.
        Mobile: marked word gets white text with yellow light sweep. */
-
     .mobile-title-shine {
       display: inline-block;
       color: transparent !important;
@@ -1355,12 +1395,10 @@
       background-clip: text !important;
       animation: mobileTitleSweep 3.2s linear infinite !important;
     }
-
     @keyframes mobileTitleSweep {
       0% { background-position: 150% 50%; }
       100% { background-position: -150% 50%; }
     }
-
     @media (min-width: 768px) {
       .d-title .desktop-title-shine,
       .d-title span.desktop-title-shine,
@@ -1390,13 +1428,11 @@
         transform: none !important;
         will-change: background-position;
       }
-
       @keyframes desktopNainaShineMove {
         0% { background-position: 150% 50%; }
         100% { background-position: -150% 50%; }
       }
     }
-
   </style>
 </head>
 <body class="is-loading">
@@ -1407,7 +1443,6 @@
         <div class="sk-nav-left"></div>
         <div class="sk-nav-right"></div>
       </div>
-
       <section class="sk-hero">
         <div class="sk-copy">
           <div class="sk-line kicker"></div>
@@ -1427,7 +1462,6 @@
           </div>
         </div>
       </section>
-
       <section class="sk-section">
         <div class="sk-section-head">
           <div class="sk-section-title sk-line"></div>
@@ -1442,7 +1476,6 @@
           <div class="sk-card"><div class="sk-thumb"></div><div class="sk-card-lines"><div class="sk-line small-a"></div><div class="sk-line small-b"></div></div></div>
         </div>
       </section>
-
       <section class="sk-section">
         <div class="sk-section-head">
           <div class="sk-section-title sk-line"></div>
@@ -1459,7 +1492,6 @@
       </section>
     </div>
   </div>
-
   <!-- MOBILE -->
   <main class="mobile-layout">
     <section class="m-section m-hero" id="mHeroSection">
@@ -1474,14 +1506,12 @@
         Casted <strong>200+ tournaments</strong> across custom rooms, scrims, live matches and creator events — known for energetic hosting, confident commentary and engaging audience presence.
       </div>
     </section>
-
     <div class="m-action-row">
       <button class="m-share" id="mShareButton" onclick="shareProfile()">Share Profile</button>
       <a class="m-promo" id="mPromoButton" href="#" target="_blank" rel="noopener">
         <span class="m-promo-track center" id="mPromoButtonText">Promotion</span>
       </a>
     </div>
-
     <section class="m-socials">
       <a id="mYoutubeSocial" href="https://www.youtube.com/@CasterNaina/streams" target="_blank" aria-label="YouTube">
         <svg viewBox="0 0 24 24"><path d="M23.5 6.2s-.2-1.7-.9-2.4c-.9-.9-1.9-.9-2.4-1C16.9 2.5 12 2.5 12 2.5h0s-4.9 0-8.2.3c-.5.1-1.5.1-2.4 1C.7 4.5.5 6.2.5 6.2S.2 8.2.2 10.3v1.9c0 2.1.3 4.1.3 4.1s.2 1.7.9 2.4c.9.9 2.1.9 2.6 1 1.9.2 8 .3 8 .3s4.9 0 8.2-.3c.5-.1 1.5-.1 2.4-1 .7-.7.9-2.4.9-2.4s.3-2.1.3-4.1v-1.9c0-2.1-.3-4.1-.3-4.1zM9.7 14.6V7.5l6.3 3.6-6.3 3.5z"/></svg>
@@ -1490,13 +1520,12 @@
         <svg viewBox="0 0 24 24"><path d="M7.2 2h9.6C19.7 2 22 4.3 22 7.2v9.6c0 2.9-2.3 5.2-5.2 5.2H7.2C4.3 22 2 19.7 2 16.8V7.2C2 4.3 4.3 2 7.2 2zm0 2C5.4 4 4 5.4 4 7.2v9.6C4 18.6 5.4 20 7.2 20h9.6c1.8 0 3.2-1.4 3.2-3.2V7.2C20 5.4 18.6 4 16.8 4H7.2zm4.8 3.3A4.7 4.7 0 1 1 12 16.7 4.7 4.7 0 0 1 12 7.3zm0 2A2.7 2.7 0 1 0 12 14.7 2.7 2.7 0 0 0 12 9.3zm5-2.6a1.1 1.1 0 1 1-1.1 1.1A1.1 1.1 0 0 1 17 6.7z"/></svg>
       </a>
       <a id="mDiscordSocial" href="https://discord.gg/tZacnxFnqu" target="_blank" aria-label="Discord">
-        <svg viewBox="0 0 24 24"><path d="M20.3 4.4A17.4 17.4 0 0 0 16 3.1l-.2.4c1.5.4 2.2 1 2.2 1a14.8 14.8 0 0 0-6-1.2 14.8 14.8 0 0 0-6 1.2s.7-.6 2.3-1l-.2-.4a17.4 17.4 0 0 0-4.4 1.3C1 8.3.3 12.1.6 15.9A17.8 17.8 0 0 0 6 18.7l.7-.9a9.7 9.7 0 0 1-1.2-.6l.3-.2a12.2 12.2 0 0 0 12.4 0l.3.2a9.7 9.7 0 0 1-1.2.6l.7.9a17.8 17.8 0 0 0 5.4-2.8c.4-4.4-.7-8.1-3.1-11.5zM8.3 14.1c-1 0-1.8-.9-1.8-2s.8-2 1.8-2 1.8.9 1.8 2-.8 2-1.8 2zm7.4 0c-1 0-1.8-.9-1.8-2s.8-2 1.8-2 1.8.9 1.8 2-.8 2-1.8 2z"/></svg>
+        <svg viewBox="0 0 24 24"><path d="M20.3 4.4A17.4 17.4 0 0 0 16 3.1l-.2.4c1.5.4 2.2 1 2.2 1a14.8 14.8 0 0 0-6-1.2 14.8 14.8 0 0 0-6 1.2s.7-.6 2.3-1l-.2-.4a17.4 17.4 0 0 0-4.4 1.3C1 8.3.3 12.1.6 15.9A17.8 17.8 0 0 0 6 18.7l.7-.9a9.7 9.7 0 0 1-1.2-.6l.3-.2a12.2 12.2 0 0 0 12.4 0l.3.2a9.7 9.7 0 0 1-1.2._6l.7.9a17.8 17.8 0 0 0 5.4-2.8c.4-4.4-.7-8.1-3.1-11.5zM8.3 14.1c-1 0-1.8-.9-1.8-2s.8-2 1.8-2 1.8.9 1.8 2-.8 2-1.8 2zm7.4 0c-1 0-1.8-.9-1.8-2s.8-2 1.8-2 1.8.9 1.8 2-.8 2-1.8 2z"/></svg>
       </a>
       <a id="mWhatsappSocial" href="https://wa.me/917478989646" target="_blank" aria-label="WhatsApp">
         <svg viewBox="0 0 24 24"><path d="M20.5 3.5A11.9 11.9 0 0 0 12.1 0C5.5 0 .2 5.3.2 11.8c0 2.1.6 4.1 1.6 5.9L0 24l6.5-1.7a12 12 0 0 0 5.6 1.4h0c6.5 0 11.8-5.3 11.8-11.8a11.7 11.7 0 0 0-3.4-8.4zM12.1 21.7h0a9.8 9.8 0 0 1-5-1.4l-.4-.2-3.9 1 1-3.8-.2-.4a9.8 9.8 0 1 1 8.5 4.8zm5.4-7.4c-.3-.1-1.8-.9-2.1-1s-.5-.1-.7.2-.8 1-1 1.2-.4.2-.7.1a8 8 0 0 1-2.3-1.4A8.6 8.6 0 0 1 9.1 11c-.2-.3 0-.5.1-.6l.5-.6c.1-.2.2-.3.3-.5.1-.2.1-.4 0-.6s-.7-1.7-.9-2.3c-.2-.6-.5-.5-.7-.5h-.6c-.2 0-.6.1-.9.4s-1.2 1.2-1.2 2.9 1.3 3.4 1.4 3.6c.2.2 2.5 3.8 6 5.3.8.4 1.5.6 2 .7.8.3 1.6.2 2.2.1.7-.1 1.8-.7 2-1.4.3-.7.3-1.3.2-1.4-.1-.2-.3-.3-.6-.4z"/></svg>
       </a>
     </section>
-
     <section class="m-section m-banner">
       <div class="m-head">
         <h2 id="mCastingHeading">Casting Highlights</h2>
@@ -1505,7 +1534,6 @@
       <div class="m-scroll" id="mYoutubeRow"></div>
       <p class="m-hint" id="mCastingHint">Swipe / scroll sidewise to view all casting highlights</p>
     </section>
-
     <section class="m-section m-banner">
       <div class="m-head">
         <h2 id="mReelHeading">Reel Highlights</h2>
@@ -1514,13 +1542,11 @@
       <div class="m-scroll" id="mReelRow"></div>
       <p class="m-hint" id="mReelHint">Swipe / scroll sidewise to view all reel highlights</p>
     </section>
-
     <section class="m-section m-thank">
       <h2 id="mThankHeading">Thank You</h2>
       <p id="mThankText">Thank you for exploring Caster Naina’s portfolio.</p>
     </section>
   </main>
-
   <!-- DESKTOP -->
   <main class="desktop-layout">
     <div class="d-shell">
@@ -1529,7 +1555,6 @@
           <div class="d-brand-mark">CN</div>
           <span id="dBrandName">Caster Naina</span>
         </div>
-
         <div class="d-nav-links">
           <a id="dNavYoutube" href="https://www.youtube.com/@CasterNaina/streams" target="_blank">YouTube</a>
           <a id="dNavInstagram" href="https://www.instagram.com/caster_naina/" target="_blank">Instagram</a>
@@ -1537,7 +1562,6 @@
           <a id="dNavWhatsapp" href="https://wa.me/917478989646" target="_blank">WhatsApp</a>
         </div>
       </nav>
-
       <section class="d-hero-banner">
         <div class="d-copy">
           <div class="d-kicker" id="dPortfolioLabel">Portfolio</div>
@@ -1545,7 +1569,6 @@
           <p class="d-about" id="dAboutText">
             Casted <strong>200+ tournaments</strong> across custom rooms, scrims, live matches and creator events — known for energetic hosting, confident commentary and engaging audience presence.
           </p>
-
           <div class="d-ctas">
             <a class="d-btn primary" id="dWatchBtn" href="#desktop-videos">Watch Highlights</a>
             <a class="d-btn secondary" id="dInstaBtn" href="#desktop-reels">View Reels</a>
@@ -1553,7 +1576,6 @@
               <span class="d-promo-track center" id="dPromoButtonText">Promotion</span>
             </a>
           </div>
-
           <div class="d-stats">
             <div class="d-stat"><b>200+</b><span>Tournaments Casted</span></div>
             <div class="d-stat"><b>Live</b><span>Commentary Specialist</span></div>
@@ -1561,7 +1583,6 @@
           </div>
         </div>
       </section>
-
       <section class="d-section" id="desktop-videos">
         <div class="d-section-head">
           <h2 id="dCastingHeading">Casting Highlights</h2>
@@ -1569,7 +1590,6 @@
         </div>
         <div class="d-video-grid" id="dYoutubeRow"></div>
       </section>
-
       <section class="d-section" id="desktop-reels">
         <div class="d-section-head">
           <h2 id="dReelHeading">Reel Highlights</h2>
@@ -1577,21 +1597,17 @@
         </div>
         <div class="d-reel-grid" id="dReelRow"></div>
       </section>
-
       <section class="d-section d-thank">
         <h2 id="dThankHeading">Thank You</h2>
         <p id="dThankText">Thank you for exploring Caster Naina’s portfolio. For more live casting, commentary clips and reels, use the links above.</p>
       </section>
     </div>
   </main>
-
   <script>
     const SHEET_CSV_URL = "https://docs.google.com/spreadsheets/d/e/2PACX-1vSwrmgI3RKWcXmn0xof-K3quisMC_TmnKtx9Os1wwTkjGLsbJkg79TE9jeeq7lwgnDosBkMPvrdlTIX/pub?gid=0&single=true&output=csv";
-
     let youtubePlayers = [];
     let shareTitle = "Caster Naina Portfolio";
     let shareText = "Check out Caster Naina's casting portfolio.";
-
     const fallbackData = {
       portfolio_label: ["Portfolio"],
       hero_title: ["Caster Naina"],
@@ -1649,17 +1665,14 @@
       share_title: ["Caster Naina Portfolio"],
       share_text: ["Check out Caster Naina's casting portfolio."]
     };
-
     function parseCSV(text) {
       const rows = [];
       let row = [];
       let cell = "";
       let inQuotes = false;
-
       for (let i = 0; i < text.length; i++) {
         const char = text[i];
         const nextChar = text[i + 1];
-
         if (char === '"' && inQuotes && nextChar === '"') {
           cell += '"';
           i++;
@@ -1678,16 +1691,13 @@
           cell += char;
         }
       }
-
       row.push(cell.trim());
       if (row.some(value => value !== "")) rows.push(row);
       return rows;
     }
-
     function rowsToData(rows) {
       const data = {};
       const startIndex = rows[0] && rows[0][0].toLowerCase() === "key" ? 1 : 0;
-
       for (let i = startIndex; i < rows.length; i++) {
         const key = (rows[i][0] || "").trim();
         if (!key) continue;
@@ -1696,18 +1706,15 @@
       }
       return data;
     }
-
     function getOne(data, key, fallback = "") {
       if (data[key] && data[key][0]) return data[key][0];
       if (fallbackData[key] && fallbackData[key][0]) return fallbackData[key][0];
       return fallback;
     }
-
     function getMany(data, key) {
       if (data[key] && data[key].length) return data[key];
       return fallbackData[key] || [];
     }
-
     function escapeHTML(value) {
       return String(value || "")
         .replaceAll("&", "&amp;")
@@ -1716,62 +1723,49 @@
         .replaceAll('"', "&quot;")
         .replaceAll("'", "&#039;");
     }
-
     function setText(id, text) {
       const el = document.getElementById(id);
       if (el) el.textContent = text;
     }
-
     function setHTML(id, html) {
       const el = document.getElementById(id);
       if (el) el.innerHTML = html;
     }
-
     function setHref(id, href) {
       const el = document.getElementById(id);
       if (el && href) el.href = href;
     }
-
     function stripMarkdownStars(value) {
       return String(value || "").replace(/\*\*/g, "").trim();
     }
-
     function markdownBoldToHTML(text, strongClass = "") {
       const safe = escapeHTML(text || "");
       const classAttr = strongClass ? ` class="${strongClass}"` : "";
       return safe.replace(/\*\*(.*?)\*\*/g, `<strong${classAttr}>$1</strong>`);
     }
-
     function formatHeroTitle(title, desktop = false) {
       const clean = String(title || "").trim();
-
       // Fully highlighted title: **Caster Naina**
       const fullyMarked =
         clean.startsWith("**") &&
         clean.endsWith("**") &&
         clean.indexOf("**") === 0 &&
         clean.lastIndexOf("**") === clean.length - 2;
-
       const plain = clean.replace(/\*\*/g, "").trim();
-
       if (fullyMarked) {
         const parts = plain.split(/\s+/);
         if (parts.length >= 2) {
           const first = escapeHTML(parts.slice(0, -1).join(" "));
           const last = escapeHTML(parts[parts.length - 1]);
-
           if (desktop) {
             return `${first}<br><span class="desktop-title-shine">${last}</span>`;
           }
-
           return `${first}<br><span class="mobile-title-shine">${last}</span>`;
         }
-
         return desktop
           ? `<span class="desktop-title-shine">${escapeHTML(plain)}</span>`
           : `<span class="mobile-title-shine">${escapeHTML(plain)}</span>`;
       }
-
       // Word-level highlighting: Caster **Naina**
       const tokens = clean.match(/\*\*.*?\*\*|\S+/g) || [];
       const parts = tokens.map(token => {
@@ -1781,7 +1775,6 @@
           marked
         };
       });
-
       if (parts.length >= 2) {
         const firstParts = parts.slice(0, -1).map(part => {
           const value = escapeHTML(part.text);
@@ -1790,70 +1783,54 @@
             ? `<span class="desktop-title-shine">${value}</span>`
             : `<span class="mobile-title-shine">${value}</span>`;
         }).join(" ");
-
         const lastPart = parts[parts.length - 1];
         const lastValue = escapeHTML(lastPart.text);
-
         // PC requirement: make Naina / last word animate in golden color even if sheet forgot **.
         const desktopLastShouldAnimate = desktop && (lastPart.marked || parts.length >= 2);
         const mobileLastShouldAnimate = !desktop && lastPart.marked;
-
         if (desktop) {
           return `${firstParts}<br>${desktopLastShouldAnimate ? `<span class="desktop-title-shine">${lastValue}</span>` : `<span>${lastValue}</span>`}`;
         }
-
         return `${firstParts}<br>${mobileLastShouldAnimate ? `<span class="mobile-title-shine">${lastValue}</span>` : lastValue}`;
       }
-
       if (parts.length === 1) {
         const value = escapeHTML(parts[0].text);
         if (desktop && parts[0].marked) return `<span class="desktop-title-shine">${value}</span>`;
         if (!desktop && parts[0].marked) return `<span class="mobile-title-shine">${value}</span>`;
         return value;
       }
-
       return "";
     }
-
     function formatAboutText(text) {
       return markdownBoldToHTML(text);
     }
-
     function getStartSeconds(parsedUrl) {
       const t = parsedUrl.searchParams.get("t") || parsedUrl.searchParams.get("start") || "0";
       if (/^\d+$/.test(t)) return Number(t);
-
       let seconds = 0;
       const h = t.match(/(\d+)h/);
       const m = t.match(/(\d+)m/);
       const s = t.match(/(\d+)s/);
-
       if (h) seconds += Number(h[1]) * 3600;
       if (m) seconds += Number(m[1]) * 60;
       if (s) seconds += Number(s[1]);
-
       return seconds;
     }
-
     function convertYouTubeToEmbed(url) {
       try {
         let cleanUrl = String(url || "").trim();
         if (!cleanUrl) return "";
-
         if (!/^https?:\/\//i.test(cleanUrl)) {
           cleanUrl = "https://" + cleanUrl;
         }
-
         const parsed = new URL(cleanUrl);
         const host = parsed.hostname
           .toLowerCase()
           .replace(/^www\./, "")
           .replace(/^m\./, "");
-
         const pathParts = parsed.pathname.split("/").filter(Boolean);
         let videoId = "";
         const start = getStartSeconds(parsed);
-
         if (host === "youtu.be") {
           videoId = pathParts[0] || "";
         } else if (
@@ -1873,27 +1850,21 @@
             videoId = pathParts[1];
           }
         }
-
         videoId = String(videoId || "")
           .split("?")[0]
           .split("&")[0]
           .replace(/[^a-zA-Z0-9_-]/g, "");
-
         if (!videoId) return "";
-
         return `https://www.youtube.com/embed/${videoId}?start=${start}&rel=0&enablejsapi=1&playsinline=1`;
       } catch (e) {
         return "";
       }
     }
-
     function applyPromoState(btn, track, text, link, status) {
       if (!btn || !track) return;
-
       btn.classList.remove("show");
       track.className = track.className.includes("m-promo-track") ? "m-promo-track center" : "d-promo-track center";
       track.innerHTML = "";
-
       if (status === "enable" && text) {
         btn.classList.add("show");
         const isLong = text.length > 18;
@@ -1903,7 +1874,6 @@
         } else {
           track.textContent = text;
         }
-
         if (link) {
           btn.href = link;
           btn.target = "_blank";
@@ -1915,12 +1885,10 @@
         }
       }
     }
-
     function renderPromo(data) {
       const status = getOne(data, "promo_button_status", "disable").toLowerCase();
       const text = getOne(data, "promo_button_text", "");
       const link = getOne(data, "promo_button_link", "");
-
       applyPromoState(
         document.getElementById("mPromoButton"),
         document.getElementById("mPromoButtonText"),
@@ -1928,7 +1896,6 @@
         link,
         status
       );
-
       applyPromoState(
         document.getElementById("dPromoButton"),
         document.getElementById("dPromoButtonText"),
@@ -1937,26 +1904,21 @@
         status
       );
     }
-
     function renderVideos(data) {
       const links = getMany(data, "youtube_video_links");
       const titles = getMany(data, "youtube_video_titles");
       const label = getOne(data, "youtube_video_label", "YouTube");
       const mRow = document.getElementById("mYoutubeRow");
       const dRow = document.getElementById("dYoutubeRow");
-
       mRow.innerHTML = "";
       dRow.innerHTML = "";
       youtubePlayers = [];
-
       links.forEach((link, index) => {
         const embed = convertYouTubeToEmbed(link);
         if (!embed) return;
-
         const title = titles[index] || `Highlight ${String(index + 1).padStart(2, "0")}`;
         const mid = `m-yt-${index + 1}`;
         const did = `d-yt-${index + 1}`;
-
         mRow.insertAdjacentHTML("beforeend", `
           <article class="m-video-card">
             <div class="m-video-frame">
@@ -1965,7 +1927,6 @@
             <div class="m-caption"><h3>${escapeHTML(title)}</h3><span>${escapeHTML(label)}</span></div>
           </article>
         `);
-
         dRow.insertAdjacentHTML("beforeend", `
           <article class="d-video-card">
             <div class="d-video-frame">
@@ -1976,10 +1937,8 @@
           </article>
         `);
       });
-
       loadYouTubeAPI();
     }
-
     function renderReels(data) {
       const links = getMany(data, "reel_links");
       const thumbs = getMany(data, "reel_thumbnails");
@@ -1987,23 +1946,18 @@
       const label = getOne(data, "reel_label", "Instagram");
       const mRow = document.getElementById("mReelRow");
       const dRow = document.getElementById("dReelRow");
-
       mRow.innerHTML = "";
       dRow.innerHTML = "";
-
       links.forEach((link, index) => {
         const thumb = thumbs[index];
         if (!link || !thumb) return;
-
         const title = titles[index] || `Reel ${String(index + 1).padStart(2, "0")}`;
-
         mRow.insertAdjacentHTML("beforeend", `
           <a class="m-reel-card" href="${escapeHTML(link)}" target="_blank" rel="noopener" onclick="pauseAllVideos()">
             <div class="m-reel-thumb"><img src="${escapeHTML(thumb)}" alt="${escapeHTML(title)}"><div class="m-play"></div></div>
             <div class="m-caption"><h3>${escapeHTML(title)}</h3><span>${escapeHTML(label)}</span></div>
           </a>
         `);
-
         dRow.insertAdjacentHTML("beforeend", `
           <a class="d-reel-card" href="${escapeHTML(link)}" target="_blank" rel="noopener" onclick="pauseAllVideos()">
             <div class="d-reel-thumb"><img src="${escapeHTML(thumb)}" alt="${escapeHTML(title)}"><div class="d-play"></div></div>
@@ -2012,96 +1966,72 @@
         `);
       });
     }
-
     function applyData(data) {
       const banner = getOne(data, "top_banner_image");
       const title = getOne(data, "hero_title", "Caster Naina");
       const about = getOne(data, "about_text", "");
       const portfolio = getOne(data, "portfolio_label", "Portfolio");
-
       document.title = getOne(data, "share_title", "Caster Naina Portfolio");
       shareTitle = getOne(data, "share_title", "Caster Naina Portfolio");
       shareText = getOne(data, "share_text", "Check out Caster Naina's casting portfolio.");
-
       if (banner) {
         document.getElementById("mHeroSection").style.backgroundImage =
           `linear-gradient(90deg, rgba(3, 48, 44, 0.88) 0%, rgba(3, 48, 44, 0.48) 42%, rgba(3, 48, 44, 0.10) 100%), url("${banner}")`;
-
         document.querySelector(".d-hero-banner").style.backgroundImage =
           `linear-gradient(90deg, rgba(3, 48, 44, 0.94) 0%, rgba(3, 48, 44, 0.82) 35%, rgba(3, 48, 44, 0.36) 62%, rgba(3, 48, 44, 0.06) 100%), url("${banner}")`;
       }
-
       setText("mPortfolioLabel", portfolio);
       setText("dPortfolioLabel", portfolio);
-
       setHTML("mHeroTitle", formatHeroTitle(title, false));
       setHTML("dHeroTitle", formatHeroTitle(title, true));
-
       setText("dBrandName", stripMarkdownStars(title));
-
       setHTML("mAboutText", formatAboutText(about));
       setHTML("dAboutText", formatAboutText(about));
-
       setText("mShareButton", getOne(data, "share_button_text", "Share Profile"));
-
       renderPromo(data);
-
       const ytSocial = getOne(data, "youtube_social_link");
       const igSocial = getOne(data, "instagram_social_link");
       const dcSocial = getOne(data, "discord_social_link");
       const waSocial = getOne(data, "whatsapp_social_link");
-
       setHref("mYoutubeSocial", ytSocial);
       setHref("mInstagramSocial", igSocial);
       setHref("mDiscordSocial", dcSocial);
       setHref("mWhatsappSocial", waSocial);
-
       setHref("dNavYoutube", ytSocial);
       setHref("dNavInstagram", igSocial);
       setHref("dNavDiscord", dcSocial);
       setHref("dNavWhatsapp", waSocial);
-
       ["mCastingHeading", "dCastingHeading"].forEach(id => setText(id, getOne(data, "casting_heading", "Casting Highlights")));
-
       const mobileCastingText = getOne(data, "casting_see_more_text_mobile", getOne(data, "casting_see_more_text", "See More"));
       const mobileCastingLink = getOne(data, "casting_see_more_link_mobile", "casting-highlights.html");
       const desktopCastingText = getOne(data, "casting_see_more_text_PC", getOne(data, "casting_see_more_text", "See More"));
       const desktopCastingLink = getOne(data, "casting_see_more_link_PC", getOne(data, "casting_see_more_link"));
-
       setText("mCastingSeeMore", mobileCastingText);
       setHref("mCastingSeeMore", mobileCastingLink);
       const mobileCastingBtn = document.getElementById("mCastingSeeMore");
       if (mobileCastingBtn) mobileCastingBtn.removeAttribute("target");
-
       setText("dCastingSeeMore", desktopCastingText);
       setHref("dCastingSeeMore", desktopCastingLink);
       const desktopCastingBtn = document.getElementById("dCastingSeeMore");
       if (desktopCastingBtn) desktopCastingBtn.setAttribute("target", "_blank");
-
       setText("mCastingHint", getOne(data, "casting_hint", ""));
-
       ["mReelHeading", "dReelHeading"].forEach(id => setText(id, getOne(data, "reel_heading", "Reel Highlights")));
       ["mReelSeeMore", "dReelSeeMore"].forEach(id => {
         setText(id, getOne(data, "reel_see_more_text", "See More"));
         setHref(id, getOne(data, "reel_see_more_link"));
       });
       setText("mReelHint", getOne(data, "reel_hint", ""));
-
       ["mThankHeading", "dThankHeading"].forEach(id => setText(id, getOne(data, "thank_you_heading", "Thank You")));
       ["mThankText", "dThankText"].forEach(id => setText(id, getOne(data, "thank_you_text")));
-
       renderVideos(data);
       renderReels(data);
     }
-
     async function loadSheetData() {
       try {
         const res = await fetch(SHEET_CSV_URL + "&cacheBust=" + Date.now(), {
           cache: "no-store"
         });
-
         if (!res.ok) throw new Error("Sheet failed");
-
         const csv = await res.text();
         applyData(rowsToData(parseCSV(csv)));
       } catch (err) {
@@ -2112,13 +2042,11 @@
         document.body.classList.add("is-ready");
       }
     }
-
     function loadYouTubeAPI() {
       if (window.YT && window.YT.Player) {
         initialiseYouTubePlayers();
         return;
       }
-
       if (!document.getElementById("youtube-api-script")) {
         const script = document.createElement("script");
         script.id = "youtube-api-script";
@@ -2126,11 +2054,9 @@
         document.body.appendChild(script);
       }
     }
-
     function onYouTubeIframeAPIReady() {
       initialiseYouTubePlayers();
     }
-
     function initialiseYouTubePlayers() {
       youtubePlayers = [];
       document.querySelectorAll("iframe[id^='m-yt-'], iframe[id^='d-yt-']").forEach((iframe) => {
@@ -2154,7 +2080,6 @@
         }
       });
     }
-
     function pauseAllVideos() {
       youtubePlayers.forEach(player => {
         if (player && typeof player.pauseVideo === "function") {
@@ -2162,33 +2087,26 @@
         }
       });
     }
-
     function scrollToPortfolioSection(sectionId) {
       const section = document.getElementById(sectionId);
       if (!section) return;
-
       pauseAllVideos();
-
       const topOffset = 22;
       const sectionTop = section.getBoundingClientRect().top + window.pageYOffset - topOffset;
-
       window.scrollTo({
         top: sectionTop,
         behavior: "smooth"
       });
     }
-
     function setupHeroScrollButtons() {
       const watchBtn = document.getElementById("dWatchBtn");
       const reelsBtn = document.getElementById("dInstaBtn");
-
       if (watchBtn) {
         watchBtn.addEventListener("click", function(event) {
           event.preventDefault();
           scrollToPortfolioSection("desktop-videos");
         });
       }
-
       if (reelsBtn) {
         reelsBtn.addEventListener("click", function(event) {
           event.preventDefault();
@@ -2196,11 +2114,9 @@
         });
       }
     }
-
     document.addEventListener("visibilitychange", () => {
       if (document.hidden) pauseAllVideos();
     });
-
     function shareProfile() {
       pauseAllVideos();
       const shareData = {
@@ -2208,7 +2124,6 @@
         text: shareText,
         url: window.location.href
       };
-
       if (navigator.share) {
         navigator.share(shareData).catch(() => {});
       } else if (navigator.clipboard) {
@@ -2217,11 +2132,9 @@
         alert("Share option is not supported on this browser.");
       }
     }
-
     document.addEventListener("contextmenu", function(event) {
       event.preventDefault();
     }, true);
-
     setupHeroScrollButtons();
     loadSheetData();
   </script>
