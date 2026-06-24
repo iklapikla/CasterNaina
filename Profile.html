@@ -596,6 +596,11 @@
         justify-content: center;
       }
 
+      .d-nav-links a:hover,
+      .d-nav-links button:hover {
+        background: rgba(255,255,255,0.12);
+      }
+
       .d-hero-banner {
         position: relative;
         overflow: hidden;
@@ -661,20 +666,33 @@
       .d-title .title-shine,
       .d-title span.title-shine {
         color: transparent !important;
-        background: linear-gradient(90deg, #f6c545 0%, #f6c545 22%, #fff7bf 40%, #ffffff 50%, #ffd95a 62%, #f6c545 78%, #f6c545 100%);
+        background:
+          linear-gradient(90deg, #f6c545 0%, #f6c545 22%, #fff7bf 40%, #ffffff 50%, #ffd95a 62%, #f6c545 78%, #f6c545 100%);
         background-size: 260% auto;
         -webkit-background-clip: text;
         background-clip: text;
-        animation: titleShine 2.4s linear infinite, titleGoldGlow 1.9s ease-in-out infinite;
-        filter: drop-shadow(0 0 16px rgba(246,197,69,0.52)) drop-shadow(0 0 38px rgba(246,197,69,0.28));
+        animation:
+          titleShine 2.4s linear infinite,
+          titleGoldGlow 1.9s ease-in-out infinite;
+        filter:
+          drop-shadow(0 0 16px rgba(246,197,69,0.52))
+          drop-shadow(0 0 38px rgba(246,197,69,0.28));
       }
 
       @keyframes titleGoldGlow {
-        0%, 100% { filter: drop-shadow(0 0 13px rgba(246,197,69,0.42)) drop-shadow(0 0 30px rgba(246,197,69,0.22)); }
-        50% { filter: drop-shadow(0 0 22px rgba(255,239,150,0.95)) drop-shadow(0 0 58px rgba(246,197,69,0.68)) drop-shadow(0 0 110px rgba(246,197,69,0.30)); }
+        0%, 100% {
+          filter:
+            drop-shadow(0 0 13px rgba(246,197,69,0.42))
+            drop-shadow(0 0 30px rgba(246,197,69,0.22));
+        }
+        50% {
+          filter:
+            drop-shadow(0 0 22px rgba(255,239,150,0.95))
+            drop-shadow(0 0 58px rgba(246,197,69,0.68))
+            drop-shadow(0 0 110px rgba(246,197,69,0.30));
+        }
       }
 
-      /* === DYNAMIC PREMIUM HOVERS WORKED HERE === */
       .d-nav-links a,
       .d-nav-links button,
       .d-btn,
@@ -682,64 +700,60 @@
       .d-video-card,
       .d-reel-card,
       .d-stat {
-        /* Ultra premium elastic cubic-bezier animation timing curve */
-        transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275), 
-                    box-shadow 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.15), 
-                    filter 0.3s ease, 
-                    background 0.3s ease;
+        transition: transform 0.25s ease, box-shadow 0.25s ease, filter 0.25s ease, background 0.25s ease;
       }
 
       .d-nav-links a:hover,
       .d-nav-links button:hover,
       .d-btn:hover,
       .d-see:hover {
-        transform: translateY(-4px) scale(1.05);
-        box-shadow: 0 18px 38px rgba(246,197,69,0.28), 0 0 24px rgba(246,197,69,0.2);
-        filter: brightness(1.1);
+        transform: scale(1.06);
+        box-shadow:
+          0 14px 34px rgba(246,197,69,0.22),
+          0 0 34px rgba(246,197,69,0.16);
+        filter: brightness(1.08);
       }
 
       .d-btn.primary:hover,
       .d-see:hover {
-        background: linear-gradient(145deg, #fffcd3, #f6cb4b, #b87a05);
-        box-shadow: 0 22px 48px rgba(246,197,69,0.5), 0 0 65px rgba(246,197,69,0.35);
+        box-shadow:
+          0 18px 42px rgba(246,197,69,0.42),
+          0 0 58px rgba(246,197,69,0.28);
       }
 
       .d-btn.secondary:hover,
       .d-nav-links a:hover,
       .d-nav-links button:hover {
-        background: rgba(255,255,255,0.15);
-        border-color: rgba(255,255,255,0.3);
-        box-shadow: 0 16px 36px rgba(255,255,255,0.12), 0 0 42px rgba(246,197,69,0.22);
+        box-shadow:
+          0 14px 34px rgba(255,255,255,0.10),
+          0 0 38px rgba(246,197,69,0.18);
       }
 
-      /* Video and Reels 3D depth popup effect */
       .d-video-card:hover,
       .d-reel-card:hover {
-        transform: translateY(-12px) scale(1.035) rotateX(1deg);
-        box-shadow: 0 35px 80px rgba(0,0,0,0.45), 0 0 30px rgba(232,246,239,0.15);
-        filter: brightness(1.02);
+        transform: translateY(-8px) scale(1.025);
+        box-shadow: 0 28px 70px rgba(0,0,0,0.34);
       }
 
       .d-stat:hover {
-        transform: translateY(-6px) scale(1.04);
-        box-shadow: 0 22px 50px rgba(0,0,0,0.3);
-        border-color: rgba(246,197,69,0.3);
+        transform: translateY(-5px) scale(1.03);
+        box-shadow: 0 18px 45px rgba(0,0,0,0.22);
       }
 
       .d-promo {
-        transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275), box-shadow 0.4s ease, filter 0.3s ease;
+        transition: transform 0.25s ease, box-shadow 0.25s ease, filter 0.25s ease;
         isolation: isolate;
         overflow: visible;
       }
 
       .d-promo:hover {
-        transform: scale(1.08) translateY(-2px);
-        filter: brightness(1.18);
-        box-shadow: 
-          0 25px 60px rgba(246,197,69,0.55), 
-          0 0 45px rgba(246,197,69,0.4), 
-          0 0 95px rgba(255,223,96,0.25);
-        animation: promoHoverShock 1.35s ease-in-out infinite;
+        transform: scale(1.08);
+        filter: brightness(1.16);
+        box-shadow:
+          0 22px 52px rgba(246,197,69,0.48),
+          0 0 42px rgba(246,197,69,0.34),
+          0 0 88px rgba(255,223,96,0.18);
+        animation: promoHoverShock 1.35s ease-in-out 5s infinite;
       }
 
       .d-promo::before {
@@ -755,7 +769,10 @@
         opacity: 0;
         transform: scale(0.35);
         filter: blur(26px);
-        transition: opacity 0.45s ease, transform 0.55s cubic-bezier(.18,.8,.22,1), filter 0.45s ease;
+        transition:
+          opacity 0.45s ease 5s,
+          transform 0.55s cubic-bezier(.18,.8,.22,1) 5s,
+          filter 0.45s ease 5s;
         z-index: -2;
         pointer-events: none;
       }
@@ -773,18 +790,28 @@
       }
 
       .d-promo:hover::after {
-        animation: promoShine 1.25s ease-in-out infinite;
+        animation: promoShine 1.25s ease-in-out 5s infinite;
       }
 
       @keyframes promoHoverShock {
         0%, 100% {
-          box-shadow: 0 25px 60px rgba(246,197,69,0.55), 0 0 45px rgba(246,197,69,0.4), 0 0 95px rgba(255,223,96,0.25);
+          box-shadow:
+            0 22px 52px rgba(246,197,69,0.48),
+            0 0 42px rgba(246,197,69,0.34),
+            0 0 88px rgba(255,223,96,0.18);
         }
         42% {
-          box-shadow: 0 32px 85px rgba(246,197,69,0.88), 0 0 140px rgba(255,235,128,0.95), 0 0 250px rgba(246,197,69,0.68), 0 0 380px rgba(255,175,0,0.3);
+          box-shadow:
+            0 30px 82px rgba(246,197,69,0.82),
+            0 0 130px rgba(255,235,128,0.92),
+            0 0 240px rgba(246,197,69,0.62),
+            0 0 360px rgba(255,175,0,0.24);
         }
         68% {
-          box-shadow: 0 25px 65px rgba(246,197,69,0.65), 0 0 100px rgba(246,197,69,0.52), 0 0 170px rgba(255,223,96,0.3);
+          box-shadow:
+            0 22px 58px rgba(246,197,69,0.58),
+            0 0 92px rgba(246,197,69,0.48),
+            0 0 160px rgba(255,223,96,0.26);
         }
       }
 
@@ -855,12 +882,15 @@
         text-transform: uppercase;
       }
 
+
       .d-promo-track {
         max-width: 100%;
         overflow: hidden;
       }
 
-      .d-promo-track.marquee { overflow: visible; }
+      .d-promo-track.marquee {
+        overflow: visible;
+      }
 
       .d-stats {
         display: grid;
@@ -888,7 +918,9 @@
         font-weight: 700;
       }
 
-      .d-visual { display: none; }
+      .d-visual {
+        display: none;
+      }
 
       .d-section {
         margin-top: 0;
@@ -1036,289 +1068,1109 @@
         border-bottom: 12px solid transparent;
         border-left: 18px solid var(--green);
       }
+
+      .d-thank {
+        text-align: center;
+        padding: 72px 34px;
+      }
+
+      .d-thank h2 {
+        position: relative;
+        z-index: 2;
+        font-family: "Playfair Display", serif;
+        font-size: 74px;
+        line-height: 1;
+        text-transform: uppercase;
+        margin-bottom: 12px;
+      }
+
+      .d-thank p {
+        position: relative;
+        z-index: 2;
+        color: rgba(255,255,255,0.76);
+        max-width: 780px;
+        margin: 0 auto;
+        font-size: 18px;
+        line-height: 1.7;
+      }
     }
+
+
+
+      /* ================= DESKTOP / TABLET SKELETON LOADING ================= */
+      body.is-loading .loading-skeleton {
+        display: block;
+      }
+
+      body.is-ready .loading-skeleton {
+        display: none;
+      }
+
+      .sk-shell {
+        width: min(1440px, calc(100% - 64px));
+        margin: 0 auto;
+        padding: 34px 0 70px;
+        position: relative;
+        z-index: 3;
+      }
+
+      .sk-nav,
+      .sk-hero,
+      .sk-section {
+        position: relative;
+        overflow: hidden;
+        border: 1px solid rgba(255,255,255,0.14);
+        background: rgba(255,255,255,0.065);
+        backdrop-filter: blur(18px);
+        box-shadow: 0 28px 80px rgba(0,0,0,0.24);
+      }
+
+      .sk-nav {
+        height: 76px;
+        border-radius: 28px;
+        margin-bottom: 30px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 0 24px;
+      }
+
+      .sk-nav-left,
+      .sk-nav-right,
+      .sk-line,
+      .sk-pill,
+      .sk-card,
+      .sk-thumb,
+      .sk-reel-thumb,
+      .sk-stat {
+        position: relative;
+        overflow: hidden;
+        background: linear-gradient(110deg, rgba(255,255,255,0.08) 8%, rgba(255,255,255,0.22) 18%, rgba(255,255,255,0.08) 33%);
+        background-size: 220% 100%;
+        animation: skeletonShimmer 1.25s linear infinite;
+      }
+
+      .sk-nav-left {
+        width: 210px;
+        height: 42px;
+        border-radius: 16px;
+      }
+
+      .sk-nav-right {
+        width: 470px;
+        height: 44px;
+        border-radius: 999px;
+      }
+
+      .sk-hero {
+        aspect-ratio: 16 / 9;
+        border-radius: 42px;
+        margin-bottom: 34px;
+        padding: 64px 58px 54px;
+      }
+
+      .sk-copy {
+        width: 52%;
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+      }
+
+      .sk-line {
+        height: 16px;
+        border-radius: 999px;
+        margin-bottom: 18px;
+      }
+
+      .sk-line.kicker { width: 240px; height: 13px; margin-bottom: 26px; }
+      .sk-line.title-1 { width: 420px; height: 72px; border-radius: 22px; margin-bottom: 14px; }
+      .sk-line.title-2 { width: 330px; height: 72px; border-radius: 22px; margin-bottom: 34px; }
+      .sk-line.text-1 { width: 610px; max-width: 100%; height: 18px; }
+      .sk-line.text-2 { width: 520px; max-width: 90%; height: 18px; }
+
+      .sk-button-row {
+        display: flex;
+        gap: 18px;
+        margin: 22px 0 34px;
+      }
+
+      .sk-pill {
+        width: 170px;
+        height: 54px;
+        border-radius: 18px;
+      }
+
+      .sk-stats {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 20px;
+      }
+
+      .sk-stat {
+        height: 94px;
+        border-radius: 24px;
+      }
+
+      .sk-section {
+        border-radius: 42px;
+        padding: 34px;
+        margin-bottom: 34px;
+      }
+
+      .sk-section-head {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        margin-bottom: 24px;
+      }
+
+      .sk-section-title {
+        width: 360px;
+        height: 46px;
+        border-radius: 18px;
+      }
+
+      .sk-see {
+        width: 110px;
+        height: 42px;
+        border-radius: 999px;
+      }
+
+      .sk-video-grid {
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 18px;
+      }
+
+      .sk-card {
+        border-radius: 26px;
+        padding: 12px;
+        background: rgba(232,246,239,0.12);
+        animation: none;
+      }
+
+      .sk-thumb {
+        aspect-ratio: 16 / 9;
+        border-radius: 20px;
+        margin-bottom: 12px;
+      }
+
+      .sk-card-lines {
+        display: flex;
+        justify-content: space-between;
+        gap: 16px;
+        padding: 0 4px 2px;
+      }
+
+      .sk-card-lines .small-a {
+        width: 48%;
+        height: 14px;
+        border-radius: 999px;
+      }
+
+      .sk-card-lines .small-b {
+        width: 24%;
+        height: 14px;
+        border-radius: 999px;
+      }
+
+      .sk-reel-grid {
+        display: grid;
+        grid-template-columns: repeat(6, minmax(0, 1fr));
+        gap: 16px;
+      }
+
+      .sk-reel-card {
+        border-radius: 26px;
+        padding: 12px;
+        background: rgba(232,246,239,0.12);
+      }
+
+      .sk-reel-thumb {
+        aspect-ratio: 9 / 16;
+        border-radius: 20px;
+        margin-bottom: 12px;
+      }
+
+      @keyframes skeletonShimmer {
+        0% { background-position: 180% 0; }
+        100% { background-position: -180% 0; }
+      }
+
+      @media (min-width: 768px) and (max-width: 1240px) {
+        .sk-shell { width: min(100%, calc(100% - 40px)); }
+        .sk-copy { width: 58%; }
+        .sk-hero { padding: 46px 40px; }
+        .sk-line.title-1 { width: 330px; height: 58px; }
+        .sk-line.title-2 { width: 260px; height: 58px; }
+        .sk-video-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+        .sk-reel-grid { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+      }
+
+    @media (min-width: 768px) and (max-width: 1240px) {
+      .d-shell { width: min(100%, calc(100% - 40px)); }
+      .d-hero-banner { aspect-ratio: 16 / 9; }
+      .d-copy { width: 58%; padding: 46px 40px; }
+      .d-title { font-size: 68px; }
+      .d-video-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+      .d-reel-grid { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+    }
+
+    @media (max-width: 420px) {
+      .mobile-layout { padding: 14px 10px 30px; }
+      .m-hero { padding: 18px; border-radius: 22px; }
+      .m-hero h1 { font-size: 35px; }
+      .m-about { font-size: 11px; max-width: 250px; line-height: 1.45; }
+      .m-share { width: 150px; height: 44px; font-size: 12px; }
+      .m-promo { height: 44px; font-size: 11px; }
+      .m-head h2 { font-size: 17px; }
+      .m-video-card { min-width: 255px; }
+      .m-reel-card { min-width: 148px; }
+    }
+  
+
+
+
+    /* FINAL TITLE ANIMATION FIX
+       PC: NAINA is NOT static. It stays yellow and a moving shine passes continuously.
+       Mobile: marked word gets white text with yellow light sweep. */
+
+    .mobile-title-shine {
+      display: inline-block;
+      color: transparent !important;
+      -webkit-text-fill-color: transparent !important;
+      background-image: linear-gradient(
+        100deg,
+        #ffffff 0%,
+        #ffffff 30%,
+        #fff0a3 42%,
+        #f6c545 50%,
+        #fff0a3 58%,
+        #ffffff 70%,
+        #ffffff 100%
+      ) !important;
+      background-size: 260% 100% !important;
+      -webkit-background-clip: text !important;
+      background-clip: text !important;
+      animation: mobileTitleSweep 3.2s linear infinite !important;
+    }
+
+    @keyframes mobileTitleSweep {
+      0% { background-position: 150% 50%; }
+      100% { background-position: -150% 50%; }
+    }
+
+    @media (min-width: 768px) {
+      .d-title .desktop-title-shine,
+      .d-title span.desktop-title-shine,
+      .d-title .title-shine,
+      .d-title span.title-shine {
+        display: inline-block !important;
+        color: transparent !important;
+        -webkit-text-fill-color: transparent !important;
+        background-image: linear-gradient(
+          105deg,
+          #f6c545 0%,
+          #f6c545 24%,
+          #ffcf35 34%,
+          #ffe98f 44%,
+          #ffffff 50%,
+          #ffe98f 56%,
+          #ffcf35 66%,
+          #f6c545 76%,
+          #f6c545 100%
+        ) !important;
+        background-size: 260% 100% !important;
+        -webkit-background-clip: text !important;
+        background-clip: text !important;
+        animation: desktopNainaShineMove 3.8s linear infinite !important;
+        filter: none !important;
+        text-shadow: none !important;
+        transform: none !important;
+        will-change: background-position;
+      }
+
+      @keyframes desktopNainaShineMove {
+        0% { background-position: 150% 50%; }
+        100% { background-position: -150% 50%; }
+      }
+    }
+
   </style>
 </head>
 <body class="is-loading">
+  <!-- DESKTOP / TABLET SKELETON LOADER -->
+  <div class="loading-skeleton" aria-hidden="true">
+    <div class="sk-shell">
+      <div class="sk-nav">
+        <div class="sk-nav-left"></div>
+        <div class="sk-nav-right"></div>
+      </div>
 
-  <div class="mobile-layout">
-    <div class="m-section m-hero" id="mHeroBg">
-      <div class="m-hero-top">
-        <div>
-          <p class="m-eyebrow" id="mKicker">LOADER</p>
-          <h1 id="mTitle">NAINA</h1>
+      <section class="sk-hero">
+        <div class="sk-copy">
+          <div class="sk-line kicker"></div>
+          <div class="sk-line title-1"></div>
+          <div class="sk-line title-2"></div>
+          <div class="sk-line text-1"></div>
+          <div class="sk-line text-2"></div>
+          <div class="sk-button-row">
+            <div class="sk-pill"></div>
+            <div class="sk-pill"></div>
+            <div class="sk-pill"></div>
+          </div>
+          <div class="sk-stats">
+            <div class="sk-stat"></div>
+            <div class="sk-stat"></div>
+            <div class="sk-stat"></div>
+          </div>
         </div>
-        <div class="m-menu">
-          <span></span>
-          <span></span>
+      </section>
+
+      <section class="sk-section">
+        <div class="sk-section-head">
+          <div class="sk-section-title sk-line"></div>
+          <div class="sk-see sk-line"></div>
         </div>
-      </div>
-      <p class="m-about" id="mAbout">...</p>
-    </div>
+        <div class="sk-video-grid">
+          <div class="sk-card"><div class="sk-thumb"></div><div class="sk-card-lines"><div class="sk-line small-a"></div><div class="sk-line small-b"></div></div></div>
+          <div class="sk-card"><div class="sk-thumb"></div><div class="sk-card-lines"><div class="sk-line small-a"></div><div class="sk-line small-b"></div></div></div>
+          <div class="sk-card"><div class="sk-thumb"></div><div class="sk-card-lines"><div class="sk-line small-a"></div><div class="sk-line small-b"></div></div></div>
+          <div class="sk-card"><div class="sk-thumb"></div><div class="sk-card-lines"><div class="sk-line small-a"></div><div class="sk-line small-b"></div></div></div>
+          <div class="sk-card"><div class="sk-thumb"></div><div class="sk-card-lines"><div class="sk-line small-a"></div><div class="sk-line small-b"></div></div></div>
+          <div class="sk-card"><div class="sk-thumb"></div><div class="sk-card-lines"><div class="sk-line small-a"></div><div class="sk-line small-b"></div></div></div>
+        </div>
+      </section>
 
-    <div class="m-action-row">
-      <button class="m-share" onclick="shareProfile()">Share Profile</button>
-      <a href="#" class="m-promo" id="mPromoBtn" target="_blank">
-        <span class="m-promo-track" id="mPromoTrack">...</span>
-      </a>
-    </div>
-
-    <div class="m-socials">
-      <a href="#" id="mInsta" target="_blank"><svg viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.051.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg></a>
-      <a href="#" id="mYoutube" target="_blank"><svg viewBox="0 0 24 24"><path d="M23.498 6.186a3.016 3.016 0 00-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 00.502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 002.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 002.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg></a>
-      <a href="#" id="mLinkedin" target="_blank"><svg viewBox="0 0 24 24"><path d="M22.23 0H1.77C.8 0 0 .77 0 1.72v20.56C0 23.23.8 24 1.77 24h20.46c.98 0 1.77-.77 1.77-1.72V1.72C24 .77 23.2 0 22.23 0zM7.12 20.45H3.56V9H7.12v11.45zM5.34 7.43c-1.14 0-2.06-.92-2.06-2.06 0-1.14.92-2.06 2.06-2.06 1.14 0 2.06.92 2.06 2.06 0 1.14-.92 2.06-2.06 2.06zm15.11 13.02h-3.56v-5.6c0-1.34-.03-3.05-1.86-3.05-1.86 0-2.14 1.45-2.14 2.95v5.7H9.33V9h3.42v1.56h.05c.48-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.45v6.29z"/></svg></a>
-      <a href="#" id="mTwitter" target="_blank"><svg viewBox="0 0 24 24"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg></a>
-    </div>
-
-    <div class="m-section m-banner">
-      <div class="m-head">
-        <h2>Videos</h2>
-        <span class="m-pill">Featured Work</span>
-      </div>
-      <div class="m-scroll" id="mVideos"></div>
-      <p class="m-hint">Swipe to explore →</p>
-    </div>
-
-    <div class="m-section m-banner">
-      <div class="m-head">
-        <h2>Reels & Shorts</h2>
-        <span class="m-pill">Content Drops</span>
-      </div>
-      <div class="m-scroll" id="mReels"></div>
-      <p class="m-hint">Swipe to explore →</p>
-    </div>
-
-    <div class="m-thank">
-      <h2 id="mThankHead">THANK YOU</h2>
-      <p id="mThankSub">...</p>
+      <section class="sk-section">
+        <div class="sk-section-head">
+          <div class="sk-section-title sk-line"></div>
+          <div class="sk-see sk-line"></div>
+        </div>
+        <div class="sk-reel-grid">
+          <div class="sk-reel-card"><div class="sk-reel-thumb"></div><div class="sk-card-lines"><div class="sk-line small-a"></div><div class="sk-line small-b"></div></div></div>
+          <div class="sk-reel-card"><div class="sk-reel-thumb"></div><div class="sk-card-lines"><div class="sk-line small-a"></div><div class="sk-line small-b"></div></div></div>
+          <div class="sk-reel-card"><div class="sk-reel-thumb"></div><div class="sk-card-lines"><div class="sk-line small-a"></div><div class="sk-line small-b"></div></div></div>
+          <div class="sk-reel-card"><div class="sk-reel-thumb"></div><div class="sk-card-lines"><div class="sk-line small-a"></div><div class="sk-line small-b"></div></div></div>
+          <div class="sk-reel-card"><div class="sk-reel-thumb"></div><div class="sk-card-lines"><div class="sk-line small-a"></div><div class="sk-line small-b"></div></div></div>
+          <div class="sk-reel-card"><div class="sk-reel-thumb"></div><div class="sk-card-lines"><div class="sk-line small-a"></div><div class="sk-line small-b"></div></div></div>
+        </div>
+      </section>
     </div>
   </div>
 
+  <!-- MOBILE -->
+  <main class="mobile-layout">
+    <section class="m-section m-hero" id="mHeroSection">
+      <div class="m-hero-top">
+        <div>
+          <div class="m-eyebrow" id="mPortfolioLabel">Portfolio</div>
+          <h1 id="mHeroTitle">Caster<br>Naina</h1>
+        </div>
+        <div class="m-menu"><span></span><span></span><span></span></div>
+      </div>
+      <div class="m-about" id="mAboutText">
+        Casted <strong>200+ tournaments</strong> across custom rooms, scrims, live matches and creator events — known for energetic hosting, confident commentary and engaging audience presence.
+      </div>
+    </section>
 
-  <div class="desktop-layout">
+    <div class="m-action-row">
+      <button class="m-share" id="mShareButton" onclick="shareProfile()">Share Profile</button>
+      <a class="m-promo" id="mPromoButton" href="#" target="_blank" rel="noopener">
+        <span class="m-promo-track center" id="mPromoButtonText">Promotion</span>
+      </a>
+    </div>
+
+    <section class="m-socials">
+      <a id="mYoutubeSocial" href="https://www.youtube.com/@CasterNaina/streams" target="_blank" aria-label="YouTube">
+        <svg viewBox="0 0 24 24"><path d="M23.5 6.2s-.2-1.7-.9-2.4c-.9-.9-1.9-.9-2.4-1C16.9 2.5 12 2.5 12 2.5h0s-4.9 0-8.2.3c-.5.1-1.5.1-2.4 1C.7 4.5.5 6.2.5 6.2S.2 8.2.2 10.3v1.9c0 2.1.3 4.1.3 4.1s.2 1.7.9 2.4c.9.9 2.1.9 2.6 1 1.9.2 8 .3 8 .3s4.9 0 8.2-.3c.5-.1 1.5-.1 2.4-1 .7-.7.9-2.4.9-2.4s.3-2.1.3-4.1v-1.9c0-2.1-.3-4.1-.3-4.1zM9.7 14.6V7.5l6.3 3.6-6.3 3.5z"/></svg>
+      </a>
+      <a id="mInstagramSocial" href="https://www.instagram.com/caster_naina/" target="_blank" aria-label="Instagram">
+        <svg viewBox="0 0 24 24"><path d="M7.2 2h9.6C19.7 2 22 4.3 22 7.2v9.6c0 2.9-2.3 5.2-5.2 5.2H7.2C4.3 22 2 19.7 2 16.8V7.2C2 4.3 4.3 2 7.2 2zm0 2C5.4 4 4 5.4 4 7.2v9.6C4 18.6 5.4 20 7.2 20h9.6c1.8 0 3.2-1.4 3.2-3.2V7.2C20 5.4 18.6 4 16.8 4H7.2zm4.8 3.3A4.7 4.7 0 1 1 12 16.7 4.7 4.7 0 0 1 12 7.3zm0 2A2.7 2.7 0 1 0 12 14.7 2.7 2.7 0 0 0 12 9.3zm5-2.6a1.1 1.1 0 1 1-1.1 1.1A1.1 1.1 0 0 1 17 6.7z"/></svg>
+      </a>
+      <a id="mDiscordSocial" href="https://discord.gg/tZacnxFnqu" target="_blank" aria-label="Discord">
+        <svg viewBox="0 0 24 24"><path d="M20.3 4.4A17.4 17.4 0 0 0 16 3.1l-.2.4c1.5.4 2.2 1 2.2 1a14.8 14.8 0 0 0-6-1.2 14.8 14.8 0 0 0-6 1.2s.7-.6 2.3-1l-.2-.4a17.4 17.4 0 0 0-4.4 1.3C1 8.3.3 12.1.6 15.9A17.8 17.8 0 0 0 6 18.7l.7-.9a9.7 9.7 0 0 1-1.2-.6l.3-.2a12.2 12.2 0 0 0 12.4 0l.3.2a9.7 9.7 0 0 1-1.2.6l.7.9a17.8 17.8 0 0 0 5.4-2.8c.4-4.4-.7-8.1-3.1-11.5zM8.3 14.1c-1 0-1.8-.9-1.8-2s.8-2 1.8-2 1.8.9 1.8 2-.8 2-1.8 2zm7.4 0c-1 0-1.8-.9-1.8-2s.8-2 1.8-2 1.8.9 1.8 2-.8 2-1.8 2z"/></svg>
+      </a>
+      <a id="mWhatsappSocial" href="https://wa.me/917478989646" target="_blank" aria-label="WhatsApp">
+        <svg viewBox="0 0 24 24"><path d="M20.5 3.5A11.9 11.9 0 0 0 12.1 0C5.5 0 .2 5.3.2 11.8c0 2.1.6 4.1 1.6 5.9L0 24l6.5-1.7a12 12 0 0 0 5.6 1.4h0c6.5 0 11.8-5.3 11.8-11.8a11.7 11.7 0 0 0-3.4-8.4zM12.1 21.7h0a9.8 9.8 0 0 1-5-1.4l-.4-.2-3.9 1 1-3.8-.2-.4a9.8 9.8 0 1 1 8.5 4.8zm5.4-7.4c-.3-.1-1.8-.9-2.1-1s-.5-.1-.7.2-.8 1-1 1.2-.4.2-.7.1a8 8 0 0 1-2.3-1.4A8.6 8.6 0 0 1 9.1 11c-.2-.3 0-.5.1-.6l.5-.6c.1-.2.2-.3.3-.5.1-.2.1-.4 0-.6s-.7-1.7-.9-2.3c-.2-.6-.5-.5-.7-.5h-.6c-.2 0-.6.1-.9.4s-1.2 1.2-1.2 2.9 1.3 3.4 1.4 3.6c.2.2 2.5 3.8 6 5.3.8.4 1.5.6 2 .7.8.3 1.6.2 2.2.1.7-.1 1.8-.7 2-1.4.3-.7.3-1.3.2-1.4-.1-.2-.3-.3-.6-.4z"/></svg>
+      </a>
+    </section>
+
+    <section class="m-section m-banner">
+      <div class="m-head">
+        <h2 id="mCastingHeading">Casting Highlights</h2>
+        <a class="m-pill" id="mCastingSeeMore" href="https://www.youtube.com/@CasterNaina/streams" target="_blank">See More</a>
+      </div>
+      <div class="m-scroll" id="mYoutubeRow"></div>
+      <p class="m-hint" id="mCastingHint">Swipe / scroll sidewise to view all casting highlights</p>
+    </section>
+
+    <section class="m-section m-banner">
+      <div class="m-head">
+        <h2 id="mReelHeading">Reel Highlights</h2>
+        <a class="m-pill" id="mReelSeeMore" href="https://www.instagram.com/caster_naina/" target="_blank">See More</a>
+      </div>
+      <div class="m-scroll" id="mReelRow"></div>
+      <p class="m-hint" id="mReelHint">Swipe / scroll sidewise to view all reel highlights</p>
+    </section>
+
+    <section class="m-section m-thank">
+      <h2 id="mThankHeading">Thank You</h2>
+      <p id="mThankText">Thank you for exploring Caster Naina’s portfolio.</p>
+    </section>
+  </main>
+
+  <!-- DESKTOP -->
+  <main class="desktop-layout">
     <div class="d-shell">
       <nav class="d-nav">
         <div class="d-brand">
-          <div class="d-brand-mark">✦</div>
-          <span>NAINA</span>
+          <div class="d-brand-mark">CN</div>
+          <span id="dBrandName">Caster Naina</span>
         </div>
+
         <div class="d-nav-links">
-          <button id="dWatchBtn">Watch Videos</button>
-          <button id="dInstaBtn">Instagram Reels</button>
-          <a href="#" id="dNavInsta" target="_blank">Instagram</a>
-          <a href="#" id="dNavYoutube" target="_blank">YouTube</a>
-          <button onclick="shareProfile()" style="background:#fff; color:var(--green);">Share Profile</button>
+          <a id="dNavYoutube" href="https://www.youtube.com/@CasterNaina/streams" target="_blank">YouTube</a>
+          <a id="dNavInstagram" href="https://www.instagram.com/caster_naina/" target="_blank">Instagram</a>
+          <a id="dNavDiscord" href="https://discord.gg/tZacnxFnqu" target="_blank">Discord</a>
+          <a id="dNavWhatsapp" href="https://wa.me/917478989646" target="_blank">WhatsApp</a>
         </div>
       </nav>
 
-      <header class="d-hero-banner" id="dHeroBg">
+      <section class="d-hero-banner">
         <div class="d-copy">
-          <p class="d-kicker" id="dKicker">LOADER</p>
-          <h1 class="d-title" id="dTitle">NAINA</h1>
-          <p class="d-about" id="dAbout">...</p>
+          <div class="d-kicker" id="dPortfolioLabel">Portfolio</div>
+          <h1 class="d-title" id="dHeroTitle">Caster<br><span>Naina</span></h1>
+          <p class="d-about" id="dAboutText">
+            Casted <strong>200+ tournaments</strong> across custom rooms, scrims, live matches and creator events — known for energetic hosting, confident commentary and engaging audience presence.
+          </p>
+
           <div class="d-ctas">
-            <a href="#" id="dPrimaryCta" target="_blank" class="d-btn primary">Let's Connect</a>
-            <a href="#" class="d-promo" id="dPromoBtn" target="_blank">
-              <span class="d-promo-track" id="dPromoTrack">...</span>
+            <a class="d-btn primary" id="dWatchBtn" href="#desktop-videos">Watch Highlights</a>
+            <a class="d-btn secondary" id="dInstaBtn" href="#desktop-reels">View Reels</a>
+            <a class="d-promo" id="dPromoButton" href="#" target="_blank" rel="noopener">
+              <span class="d-promo-track center" id="dPromoButtonText">Promotion</span>
             </a>
           </div>
+
           <div class="d-stats">
-            <div class="d-stat"><b id="dStat1Val">00</b><span id="dStat1Lbl">...</span></div>
-            <div class="d-stat"><b id="dStat2Val">00</b><span id="dStat2Lbl">...</span></div>
-            <div class="d-stat"><b id="dStat3Val">00</b><span id="dStat3Lbl">...</span></div>
+            <div class="d-stat"><b>200+</b><span>Tournaments Casted</span></div>
+            <div class="d-stat"><b>Live</b><span>Commentary Specialist</span></div>
+            <div class="d-stat"><b>Free Fire</b><span>Caster Portfolio</span></div>
           </div>
         </div>
-      </header>
+      </section>
 
       <section class="d-section" id="desktop-videos">
         <div class="d-section-head">
-          <h2>Featured Videos</h2>
-          <a href="#" id="dVideosMore" target="_blank" class="d-see">See More Videos</a>
+          <h2 id="dCastingHeading">Casting Highlights</h2>
+          <a class="d-see" id="dCastingSeeMore" href="https://www.youtube.com/@CasterNaina/streams" target="_blank">See More</a>
         </div>
-        <div class="d-video-grid" id="dVideos"></div>
+        <div class="d-video-grid" id="dYoutubeRow"></div>
       </section>
 
       <section class="d-section" id="desktop-reels">
         <div class="d-section-head">
-          <h2>Reels & Shorts</h2>
-          <a href="#" id="dReelsMore" target="_blank" class="d-see">See More Reels</a>
+          <h2 id="dReelHeading">Reel Highlights</h2>
+          <a class="d-see" id="dReelSeeMore" href="https://www.instagram.com/caster_naina/" target="_blank">See More</a>
         </div>
-        <div class="d-reel-grid" id="dReels"></div>
+        <div class="d-reel-grid" id="dReelRow"></div>
+      </section>
+
+      <section class="d-section d-thank">
+        <h2 id="dThankHeading">Thank You</h2>
+        <p id="dThankText">Thank you for exploring Caster Naina’s portfolio. For more live casting, commentary clips and reels, use the links above.</p>
       </section>
     </div>
-  </div>
-
+  </main>
 
   <script>
-    const SHEET_API_URL = "https://script.google.com/macros/s/AKfycbygG43Fiaf3Q7O2O2Zg99kG_XbYgLAtB7Xb-b0bC1mN2fFm5hUAsuA699WjGz8H1B2A/exec";
+    const SHEET_CSV_URL = "https://docs.google.com/spreadsheets/d/e/2PACX-1vSwrmgI3RKWcXmn0xof-K3quisMC_TmnKtx9Os1wwTkjGLsbJkg79TE9jeeq7lwgnDosBkMPvrdlTIX/pub?gid=0&single=true&output=csv";
 
+    let youtubePlayers = [];
     let shareTitle = "Caster Naina Portfolio";
-    let shareText = "Check out Caster Naina's live talent showcase portfolio!";
+    let shareText = "Check out Caster Naina's casting portfolio.";
 
-    function pauseAllVideos() {
-      document.querySelectorAll("iframe").forEach(iframe => {
-        const src = iframe.src;
-        iframe.src = "";
-        iframe.src = src;
+    const fallbackData = {
+      portfolio_label: ["Portfolio"],
+      hero_title: ["Caster Naina"],
+      top_banner_image: ["https://raw.githubusercontent.com/iklapikla/CasterNaina/refs/heads/main/Top%20Banner.png"],
+      about_text: ["Casted 200+ tournaments across custom rooms, scrims, live matches and creator events — known for energetic hosting, confident commentary and engaging audience presence."],
+      share_button_text: ["Share Profile"],
+      promo_button_status: ["disable"],
+      promo_button_text: ["Promotion"],
+      promo_button_link: [""],
+      youtube_social_link: ["https://www.youtube.com/@CasterNaina/streams"],
+      instagram_social_link: ["https://www.instagram.com/caster_naina/"],
+      discord_social_link: ["https://discord.gg/tZacnxFnqu"],
+      whatsapp_social_link: ["https://wa.me/917478989646"],
+      casting_heading: ["Casting Highlights"],
+      casting_see_more_text: ["See More"],
+      casting_see_more_text_PC: ["Watch YouTube Playlist"],
+      casting_see_more_text_mobile: ["See More"],
+      casting_see_more_link: ["https://www.youtube.com/@CasterNaina/streams"],
+      casting_see_more_link_PC: ["https://www.youtube.com/@CasterNaina/streams"],
+      casting_see_more_link_mobile: ["casting-highlights.html"],
+      youtube_video_links: [
+        "https://youtu.be/iyDRl0o2vFA?t=3824",
+        "https://youtu.be/MgH7FuGGHyE?t=7484",
+        "https://youtu.be/MgH7FuGGHyE?t=8981",
+        "https://youtu.be/I0rnWKlwdT8?t=1580",
+        "https://youtu.be/I0rnWKlwdT8?t=2004"
+      ],
+      youtube_video_titles: ["Highlight 01", "Highlight 02", "Highlight 03", "Highlight 04", "Highlight 05"],
+      youtube_video_label: ["YouTube"],
+      casting_hint: ["Swipe / scroll sidewise to view all casting highlights"],
+      reel_heading: ["Reel Highlights"],
+      reel_see_more_text: ["See More"],
+      reel_see_more_link: ["https://www.instagram.com/caster_naina/"],
+      reel_links: [
+        "https://www.instagram.com/p/DXy66GXBxzF/",
+        "https://www.instagram.com/p/DX1gCdqBcuA/",
+        "https://www.instagram.com/p/DYR0SFGyEnr/",
+        "https://www.instagram.com/p/DYPRExAShAz/",
+        "https://www.instagram.com/p/DYMsUxYSONB/",
+        "https://www.instagram.com/p/DYE-1mTy_bM/"
+      ],
+      reel_thumbnails: [
+        "https://raw.githubusercontent.com/iklapikla/CasterNaina/refs/heads/main/Reel%201.png",
+        "https://raw.githubusercontent.com/iklapikla/CasterNaina/refs/heads/main/Reel%202.png",
+        "https://raw.githubusercontent.com/iklapikla/CasterNaina/refs/heads/main/reel%203.png",
+        "https://raw.githubusercontent.com/iklapikla/CasterNaina/refs/heads/main/reel%204.png",
+        "https://raw.githubusercontent.com/iklapikla/CasterNaina/refs/heads/main/reel%205.png",
+        "https://raw.githubusercontent.com/iklapikla/CasterNaina/refs/heads/main/reel%206.png"
+      ],
+      reel_titles: ["Reel 01", "Reel 02", "Reel 03", "Reel 04", "Reel 05", "Reel 06"],
+      reel_label: ["Instagram"],
+      reel_hint: ["Swipe / scroll sidewise to view all reel highlights"],
+      thank_you_heading: ["Thank You"],
+      thank_you_text: ["Thank you for exploring Caster Naina’s portfolio. For more live casting, commentary clips and reels, use the links above."],
+      share_title: ["Caster Naina Portfolio"],
+      share_text: ["Check out Caster Naina's casting portfolio."]
+    };
+
+    function parseCSV(text) {
+      const rows = [];
+      let row = [];
+      let cell = "";
+      let inQuotes = false;
+
+      for (let i = 0; i < text.length; i++) {
+        const char = text[i];
+        const nextChar = text[i + 1];
+
+        if (char === '"' && inQuotes && nextChar === '"') {
+          cell += '"';
+          i++;
+        } else if (char === '"') {
+          inQuotes = !inQuotes;
+        } else if (char === "," && !inQuotes) {
+          row.push(cell.trim());
+          cell = "";
+        } else if ((char === "\n" || char === "\r") && !inQuotes) {
+          if (char === "\r" && nextChar === "\n") i++;
+          row.push(cell.trim());
+          if (row.some(value => value !== "")) rows.push(row);
+          row = [];
+          cell = "";
+        } else {
+          cell += char;
+        }
+      }
+
+      row.push(cell.trim());
+      if (row.some(value => value !== "")) rows.push(row);
+      return rows;
+    }
+
+    function rowsToData(rows) {
+      const data = {};
+      const startIndex = rows[0] && rows[0][0].toLowerCase() === "key" ? 1 : 0;
+
+      for (let i = startIndex; i < rows.length; i++) {
+        const key = (rows[i][0] || "").trim();
+        if (!key) continue;
+        const values = rows[i].slice(1).map(value => value.trim()).filter(value => value !== "");
+        data[key] = values;
+      }
+      return data;
+    }
+
+    function getOne(data, key, fallback = "") {
+      if (data[key] && data[key][0]) return data[key][0];
+      if (fallbackData[key] && fallbackData[key][0]) return fallbackData[key][0];
+      return fallback;
+    }
+
+    function getMany(data, key) {
+      if (data[key] && data[key].length) return data[key];
+      return fallbackData[key] || [];
+    }
+
+    function escapeHTML(value) {
+      return String(value || "")
+        .replaceAll("&", "&amp;")
+        .replaceAll("<", "&lt;")
+        .replaceAll(">", "&gt;")
+        .replaceAll('"', "&quot;")
+        .replaceAll("'", "&#039;");
+    }
+
+    function setText(id, text) {
+      const el = document.getElementById(id);
+      if (el) el.textContent = text;
+    }
+
+    function setHTML(id, html) {
+      const el = document.getElementById(id);
+      if (el) el.innerHTML = html;
+    }
+
+    function setHref(id, href) {
+      const el = document.getElementById(id);
+      if (el && href) el.href = href;
+    }
+
+    function stripMarkdownStars(value) {
+      return String(value || "").replace(/\*\*/g, "").trim();
+    }
+
+    function markdownBoldToHTML(text, strongClass = "") {
+      const safe = escapeHTML(text || "");
+      const classAttr = strongClass ? ` class="${strongClass}"` : "";
+      return safe.replace(/\*\*(.*?)\*\*/g, `<strong${classAttr}>$1</strong>`);
+    }
+
+    function formatHeroTitle(title, desktop = false) {
+      const clean = String(title || "").trim();
+
+      // Fully highlighted title: **Caster Naina**
+      const fullyMarked =
+        clean.startsWith("**") &&
+        clean.endsWith("**") &&
+        clean.indexOf("**") === 0 &&
+        clean.lastIndexOf("**") === clean.length - 2;
+
+      const plain = clean.replace(/\*\*/g, "").trim();
+
+      if (fullyMarked) {
+        const parts = plain.split(/\s+/);
+        if (parts.length >= 2) {
+          const first = escapeHTML(parts.slice(0, -1).join(" "));
+          const last = escapeHTML(parts[parts.length - 1]);
+
+          if (desktop) {
+            return `${first}<br><span class="desktop-title-shine">${last}</span>`;
+          }
+
+          return `${first}<br><span class="mobile-title-shine">${last}</span>`;
+        }
+
+        return desktop
+          ? `<span class="desktop-title-shine">${escapeHTML(plain)}</span>`
+          : `<span class="mobile-title-shine">${escapeHTML(plain)}</span>`;
+      }
+
+      // Word-level highlighting: Caster **Naina**
+      const tokens = clean.match(/\*\*.*?\*\*|\S+/g) || [];
+      const parts = tokens.map(token => {
+        const marked = token.startsWith("**") && token.endsWith("**");
+        return {
+          text: marked ? token.slice(2, -2) : token,
+          marked
+        };
+      });
+
+      if (parts.length >= 2) {
+        const firstParts = parts.slice(0, -1).map(part => {
+          const value = escapeHTML(part.text);
+          if (!part.marked) return value;
+          return desktop
+            ? `<span class="desktop-title-shine">${value}</span>`
+            : `<span class="mobile-title-shine">${value}</span>`;
+        }).join(" ");
+
+        const lastPart = parts[parts.length - 1];
+        const lastValue = escapeHTML(lastPart.text);
+
+        // PC requirement: make Naina / last word animate in golden color even if sheet forgot **.
+        const desktopLastShouldAnimate = desktop && (lastPart.marked || parts.length >= 2);
+        const mobileLastShouldAnimate = !desktop && lastPart.marked;
+
+        if (desktop) {
+          return `${firstParts}<br>${desktopLastShouldAnimate ? `<span class="desktop-title-shine">${lastValue}</span>` : `<span>${lastValue}</span>`}`;
+        }
+
+        return `${firstParts}<br>${mobileLastShouldAnimate ? `<span class="mobile-title-shine">${lastValue}</span>` : lastValue}`;
+      }
+
+      if (parts.length === 1) {
+        const value = escapeHTML(parts[0].text);
+        if (desktop && parts[0].marked) return `<span class="desktop-title-shine">${value}</span>`;
+        if (!desktop && parts[0].marked) return `<span class="mobile-title-shine">${value}</span>`;
+        return value;
+      }
+
+      return "";
+    }
+
+    function formatAboutText(text) {
+      return markdownBoldToHTML(text);
+    }
+
+    function getStartSeconds(parsedUrl) {
+      const t = parsedUrl.searchParams.get("t") || parsedUrl.searchParams.get("start") || "0";
+      if (/^\d+$/.test(t)) return Number(t);
+
+      let seconds = 0;
+      const h = t.match(/(\d+)h/);
+      const m = t.match(/(\d+)m/);
+      const s = t.match(/(\d+)s/);
+
+      if (h) seconds += Number(h[1]) * 3600;
+      if (m) seconds += Number(m[1]) * 60;
+      if (s) seconds += Number(s[1]);
+
+      return seconds;
+    }
+
+    function convertYouTubeToEmbed(url) {
+      try {
+        let cleanUrl = String(url || "").trim();
+        if (!cleanUrl) return "";
+
+        if (!/^https?:\/\//i.test(cleanUrl)) {
+          cleanUrl = "https://" + cleanUrl;
+        }
+
+        const parsed = new URL(cleanUrl);
+        const host = parsed.hostname
+          .toLowerCase()
+          .replace(/^www\./, "")
+          .replace(/^m\./, "");
+
+        const pathParts = parsed.pathname.split("/").filter(Boolean);
+        let videoId = "";
+        const start = getStartSeconds(parsed);
+
+        if (host === "youtu.be") {
+          videoId = pathParts[0] || "";
+        } else if (
+          host === "youtube.com" ||
+          host === "music.youtube.com" ||
+          host === "youtube-nocookie.com"
+        ) {
+          if (parsed.searchParams.get("v")) {
+            videoId = parsed.searchParams.get("v") || "";
+          } else if (pathParts[0] === "embed" && pathParts[1]) {
+            videoId = pathParts[1];
+          } else if (pathParts[0] === "shorts" && pathParts[1]) {
+            videoId = pathParts[1];
+          } else if (pathParts[0] === "live" && pathParts[1]) {
+            videoId = pathParts[1];
+          } else if ((pathParts[0] === "v" || pathParts[0] === "e") && pathParts[1]) {
+            videoId = pathParts[1];
+          }
+        }
+
+        videoId = String(videoId || "")
+          .split("?")[0]
+          .split("&")[0]
+          .replace(/[^a-zA-Z0-9_-]/g, "");
+
+        if (!videoId) return "";
+
+        return `https://www.youtube.com/embed/${videoId}?start=${start}&rel=0&enablejsapi=1&playsinline=1`;
+      } catch (e) {
+        return "";
+      }
+    }
+
+    function applyPromoState(btn, track, text, link, status) {
+      if (!btn || !track) return;
+
+      btn.classList.remove("show");
+      track.className = track.className.includes("m-promo-track") ? "m-promo-track center" : "d-promo-track center";
+      track.innerHTML = "";
+
+      if (status === "enable" && text) {
+        btn.classList.add("show");
+        const isLong = text.length > 18;
+        if (isLong) {
+          track.className = track.className.includes("m-promo-track") ? "m-promo-track marquee" : "d-promo-track marquee";
+          track.innerHTML = `<span>${escapeHTML(text)}</span><span>${escapeHTML(text)}</span><span>${escapeHTML(text)}</span><span>${escapeHTML(text)}</span>`;
+        } else {
+          track.textContent = text;
+        }
+
+        if (link) {
+          btn.href = link;
+          btn.target = "_blank";
+          btn.style.pointerEvents = "auto";
+        } else {
+          btn.href = "#";
+          btn.removeAttribute("target");
+          btn.style.pointerEvents = "none";
+        }
+      }
+    }
+
+    function renderPromo(data) {
+      const status = getOne(data, "promo_button_status", "disable").toLowerCase();
+      const text = getOne(data, "promo_button_text", "");
+      const link = getOne(data, "promo_button_link", "");
+
+      applyPromoState(
+        document.getElementById("mPromoButton"),
+        document.getElementById("mPromoButtonText"),
+        text,
+        link,
+        status
+      );
+
+      applyPromoState(
+        document.getElementById("dPromoButton"),
+        document.getElementById("dPromoButtonText"),
+        text,
+        link,
+        status
+      );
+    }
+
+    function renderVideos(data) {
+      const links = getMany(data, "youtube_video_links");
+      const titles = getMany(data, "youtube_video_titles");
+      const label = getOne(data, "youtube_video_label", "YouTube");
+      const mRow = document.getElementById("mYoutubeRow");
+      const dRow = document.getElementById("dYoutubeRow");
+
+      mRow.innerHTML = "";
+      dRow.innerHTML = "";
+      youtubePlayers = [];
+
+      links.forEach((link, index) => {
+        const embed = convertYouTubeToEmbed(link);
+        if (!embed) return;
+
+        const title = titles[index] || `Highlight ${String(index + 1).padStart(2, "0")}`;
+        const mid = `m-yt-${index + 1}`;
+        const did = `d-yt-${index + 1}`;
+
+        mRow.insertAdjacentHTML("beforeend", `
+          <article class="m-video-card">
+            <div class="m-video-frame">
+              <iframe id="${mid}" src="${escapeHTML(embed)}" title="${escapeHTML(title)}" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+            </div>
+            <div class="m-caption"><h3>${escapeHTML(title)}</h3><span>${escapeHTML(label)}</span></div>
+          </article>
+        `);
+
+        dRow.insertAdjacentHTML("beforeend", `
+          <article class="d-video-card">
+            <div class="d-video-frame">
+              <iframe id="${did}" src="${escapeHTML(embed)}" title="${escapeHTML(title)}" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+              <a class="d-video-click-layer" href="${escapeHTML(link)}" target="_blank" rel="noopener" aria-label="Open ${escapeHTML(title)} on YouTube" onclick="pauseAllVideos()"></a>
+            </div>
+            <div class="d-card-cap"><h3>${escapeHTML(title)}</h3><span>${escapeHTML(label)}</span></div>
+          </article>
+        `);
+      });
+
+      loadYouTubeAPI();
+    }
+
+    function renderReels(data) {
+      const links = getMany(data, "reel_links");
+      const thumbs = getMany(data, "reel_thumbnails");
+      const titles = getMany(data, "reel_titles");
+      const label = getOne(data, "reel_label", "Instagram");
+      const mRow = document.getElementById("mReelRow");
+      const dRow = document.getElementById("dReelRow");
+
+      mRow.innerHTML = "";
+      dRow.innerHTML = "";
+
+      links.forEach((link, index) => {
+        const thumb = thumbs[index];
+        if (!link || !thumb) return;
+
+        const title = titles[index] || `Reel ${String(index + 1).padStart(2, "0")}`;
+
+        mRow.insertAdjacentHTML("beforeend", `
+          <a class="m-reel-card" href="${escapeHTML(link)}" target="_blank" rel="noopener" onclick="pauseAllVideos()">
+            <div class="m-reel-thumb"><img src="${escapeHTML(thumb)}" alt="${escapeHTML(title)}"><div class="m-play"></div></div>
+            <div class="m-caption"><h3>${escapeHTML(title)}</h3><span>${escapeHTML(label)}</span></div>
+          </a>
+        `);
+
+        dRow.insertAdjacentHTML("beforeend", `
+          <a class="d-reel-card" href="${escapeHTML(link)}" target="_blank" rel="noopener" onclick="pauseAllVideos()">
+            <div class="d-reel-thumb"><img src="${escapeHTML(thumb)}" alt="${escapeHTML(title)}"><div class="d-play"></div></div>
+            <div class="d-card-cap"><h3>${escapeHTML(title)}</h3><span>${escapeHTML(label)}</span></div>
+          </a>
+        `);
       });
     }
 
-    function createMarqueeTrack(text, trackElement) {
-      if (!text || text.trim() === "") {
-        trackElement.parentElement.classList.remove("show");
+    function applyData(data) {
+      const banner = getOne(data, "top_banner_image");
+      const title = getOne(data, "hero_title", "Caster Naina");
+      const about = getOne(data, "about_text", "");
+      const portfolio = getOne(data, "portfolio_label", "Portfolio");
+
+      document.title = getOne(data, "share_title", "Caster Naina Portfolio");
+      shareTitle = getOne(data, "share_title", "Caster Naina Portfolio");
+      shareText = getOne(data, "share_text", "Check out Caster Naina's casting portfolio.");
+
+      if (banner) {
+        document.getElementById("mHeroSection").style.backgroundImage =
+          `linear-gradient(90deg, rgba(3, 48, 44, 0.88) 0%, rgba(3, 48, 44, 0.48) 42%, rgba(3, 48, 44, 0.10) 100%), url("${banner}")`;
+
+        document.querySelector(".d-hero-banner").style.backgroundImage =
+          `linear-gradient(90deg, rgba(3, 48, 44, 0.94) 0%, rgba(3, 48, 44, 0.82) 35%, rgba(3, 48, 44, 0.36) 62%, rgba(3, 48, 44, 0.06) 100%), url("${banner}")`;
+      }
+
+      setText("mPortfolioLabel", portfolio);
+      setText("dPortfolioLabel", portfolio);
+
+      setHTML("mHeroTitle", formatHeroTitle(title, false));
+      setHTML("dHeroTitle", formatHeroTitle(title, true));
+
+      setText("dBrandName", stripMarkdownStars(title));
+
+      setHTML("mAboutText", formatAboutText(about));
+      setHTML("dAboutText", formatAboutText(about));
+
+      setText("mShareButton", getOne(data, "share_button_text", "Share Profile"));
+
+      renderPromo(data);
+
+      const ytSocial = getOne(data, "youtube_social_link");
+      const igSocial = getOne(data, "instagram_social_link");
+      const dcSocial = getOne(data, "discord_social_link");
+      const waSocial = getOne(data, "whatsapp_social_link");
+
+      setHref("mYoutubeSocial", ytSocial);
+      setHref("mInstagramSocial", igSocial);
+      setHref("mDiscordSocial", dcSocial);
+      setHref("mWhatsappSocial", waSocial);
+
+      setHref("dNavYoutube", ytSocial);
+      setHref("dNavInstagram", igSocial);
+      setHref("dNavDiscord", dcSocial);
+      setHref("dNavWhatsapp", waSocial);
+
+      ["mCastingHeading", "dCastingHeading"].forEach(id => setText(id, getOne(data, "casting_heading", "Casting Highlights")));
+
+      const mobileCastingText = getOne(data, "casting_see_more_text_mobile", getOne(data, "casting_see_more_text", "See More"));
+      const mobileCastingLink = getOne(data, "casting_see_more_link_mobile", "casting-highlights.html");
+      const desktopCastingText = getOne(data, "casting_see_more_text_PC", getOne(data, "casting_see_more_text", "See More"));
+      const desktopCastingLink = getOne(data, "casting_see_more_link_PC", getOne(data, "casting_see_more_link"));
+
+      setText("mCastingSeeMore", mobileCastingText);
+      setHref("mCastingSeeMore", mobileCastingLink);
+      const mobileCastingBtn = document.getElementById("mCastingSeeMore");
+      if (mobileCastingBtn) mobileCastingBtn.removeAttribute("target");
+
+      setText("dCastingSeeMore", desktopCastingText);
+      setHref("dCastingSeeMore", desktopCastingLink);
+      const desktopCastingBtn = document.getElementById("dCastingSeeMore");
+      if (desktopCastingBtn) desktopCastingBtn.setAttribute("target", "_blank");
+
+      setText("mCastingHint", getOne(data, "casting_hint", ""));
+
+      ["mReelHeading", "dReelHeading"].forEach(id => setText(id, getOne(data, "reel_heading", "Reel Highlights")));
+      ["mReelSeeMore", "dReelSeeMore"].forEach(id => {
+        setText(id, getOne(data, "reel_see_more_text", "See More"));
+        setHref(id, getOne(data, "reel_see_more_link"));
+      });
+      setText("mReelHint", getOne(data, "reel_hint", ""));
+
+      ["mThankHeading", "dThankHeading"].forEach(id => setText(id, getOne(data, "thank_you_heading", "Thank You")));
+      ["mThankText", "dThankText"].forEach(id => setText(id, getOne(data, "thank_you_text")));
+
+      renderVideos(data);
+      renderReels(data);
+    }
+
+    async function loadSheetData() {
+      try {
+        const res = await fetch(SHEET_CSV_URL + "&cacheBust=" + Date.now(), {
+          cache: "no-store"
+        });
+
+        if (!res.ok) throw new Error("Sheet failed");
+
+        const csv = await res.text();
+        applyData(rowsToData(parseCSV(csv)));
+      } catch (err) {
+        console.log("Using fallback data:", err);
+        applyData(fallbackData);
+      } finally {
+        document.body.classList.remove("is-loading");
+        document.body.classList.add("is-ready");
+      }
+    }
+
+    function loadYouTubeAPI() {
+      if (window.YT && window.YT.Player) {
+        initialiseYouTubePlayers();
         return;
       }
-      trackElement.parentElement.classList.add("show");
 
-      if (text.length > 28) {
-        trackElement.className = trackElement.className.replace("center", "marquee");
-        trackElement.innerHTML = `<span>${text}</span><span>${text}</span><span>${text}</span>`;
-      } else {
-        trackElement.className = trackElement.className.replace("marquee", "center");
-        trackElement.innerHTML = `<span>${text}</span>`;
+      if (!document.getElementById("youtube-api-script")) {
+        const script = document.createElement("script");
+        script.id = "youtube-api-script";
+        script.src = "https://www.youtube.com/iframe_api";
+        document.body.appendChild(script);
       }
     }
 
-    function renderDynamicSheetData(data) {
-      if (!data) return;
-
-      const meta = data.meta || {};
-      const stats = data.stats || [];
-      const videos = data.videos || [];
-      const reels = data.reels || [];
-
-      if (meta.shareTitle) shareTitle = meta.shareTitle;
-      if (meta.shareText) shareText = meta.shareText;
-
-      const heroImg = meta.heroImage || "";
-      if (heroImg !== "") {
-        const mHero = document.getElementById("mHeroBg");
-        const dHero = document.getElementById("dHeroBg");
-        if (mHero) mHero.style.backgroundImage = `linear-gradient(90deg, rgba(3,48,44,0.88) 0%, rgba(3,48,44,0.48) 42%, rgba(3,48,44,0.10) 100%), url('${heroImg}')`;
-        if (dHero) dHero.style.backgroundImage = `linear-gradient(90deg, rgba(3,48,44,0.96) 0%, rgba(3,48,44,0.85) 35%, rgba(3,48,44,0.36) 62%, rgba(3,48,44,0.06) 100%), url('${heroImg}')`;
-      }
-
-      // Populate Elements safely
-      const binders = [
-        { id: "mKicker", val: meta.kicker },
-        { id: "dKicker", val: meta.kicker },
-        { id: "mTitle", val: meta.name, classes: "title-shine" },
-        { id: "dTitle", val: meta.name, classes: "title-shine" },
-        { id: "mAbout", val: meta.aboutHtml, isHtml: true },
-        { id: "dAbout", val: meta.aboutHtml, isHtml: true },
-        { id: "mThankHead", val: meta.thankYouHeader },
-        { id: "mThankSub", val: meta.thankYouSub },
-        { id: "dVideosMore", val: null, href: meta.moreVideosUrl },
-        { id: "dReelsMore", val: null, href: meta.moreReelsUrl },
-        { id: "dPrimaryCta", val: meta.primaryCtaText, href: meta.primaryCtaUrl },
-        { id: "mInsta", val: null, href: meta.instagramUrl },
-        { id: "dNavInsta", val: null, href: meta.instagramUrl },
-        { id: "mYoutube", val: null, href: meta.youtubeUrl },
-        { id: "dNavYoutube", val: null, href: meta.youtubeUrl },
-        { id: "mLinkedin", val: null, href: meta.linkedinUrl },
-        { id: "mTwitter", val: null, href: meta.twitterUrl }
-      ];
-
-      binders.forEach(b => {
-        const elements = document.querySelectorAll(`#${b.id}`);
-        elements.forEach(el => {
-          if (b.href !== undefined) {
-            if (b.href) { el.href = b.href; el.style.display = ""; }
-            else { el.style.display = "none"; }
-          }
-          if (b.val !== undefined && b.val !== null) {
-            if (b.isHtml) el.innerHTML = b.val;
-            else el.textContent = b.val;
-          }
-          if (b.classes) el.classList.add(b.classes);
-        });
-      });
-
-      // Banners Config
-      const mTrack = document.getElementById("mPromoTrack");
-      const dTrack = document.getElementById("dPromoTrack");
-      const pUrl = meta.promoUrl || "#";
-      
-      if (mTrack) {
-        createMarqueeTrack(meta.promoText, mTrack);
-        document.querySelectorAll("#mPromoBtn").forEach(a => a.href = pUrl);
-      }
-      if (dTrack) {
-        createMarqueeTrack(meta.promoText, dTrack);
-        document.querySelectorAll("#dPromoBtn").forEach(a => a.href = pUrl);
-      }
-
-      // Stats Population
-      for (let i = 0; i < 3; i++) {
-        const s = stats[i] || { value: "-", label: "" };
-        const valEl = document.getElementById(`dStat${i+1}Val`);
-        const lblEl = document.getElementById(`dStat${i+1}Lbl`);
-        if (valEl) valEl.textContent = s.value;
-        if (lblEl) lblEl.textContent = s.label;
-      }
-
-      // Videos Output Generation
-      let mVideosHtml = "";
-      let dVideosHtml = "";
-      videos.forEach(v => {
-        mVideosHtml += `
-          <div class="m-video-card">
-            <div class="m-video-frame"><iframe src="${v.embedUrl}" allowfullscreen loading="lazy"></iframe></div>
-            <div class="m-caption"><h3>${v.title}</h3><span>${v.duration}</span></div>
-          </div>`;
-        dVideosHtml += `
-          <div class="d-video-card">
-            <div class="d-video-frame">
-              <div class="d-video-click-layer" onclick="pauseAllVideos()"></div>
-              <iframe src="${v.embedUrl}" allowfullscreen loading="lazy"></iframe>
-            </div>
-            <div class="d-card-cap"><h3>${v.title}</h3><span>${v.duration}</span></div>
-          </div>`;
-      });
-      const mVidBox = document.getElementById("mVideos");
-      const dVidBox = document.getElementById("dVideos");
-      if (mVidBox) mVidBox.innerHTML = mVideosHtml || "<p style='color:white;font-size:12px;'>No videos setup yet.</p>";
-      if (dVidBox) dVidBox.innerHTML = dVideosHtml || "<p style='color:white;font-size:14px;'>No videos setup yet.</p>";
-
-      // Reels Output Generation
-      let mReelsHtml = "";
-      let dReelsHtml = "";
-      reels.forEach(r => {
-        mReelsHtml += `
-          <a class="m-reel-card" href="${r.linkUrl}" target="_blank">
-            <div class="m-reel-thumb"><div class="m-play"></div><img src="${r.thumbUrl}" alt="Reel Thumbnail" loading="lazy" /></div>
-          </a>`;
-        dReelsHtml += `
-          <a class="d-reel-card" href="${r.linkUrl}" target="_blank">
-            <div class="d-reel-thumb"><div class="d-play"></div><img src="${r.thumbUrl}" alt="Reel Thumbnail" loading="lazy" /></div>
-          </a>`;
-      });
-      const mReelBox = document.getElementById("mReels");
-      const dReelBox = document.getElementById("dReels");
-      if (mReelBox) mReelBox.innerHTML = mReelsHtml || "<p style='color:white;font-size:12px;'>No reels setup yet.</p>";
-      if (dReelBox) dReelBox.innerHTML = dReelsHtml || "<p style='color:white;font-size:14px;'>No reels setup yet.</p>";
+    function onYouTubeIframeAPIReady() {
+      initialiseYouTubePlayers();
     }
 
-    function loadSheetData() {
-      fetch(SHEET_API_URL)
-        .then(response => response.json())
-        .then(data => {
-          renderDynamicSheetData(data);
-          document.body.classList.remove("is-loading");
-          document.body.classList.add("is-ready");
-        })
-        .catch(error => {
-          console.error("Error connecting with portfolio pipeline sheet architecture:", error);
-          document.body.classList.remove("is-loading");
-          document.body.classList.add("is-ready");
-        });
+    function initialiseYouTubePlayers() {
+      youtubePlayers = [];
+      document.querySelectorAll("iframe[id^='m-yt-'], iframe[id^='d-yt-']").forEach((iframe) => {
+        try {
+          const player = new YT.Player(iframe.id, {
+            events: {
+              "onStateChange": function(event) {
+                if (event.data === YT.PlayerState.PLAYING) {
+                  youtubePlayers.forEach(other => {
+                    if (other && other !== event.target && typeof other.pauseVideo === "function") {
+                      other.pauseVideo();
+                    }
+                  });
+                }
+              }
+            }
+          });
+          youtubePlayers.push(player);
+        } catch (e) {
+          console.log("YT init issue:", e);
+        }
+      });
+    }
+
+    function pauseAllVideos() {
+      youtubePlayers.forEach(player => {
+        if (player && typeof player.pauseVideo === "function") {
+          player.pauseVideo();
+        }
+      });
     }
 
     function scrollToPortfolioSection(sectionId) {
-      const el = document.getElementById(sectionId);
-      if (!el) return;
-      const topOffset = 110; 
-      const sectionTop = el.getBoundingClientRect().top + window.pageYOffset - topOffset;
+      const section = document.getElementById(sectionId);
+      if (!section) return;
+
+      pauseAllVideos();
+
+      const topOffset = 22;
+      const sectionTop = section.getBoundingClientRect().top + window.pageYOffset - topOffset;
 
       window.scrollTo({
         top: sectionTop,
@@ -1360,7 +2212,7 @@
       if (navigator.share) {
         navigator.share(shareData).catch(() => {});
       } else if (navigator.clipboard) {
-        navigator.clipboard.writeText(window.location.href).then(() => alert("Profile link copied!\nShare it with everyone."));
+        navigator.clipboard.writeText(window.location.href).then(() => alert("Profile link copied!"));
       } else {
         alert("Share option is not supported on this browser.");
       }
