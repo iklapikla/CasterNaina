@@ -4,14 +4,11 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Caster Naina Portfolio</title>
-
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;800&family=Poppins:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
-
   <style>
     * { margin: 0; padding: 0; box-sizing: border-box; }
-
     :root {
       --green: #063f39;
       --green-2: #0c5950;
@@ -23,9 +20,7 @@
       --dark: #031916;
       --shadow: 0 18px 45px rgba(0, 45, 38, 0.22);
     }
-
     html { scroll-behavior: smooth; }
-
     body {
       min-height: 100vh;
       font-family: "Poppins", sans-serif;
@@ -36,7 +31,6 @@
         linear-gradient(135deg, #c9e5dc 0%, #eef8f3 45%, #c7e5dc 100%);
       overflow-x: hidden;
     }
-
     body::before {
       content: "";
       position: fixed;
@@ -50,42 +44,33 @@
       mix-blend-mode: multiply;
       z-index: 0;
     }
-
     .mobile-layout,
     .desktop-layout {
       position: relative;
       z-index: 1;
     }
-
     .desktop-layout { display: none; }
-
     /* Prevent old/fallback content flash before Google Sheet data loads */
     body.is-loading .mobile-layout,
     body.is-loading .desktop-layout {
       opacity: 0;
       visibility: hidden;
     }
-
     body.is-ready .mobile-layout,
     body.is-ready .desktop-layout {
       opacity: 1;
       visibility: visible;
       transition: opacity 0.25s ease;
     }
-
     .loading-skeleton {
       display: none;
     }
-
-
     /* ================= MOBILE LAYOUT ================= */
-
     .mobile-layout {
       width: min(100%, 520px);
       margin: 0 auto;
       padding: 18px 14px 38px;
     }
-
     .m-section {
       background:
         radial-gradient(circle at 80% 15%, rgba(255,255,255,0.10), transparent 25%),
@@ -94,15 +79,7 @@
       box-shadow: var(--shadow);
       position: relative;
       overflow: hidden;
-      transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.4s ease;
     }
-
-    /* PREMIUM HOVER: Mobile Cards/Sections */
-    .m-section:hover {
-      transform: translateY(-4px);
-      box-shadow: 0 25px 55px rgba(0, 35, 30, 0.35);
-    }
-
     .m-section::after {
       content: "";
       position: absolute;
@@ -114,7 +91,6 @@
       pointer-events: none;
       opacity: 0.7;
     }
-
     .m-hero {
       aspect-ratio: 16 / 9;
       padding: 22px;
@@ -127,7 +103,6 @@
       background-position: center;
       border: 1px solid rgba(255,255,255,0.14);
     }
-
     .m-hero-top {
       position: relative;
       z-index: 2;
@@ -136,7 +111,6 @@
       align-items: flex-start;
       gap: 18px;
     }
-
     .m-eyebrow {
       color: rgba(255,255,255,0.72);
       font-size: 10px;
@@ -144,13 +118,7 @@
       font-weight: 500;
       text-transform: uppercase;
       margin-bottom: 4px;
-      transition: color 0.3s ease, letter-spacing 0.3s ease;
     }
-    .m-hero:hover .m-eyebrow {
-      color: var(--gold);
-      letter-spacing: 7px;
-    }
-
     .m-hero h1 {
       font-family: "Playfair Display", serif;
       color: var(--white);
@@ -159,13 +127,7 @@
       letter-spacing: -1px;
       text-transform: uppercase;
       text-shadow: 0 8px 22px rgba(0,0,0,0.32);
-      transition: transform 0.4s ease, text-shadow 0.4s ease;
     }
-    .m-hero:hover h1 {
-      transform: scale(1.02);
-      text-shadow: 0 12px 28px rgba(0,0,0,0.45);
-    }
-
     .m-menu {
       width: 25px;
       display: grid;
@@ -174,27 +136,13 @@
       flex-shrink: 0;
       position: relative;
       z-index: 2;
-      cursor: pointer;
-      transition: transform 0.3s ease;
     }
-    .m-menu:hover {
-      transform: rotate(90deg) scale(1.1);
-    }
-
     .m-menu span {
       height: 2px;
       border-radius: 20px;
       background: rgba(255,255,255,0.72);
       display: block;
-      transition: background 0.3s ease, width 0.3s ease;
     }
-    .m-menu:hover span {
-      background: var(--gold);
-    }
-    .m-menu:hover span:nth-child(2) {
-      width: 70%;
-    }
-
     .m-about {
       position: relative;
       z-index: 2;
@@ -203,21 +151,8 @@
       line-height: 1.5;
       max-width: 310px;
       text-shadow: 0 3px 12px rgba(0,0,0,0.55);
-      transition: color 0.3s ease;
     }
-    .m-section:hover .m-about {
-      color: #fff;
-    }
-
-    .m-about strong { 
-      color: #ffffff; 
-      font-weight: 800; 
-      transition: color 0.3s ease;
-    }
-    .m-section:hover .m-about strong {
-      color: var(--gold);
-    }
-
+    .m-about strong { color: #ffffff; font-weight: 800; }
     .m-action-row {
       display: flex;
       align-items: center;
@@ -225,7 +160,6 @@
       margin: 12px 0 16px;
       width: 100%;
     }
-
     .m-share {
       width: 160px;
       height: 46px;
@@ -240,17 +174,7 @@
       cursor: pointer;
       text-transform: uppercase;
       flex-shrink: 0;
-      transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275), box-shadow 0.3s ease, background 0.3s ease;
     }
-    .m-share:hover {
-      transform: scale(1.06);
-      background: linear-gradient(145deg, var(--green), var(--green-3));
-      box-shadow: 0 15px 30px rgba(0, 55, 47, 0.4);
-    }
-    .m-share:active {
-      transform: scale(0.97);
-    }
-
     .m-promo {
       height: 46px;
       flex: 1;
@@ -272,17 +196,9 @@
       padding: 0 12px;
       text-transform: uppercase;
       animation: promoPulse 2.2s ease-in-out infinite;
-      transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275), box-shadow 0.3s ease, filter 0.3s ease;
     }
-    .m-promo:hover {
-      transform: scale(1.05);
-      filter: brightness(1.1);
-      box-shadow: 0 15px 32px rgba(156, 103, 0, 0.45);
-    }
-
     .m-promo.show,
     .d-promo.show { display: inline-flex; }
-
     .m-promo::after,
     .d-promo::after {
       content: "";
@@ -296,7 +212,6 @@
       animation: promoShine 2.6s ease-in-out infinite;
       pointer-events: none;
     }
-
     .m-promo-track,
     .d-promo-track {
       position: relative;
@@ -305,7 +220,6 @@
       display: inline-flex;
       gap: 24px;
     }
-
     .m-promo-track.center,
     .d-promo-track.center {
       width: 100%;
@@ -313,37 +227,31 @@
       overflow: hidden;
       text-overflow: ellipsis;
     }
-
     .m-promo-track.marquee,
     .d-promo-track.marquee {
       width: max-content;
       animation: promoMarquee 9s linear infinite;
     }
-
     @keyframes promoShine {
       0% { left: -65%; opacity: 0; }
       18% { opacity: 1; }
       55% { left: 125%; opacity: 1; }
       100% { left: 125%; opacity: 0; }
     }
-
     @keyframes promoPulse {
       0%, 100% { filter: brightness(1); }
       50% { filter: brightness(1.14); }
     }
-
     @keyframes promoMarquee {
       0% { transform: translateX(0); }
       100% { transform: translateX(-33.333%); }
     }
-
     .m-socials {
       display: grid;
       grid-template-columns: repeat(4, 1fr);
       gap: 10px;
       margin-bottom: 18px;
     }
-
     .m-socials a {
       height: 48px;
       border-radius: 15px;
@@ -354,44 +262,18 @@
       position: relative;
       overflow: hidden;
       text-decoration: none;
-      transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275), box-shadow 0.4s ease;
     }
-    /* LUXURY HOVER: Mobile Social Icons Glow + Fill Effect */
-    .m-socials a::before {
-      content: '';
-      position: absolute;
-      inset: 0;
-      background: linear-gradient(145deg, var(--gold), var(--gold-2));
-      opacity: 0;
-      transition: opacity 0.3s ease;
-      z-index: 1;
-    }
-    .m-socials a:hover {
-      transform: translateY(-5px) scale(1.08);
-      box-shadow: 0 14px 28px rgba(246, 197, 69, 0.35);
-    }
-    .m-socials a:hover::before {
-      opacity: 1;
-    }
-    .m-socials a:hover svg {
-      fill: var(--green-3);
-      transform: scale(1.15);
-    }
-
     .m-socials svg {
       width: 23px;
       height: 23px;
       fill: white;
       position: relative;
       z-index: 2;
-      transition: fill 0.3s ease, transform 0.3s ease;
     }
-
     .m-banner {
       padding: 22px 18px 24px;
       margin-bottom: 22px;
     }
-
     .m-head {
       position: relative;
       z-index: 2;
@@ -401,7 +283,6 @@
       margin-bottom: 16px;
       gap: 10px;
     }
-
     .m-head h2 {
       font-family: "Playfair Display", serif;
       color: white;
@@ -410,12 +291,7 @@
       letter-spacing: -0.2px;
       text-transform: uppercase;
       white-space: nowrap;
-      transition: color 0.3s ease;
     }
-    .m-section:hover .m-head h2 {
-      color: var(--gold);
-    }
-
     .m-pill {
       color: var(--green);
       background: rgba(239,250,245,0.94);
@@ -426,15 +302,7 @@
       white-space: nowrap;
       text-decoration: none;
       flex-shrink: 0;
-      transition: transform 0.3s ease, background 0.3s ease, color 0.3s ease, box-shadow 0.3s ease;
     }
-    .m-pill:hover {
-      transform: scale(1.05);
-      background: var(--gold);
-      color: var(--green-3);
-      box-shadow: 0 5px 15px rgba(246, 197, 69, 0.4);
-    }
-
     .m-scroll {
       position: relative;
       z-index: 2;
@@ -445,9 +313,7 @@
       padding: 4px 2px 12px;
       scrollbar-width: none;
     }
-
     .m-scroll::-webkit-scrollbar { display: none; }
-
     .m-video-card {
       min-width: 255px;
       scroll-snap-align: start;
@@ -455,32 +321,20 @@
       border-radius: 18px;
       padding: 10px;
       box-shadow: 0 14px 28px rgba(0,0,0,0.16);
-      transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.4s ease;
     }
-    .m-video-card:hover {
-      transform: scale(1.03) translateY(-2px);
-      box-shadow: 0 20px 35px rgba(0,0,0,0.25);
-    }
-
     .m-video-frame {
       width: 100%;
       aspect-ratio: 16 / 9;
       border-radius: 14px;
       overflow: hidden;
       background: #000;
-      transition: transform 0.4s ease;
     }
-    .m-video-card:hover .m-video-frame {
-      transform: scale(1.01);
-    }
-
     .m-video-frame iframe {
       width: 100%;
       height: 100%;
       border: 0;
       display: block;
     }
-
     .m-caption {
       padding: 9px 3px 2px;
       display: flex;
@@ -488,28 +342,17 @@
       align-items: center;
       gap: 8px;
     }
-
     .m-caption h3 {
       font-size: 13px;
       color: var(--green);
       font-weight: 800;
       text-transform: uppercase;
-      transition: color 0.3s ease;
     }
-    .m-video-card:hover .m-caption h3 {
-      color: var(--green-2);
-    }
-
     .m-caption span {
       font-size: 10px;
       color: rgba(6,63,57,0.72);
       font-weight: 700;
-      transition: color 0.3s ease;
     }
-    .m-video-card:hover .m-caption span {
-      color: var(--gold-2);
-    }
-
     .m-reel-card {
       min-width: 155px;
       scroll-snap-align: start;
@@ -519,13 +362,7 @@
       box-shadow: 0 14px 28px rgba(0,0,0,0.16);
       text-decoration: none;
       color: inherit;
-      transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.4s ease;
     }
-    .m-reel-card:hover {
-      transform: scale(1.04) translateY(-3px);
-      box-shadow: 0 22px 38px rgba(0,0,0,0.28);
-    }
-
     .m-reel-thumb {
       width: 100%;
       aspect-ratio: 9 / 16;
@@ -534,18 +371,12 @@
       background: #000;
       position: relative;
     }
-
     .m-reel-thumb img {
       width: 100%;
       height: 100%;
       object-fit: cover;
       display: block;
-      transition: transform 0.5s ease;
     }
-    .m-reel-card:hover .m-reel-thumb img {
-      transform: scale(1.08);
-    }
-
     .m-play {
       position: absolute;
       left: 50%;
@@ -557,13 +388,7 @@
       border-radius: 50%;
       background: rgba(255,255,255,0.88);
       box-shadow: 0 10px 24px rgba(0,0,0,0.25);
-      transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275), background 0.3s ease;
     }
-    .m-reel-card:hover .m-play, .d-reel-card:hover .d-play {
-      transform: translate(-50%, -50%) scale(1.12);
-      background: var(--gold);
-    }
-
     .m-play::before {
       content: "";
       position: absolute;
@@ -575,12 +400,7 @@
       border-top: 11px solid transparent;
       border-bottom: 11px solid transparent;
       border-left: 17px solid var(--green);
-      transition: border-left-color 0.3s ease;
     }
-    .m-reel-card:hover .m-play::before {
-      border-left-color: var(--green-3);
-    }
-
     .m-hint {
       position: relative;
       z-index: 2;
@@ -588,18 +408,12 @@
       font-size: 10px;
       font-weight: 600;
       margin-top: 4px;
-      transition: color 0.3s ease;
     }
-    .m-section:hover .m-hint {
-      color: rgba(255,255,255,0.9);
-    }
-
     .m-thank {
       padding: 34px 22px;
       text-align: center;
       margin-top: 6px;
     }
-
     .m-thank h2 {
       position: relative;
       z-index: 2;
@@ -609,12 +423,7 @@
       line-height: 1;
       text-transform: uppercase;
       margin-bottom: 10px;
-      transition: transform 0.4s ease;
     }
-    .m-thank:hover h2 {
-      transform: scale(1.04);
-    }
-
     .m-thank p {
       position: relative;
       z-index: 2;
@@ -623,13 +432,7 @@
       line-height: 1.5;
       max-width: 330px;
       margin: 0 auto;
-      transition: color 0.3s ease;
     }
-    .m-thank:hover p {
-      color: #fff;
-    }
-
-
     .title-shine {
       display: inline-block;
       color: transparent !important;
@@ -640,15 +443,11 @@
       animation: titleShine 2.8s linear infinite;
       filter: drop-shadow(0 0 18px rgba(246,197,69,0.24));
     }
-
     @keyframes titleShine {
       0% { background-position: 160% center; }
       100% { background-position: -160% center; }
     }
-
-
     /* ================= DESKTOP LAYOUT ================= */
-
     @media (min-width: 768px) {
       body {
         background:
@@ -658,7 +457,6 @@
           linear-gradient(135deg, #021b18 0%, #073c35 50%, #021b18 100%);
         color: #fff;
       }
-
       body::before {
         opacity: 0.13;
         background-image:
@@ -666,16 +464,13 @@
           linear-gradient(90deg, rgba(255,255,255,0.12) 1px, transparent 1px);
         background-size: 12px 12px;
       }
-
       .mobile-layout { display: none; }
       .desktop-layout { display: block; }
-
       .d-shell {
         width: min(1440px, calc(100% - 64px));
         margin: 0 auto;
         padding: 34px 0 70px;
       }
-
       .d-nav {
         height: 76px;
         display: flex;
@@ -688,30 +483,14 @@
         backdrop-filter: blur(18px);
         border-radius: 28px;
         box-shadow: 0 20px 55px rgba(0,0,0,0.25);
-        transition: border-color 0.3s ease, box-shadow 0.3s ease;
       }
-      /* PREMIUM HOVER: Desktop Navigation Bar */
-      .d-nav:hover {
-        border-color: rgba(246, 197, 69, 0.3);
-        box-shadow: 0 25px 60px rgba(0, 0, 0, 0.35), 0 0 30px rgba(246, 197, 69, 0.05);
-      }
-
       .d-brand {
         display: flex;
         align-items: center;
         gap: 12px;
         font-weight: 900;
         letter-spacing: 0.4px;
-        cursor: pointer;
       }
-      .d-brand-text {
-        transition: color 0.3s ease, transform 0.3s ease;
-      }
-      .d-brand:hover .d-brand-text {
-        color: var(--gold);
-        transform: translateX(2px);
-      }
-
       .d-brand-mark {
         width: 42px;
         height: 42px;
@@ -721,21 +500,13 @@
         background: linear-gradient(145deg, #fff4aa, #f1b922 65%, #a66b00);
         color: #062b27;
         box-shadow: 0 14px 28px rgba(231,169,22,0.22);
-        transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275), box-shadow 0.4s ease, filter 0.4s ease;
       }
-      .d-brand:hover .d-brand-mark {
-        transform: scale(1.1) rotate(10deg);
-        filter: brightness(1.1);
-        box-shadow: 0 16px 32px rgba(246,197,69,0.4);
-      }
-
       .d-nav-links {
         display: flex;
         align-items: center;
         gap: 12px;
         flex-wrap: wrap;
       }
-
       .d-nav-links a,
       .d-nav-links button {
         height: 44px;
@@ -752,32 +523,10 @@
         align-items: center;
         justify-content: center;
       }
-
-      /* Transitions baseline injection */
-      .d-nav-links a,
-      .d-nav-links button,
-      .d-btn,
-      .d-see,
-      .d-video-card,
-      .d-reel-card,
-      .d-stat {
-        transition: transform 0.3s cubic-bezier(0.25, 1, 0.5, 1), box-shadow 0.3s ease, filter 0.3s ease, background 0.3s ease, border-color 0.3s ease, color 0.3s ease;
-      }
-
-      /* MODERNIZED HOVER: Top Nav Links & Buttons */
       .d-nav-links a:hover,
       .d-nav-links button:hover {
-        background: rgba(255, 255, 255, 0.15);
-        border-color: rgba(246, 197, 69, 0.4);
-        color: var(--gold);
-        transform: scale(1.05) translateY(-1px);
-        box-shadow: 0 10px 25px rgba(246, 197, 69, 0.15);
+        background: rgba(255,255,255,0.12);
       }
-      .d-nav-links a:active,
-      .d-nav-links button:active {
-        transform: scale(0.98);
-      }
-
       .d-hero-banner {
         position: relative;
         overflow: hidden;
@@ -792,15 +541,7 @@
         box-shadow: 0 30px 85px rgba(0,0,0,0.34);
         display: block;
         margin-bottom: 34px;
-        transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.5s ease, border-color 0.5s ease;
       }
-      /* HOVER: Hero Section Banner Container */
-      .d-hero-banner:hover {
-        transform: translateY(-4px);
-        border-color: rgba(255,255,255,0.25);
-        box-shadow: 0 40px 100px rgba(0,0,0,0.45);
-      }
-
       .d-hero-banner::after,
       .d-section::after {
         content: "";
@@ -813,7 +554,6 @@
         background-size: 8px 8px;
         opacity: 0.55;
       }
-
       .d-copy {
         position: relative;
         z-index: 2;
@@ -824,20 +564,13 @@
         flex-direction: column;
         justify-content: center;
       }
-
       .d-kicker {
         font-size: 13px;
         letter-spacing: 9px;
         text-transform: uppercase;
         color: rgba(255,255,255,0.68);
         margin-bottom: 24px;
-        transition: color 0.3s ease, letter-spacing 0.3s ease;
       }
-      .d-hero-banner:hover .d-kicker {
-        color: var(--gold);
-        letter-spacing: 10px;
-      }
-
       .d-title {
         font-family: "Playfair Display", serif;
         font-size: clamp(70px, 7vw, 114px);
@@ -845,117 +578,156 @@
         letter-spacing: -4px;
         text-transform: uppercase;
         margin-bottom: 34px;
-        transition: transform 0.4s ease;
       }
-      .d-hero-banner:hover .d-title {
-        transform: scale(1.01) translateX(4px);
-      }
-
       .d-title span {
         color: var(--gold);
         text-shadow: 0 20px 60px rgba(246,197,69,0.22);
       }
-
       .d-title .title-shine,
       .d-title span.title-shine {
         color: transparent !important;
-        background: linear-gradient(90deg, #f6c545 0%, #f6c545 22%, #fff7bf 40%, #ffffff 50%, #ffd95a 62%, #f6c545 78%, #f6c545 100%);
+        background:
+          linear-gradient(90deg, #f6c545 0%, #f6c545 22%, #fff7bf 40%, #ffffff 50%, #ffd95a 62%, #f6c545 78%, #f6c545 100%);
         background-size: 260% auto;
         -webkit-background-clip: text;
         background-clip: text;
-        animation: titleShine 2.4s linear infinite, titleGoldGlow 1.9s ease-in-out infinite;
-        filter: drop-shadow(0 0 16px rgba(246,197,69,0.52)) drop-shadow(0 0 38px rgba(246,197,69,0.28));
+        animation:
+          titleShine 2.4s linear infinite,
+          titleGoldGlow 1.9s ease-in-out infinite;
+        filter:
+          drop-shadow(0 0 16px rgba(246,197,69,0.52))
+          drop-shadow(0 0 38px rgba(246,197,69,0.28));
       }
-
       @keyframes titleGoldGlow {
-        0%, 100% { filter: drop-shadow(0 0 13px rgba(246,197,69,0.42)) drop-shadow(0 0 30px rgba(246,197,69,0.22)); }
-        50% { filter: drop-shadow(0 0 22px rgba(255,239,150,0.95)) drop-shadow(0 0 58px rgba(246,197,69,0.68)) drop-shadow(0 0 110px rgba(246,197,69,0.30)); }
+        0%, 100% {
+          filter:
+            drop-shadow(0 0 13px rgba(246,197,69,0.42))
+            drop-shadow(0 0 30px rgba(246,197,69,0.22));
+        }
+        50% {
+          filter:
+            drop-shadow(0 0 22px rgba(255,239,150,0.95))
+            drop-shadow(0 0 58px rgba(246,197,69,0.68))
+            drop-shadow(0 0 110px rgba(246,197,69,0.30));
+        }
       }
-
-      /* HOVER OVERRIDES: Keeping existing custom hover states intact and boosting them */
-      .d-nav-links a:hover, .d-nav-links button:hover, .d-btn:hover, .d-see:hover { 
-        transform: scale(1.06) translateY(-2px); 
-        box-shadow: 0 14px 34px rgba(246,197,69,0.22), 0 0 34px rgba(246,197,69,0.16);
-        filter: brightness(1.08); 
+      .d-nav-links a,
+      .d-nav-links button,
+      .d-btn,
+      .d-see,
+      .d-video-card,
+      .d-reel-card,
+      .d-stat {
+        transition: transform 0.25s ease, box-shadow 0.25s ease, filter 0.25s ease, background 0.25s ease;
       }
-      .d-btn.primary:hover, .d-see:hover { 
-        box-shadow: 0 18px 42px rgba(246,197,69,0.42), 0 0 58px rgba(246,197,69,0.28); 
+      .d-nav-links a:hover,
+      .d-nav-links button:hover,
+      .d-btn:hover,
+      .d-see:hover {
+        transform: scale(1.06);
+        box-shadow:
+          0 14px 34px rgba(246,197,69,0.22),
+          0 0 34px rgba(246,197,69,0.16);
+        filter: brightness(1.08);
       }
-      .d-btn.secondary:hover { 
-        box-shadow: 0 14px 34px rgba(255,255,255,0.10), 0 0 38px rgba(246,197,69,0.18);
-        background: rgba(255,255,255,0.15);
-        border-color: rgba(255,255,255,0.3);
+      .d-btn.primary:hover,
+      .d-see:hover {
+        box-shadow:
+          0 18px 42px rgba(246,197,69,0.42),
+          0 0 58px rgba(246,197,69,0.28);
       }
-      .d-video-card:hover, .d-reel-card:hover { 
-        transform: translateY(-8px) scale(1.025); 
-        box-shadow: 0 28px 70px rgba(0,0,0,0.34); 
+      .d-btn.secondary:hover,
+      .d-nav-links a:hover,
+      .d-nav-links button:hover {
+        box-shadow:
+          0 14px 34px rgba(255,255,255,0.10),
+          0 0 38px rgba(246,197,69,0.18);
       }
-      .d-stat:hover { 
+      .d-video-card:hover,
+      .d-reel-card:hover {
+        transform: translateY(-8px) scale(1.025);
+        box-shadow: 0 28px 70px rgba(0,0,0,0.34);
+      }
+      .d-stat:hover {
         transform: translateY(-5px) scale(1.03);
         box-shadow: 0 18px 45px rgba(0,0,0,0.22);
-        background: rgba(255,255,255,0.12);
-        border-color: rgba(246, 197, 69, 0.25);
       }
-
-      /* HOVER: Glow Pulse Effects for Promo Badge */
-      .d-promo { 
+      .d-promo {
         transition: transform 0.25s ease, box-shadow 0.25s ease, filter 0.25s ease;
-        isolation: isolate; 
-        overflow: visible; 
+        isolation: isolate;
+        overflow: visible;
       }
-      .d-promo:hover { 
-        transform: scale(1.08); 
+      .d-promo:hover {
+        transform: scale(1.08);
         filter: brightness(1.16);
-        box-shadow: 0 22px 52px rgba(246,197,69,0.48), 0 0 42px rgba(246,197,69,0.34), 0 0 88px rgba(255,223,96,0.18); 
-        animation: promoHoverShock 1.35s ease-in-out infinite;
+        box-shadow:
+          0 22px 52px rgba(246,197,69,0.48),
+          0 0 42px rgba(246,197,69,0.34),
+          0 0 88px rgba(255,223,96,0.18);
+        animation: promoHoverShock 1.35s ease-in-out 5s infinite;
       }
-      .d-promo::before { 
-        content: ""; 
-        position: absolute; 
-        inset: -82px -118px; 
+      .d-promo::before {
+        content: "";
+        position: absolute;
+        inset: -82px -118px;
         border-radius: 74px;
-        background: 
-          radial-gradient(circle at 16% 48%, rgba(255,255,222,1), transparent 18%), 
-          radial-gradient(circle at 82% 48%, rgba(255,225,88,0.98), transparent 22%), 
-          radial-gradient(circle at 50% 50%, rgba(246,197,69,0.78), transparent 40%), 
+        background:
+          radial-gradient(circle at 16% 48%, rgba(255,255,222,1), transparent 18%),
+          radial-gradient(circle at 82% 48%, rgba(255,225,88,0.98), transparent 22%),
+          radial-gradient(circle at 50% 50%, rgba(246,197,69,0.78), transparent 40%),
           radial-gradient(circle at 50% 50%, rgba(255,166,0,0.32), transparent 62%);
-        opacity: 0; 
-        transform: scale(0.35); 
-        filter: blur(26px); 
-        transition: opacity 0.45s ease, transform 0.55s cubic-bezier(.18,.8,.22,1), filter 0.45s ease;
-        z-index: -2; 
-        pointer-events: none; 
+        opacity: 0;
+        transform: scale(0.35);
+        filter: blur(26px);
+        transition:
+          opacity 0.45s ease 5s,
+          transform 0.55s cubic-bezier(.18,.8,.22,1) 5s,
+          filter 0.45s ease 5s;
+        z-index: -2;
+        pointer-events: none;
       }
-      .d-promo:hover::before { opacity: 1; transform: scale(1.42); filter: blur(18px); }
-      .d-promo::after { animation: none; left: -65%; opacity: 0; }
-      .d-promo:hover::after { animation: promoShine 1.25s ease-in-out infinite; }
-
-      @keyframes promoHoverShock { 
-        0%, 100% { box-shadow: 0 22px 52px rgba(246,197,69,0.48), 0 0 42px rgba(246,197,69,0.34), 0 0 88px rgba(255,223,96,0.18); } 
-        42% { box-shadow: 0 30px 82px rgba(246,197,69,0.82), 0 0 130px rgba(255,235,128,0.92), 0 0 240px rgba(246,197,69,0.62), 0 0 360px rgba(255,175,0,0.24); } 
-        68% { box-shadow: 0 22px 58px rgba(246,197,69,0.58), 0 0 92px rgba(246,197,69,0.48), 0 0 160px rgba(255,223,96,0.26); } 
+      .d-promo:hover::before {
+        opacity: 1;
+        transform: scale(1.42);
+        filter: blur(18px);
       }
-
+      .d-promo::after {
+        animation: none;
+        left: -65%;
+        opacity: 0;
+      }
+      .d-promo:hover::after {
+        animation: promoShine 1.25s ease-in-out 5s infinite;
+      }
+      @keyframes promoHoverShock {
+        0%, 100% {
+          box-shadow:
+            0 22px 52px rgba(246,197,69,0.48),
+            0 0 42px rgba(246,197,69,0.34),
+            0 0 88px rgba(255,223,96,0.18);
+        }
+        42% {
+          box-shadow:
+            0 30px 82px rgba(246,197,69,0.82),
+            0 0 130px rgba(255,235,128,0.92),
+            0 0 240px rgba(246,197,69,0.62),
+            0 0 360px rgba(255,175,0,0.24);
+        }
+        68% {
+          box-shadow:
+            0 22px 58px rgba(246,197,69,0.58),
+            0 0 92px rgba(246,197,69,0.48),
+            0 0 160px rgba(255,223,96,0.26);
+        }
+      }
       .d-about {
         max-width: 650px;
         color: rgba(255,255,255,0.80);
         font-size: 18px;
         line-height: 1.72;
         margin-bottom: 42px;
-        transition: color 0.3s ease;
       }
-      .d-hero-banner:hover .d-about {
-        color: rgba(255, 255, 255, 0.95);
-      }
-
-      .d-about strong { 
-        color: #fff; 
-        transition: color 0.3s ease;
-      }
-      .d-hero-banner:hover .d-about strong {
-        color: var(--gold);
-      }
-
+      .d-about strong { color: #fff; }
       .d-ctas {
         display: flex;
         align-items: center;
@@ -963,7 +735,6 @@
         gap: 18px;
         margin-bottom: 46px;
       }
-
       .d-btn {
         height: 54px;
         display: inline-flex;
@@ -977,19 +748,16 @@
         font-weight: 900;
         font-size: 14px;
       }
-
       .d-btn.primary {
         color: #352300;
         background: linear-gradient(145deg, #fff4aa, #f2bd27, #a66b00);
         box-shadow: 0 16px 36px rgba(236,178,35,0.28);
       }
-
       .d-btn.secondary {
         color: #fff;
         background: rgba(255,255,255,0.09);
         border: 1px solid rgba(255,255,255,0.14);
       }
-
       .d-promo {
         height: 54px;
         padding: 0 22px;
@@ -1012,50 +780,38 @@
         animation: promoPulse 2.2s ease-in-out infinite;
         text-transform: uppercase;
       }
-
       .d-promo-track {
         max-width: 100%;
         overflow: hidden;
       }
-      .d-promo-track.marquee { overflow: visible; }
-
+      .d-promo-track.marquee {
+        overflow: visible;
+      }
       .d-stats {
         display: grid;
         grid-template-columns: repeat(3, 1fr);
         gap: 20px;
       }
-
       .d-stat {
         border-radius: 24px;
         background: rgba(255,255,255,0.075);
         border: 1px solid rgba(255,255,255,0.10);
         padding: 22px;
       }
-
       .d-stat b {
         display: block;
         font-size: 28px;
         color: var(--gold);
         margin-bottom: 8px;
-        transition: transform 0.3s ease, color 0.3s ease;
       }
-      .d-stat:hover b {
-        transform: scale(1.08) translateY(-2px);
-        color: #fff;
-      }
-
       .d-stat span {
         color: rgba(255,255,255,0.68);
         font-size: 12px;
         font-weight: 700;
-        transition: color 0.3s ease;
       }
-      .d-stat:hover span {
-        color: var(--gold);
+      .d-visual {
+        display: none;
       }
-
-      .d-visual { display: none; }
-
       .d-section {
         margin-top: 0;
         position: relative;
@@ -1067,16 +823,8 @@
           linear-gradient(145deg, rgba(255,255,255,0.10), rgba(255,255,255,0.035));
         border: 1px solid rgba(255,255,255,0.14);
         box-shadow: 0 28px 80px rgba(0,0,0,0.26);
-        transition: border-color 0.4s ease, box-shadow 0.4s ease, transform 0.4s ease;
       }
-      /* HOVER: Main Content Grid Sections Container */
-      .d-section:hover {
-        border-color: rgba(255,255,255,0.22);
-        box-shadow: 0 35px 90px rgba(0,0,0,0.38);
-      }
-
       .d-section + .d-section { margin-top: 34px; }
-
       .d-section-head {
         position: relative;
         z-index: 2;
@@ -1085,19 +833,12 @@
         align-items: center;
         margin-bottom: 24px;
       }
-
       .d-section h2 {
         font-family: "Playfair Display", serif;
         font-size: 44px;
         text-transform: uppercase;
         line-height: 1;
-        transition: color 0.3s ease, transform 0.3s ease;
       }
-      .d-section:hover h2 {
-        color: var(--gold);
-        transform: translateX(2px);
-      }
-
       .d-see {
         color: #342100;
         background: #f3cb45;
@@ -1107,7 +848,6 @@
         font-size: 13px;
         font-weight: 900;
       }
-
       .d-video-grid {
         position: relative;
         z-index: 2;
@@ -1115,7 +855,6 @@
         grid-template-columns: repeat(3, minmax(0, 1fr));
         gap: 18px;
       }
-
       .d-video-card,
       .d-reel-card {
         background: rgba(232,246,239,0.95);
@@ -1125,11 +864,6 @@
         text-decoration: none;
         box-shadow: 0 20px 48px rgba(0,0,0,0.24);
       }
-      /* PREMIUM HOVER: Video and Reel Card Background Shift */
-      .d-video-card:hover, .d-reel-card:hover {
-        background: rgba(255, 255, 255, 1);
-      }
-
       .d-video-frame {
         position: relative;
         aspect-ratio: 16 / 9;
@@ -1142,12 +876,7 @@
         height: 100%;
         border: 0;
         display: block;
-        transition: transform 0.4s ease;
       }
-      .d-video-card:hover .d-video-frame iframe {
-        transform: scale(1.02);
-      }
-
       .d-video-click-layer {
         position: absolute;
         inset: 0;
@@ -1156,7 +885,6 @@
         background: transparent;
         cursor: pointer;
       }
-
       .d-card-cap {
         display: flex;
         justify-content: space-between;
@@ -1164,27 +892,15 @@
         padding: 12px 4px 2px;
         gap: 8px;
       }
-
       .d-card-cap h3 {
         font-size: 14px;
         text-transform: uppercase;
-        transition: color 0.3s ease;
       }
-      .d-video-card:hover .d-card-cap h3, .d-reel-card:hover .d-card-cap h3 {
-        color: var(--green-2);
-      }
-
       .d-card-cap span {
         font-size: 11px;
         font-weight: 900;
         opacity: 0.7;
-        transition: color 0.3s ease, opacity 0.3s ease;
       }
-      .d-video-card:hover .d-card-cap span, .d-reel-card:hover .d-card-cap span {
-        color: var(--gold-2);
-        opacity: 1;
-      }
-
       .d-reel-grid {
         position: relative;
         z-index: 2;
@@ -1192,7 +908,6 @@
         grid-template-columns: repeat(6, minmax(0, 1fr));
         gap: 16px;
       }
-
       .d-reel-thumb {
         position: relative;
         aspect-ratio: 9 / 16;
@@ -1200,18 +915,12 @@
         overflow: hidden;
         background: #000;
       }
-
       .d-reel-thumb img {
         width: 100%;
         height: 100%;
         object-fit: cover;
         display: block;
-        transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);
       }
-      .d-reel-card:hover .d-reel-thumb img {
-        transform: scale(1.06);
-      }
-
       .d-play {
         position: absolute;
         inset: 0;
@@ -1222,7 +931,6 @@
         background: rgba(255,255,255,0.86);
         box-shadow: 0 10px 28px rgba(0,0,0,0.26);
       }
-
       .d-play::before {
         content: "";
         position: absolute;
@@ -1233,12 +941,10 @@
         border-bottom: 12px solid transparent;
         border-left: 18px solid var(--green);
       }
-
       .d-thank {
         text-align: center;
         padding: 72px 34px;
       }
-
       .d-thank h2 {
         position: relative;
         z-index: 2;
@@ -1247,12 +953,7 @@
         line-height: 1;
         text-transform: uppercase;
         margin-bottom: 12px;
-        transition: transform 0.4s ease;
       }
-      .d-thank:hover h2 {
-        transform: scale(1.02);
-      }
-
       .d-thank p {
         position: relative;
         z-index: 2;
@@ -1261,766 +962,1024 @@
         margin: 0 auto;
         font-size: 18px;
         line-height: 1.7;
-        transition: color 0.3s ease;
-      }
-      .d-thank:hover p {
-        color: #fff;
       }
     }
-
-
-    /* ================= DESKTOP / TABLET SKELETON LOADING ================= */
-
-    body.is-loading .loading-skeleton { display: block; }
-    body.is-ready .loading-skeleton { display: none; }
-
-    .sk-shell {
-      width: min(1440px, calc(100% - 64px));
-      margin: 0 auto;
-      padding: 34px 0 70px;
-      position: relative;
-      z-index: 3;
+      /* ================= DESKTOP / TABLET SKELETON LOADING ================= */
+      body.is-loading .loading-skeleton {
+        display: block;
+      }
+      body.is-ready .loading-skeleton {
+        display: none;
+      }
+      .sk-shell {
+        width: min(1440px, calc(100% - 64px));
+        margin: 0 auto;
+        padding: 34px 0 70px;
+        position: relative;
+        z-index: 3;
+      }
+      .sk-nav,
+      .sk-hero,
+      .sk-section {
+        position: relative;
+        overflow: hidden;
+        border: 1px solid rgba(255,255,255,0.14);
+        background: rgba(255,255,255,0.065);
+        backdrop-filter: blur(18px);
+        box-shadow: 0 28px 80px rgba(0,0,0,0.24);
+      }
+      .sk-nav {
+        height: 76px;
+        border-radius: 28px;
+        margin-bottom: 30px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 0 24px;
+      }
+      .sk-nav-left,
+      .sk-nav-right,
+      .sk-line,
+      .sk-pill,
+      .sk-card,
+      .sk-thumb,
+      .sk-reel-thumb,
+      .sk-stat {
+        position: relative;
+        overflow: hidden;
+        background: linear-gradient(110deg, rgba(255,255,255,0.08) 8%, rgba(255,255,255,0.22) 18%, rgba(255,255,255,0.08) 33%);
+        background-size: 220% 100%;
+        animation: skeletonShimmer 1.25s linear infinite;
+      }
+      .sk-nav-left {
+        width: 210px;
+        height: 42px;
+        border-radius: 16px;
+      }
+      .sk-nav-right {
+        width: 470px;
+        height: 44px;
+        border-radius: 999px;
+      }
+      .sk-hero {
+        aspect-ratio: 16 / 9;
+        border-radius: 42px;
+        margin-bottom: 34px;
+        padding: 64px 58px 54px;
+      }
+      .sk-copy {
+        width: 52%;
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+      }
+      .sk-line {
+        height: 16px;
+        border-radius: 999px;
+        margin-bottom: 18px;
+      }
+      .sk-line.kicker { width: 240px; height: 13px; margin-bottom: 26px; }
+      .sk-line.title-1 { width: 420px; height: 72px; border-radius: 22px; margin-bottom: 14px; }
+      .sk-line.title-2 { width: 330px; height: 72px; border-radius: 22px; margin-bottom: 34px; }
+      .sk-line.text-1 { width: 610px; max-width: 100%; height: 18px; }
+      .sk-line.text-2 { width: 520px; max-width: 90%; height: 18px; }
+      .sk-button-row {
+        display: flex;
+        gap: 18px;
+        margin: 22px 0 34px;
+      }
+      .sk-pill {
+        width: 170px;
+        height: 54px;
+        border-radius: 18px;
+      }
+      .sk-stats {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 20px;
+      }
+      .sk-stat {
+        height: 94px;
+        border-radius: 24px;
+      }
+      .sk-section {
+        border-radius: 42px;
+        padding: 34px;
+        margin-bottom: 34px;
+      }
+      .sk-section-head {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        margin-bottom: 24px;
+      }
+      .sk-section-title {
+        width: 360px;
+        height: 46px;
+        border-radius: 18px;
+      }
+      .sk-see {
+        width: 110px;
+        height: 42px;
+        border-radius: 999px;
+      }
+      .sk-video-grid {
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 18px;
+      }
+      .sk-card {
+        border-radius: 26px;
+        padding: 12px;
+        background: rgba(232,246,239,0.12);
+        animation: none;
+      }
+      .sk-thumb {
+        aspect-ratio: 16 / 9;
+        border-radius: 20px;
+        margin-bottom: 12px;
+      }
+      .sk-card-lines {
+        display: flex;
+        justify-content: space-between;
+        gap: 16px;
+        padding: 0 4px 2px;
+      }
+      .sk-card-lines .small-a {
+        width: 48%;
+        height: 14px;
+        border-radius: 999px;
+      }
+      .sk-card-lines .small-b {
+        width: 24%;
+        height: 14px;
+        border-radius: 999px;
+      }
+      .sk-reel-grid {
+        display: grid;
+        grid-template-columns: repeat(6, minmax(0, 1fr));
+        gap: 16px;
+      }
+      .sk-reel-card {
+        border-radius: 26px;
+        padding: 12px;
+        background: rgba(232,246,239,0.12);
+      }
+      .sk-reel-thumb {
+        aspect-ratio: 9 / 16;
+        border-radius: 20px;
+        margin-bottom: 12px;
+      }
+      @keyframes skeletonShimmer {
+        0% { background-position: 180% 0; }
+        100% { background-position: -180% 0; }
+      }
+      @media (min-width: 768px) and (max-width: 1240px) {
+        .sk-shell { width: min(100%, calc(100% - 40px)); }
+        .sk-copy { width: 58%; }
+        .sk-hero { padding: 46px 40px; }
+        .sk-line.title-1 { width: 330px; height: 58px; }
+        .sk-line.title-2 { width: 260px; height: 58px; }
+        .sk-video-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+        .sk-reel-grid { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+      }
+    @media (min-width: 768px) and (max-width: 1240px) {
+      .d-shell { width: min(100%, calc(100% - 40px)); }
+      .d-hero-banner { aspect-ratio: 16 / 9; }
+      .d-copy { width: 58%; padding: 46px 40px; }
+      .d-title { font-size: 68px; }
+      .d-video-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+      .d-reel-grid { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+    }
+    @media (max-width: 420px) {
+      .mobile-layout { padding: 14px 10px 30px; }
+      .m-hero { padding: 18px; border-radius: 22px; }
+      .m-hero h1 { font-size: 35px; }
+      .m-about { font-size: 11px; max-width: 250px; line-height: 1.45; }
+      .m-share { width: 150px; height: 44px; font-size: 12px; }
+      .m-promo { height: 44px; font-size: 11px; }
+      .m-head h2 { font-size: 17px; }
+      .m-video-card { min-width: 255px; }
+      .m-reel-card { min-width: 148px; }
+    }
+  
+    /* FINAL TITLE ANIMATION FIX
+       PC: NAINA is NOT static. It stays yellow and a moving shine passes continuously.
+       Mobile: marked word gets white text with yellow light sweep. */
+    .mobile-title-shine {
+      display: inline-block;
+      color: transparent !important;
+      -webkit-text-fill-color: transparent !important;
+      background-image: linear-gradient(
+        100deg,
+        #ffffff 0%,
+        #ffffff 30%,
+        #fff0a3 42%,
+        #f6c545 50%,
+        #fff0a3 58%,
+        #ffffff 70%,
+        #ffffff 100%
+      ) !important;
+      background-size: 260% 100% !important;
+      -webkit-background-clip: text !important;
+      background-clip: text !important;
+      animation: mobileTitleSweep 3.2s linear infinite !important;
+    }
+    @keyframes mobileTitleSweep {
+      0% { background-position: 150% 50%; }
+      100% { background-position: -150% 50%; }
+    }
+    @media (min-width: 768px) {
+      .d-title .desktop-title-shine,
+      .d-title span.desktop-title-shine,
+      .d-title .title-shine,
+      .d-title span.title-shine {
+        display: inline-block !important;
+        color: transparent !important;
+        -webkit-text-fill-color: transparent !important;
+        background-image: linear-gradient(
+          105deg,
+          #f6c545 0%,
+          #f6c545 24%,
+          #ffcf35 34%,
+          #ffe98f 44%,
+          #ffffff 50%,
+          #ffe98f 56%,
+          #ffcf35 66%,
+          #f6c545 76%,
+          #f6c545 100%
+        ) !important;
+        background-size: 260% 100% !important;
+        -webkit-background-clip: text !important;
+        background-clip: text !important;
+        animation: desktopNainaShineMove 3.8s linear infinite !important;
+        filter: none !important;
+        text-shadow: none !important;
+        transform: none !important;
+        will-change: background-position;
+      }
+      @keyframes desktopNainaShineMove {
+        0% { background-position: 150% 50%; }
+        100% { background-position: -150% 50%; }
+      }
     }
 
-    .sk-nav,
-    .sk-hero,
-    .sk-section {
-      position: relative;
-      overflow: hidden;
-      border: 1px solid rgba(255,255,255,0.14);
-      background: rgba(255,255,255,0.065);
-      backdrop-filter: blur(18px);
-      box-shadow: 0 28px 80px rgba(0,0,0,0.24);
+    /* ================= 100% PURE PREMIUM HOVER EFFECTS (SAFE ADDITION) ================= */
+    
+    /* 1. Global Transitions For All Hover Elements to Ensure Silk Smooth Animation */
+    .m-share, .m-promo, .m-socials a, .m-pill, .m-video-card, .m-reel-card,
+    .d-nav-links a, .d-nav-links button, .d-btn, .d-see, .d-video-card, .d-reel-card, .d-stat, .d-brand-mark {
+      transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1) !important;
     }
 
-    .sk-nav {
-      height: 76px;
-      border-radius: 28px;
-      margin-bottom: 30px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      padding: 0 24px;
+    /* 2. Mobile Layout Hover Elements (Supports touch interaction delays beautifully) */
+    .m-share:hover {
+      transform: translateY(-2px) scale(1.03);
+      box-shadow: 0 15px 30px rgba(12, 89, 80, 0.4);
+      filter: brightness(1.1);
+    }
+    .m-socials a:hover {
+      transform: translateY(-4px) scale(1.08);
+      box-shadow: 0 12px 28px rgba(12, 89, 80, 0.35);
+      filter: brightness(1.15);
+    }
+    .m-pill:hover {
+      background: var(--white) !important;
+      color: var(--green-2) !important;
+      transform: scale(1.05);
+      box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    }
+    .m-video-card:hover, .m-reel-card:hover {
+      transform: translateY(-3px) scale(1.02);
+      box-shadow: 0 18px 35px rgba(0,0,0,0.22);
     }
 
-    .sk-brand {
-      display: flex;
-      align-items: center;
-      gap: 12px;
+    /* 3. Desktop Layout Hover Elements */
+    .d-brand-mark:hover {
+      transform: rotate(5deg) scale(1.08);
+      box-shadow: 0 18px 35px rgba(231,169,22,0.4);
     }
-
-    .sk-logo {
-      width: 42px;
-      height: 42px;
-      border-radius: 15px;
-      background: rgba(255,255,255,0.12);
+    .d-nav-links a:hover, .d-nav-links button:hover {
+      background: rgba(255,255,255,0.18) !important;
+      border-color: rgba(255,255,255,0.35) !important;
+      color: var(--gold) !important;
+      transform: translateY(-2px);
     }
-
-    .sk-title-logo {
-      width: 140px;
-      height: 20px;
-      border-radius: 6px;
-      background: rgba(255,255,255,0.1);
+    .d-btn.primary:hover {
+      transform: translateY(-4px) scale(1.04) !important;
+      box-shadow: 0 20px 45px rgba(246,197,69,0.5), 0 0 40px rgba(246,197,69,0.25) !important;
+      filter: brightness(1.1) !important;
     }
-
-    .sk-nav-links {
-      display: flex;
-      gap: 12px;
+    .d-btn.secondary:hover {
+      transform: translateY(-4px) scale(1.04) !important;
+      background: rgba(255,255,255,0.15) !important;
+      border-color: rgba(255,255,255,0.4) !important;
+      box-shadow: 0 20px 40px rgba(255,255,255,0.1) !important;
     }
-
-    .sk-nav-item {
-      width: 90px;
-      height: 42px;
-      border-radius: 999px;
-      background: rgba(255,255,255,0.1);
+    .d-see:hover {
+      transform: translateY(-2px) scale(1.05) !important;
+      background: var(--white) !important;
+      color: var(--green) !important;
+      box-shadow: 0 15px 35px rgba(243,203,69,0.4) !important;
     }
-
-    .sk-hero {
-      aspect-ratio: 16 / 9;
-      border-radius: 42px;
-      padding: 64px 58px;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      margin-bottom: 34px;
+    .d-video-card:hover, .d-reel-card:hover {
+      transform: translateY(-10px) scale(1.03) !important;
+      box-shadow: 0 35px 75px rgba(0,0,0,0.45) !important;
     }
-
-    .sk-kicker {
-      width: 180px;
-      height: 14px;
-      border-radius: 4px;
-      background: rgba(255,255,255,0.1);
-      margin-bottom: 24px;
+    .d-stat:hover {
+      transform: translateY(-6px) scale(1.04) !important;
+      background: rgba(255,255,255,0.12) !important;
+      border-color: rgba(255,255,255,0.25) !important;
+      box-shadow: 0 22px 50px rgba(0,0,0,0.3) !important;
     }
-
-    .sk-main-title {
-      width: min(680px, 85%);
-      height: 82px;
-      border-radius: 14px;
-      background: rgba(255,255,255,0.12);
-      margin-bottom: 20px;
+    
+    /* 4. Inside Card Elements Hover Updates */
+    .m-reel-card:hover .m-play, .d-reel-card:hover .d-play {
+      transform: translate(-50%, -50%) scale(1.15) !important;
+      background: var(--white) !important;
     }
-
-    .sk-main-title-2 {
-      width: min(440px, 60%);
-      height: 82px;
-      border-radius: 14px;
-      background: rgba(255,255,255,0.12);
-      margin-bottom: 34px;
+    .d-reel-card:hover .d-play {
+      transform: none !important; /* Overrides absolute centering layout difference safely */
+      scale: 1.15 !important;
     }
-
-    .sk-about {
-      width: min(600px, 75%);
-      height: 16px;
-      border-radius: 4px;
-      background: rgba(255,255,255,0.08);
-      margin-bottom: 12px;
-    }
-
-    .sk-about-2 {
-      width: min(420px, 50%);
-      height: 16px;
-      border-radius: 4px;
-      background: rgba(255,255,255,0.08);
-      margin-bottom: 42px;
-    }
-
-    .sk-ctas {
-      display: flex;
-      gap: 18px;
-      margin-bottom: 46px;
-    }
-
-    .sk-btn-1 {
-      width: 150px;
-      height: 54px;
-      border-radius: 18px;
-      background: rgba(255,255,255,0.12);
-    }
-
-    .sk-btn-2 {
-      width: 150px;
-      height: 54px;
-      border-radius: 18px;
-      background: rgba(255,255,255,0.08);
-    }
-
-    .sk-stats {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 20px;
-      width: min(680px, 85%);
-    }
-
-    .sk-stat-box {
-      height: 98px;
-      border-radius: 24px;
-      background: rgba(255,255,255,0.06);
-    }
-
-    .sk-section {
-      border-radius: 42px;
-      padding: 34px;
-    }
-
-    .sk-section-head {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      margin-bottom: 24px;
-    }
-
-    .sk-sec-title {
-      width: 240px;
-      height: 38px;
-      border-radius: 10px;
-      background: rgba(255,255,255,0.12);
-    }
-
-    .sk-sec-pill {
-      width: 110px;
-      height: 38px;
-      border-radius: 999px;
-      background: rgba(255,255,255,0.1);
-    }
-
-    .sk-grid-3 {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 18px;
-    }
-
-    .sk-card-3 {
-      aspect-ratio: 16 / 11;
-      border-radius: 26px;
-      background: rgba(255,255,255,0.06);
-    }
-
-    .sk-grid-6 {
-      display: grid;
-      grid-template-columns: repeat(6, 1fr);
-      gap: 16px;
-    }
-
-    .sk-card-6 {
-      aspect-ratio: 9 / 14;
-      border-radius: 20px;
-      background: rgba(255,255,255,0.06);
-    }
-
-    /* THE GLOW ANIMATION LAYER FOR SKELETON (SHIMMER) */
-    .sk-nav::before,
-    .sk-hero::before,
-    .sk-section::before,
-    .sk-logo::before,
-    .sk-title-logo::before,
-    .sk-nav-item::before,
-    .sk-kicker::before,
-    .sk-main-title::before,
-    .sk-main-title-2::before,
-    .sk-about::before,
-    .sk-about-2::before,
-    .sk-btn-1::before,
-    .sk-btn-2::before,
-    .sk-stat-box::before,
-    .sk-sec-title::before,
-    .sk-sec-pill::before,
-    .sk-card-3::before,
-    .sk-card-6::before {
-      content: "";
-      position: absolute;
-      inset: 0;
-      transform: translateX(-100%);
-      background: linear-gradient(90deg, transparent, rgba(255,255,255,0.06), rgba(255,255,255,0.13), rgba(255,255,255,0.06), transparent);
-      animation: skShimmer 1.8s infinite;
-    }
-
-    @keyframes skShimmer {
-      100% { transform: translateX(100%); }
+    .m-video-card:hover h3, .d-video-card:hover h3, .m-reel-card:hover h3, .d-reel-card:hover h3 {
+      color: var(--gold-2) !important;
     }
   </style>
 </head>
 <body class="is-loading">
-
-  <div class="loading-skeleton">
+  <!-- DESKTOP / TABLET SKELETON LOADER -->
+  <div class="loading-skeleton" aria-hidden="true">
     <div class="sk-shell">
       <div class="sk-nav">
-        <div class="sk-brand">
-          <div class="sk-logo"></div>
-          <div class="sk-title-logo"></div>
-        </div>
-        <div class="sk-nav-links">
-          <div class="sk-nav-item"></div>
-          <div class="sk-nav-item"></div>
-          <div class="sk-nav-item"></div>
-        </div>
+        <div class="sk-nav-left"></div>
+        <div class="sk-nav-right"></div>
       </div>
-
-      <div class="sk-hero">
-        <div class="sk-kicker"></div>
-        <div class="sk-main-title"></div>
-        <div class="sk-main-title-2"></div>
-        <div class="sk-about"></div>
-        <div class="sk-about-2"></div>
-        <div class="sk-ctas">
-          <div class="sk-btn-1"></div>
-          <div class="sk-btn-2"></div>
-          <div class="sk-btn-2"></div>
+      <section class="sk-hero">
+        <div class="sk-copy">
+          <div class="sk-line kicker"></div>
+          <div class="sk-line title-1"></div>
+          <div class="sk-line title-2"></div>
+          <div class="sk-line text-1"></div>
+          <div class="sk-line text-2"></div>
+          <div class="sk-button-row">
+            <div class="sk-pill"></div>
+            <div class="sk-pill"></div>
+            <div class="sk-pill"></div>
+          </div>
+          <div class="sk-stats">
+            <div class="sk-stat"></div>
+            <div class="sk-stat"></div>
+            <div class="sk-stat"></div>
+          </div>
         </div>
-        <div class="sk-stats">
-          <div class="sk-stat-box"></div>
-          <div class="sk-stat-box"></div>
-          <div class="sk-stat-box"></div>
-        </div>
-      </div>
-
-      <div class="sk-section">
+      </section>
+      <section class="sk-section">
         <div class="sk-section-head">
-          <div class="sk-sec-title"></div>
-          <div class="sk-sec-pill"></div>
+          <div class="sk-section-title sk-line"></div>
+          <div class="sk-see sk-line"></div>
         </div>
-        <div class="sk-grid-3">
-          <div class="sk-card-3"></div>
-          <div class="sk-card-3"></div>
-          <div class="sk-card-3"></div>
+        <div class="sk-video-grid">
+          <div class="sk-card"><div class="sk-thumb"></div><div class="sk-card-lines"><div class="sk-line small-a"></div><div class="sk-line small-b"></div></div></div>
+          <div class="sk-card"><div class="sk-thumb"></div><div class="sk-card-lines"><div class="sk-line small-a"></div><div class="sk-line small-b"></div></div></div>
+          <div class="sk-card"><div class="sk-thumb"></div><div class="sk-card-lines"><div class="sk-line small-a"></div><div class="sk-line small-b"></div></div></div>
+          <div class="sk-card"><div class="sk-thumb"></div><div class="sk-card-lines"><div class="sk-line small-a"></div><div class="sk-line small-b"></div></div></div>
+          <div class="sk-card"><div class="sk-thumb"></div><div class="sk-card-lines"><div class="sk-line small-a"></div><div class="sk-line small-b"></div></div></div>
+          <div class="sk-card"><div class="sk-thumb"></div><div class="sk-card-lines"><div class="sk-line small-a"></div><div class="sk-line small-b"></div></div></div>
         </div>
-      </div>
-
-      <div class="sk-section" style="margin-top:34px;">
+      </section>
+      <section class="sk-section">
         <div class="sk-section-head">
-          <div class="sk-sec-title"></div>
-          <div class="sk-sec-pill"></div>
+          <div class="sk-section-title sk-line"></div>
+          <div class="sk-see sk-line"></div>
         </div>
-        <div class="sk-grid-6">
-          <div class="sk-card-6"></div>
-          <div class="sk-card-6"></div>
-          <div class="sk-card-6"></div>
-          <div class="sk-card-6"></div>
-          <div class="sk-card-6"></div>
-          <div class="sk-card-6"></div>
+        <div class="sk-reel-grid">
+          <div class="sk-reel-card"><div class="sk-reel-thumb"></div><div class="sk-card-lines"><div class="sk-line small-a"></div><div class="sk-line small-b"></div></div></div>
+          <div class="sk-reel-card"><div class="sk-reel-thumb"></div><div class="sk-card-lines"><div class="sk-line small-a"></div><div class="sk-line small-b"></div></div></div>
+          <div class="sk-reel-card"><div class="sk-reel-thumb"></div><div class="sk-card-lines"><div class="sk-line small-a"></div><div class="sk-line small-b"></div></div></div>
+          <div class="sk-reel-card"><div class="sk-reel-thumb"></div><div class="sk-card-lines"><div class="sk-line small-a"></div><div class="sk-line small-b"></div></div></div>
+          <div class="sk-reel-card"><div class="sk-reel-thumb"></div><div class="sk-card-lines"><div class="sk-line small-a"></div><div class="sk-line small-b"></div></div></div>
+          <div class="sk-reel-card"><div class="sk-reel-thumb"></div><div class="sk-card-lines"><div class="sk-line small-a"></div><div class="sk-line small-b"></div></div></div>
         </div>
-      </div>
+      </section>
     </div>
   </div>
-
-  <div class="mobile-layout">
-    <header class="m-section m-hero" id="mHeroSection">
+  <!-- MOBILE -->
+  <main class="mobile-layout">
+    <section class="m-section m-hero" id="mHeroSection">
       <div class="m-hero-top">
         <div>
-          <p class="m-eyebrow" id="mKicker">Official Portfolio</p>
-          <h1 id="mTitle">Naina</h1>
+          <div class="m-eyebrow" id="mPortfolioLabel">Portfolio</div>
+          <h1 id="mHeroTitle">Caster<br>Naina</h1>
         </div>
-        <div class="m-menu">
-          <span></span>
-          <span></span>
-          <span></span>
-        </div>
+        <div class="m-menu"><span></span><span></span><span></span></div>
       </div>
-      <p class="m-about" id="mAbout">Loading bio content seamlessly...</p>
-    </header>
-
+      <div class="m-about" id="mAboutText">
+        Casted <strong>200+ tournaments</strong> across custom rooms, scrims, live matches and creator events — known for energetic hosting, confident commentary and engaging audience presence.
+      </div>
+    </section>
     <div class="m-action-row">
-      <button class="m-share" onclick="shareProfile()">Share Profile</button>
-      <a href="#" class="m-promo" id="mPromoBtn" target="_blank">
-        <div class="m-promo-track" id="mPromoTrack"></div>
+      <button class="m-share" id="mShareButton" onclick="shareProfile()">Share Profile</button>
+      <a class="m-promo" id="mPromoButton" href="#" target="_blank" rel="noopener">
+        <span class="m-promo-track center" id="mPromoButtonText">Promotion</span>
       </a>
     </div>
-
-    <nav class="m-socials" id="mSocialsRow">
-      </nav>
-
-    <section class="m-section m-banner" id="mobile-videos" style="display:none;">
-      <div class="m-head">
-        <h2>Featured Work</h2>
-        <a href="#mobile-reels" class="m-pill">View Reels</a>
-      </div>
-      <div class="m-scroll" id="mVideoScroll">
-        </div>
-      <p class="m-hint">← Swipe horizontally to explore →</p>
+    <section class="m-socials">
+      <a id="mYoutubeSocial" href="https://www.youtube.com/@CasterNaina/streams" target="_blank" aria-label="YouTube">
+        <svg viewBox="0 0 24 24"><path d="M23.5 6.2s-.2-1.7-.9-2.4c-.9-.9-1.9-.9-2.4-1C16.9 2.5 12 2.5 12 2.5h0s-4.9 0-8.2.3c-.5.1-1.5.1-2.4 1C.7 4.5.5 6.2.5 6.2S.2 8.2.2 10.3v1.9c0 2.1.3 4.1.3 4.1s.2 1.7.9 2.4c.9.9 2.1.9 2.6 1 1.9.2 8 .3 8 .3s4.9 0 8.2-.3c.5-.1 1.5-.1 2.4-1 .7-.7.9-2.4.9-2.4s.3-2.1.3-4.1v-1.9c0-2.1-.3-4.1-.3-4.1zM9.7 14.6V7.5l6.3 3.6-6.3 3.5z"/></svg>
+      </a>
+      <a id="mInstagramSocial" href="https://www.instagram.com/caster_naina/" target="_blank" aria-label="Instagram">
+        <svg viewBox="0 0 24 24"><path d="M7.2 2h9.6C19.7 2 22 4.3 22 7.2v9.6c0 2.9-2.3 5.2-5.2 5.2H7.2C4.3 22 2 19.7 2 16.8V7.2C2 4.3 4.3 2 7.2 2zm0 2C5.4 4 4 5.4 4 7.2v9.6C4 18.6 5.4 20 7.2 20h9.6c1.8 0 3.2-1.4 3.2-3.2V7.2C20 5.4 18.6 4 16.8 4H7.2zm4.8 3.3A4.7 4.7 0 1 1 12 16.7 4.7 4.7 0 0 1 12 7.3zm0 2A2.7 2.7 0 1 0 12 14.7 2.7 2.7 0 0 0 12 9.3zm5-2.6a1.1 1.1 0 1 1-1.1 1.1A1.1 1.1 0 0 1 17 6.7z"/></svg>
+      </a>
+      <a id="mDiscordSocial" href="https://discord.gg/tZacnxFnqu" target="_blank" aria-label="Discord">
+        <svg viewBox="0 0 24 24"><path d="M20.3 4.4A17.4 17.4 0 0 0 16 3.1l-.2.4c1.5.4 2.2 1 2.2 1a14.8 14.8 0 0 0-6-1.2 14.8 14.8 0 0 0-6 1.2s.7-.6 2.3-1l-.2-.4a17.4 17.4 0 0 0-4.4 1.3C1 8.3.3 12.1.6 15.9A17.8 17.8 0 0 0 6 18.7l.7-.9a9.7 9.7 0 0 1-1.2-.6l.3-.2a12.2 12.2 0 0 0 12.4 0l.3.2a9.7 9.7 0 0 1-1.2.6l.7.9a17.8 17.8 0 0 0 5.4-2.8c.4-4.4-.7-8.1-3.1-11.5zM8.3 14.1c-1 0-1.8-.9-1.8-2s.8-2 1.8-2 1.8.9 1.8 2-.8 2-1.8 2zm7.4 0c-1 0-1.8-.9-1.8-2s.8-2 1.8-2 1.8.9 1.8 2-.8 2-1.8 2z"/></svg>
+      </a>
+      <a id="mWhatsappSocial" href="https://wa.me/917478989646" target="_blank" aria-label="WhatsApp">
+        <svg viewBox="0 0 24 24"><path d="M20.5 3.5A11.9 11.9 0 0 0 12.1 0C5.5 0 .2 5.3.2 11.8c0 2.1.6 4.1 1.6 5.9L0 24l6.5-1.7a12 12 0 0 0 5.6 1.4h0c6.5 0 11.8-5.3 11.8-11.8a11.7 11.7 0 0 0-3.4-8.4zM12.1 21.7h0a9.8 9.8 0 0 1-5-1.4l-.4-.2-3.9 1 1-3.8-.2-.4a9.8 9.8 0 1 1 8.5 4.8zm5.4-7.4c-.3-.1-1.8-.9-2.1-1s-.5-.1-.7.2-.8 1-1 1.2-.4.2-.7.1a8 8 0 0 1-2.3-1.4A8.6 8.6 0 0 1 9.1 11c-.2-.3 0-.5.1-.6l.5-.6c.1-.2.2-.3.3-.5.1-.2.1-.4 0-.6s-.7-1.7-.9-2.3c-.2-.6-.5-.5-.7-.5h-.6c-.2 0-.6.1-.9.4s-1.2 1.2-1.2 2.9 1.3 3.4 1.4 3.6c.2.2 2.5 3.8 6 5.3.8.4 1.5.6 2 .7.8.3 1.6.2 2.2.1.7-.1 1.8-.7 2-1.4.3-.7.3-1.3.2-1.4-.1-.2-.3-.3-.6-.4z"/></svg>
+      </a>
     </section>
-
-    <section class="m-section m-banner" id="mobile-reels" style="display:none; margin-top:22px;">
+    <section class="m-section m-banner">
       <div class="m-head">
-        <h2>Trending Reels</h2>
-        <a href="#mobile-videos" class="m-pill">View Videos</a>
+        <h2 id="mCastingHeading">Casting Highlights</h2>
+        <a class="m-pill" id="mCastingSeeMore" href="https://www.youtube.com/@CasterNaina/streams" target="_blank">See More</a>
       </div>
-      <div class="m-scroll" id="mReelScroll">
-        </div>
-      <p class="m-hint">← Swipe horizontally to explore →</p>
+      <div class="m-scroll" id="mYoutubeRow"></div>
+      <p class="m-hint" id="mCastingHint">Swipe / scroll sidewise to view all casting highlights</p>
     </section>
-
-    <footer class="m-section m-thank">
-      <h2 class="title-shine">Thank You</h2>
-      <p>Building digital benchmarks through voice, presentation, and top-tier execution.</p>
-    </footer>
-  </div>
-
-  <div class="desktop-layout">
+    <section class="m-section m-banner">
+      <div class="m-head">
+        <h2 id="mReelHeading">Reel Highlights</h2>
+        <a class="m-pill" id="mReelSeeMore" href="https://www.instagram.com/caster_naina/" target="_blank">See More</a>
+      </div>
+      <div class="m-scroll" id="mReelRow"></div>
+      <p class="m-hint" id="mReelHint">Swipe / scroll sidewise to view all reel highlights</p>
+    </section>
+    <section class="m-section m-thank">
+      <h2 id="mThankHeading">Thank You</h2>
+      <p id="mThankText">Thank you for exploring Caster Naina’s portfolio.</p>
+    </section>
+  </main>
+  <!-- DESKTOP -->
+  <main class="desktop-layout">
     <div class="d-shell">
       <nav class="d-nav">
         <div class="d-brand">
-          <div class="d-brand-mark">N</div>
-          <span class="d-brand-text">Caster Naina</span>
+          <div class="d-brand-mark">CN</div>
+          <span id="dBrandName">Caster Naina</span>
         </div>
         <div class="d-nav-links">
-          <a href="#desktop-videos" id="dWatchNav">Watch Work</a>
-          <a href="#desktop-reels" id="dInstaNav">Instagram Reels</a>
-          <button onclick="shareProfile()">Share Portfolio</button>
+          <a id="dNavYoutube" href="https://www.youtube.com/@CasterNaina/streams" target="_blank">YouTube</a>
+          <a id="dNavInstagram" href="https://www.instagram.com/caster_naina/" target="_blank">Instagram</a>
+          <a id="dNavDiscord" href="https://discord.gg/tZacnxFnqu" target="_blank">Discord</a>
+          <a id="dNavWhatsapp" href="https://wa.me/917478989646" target="_blank">WhatsApp</a>
         </div>
       </nav>
-
-      <section class="d-hero-banner" id="dHeroSection">
+      <section class="d-hero-banner">
         <div class="d-copy">
-          <span class="d-kicker" id="dKicker">Voice-over Artist & Caster</span>
-          <h1 class="d-title" id="dTitle">Naina</h1>
-          <p class="d-about" id="dAbout">Loading expert bio details...</p>
+          <div class="d-kicker" id="dPortfolioLabel">Portfolio</div>
+          <h1 class="d-title" id="dHeroTitle">Caster<br><span>Naina</span></h1>
+          <p class="d-about" id="dAboutText">
+            Casted <strong>200+ tournaments</strong> across custom rooms, scrims, live matches and creator events — known for energetic hosting, confident commentary and engaging audience presence.
+          </p>
           <div class="d-ctas">
-            <a href="#desktop-videos" class="d-btn primary" id="dWatchBtn">Watch Work</a>
-            <a href="#desktop-reels" class="d-btn secondary" id="dInstaBtn">Instagram Reels</a>
-            <a href="#" class="d-promo" id="dPromoBtn" target="_blank">
-              <div class="d-promo-track" id="dPromoTrack"></div>
+            <a class="d-btn primary" id="dWatchBtn" href="#desktop-videos">Watch Highlights</a>
+            <a class="d-btn secondary" id="dInstaBtn" href="#desktop-reels">View Reels</a>
+            <a class="d-promo" id="dPromoButton" href="#" target="_blank" rel="noopener">
+              <span class="d-promo-track center" id="dPromoButtonText">Promotion</span>
             </a>
           </div>
-          <div class="d-stats" id="dStatsRow">
-            </div>
+          <div class="d-stats">
+            <div class="d-stat"><b>200+</b><span>Tournaments Casted</span></div>
+            <div class="d-stat"><b>Live</b><span>Commentary Specialist</span></div>
+            <div class="d-stat"><b>Free Fire</b><span>Caster Portfolio</span></div>
+          </div>
         </div>
       </section>
-
-      <main>
-        <section class="d-section" id="desktop-videos" style="display:none;">
-          <div class="d-section-head">
-            <h2>Featured Productions</h2>
-            <a href="#desktop-reels" class="d-see">View Instagram Reels</a>
-          </div>
-          <div class="d-video-grid" id="dVideoGrid">
-            </div>
-        </section>
-
-        <section class="d-section" id="desktop-reels" style="display:none;">
-          <div class="d-section-head">
-            <h2>Short Form Content</h2>
-            <a href="#desktop-videos" class="d-see">Back to Productions</a>
-          </div>
-          <div class="d-reel-grid" id="dReelGrid">
-            </div>
-        </section>
-      </main>
-
-      <footer class="d-thank">
-        <h2 class="title-shine">Thank You For Scrolling</h2>
-        <p>Let's collaborate on your next massive broadcast or creative project production.</p>
-      </footer>
+      <section class="d-section" id="desktop-videos">
+        <div class="d-section-head">
+          <h2 id="dCastingHeading">Casting Highlights</h2>
+          <a class="d-see" id="dCastingSeeMore" href="https://www.youtube.com/@CasterNaina/streams" target="_blank">See More</a>
+        </div>
+        <div class="d-video-grid" id="dYoutubeRow"></div>
+      </section>
+      <section class="d-section" id="desktop-reels">
+        <div class="d-section-head">
+          <h2 id="dReelHeading">Reel Highlights</h2>
+          <a class="d-see" id="dReelSeeMore" href="https://www.instagram.com/caster_naina/" target="_blank">See More</a>
+        </div>
+        <div class="d-reel-grid" id="dReelRow"></div>
+      </section>
+      <section class="d-section d-thank">
+        <h2 id="dThankHeading">Thank You</h2>
+        <p id="dThankText">Thank you for exploring Caster Naina’s portfolio. For more live casting, commentary clips and reels, use the links above.</p>
+      </section>
     </div>
-  </div>
-
+  </main>
   <script>
-    const CONFIG = {
-      sheetId: "12R106P_h8_T0P84_Z5V3AglGbeN90_THeB7jT-P7fsc",
-      tabs: {
-        profile: "Profile",
-        socials: "Socials",
-        videos: "Videos",
-        reels: "Reels",
-        stats: "Stats"
-      }
-    };
-
+    const SHEET_CSV_URL = "https://docs.google.com/spreadsheets/d/e/2PACX-1vSwrmgI3RKWcXmn0xof-K3quisMC_TmnKtx9Os1wwTkjGLsbJkg79TE9jeeq7lwgnDosBkMPvrdlTIX/pub?gid=0&single=true&output=csv";
+    let youtubePlayers = [];
     let shareTitle = "Caster Naina Portfolio";
-    let shareText = "Check out the official portfolio of Caster Naina.";
-
-    function getJsonUrl(tabName) {
-      return `https://docs.google.com/spreadsheets/d/${CONFIG.sheetId}/gviz/tq?tqx=out:json&sheet=${encodeURIComponent(tabName)}`;
+    let shareText = "Check out Caster Naina's casting portfolio.";
+    const fallbackData = {
+      portfolio_label: ["Portfolio"],
+      hero_title: ["Caster Naina"],
+      top_banner_image: ["https://raw.githubusercontent.com/iklapikla/CasterNaina/refs/heads/main/Top%20Banner.png"],
+      about_text: ["Casted 200+ tournaments across custom rooms, scrims, live matches and creator events — known for energetic hosting, confident commentary and engaging audience presence."],
+      share_button_text: ["Share Profile"],
+      promo_button_status: ["disable"],
+      promo_button_text: ["Promotion"],
+      promo_button_link: [""],
+      youtube_social_link: ["https://www.youtube.com/@CasterNaina/streams"],
+      instagram_social_link: ["https://www.instagram.com/caster_naina/"],
+      discord_social_link: ["https://discord.gg/tZacnxFnqu"],
+      whatsapp_social_link: ["https://wa.me/917478989646"],
+      casting_heading: ["Casting Highlights"],
+      casting_see_more_text: ["See More"],
+      casting_see_more_text_PC: ["Watch YouTube Playlist"],
+      casting_see_more_text_mobile: ["See More"],
+      casting_see_more_link: ["https://www.youtube.com/@CasterNaina/streams"],
+      casting_see_more_link_PC: ["https://www.youtube.com/@CasterNaina/streams"],
+      casting_see_more_link_mobile: ["casting-highlights.html"],
+      youtube_video_links: [
+        "https://youtu.be/iyDRl0o2vFA?t=3824",
+        "https://youtu.be/MgH7FuGGHyE?t=7484",
+        "https://youtu.be/MgH7FuGGHyE?t=8981",
+        "https://youtu.be/I0rnWKlwdT8?t=1580",
+        "https://youtu.be/I0rnWKlwdT8?t=2004"
+      ],
+      youtube_video_titles: ["Highlight 01", "Highlight 02", "Highlight 03", "Highlight 04", "Highlight 05"],
+      youtube_video_label: ["YouTube"],
+      casting_hint: ["Swipe / scroll sidewise to view all casting highlights"],
+      reel_heading: ["Reel Highlights"],
+      reel_see_more_text: ["See More"],
+      reel_see_more_link: ["https://www.instagram.com/caster_naina/"],
+      reel_links: [
+        "https://www.instagram.com/p/DXy66GXBxzF/",
+        "https://www.instagram.com/p/DX1gCdqBcuA/",
+        "https://www.instagram.com/p/DYR0SFGyEnr/",
+        "https://www.instagram.com/p/DYPRExAShAz/",
+        "https://www.instagram.com/p/DYMsUxYSONB/",
+        "https://www.instagram.com/p/DYE-1mTy_bM/"
+      ],
+      reel_thumbnails: [
+        "https://raw.githubusercontent.com/iklapikla/CasterNaina/refs/heads/main/Reel%201.png",
+        "https://raw.githubusercontent.com/iklapikla/CasterNaina/refs/heads/main/Reel%202.png",
+        "https://raw.githubusercontent.com/iklapikla/CasterNaina/refs/heads/main/reel%203.png",
+        "https://raw.githubusercontent.com/iklapikla/CasterNaina/refs/heads/main/reel%204.png",
+        "https://raw.githubusercontent.com/iklapikla/CasterNaina/refs/heads/main/reel%205.png",
+        "https://raw.githubusercontent.com/iklapikla/CasterNaina/refs/heads/main/reel%206.png"
+      ],
+      reel_titles: ["Reel 01", "Reel 02", "Reel 03", "Reel 04", "Reel 05", "Reel 06"],
+      reel_label: ["Instagram"],
+      reel_hint: ["Swipe / scroll sidewise to view all reel highlights"],
+      thank_you_heading: ["Thank You"],
+      thank_you_text: ["Thank you for exploring Caster Naina’s portfolio. For more live casting, commentary clips and reels, use the links above."],
+      share_title: ["Caster Naina Portfolio"],
+      share_text: ["Check out Caster Naina's casting portfolio."]
+    };
+    function parseCSV(text) {
+      const rows = [];
+      let row = [];
+      let cell = "";
+      let inQuotes = false;
+      for (let i = 0; i < text.length; i++) {
+        const char = text[i];
+        const nextChar = text[i + 1];
+        if (char === '"' && inQuotes && nextChar === '"') {
+          cell += '"';
+          i++;
+        } else if (char === '"') {
+          inQuotes = !inQuotes;
+        } else if (char === "," && !inQuotes) {
+          row.push(cell.trim());
+          cell = "";
+        } else if ((char === "\n" || char === "\r") && !inQuotes) {
+          if (char === "\r" && nextChar === "\n") i++;
+          row.push(cell.trim());
+          if (row.some(value => value !== "")) rows.push(row);
+          row = [];
+          cell = "";
+        } else {
+          cell += char;
+        }
+      }
+      row.push(cell.trim());
+      if (row.some(value => value !== "")) rows.push(row);
+      return rows;
     }
-
-    async function fetchSheetData(tabName) {
+    function rowsToData(rows) {
+      const data = {};
+      const startIndex = rows[0] && rows[0][0].toLowerCase() === "key" ? 1 : 0;
+      for (let i = startIndex; i < rows.length; i++) {
+        const key = (rows[i][0] || "").trim();
+        if (!key) continue;
+        const values = rows[i].slice(1).map(value => value.trim()).filter(value => value !== "");
+        data[key] = values;
+      }
+      return data;
+    }
+    function getOne(data, key, fallback = "") {
+      if (data[key] && data[key][0]) return data[key][0];
+      if (fallbackData[key] && fallbackData[key][0]) return fallbackData[key][0];
+      return fallback;
+    }
+    function getMany(data, key) {
+      if (data[key] && data[key].length) return data[key];
+      return fallbackData[key] || [];
+    }
+    function escapeHTML(value) {
+      return String(value || "")
+        .replaceAll("&", "&amp;")
+        .replaceAll("<", "&lt;")
+        .replaceAll(">", "&gt;")
+        .replaceAll('"', "&quot;")
+        .replaceAll("'", "&#039;");
+    }
+    function setText(id, text) {
+      const el = document.getElementById(id);
+      if (el) el.textContent = text;
+    }
+    function setHTML(id, html) {
+      const el = document.getElementById(id);
+      if (el) el.innerHTML = html;
+    }
+    function setHref(id, href) {
+      const el = document.getElementById(id);
+      if (el && href) el.href = href;
+    }
+    function stripMarkdownStars(value) {
+      return String(value || "").replace(/\*\*/g, "").trim();
+    }
+    function markdownBoldToHTML(text, strongClass = "") {
+      const safe = escapeHTML(text || "");
+      const classAttr = strongClass ? ` class="${strongClass}"` : "";
+      return safe.replace(/\*\/(.*?)\*\//g, `<strong${classAttr}>$1</strong>`);
+    }
+    function formatHeroTitle(title, desktop = false) {
+      const clean = String(title || "").trim();
+      // Fully highlighted title: **Caster Naina**
+      const fullyMarked =
+        clean.startsWith("**") &&
+        clean.endsWith("**") &&
+        clean.indexOf("**") === 0 &&
+        clean.lastIndexOf("**") === clean.length - 2;
+      const plain = clean.replace(/\*\*/g, "").trim();
+      if (fullyMarked) {
+        const parts = plain.split(/\s+/);
+        if (parts.length >= 2) {
+          const first = escapeHTML(parts.slice(0, -1).join(" "));
+          const last = escapeHTML(parts[parts.length - 1]);
+          if (desktop) {
+            return `${first}<br><span class="desktop-title-shine">${last}</span>`;
+          }
+          return `${first}<br><span class="mobile-title-shine">${last}</span>`;
+        }
+        return desktop
+          ? `<span class="desktop-title-shine">${escapeHTML(plain)}</span>`
+          : `<span class="mobile-title-shine">${escapeHTML(plain)}</span>`;
+      }
+      // Word-level highlighting: Caster **Naina**
+      const tokens = clean.match(/\*\*.*?\*\*|\S+/g) || [];
+      const parts = tokens.map(token => {
+        const marked = token.startsWith("**") && token.endsWith("**");
+        return {
+          text: marked ? token.slice(2, -2) : token,
+          marked
+        };
+      });
+      if (parts.length >= 2) {
+        const firstParts = parts.slice(0, -1).map(part => {
+          const value = escapeHTML(part.text);
+          if (!part.marked) return value;
+          return desktop
+            ? `<span class="desktop-title-shine">${value}</span>`
+            : `<span class="mobile-title-shine">${value}</span>`;
+        }).join(" ");
+        const lastPart = parts[parts.length - 1];
+        const lastValue = escapeHTML(lastPart.text);
+        // PC requirement: make Naina / last word animate in golden color even if sheet forgot **.
+        const desktopLastShouldAnimate = desktop && (lastPart.marked || parts.length >= 2);
+        const mobileLastShouldAnimate = !desktop && lastPart.marked;
+        if (desktop) {
+          return `${firstParts}<br>${desktopLastShouldAnimate ? `<span class="desktop-title-shine">${lastValue}</span>` : `<span>${lastValue}</span>`}`;
+        }
+        return `${firstParts}<br>${mobileLastShouldAnimate ? `<span class="mobile-title-shine">${lastValue}</span>` : lastValue}`;
+      }
+      if (parts.length === 1) {
+        const value = escapeHTML(parts[0].text);
+        if (desktop && parts[0].marked) return `<span class="desktop-title-shine">${value}</span>`;
+        if (!desktop && parts[0].marked) return `<span class="mobile-title-shine">${value}</span>`;
+        return value;
+      }
+      return "";
+    }
+    function formatAboutText(text) {
+      return markdownBoldToHTML(text);
+    }
+    function getStartSeconds(parsedUrl) {
+      const t = parsedUrl.searchParams.get("t") || parsedUrl.searchParams.get("start") || "0";
+      if (/^\d+$/.test(t)) return Number(t);
+      let seconds = 0;
+      const h = t.match(/(\d+)h/);
+      const m = t.match(/(\d+)m/);
+      const s = t.match(/(\d+)s/);
+      if (h) seconds += Number(h[1]) * 3600;
+      if (m) seconds += Number(m[1]) * 60;
+      if (s) seconds += Number(s[1]);
+      return seconds;
+    }
+    function convertYouTubeToEmbed(url) {
       try {
-        const response = await fetch(getJsonUrl(tabName));
-        const text = await response.text();
-        const jsonStr = text.substring(text.indexOf('{'), text.lastIndexOf('}') + 1);
-        const data = JSON.parse(jsonStr);
-        
-        const cols = data.table.cols.map(c => c.label ? c.label.toLowerCase().trim() : '');
-        const rows = data.table.rows.map(r => {
-          const rowObj = {};
-          r.c.forEach((cell, idx) => {
-            if (cols[idx]) {
-              rowObj[cols[idx]] = cell && cell.v !== null ? cell.v : '';
+        let cleanUrl = String(url || "").trim();
+        if (!cleanUrl) return "";
+        if (!/^https?:\/\//i.test(cleanUrl)) {
+          cleanUrl = "https://" + cleanUrl;
+        }
+        const parsed = new URL(cleanUrl);
+        const host = parsed.hostname
+          .toLowerCase()
+          .replace(/^www\./, "")
+          .replace(/^m\./, "");
+        const pathParts = parsed.pathname.split("/").filter(Boolean);
+        let videoId = "";
+        const start = getStartSeconds(parsed);
+        if (host === "youtu.be") {
+          videoId = pathParts[0] || "";
+        } else if (
+          host === "youtube.com" ||
+          host === "music.youtube.com" ||
+          host === "youtube-nocookie.com"
+        ) {
+          if (parsed.searchParams.get("v")) {
+            videoId = parsed.searchParams.get("v") || "";
+          } else if (pathParts[0] === "embed" && pathParts[1]) {
+            videoId = pathParts[1];
+          } else if (pathParts[0] === "shorts" && pathParts[1]) {
+            videoId = pathParts[1];
+          } else if (pathParts[0] === "live" && pathParts[1]) {
+            videoId = pathParts[1];
+          } else if ((pathParts[0] === "v" || pathParts[0] === "e") && pathParts[1]) {
+            videoId = pathParts[1];
+          }
+        }
+        videoId = String(videoId || "")
+          .split("?")[0]
+          .split("&")[0]
+          .replace(/[^a-zA-Z0-9_-]/g, "");
+        if (!videoId) return "";
+        return `https://www.youtube.com/embed/${videoId}?start=${start}&rel=0&enablejsapi=1&playsinline=1`;
+      } catch (e) {
+        return "";
+      }
+    }
+    function applyPromoState(btn, track, text, link, status) {
+      if (!btn || !track) return;
+      btn.classList.remove("show");
+      track.className = track.className.includes("m-promo-track") ? "m-promo-track center" : "d-promo-track center";
+      track.innerHTML = "";
+      if (status === "enable" && text) {
+        btn.classList.add("show");
+        const isLong = text.length > 18;
+        if (isLong) {
+          track.className = track.className.includes("m-promo-track") ? "m-promo-track marquee" : "d-promo-track marquee";
+          track.innerHTML = `<span>${escapeHTML(text)}</span><span>${escapeHTML(text)}</span><span>${escapeHTML(text)}</span><span>${escapeHTML(text)}</span>`;
+        } else {
+          track.textContent = text;
+        }
+        if (link) {
+          btn.href = link;
+          btn.target = "_blank";
+          btn.style.pointerEvents = "auto";
+        } else {
+          btn.href = "#";
+          btn.removeAttribute("target");
+          btn.style.pointerEvents = "none";
+        }
+      }
+    }
+    function renderPromo(data) {
+      const status = getOne(data, "promo_button_status", "disable").toLowerCase();
+      const text = getOne(data, "promo_button_text", "");
+      const link = getOne(data, "promo_button_link", "");
+      applyPromoState(
+        document.getElementById("mPromoButton"),
+        document.getElementById("mPromoButtonText"),
+        text,
+        link,
+        status
+      );
+      applyPromoState(
+        document.getElementById("dPromoButton"),
+        document.getElementById("dPromoButtonText"),
+        text,
+        link,
+        status
+      );
+    }
+    function renderVideos(data) {
+      const links = getMany(data, "youtube_video_links");
+      const titles = getMany(data, "youtube_video_titles");
+      const label = getOne(data, "youtube_video_label", "YouTube");
+      const mRow = document.getElementById("mYoutubeRow");
+      const dRow = document.getElementById("dYoutubeRow");
+      mRow.innerHTML = "";
+      dRow.innerHTML = "";
+      youtubePlayers = [];
+      links.forEach((link, index) => {
+        const embed = convertYouTubeToEmbed(link);
+        if (!embed) return;
+        const title = titles[index] || `Highlight ${String(index + 1).padStart(2, "0")}`;
+        const mid = `m-yt-${index + 1}`;
+        const did = `d-yt-${index + 1}`;
+        mRow.insertAdjacentHTML("beforeend", `
+          <article class="m-video-card">
+            <div class="m-video-frame">
+              <iframe id="${mid}" src="${escapeHTML(embed)}" title="${escapeHTML(title)}" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+            </div>
+            <div class="m-caption"><h3>${escapeHTML(title)}</h3><span>${escapeHTML(label)}</span></div>
+          </article>
+        `);
+        dRow.insertAdjacentHTML("beforeend", `
+          <article class="d-video-card">
+            <div class="d-video-frame">
+              <iframe id="${did}" src="${escapeHTML(embed)}" title="${escapeHTML(title)}" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+              <a class="d-video-click-layer" href="${escapeHTML(link)}" target="_blank" rel="noopener" aria-label="Open ${escapeHTML(title)} on YouTube" onclick="pauseAllVideos()"></a>
+            </div>
+            <div class="d-card-cap"><h3>${escapeHTML(title)}</h3><span>${escapeHTML(label)}</span></div>
+          </article>
+        `);
+      });
+      loadYouTubeAPI();
+    }
+    function renderReels(data) {
+      const links = getMany(data, "reel_links");
+      const thumbs = getMany(data, "reel_thumbnails");
+      const titles = getMany(data, "reel_titles");
+      const label = getOne(data, "reel_label", "Instagram");
+      const mRow = document.getElementById("mReelRow");
+      const dRow = document.getElementById("dReelRow");
+      mRow.innerHTML = "";
+      dRow.innerHTML = "";
+      links.forEach((link, index) => {
+        const thumb = thumbs[index];
+        if (!link || !thumb) return;
+        const title = titles[index] || `Reel ${String(index + 1).padStart(2, "0")}`;
+        mRow.insertAdjacentHTML("beforeend", `
+          <a class="m-reel-card" href="${escapeHTML(link)}" target="_blank" rel="noopener" onclick="pauseAllVideos()">
+            <div class="m-reel-thumb"><img src="${escapeHTML(thumb)}" alt="${escapeHTML(title)}"><div class="m-play"></div></div>
+            <div class="m-caption"><h3>${escapeHTML(title)}</h3><span>${escapeHTML(label)}</span></div>
+          </a>
+        `);
+        dRow.insertAdjacentHTML("beforeend", `
+          <a class="d-reel-card" href="${escapeHTML(link)}" target="_blank" rel="noopener" onclick="pauseAllVideos()">
+            <div class="d-reel-thumb"><img src="${escapeHTML(thumb)}" alt="${escapeHTML(title)}"><div class="d-play"></div></div>
+            <div class="d-card-cap"><h3>${escapeHTML(title)}</h3><span>${escapeHTML(label)}</span></div>
+          </a>
+        `);
+      });
+    }
+    function applyData(data) {
+      const banner = getOne(data, "top_banner_image");
+      const title = getOne(data, "hero_title", "Caster Naina");
+      const about = getOne(data, "about_text", "");
+      const portfolio = getOne(data, "portfolio_label", "Portfolio");
+      document.title = getOne(data, "share_title", "Caster Naina Portfolio");
+      shareTitle = getOne(data, "share_title", "Caster Naina Portfolio");
+      shareText = getOne(data, "share_text", "Check out Caster Naina's casting portfolio.");
+      if (banner) {
+        document.getElementById("mHeroSection").style.backgroundImage =
+          `linear-gradient(90deg, rgba(3, 48, 44, 0.88) 0%, rgba(3, 48, 44, 0.48) 42%, rgba(3, 48, 44, 0.10) 100%), url("${banner}")`;
+        document.querySelector(".d-hero-banner").style.backgroundImage =
+          `linear-gradient(90deg, rgba(3, 48, 44, 0.94) 0%, rgba(3, 48, 44, 0.82) 35%, rgba(3, 48, 44, 0.36) 62%, rgba(3, 48, 44, 0.06) 100%), url("${banner}")`;
+      }
+      setText("mPortfolioLabel", portfolio);
+      setText("dPortfolioLabel", portfolio);
+      setHTML("mHeroTitle", formatHeroTitle(title, false));
+      setHTML("dHeroTitle", formatHeroTitle(title, true));
+      setText("dBrandName", stripMarkdownStars(title));
+      setHTML("mAboutText", formatAboutText(about));
+      setHTML("dAboutText", formatAboutText(about));
+      setText("mShareButton", getOne(data, "share_button_text", "Share Profile"));
+      renderPromo(data);
+      const ytSocial = getOne(data, "youtube_social_link");
+      const igSocial = getOne(data, "instagram_social_link");
+      const dcSocial = getOne(data, "discord_social_link");
+      const waSocial = getOne(data, "whatsapp_social_link");
+      setHref("mYoutubeSocial", ytSocial);
+      setHref("mInstagramSocial", igSocial);
+      setHref("mDiscordSocial", dcSocial);
+      setHref("mWhatsappSocial", waSocial);
+      setHref("dNavYoutube", ytSocial);
+      setHref("dNavInstagram", igSocial);
+      setHref("dNavDiscord", dcSocial);
+      setHref("dNavWhatsapp", waSocial);
+      ["mCastingHeading", "dCastingHeading"].forEach(id => setText(id, getOne(data, "casting_heading", "Casting Highlights")));
+      const mobileCastingText = getOne(data, "casting_see_more_text_mobile", getOne(data, "casting_see_more_text", "See More"));
+      const mobileCastingLink = getOne(data, "casting_see_more_link_mobile", "casting-highlights.html");
+      const desktopCastingText = getOne(data, "casting_see_more_text_PC", getOne(data, "casting_see_more_text", "See More"));
+      const desktopCastingLink = getOne(data, "casting_see_more_link_PC", getOne(data, "casting_see_more_link"));
+      setText("mCastingSeeMore", mobileCastingText);
+      setHref("mCastingSeeMore", mobileCastingLink);
+      const mobileCastingBtn = document.getElementById("mCastingSeeMore");
+      if (mobileCastingBtn) mobileCastingBtn.removeAttribute("target");
+      setText("dCastingSeeMore", desktopCastingText);
+      setHref("dCastingSeeMore", desktopCastingLink);
+      const desktopCastingBtn = document.getElementById("dCastingSeeMore");
+      if (desktopCastingBtn) desktopCastingBtn.setAttribute("target", "_blank");
+      setText("mCastingHint", getOne(data, "casting_hint", ""));
+      ["mReelHeading", "dReelHeading"].forEach(id => setText(id, getOne(data, "reel_heading", "Reel Highlights")));
+      ["mReelSeeMore", "dReelSeeMore"].forEach(id => {
+        setText(id, getOne(data, "reel_see_more_text", "See More"));
+        setHref(id, getOne(data, "reel_see_more_link"));
+      });
+      setText("mReelHint", getOne(data, "reel_hint", ""));
+      ["mThankHeading", "dThankHeading"].forEach(id => setText(id, getOne(data, "thank_you_heading", "Thank You")));
+      ["mThankText", "dThankText"].forEach(id => setText(id, getOne(data, "thank_you_text")));
+      renderVideos(data);
+      renderReels(data);
+    }
+    async function loadSheetData() {
+      try {
+        const res = await fetch(SHEET_CSV_URL + "&cacheBust=" + Date.now(), {
+          cache: "no-store"
+        });
+        if (!res.ok) throw new Error("Sheet failed");
+        const csv = await res.text();
+        applyData(rowsToData(parseCSV(csv)));
+      } catch (err) {
+        console.log("Using fallback data:", err);
+        applyData(fallbackData);
+      } finally {
+        document.body.classList.remove("is-loading");
+        document.body.classList.add("is-ready");
+      }
+    }
+    function loadYouTubeAPI() {
+      if (window.YT && window.YT.Player) {
+        initialiseYouTubePlayers();
+        return;
+      }
+      if (!document.getElementById("youtube-api-script")) {
+        const script = document.createElement("script");
+        script.id = "youtube-api-script";
+        script.src = "https://www.youtube.com/iframe_api";
+        document.body.appendChild(script);
+      }
+    }
+    function onYouTubeIframeAPIReady() {
+      initialiseYouTubePlayers();
+    }
+    function initialiseYouTubePlayers() {
+      youtubePlayers = [];
+      document.querySelectorAll("iframe[id^='m-yt-'], iframe[id^='d-yt-']").forEach((iframe) => {
+        try {
+          const player = new YT.Player(iframe.id, {
+            events: {
+              "onStateChange": function(event) {
+                if (event.data === YT.PlayerState.PLAYING) {
+                  youtubePlayers.forEach(other => {
+                    if (other && other !== event.target && typeof other.pauseVideo === "function") {
+                      other.pauseVideo();
+                    }
+                  });
+                }
+              }
             }
           });
-          return rowObj;
-        });
-        return rows;
-      } catch (e) {
-        console.error("Error fetching tab: " + tabName, e);
-        return [];
-      }
-    }
-
-    function parseYoutubeId(url) {
-      if (!url) return null;
-      let regExp = /^.*(youtu.be\/|v\/|u\/\w\/|embed\/|watch\?v=|\&v=)([^#\&\?]*).*/;
-      let match = url.match(regExp);
-      return (match && match[2].length === 11) ? match[2] : null;
-    }
-
-    async function loadSheetData() {
-      document.body.classList.add("is-loading");
-      document.body.classList.remove("is-ready");
-
-      const [profileData, socialsData, videosData, reelsData, statsData] = await Promise.all([
-        fetchSheetData(CONFIG.tabs.profile),
-        fetchSheetData(CONFIG.tabs.socials),
-        fetchSheetData(CONFIG.tabs.videos),
-        fetchSheetData(CONFIG.tabs.reels),
-        fetchSheetData(CONFIG.tabs.stats)
-      ]);
-
-      renderProfile(profileData);
-      renderSocials(socialsData);
-      renderVideos(videosData);
-      renderReels(reelsData);
-      renderStats(statsData);
-
-      document.body.classList.remove("is-loading");
-      document.body.classList.add("is-ready");
-    }
-
-    function renderProfile(data) {
-      if (!data || data.length === 0) return;
-      const p = data[0];
-
-      if (p.name) {
-        shareTitle = p.name + " Portfolio";
-        const mTitleNode = document.getElementById("mTitle");
-        const dTitleNode = document.getElementById("dTitle");
-        if(mTitleNode) mTitleNode.innerHTML = p.name;
-        if(dTitleNode) dTitleNode.innerHTML = p.name;
-      }
-      
-      if (p.kicker) {
-        const mKNode = document.getElementById("mKicker");
-        const dKNode = document.getElementById("dKicker");
-        if(mKNode) mKNode.textContent = p.kicker;
-        if(dKNode) dKNode.textContent = p.kicker;
-      }
-
-      if (p.about) {
-        shareText = p.about;
-        const mAbNode = document.getElementById("mAbout");
-        const dAbNode = document.getElementById("dAbout");
-        if(mAbNode) mAbNode.innerHTML = p.about;
-        if(dAbNode) dAbNode.innerHTML = p.about;
-      }
-
-      if (p.hero_image) {
-        const mHeroNode = document.getElementById("mHeroSection");
-        const dHeroNode = document.getElementById("dHeroSection");
-        if(mHeroNode) mHeroNode.style.backgroundImage = `linear-gradient(90deg, rgba(3, 48, 44, 0.90) 0%, rgba(3, 48, 44, 0.52) 45%, rgba(3, 48, 44, 0.12) 100%), url('${p.hero_image}')`;
-        if(dHeroNode) dHeroNode.style.backgroundImage = `linear-gradient(90deg, rgba(3, 48, 44, 0.94) 0%, rgba(3, 48, 44, 0.82) 35%, rgba(3, 48, 44, 0.36) 62%, rgba(3, 48, 44, 0.06) 100%), url('${p.hero_image}')`;
-      }
-
-      if (p.promo_text && p.promo_text.trim() !== "") {
-        const mPromoBtn = document.getElementById("mPromoBtn");
-        const dPromoBtn = document.getElementById("dPromoBtn");
-        const mTrack = document.getElementById("mPromoTrack");
-        const dTrack = document.getElementById("dPromoTrack");
-        const link = p.promo_link || "#";
-
-        mPromoBtn.href = link;
-        dPromoBtn.href = link;
-
-        const useMarquee = p.promo_text.length > 24;
-        
-        if (useMarquee) {
-          mTrack.className = "m-promo-track marquee";
-          dTrack.className = "d-promo-track marquee";
-          const repeatedText = (p.promo_text + " &nbsp;&nbsp;&nbsp;&nbsp;•&nbsp;&nbsp;&nbsp;&nbsp; ").repeat(4);
-          mTrack.innerHTML = `<span>${repeatedText}</span>`;
-          dTrack.innerHTML = `<span>${repeatedText}</span>`;
-        } else {
-          mTrack.className = "m-promo-track center";
-          dTrack.className = "d-promo-track center";
-          mTrack.textContent = p.promo_text;
-          dTrack.textContent = p.promo_text;
+          youtubePlayers.push(player);
+        } catch (e) {
+          console.log("YT init issue:", e);
         }
-
-        mPromoBtn.classList.add("show");
-        dPromoBtn.classList.add("show");
-      }
-    }
-
-    function renderSocials(data) {
-      const container = document.getElementById("mSocialsRow");
-      if (!container) return;
-      container.innerHTML = "";
-
-      const activeSocials = data.filter(s => s.status && s.status.toLowerCase() === "active");
-
-      activeSocials.forEach(s => {
-        if (!s.link || !s.icon_svg) return;
-        const anchor = document.createElement("a");
-        anchor.href = s.link;
-        anchor.target = "_blank";
-        anchor.title = s.platform || "Social Link";
-        anchor.innerHTML = s.icon_svg;
-        container.appendChild(anchor);
       });
     }
-
-    function renderVideos(data) {
-      const mScroll = document.getElementById("mVideoScroll");
-      const dGrid = document.getElementById("dVideoGrid");
-      const mSection = document.getElementById("mobile-videos");
-      const dSection = document.getElementById("desktop-videos");
-
-      if (!mScroll || !dGrid) return;
-      mScroll.innerHTML = "";
-      dGrid.innerHTML = "";
-
-      const activeVideos = data.filter(v => v.status && v.status.toLowerCase() === "active");
-
-      if (activeVideos.length === 0) {
-        if(mSection) mSection.style.display = "none";
-        if(dSection) dSection.style.display = "none";
-        return;
-      }
-
-      if(mSection) mSection.style.display = "block";
-      if(dSection) dSection.style.display = "block";
-
-      activeVideos.forEach(v => {
-        const ytId = parseYoutubeId(v.url);
-        if (!ytId) return;
-
-        const embedUrl = `https://www.youtube.com/embed/${ytId}?enablejsapi=1&rel=0&modestbranding=1`;
-        const title = v.title || "Featured Video";
-        const category = v.category || "Production";
-
-        const mCard = document.createElement("div");
-        mCard.className = "m-video-card";
-        mCard.innerHTML = `
-          <div class="m-video-frame">
-            <iframe src="${embedUrl}" title="${title}" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-          </div>
-          <div class="m-caption">
-            <h3>${title}</h3>
-            <span>${category}</span>
-          </div>
-        `;
-        mScroll.appendChild(mCard);
-
-        const dCard = document.createElement("div");
-        dCard.className = "d-video-card";
-        dCard.innerHTML = `
-          <div class="d-video-frame">
-            <div class="d-video-click-layer" onclick="handleVideoLayerClick(this)"></div>
-            <iframe src="${embedUrl}" title="${title}" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-          </div>
-          <div class="d-card-cap">
-            <h3>${title}</h3>
-            <span>${category}</span>
-          </div>
-        `;
-        dGrid.appendChild(dCard);
-      });
-    }
-
-    function handleVideoLayerClick(layerElement) {
-      const frame = layerElement.parentElement;
-      const iframe = frame.querySelector("iframe");
-      
-      pauseAllVideos();
-      
-      layerElement.style.display = "none";
-      
-      if(iframe && iframe.src) {
-        if(iframe.src.includes("autoplay=1")) {
-          return; 
-        }
-        const separator = iframe.src.includes("?") ? "&" : "?";
-        iframe.src += separator + "autoplay=1";
-      }
-    }
-
     function pauseAllVideos() {
-      const iframes = document.querySelectorAll("iframe");
-      iframes.forEach(iframe => {
-        if(iframe.contentWindow) {
-          iframe.contentWindow.postMessage('{"event":"command","func":"pauseVideo","args":""}', '*');
-        }
-        if(iframe.src && iframe.src.includes("autoplay=1")) {
-          iframe.src = iframe.src.replace("&autoplay=1", "").replace("?autoplay=1", "");
-          const layer = iframe.parentElement.querySelector(".d-video-click-layer");
-          if(layer) layer.style.display = "block";
+      youtubePlayers.forEach(player => {
+        if (player && typeof player.pauseVideo === "function") {
+          player.pauseVideo();
         }
       });
     }
-
-    function renderReels(data) {
-      const mScroll = document.getElementById("mReelScroll");
-      const dGrid = document.getElementById("dReelGrid");
-      const mSection = document.getElementById("mobile-reels");
-      const dSection = document.getElementById("desktop-reels");
-
-      if (!mScroll || !dGrid) return;
-      mScroll.innerHTML = "";
-      dGrid.innerHTML = "";
-
-      const activeReels = data.filter(r => r.status && r.status.toLowerCase() === "active");
-
-      if (activeReels.length === 0) {
-        if(mSection) mSection.style.display = "none";
-        if(dSection) dSection.style.display = "none";
-        return;
-      }
-
-      if(mSection) mSection.style.display = "block";
-      if(dSection) dSection.style.display = "block";
-
-      activeReels.forEach(r => {
-        if (!r.link || !r.thumbnail_url) return;
-        const title = r.title || "Instagram Reel";
-        const views = r.views_count || "View";
-
-        const mCard = document.createElement("a");
-        mCard.className = "m-reel-card";
-        mCard.href = r.link;
-        mCard.target = "_blank";
-        mCard.onclick = () => pauseAllVideos();
-        mCard.innerHTML = `
-          <div class="m-reel-thumb">
-            <div class="m-play"></div>
-            <img src="${r.thumbnail_url}" alt="${title}" loading="lazy" />
-          </div>
-          <div class="m-caption">
-            <h3>${title}</h3>
-            <span>${views}</span>
-          </div>
-        `;
-        mScroll.appendChild(mCard);
-
-        const dCard = document.createElement("a");
-        dCard.className = "d-reel-card";
-        dCard.href = r.link;
-        dCard.target = "_blank";
-        dCard.onclick = () => pauseAllVideos();
-        dCard.innerHTML = `
-          <div class="d-reel-thumb">
-            <div class="d-play"></div>
-            <img src="${r.thumbnail_url}" alt="${title}" loading="lazy" />
-          </div>
-          <div class="d-card-cap">
-            <h3>${title}</h3>
-            <span>${views}</span>
-          </div>
-        `;
-        dGrid.appendChild(dCard);
-      });
-    }
-
-    function renderStats(data) {
-      const container = document.getElementById("dStatsRow");
-      if (!container) return;
-      container.innerHTML = "";
-
-      const activeStats = data.filter(s => s.status && s.status.toLowerCase() === "active").slice(0, 3);
-
-      activeStats.forEach(s => {
-        if (!s.value || !s.label) return;
-        const box = document.createElement("div");
-        box.className = "d-stat";
-        box.innerHTML = `
-          <b>${s.value}</b>
-          <span>${s.label}</span>
-        `;
-        container.appendChild(box);
-      });
-    }
-
-    function scrollToPortfolioSection(id) {
-      const section = document.getElementById(id);
+    function scrollToPortfolioSection(sectionId) {
+      const section = document.getElementById(sectionId);
       if (!section) return;
-      
-      const topOffset = 110; 
+      pauseAllVideos();
+      const topOffset = 22;
       const sectionTop = section.getBoundingClientRect().top + window.pageYOffset - topOffset;
-
       window.scrollTo({
         top: sectionTop,
         behavior: "smooth"
       });
     }
-
     function setupHeroScrollButtons() {
       const watchBtn = document.getElementById("dWatchBtn");
       const reelsBtn = document.getElementById("dInstaBtn");
-
       if (watchBtn) {
         watchBtn.addEventListener("click", function(event) {
           event.preventDefault();
           scrollToPortfolioSection("desktop-videos");
         });
       }
-
       if (reelsBtn) {
         reelsBtn.addEventListener("click", function(event) {
           event.preventDefault();
@@ -2028,11 +1987,9 @@
         });
       }
     }
-
     document.addEventListener("visibilitychange", () => {
       if (document.hidden) pauseAllVideos();
     });
-
     function shareProfile() {
       pauseAllVideos();
       const shareData = {
@@ -2040,7 +1997,6 @@
         text: shareText,
         url: window.location.href
       };
-
       if (navigator.share) {
         navigator.share(shareData).catch(() => {});
       } else if (navigator.clipboard) {
@@ -2049,11 +2005,9 @@
         alert("Share option is not supported on this browser.");
       }
     }
-
     document.addEventListener("contextmenu", function(event) {
       event.preventDefault();
     }, true);
-
     setupHeroScrollButtons();
     loadSheetData();
   </script>
